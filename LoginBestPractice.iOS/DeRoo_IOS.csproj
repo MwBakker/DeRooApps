@@ -144,6 +144,10 @@
     <BundleResource Include="Resources\de-roo.png" />
     <BundleResource Include="PDF\handboek.pdf" />
     <BundleResource Include="handboek.pdf" />
+    <BundleResource Include="Resources\logout.png" />
+    <BundleResource Include="Resources\toolbox.png" />
+    <BundleResource Include="Resources\formulieren.png" />
+    <BundleResource Include="Resources\handboek.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="PDF\" />
