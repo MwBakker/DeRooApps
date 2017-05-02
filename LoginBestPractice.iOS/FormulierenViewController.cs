@@ -41,7 +41,6 @@ namespace LoginBestPractice.iOS
 				NavigationItem.Title = formName;
 				this.View.AddSubview(formulierScherm);		
              };
-
 			return btn;
 		}
 	}
