@@ -23,11 +23,11 @@ namespace LoginBestPractice.iOS
 			for (int i = 0; i < data.formulieren.Count; i++)
 			{
 				hoogteVanButtons += 40;
-				this.View.AddSubview(createElements(data.formulieren[i].formulier_naam, hoogteVanButtons));
+				this.View.Add(createFormTextButtons(data.formulieren[i].formulier_id, data.formulieren[i].formulier_naam, hoogteVanButtons));
 			}
 		}
 
-		public UIButton createElements(string formulierNaam, int hoogteVanButtons)
+		public UIButton createFormTextButtons(string formulierID, string formulierNaam, int hoogteVanButtons) 
 		{
 			UIButton formulierButton = new UIButton(UIButtonType.RoundedRect);
 			formulierButton.SetTitle(formulierNaam, UIControlState.Normal);
@@ -37,6 +37,12 @@ namespace LoginBestPractice.iOS
 				var formulierController = Storyboard.InstantiateViewController("FormulierenInhoud");
 				formulierController.Title = formulierNaam;
 				NavigationController.PushViewController(formulierController, true);
+				RootObject data = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.categories);
+				for (int i = 0; i < data.categorien.Count; i++)
+					if (data.categorien[i].formulier_id == formulierID) { 
+						//this.View.AddSubview();
+					}{
+				}
             };
 			return formulierButton;
 		}
