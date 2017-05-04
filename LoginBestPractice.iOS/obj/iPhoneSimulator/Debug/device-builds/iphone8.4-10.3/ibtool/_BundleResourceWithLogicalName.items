@@ -10,6 +10,11 @@
       <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
       <Optimize>false</Optimize>
     </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/iphone8.4-10.3/ibtool/MainStoryboard.storyboardc/1888-view-1889.nib">
+      <LogicalName>MainStoryboard.storyboardc/1888-view-1889.nib</LogicalName>
+      <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
     <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/iphone8.4-10.3/ibtool/MainStoryboard.storyboardc/207-view-208.nib">
       <LogicalName>MainStoryboard.storyboardc/207-view-208.nib</LogicalName>
       <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
@@ -32,6 +37,11 @@
     </_BundleResourceWithLogicalName>
     <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/iphone8.4-10.3/ibtool/MainStoryboard.storyboardc/Formulieren.nib">
       <LogicalName>MainStoryboard.storyboardc/Formulieren.nib</LogicalName>
+      <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/iphone8.4-10.3/ibtool/MainStoryboard.storyboardc/FormulierenInhoud.nib">
+      <LogicalName>MainStoryboard.storyboardc/FormulierenInhoud.nib</LogicalName>
       <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
       <Optimize>false</Optimize>
     </_BundleResourceWithLogicalName>

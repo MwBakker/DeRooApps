@@ -41,7 +41,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="30"/>
-                    <navigationItem key="navigationItem" title="Tab 1" id="90"/>
+                    <navigationItem key="navigationItem" title="Formulieren" id="90"/>
                     <connections/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="31" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -92,7 +92,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" id="34"/>
-                    <navigationItem key="navigationItem" title="Tab 2" id="144"/>
+                    <navigationItem key="navigationItem" title="Uitloggen" id="144"/>
                     <connections>
                         <outlet property="LogOutButtonYes" destination="244" id="name-outlet-244"/>
                     </connections>
@@ -229,7 +229,7 @@
                             <outlet property="delegate" destination="522" id="526"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="523"/>
+                    <navigationItem key="navigationItem" title="Toolbox" id="523"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="529" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -265,11 +265,28 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <subviews/>
                     </view>
-                    <navigationItem title="Title" id="1835" key="navigationItem"/>
+                    <navigationItem title="Handboek" id="1835" key="navigationItem"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1821" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="908" y="796"/>
+        </scene>
+        <scene sceneID="1887">
+            <objects>
+                <viewController id="1888" sceneMemberID="viewController" storyboardIdentifier="FormulierenInhoud">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1885"/>
+                        <viewControllerLayoutGuide type="bottom" id="1886"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1889">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1890" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1391" y="-372"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -283,5 +300,6 @@
         <image name="toolbox.png" width="24" height="24"/>
         <image name="formulieren.png" width="24" height="24"/>
         <image name="handboek.png" width="24" height="24"/>
+        <image name="back.png" width="24" height="24"/>
     </resources>
 </document>

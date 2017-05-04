@@ -20,12 +20,12 @@
       <File FileName="../../DeRoo/DeRoo/Activities/FormSelectionActivity.cs" Line="58" Column="14" />
       <File FileName="Formulieren.cs" Line="13" Column="3" />
       <File FileName="Formulieren.designer.cs" Line="26" Column="10" />
-      <File FileName="FormulierenViewController.cs" Line="32" Column="4" />
+      <File FileName="FormulierenViewController.cs" Line="41" Column="26" />
       <File FileName="../../../../../Library/Frameworks/Mono.framework/Versions/4.8.1/lib/mono/xbuild/14.0/bin/Microsoft.Common.targets" Line="1" Column="1" />
       <File FileName="../../DeRoo/DeRoo/Activities/FormProgressActivity.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
@@ -33,5 +33,5 @@
     <Watch file="FormulierenViewController.cs" line="31" offsetX="299" offsetY="450" expression="test" liveUpdate="False" />
   </MonoDevelop.Ide.DebuggingService.PinnedWatches>
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.DeRoo__IOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.C9282889-9998-40D2-9742-B97198703E25" />
+  <MonoDevelop.Ide.ItemProperties.DeRoo__IOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget" />
 </Properties>

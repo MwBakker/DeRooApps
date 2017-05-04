@@ -23,25 +23,22 @@ namespace LoginBestPractice.iOS
 			for (int i = 0; i < data.formulieren.Count; i++)
 			{
 				hoogteVanButtons += 40;
-
-				this.View.AddSubview(createButton(data.formulieren[i].formulier_naam, hoogteVanButtons));
+				this.View.AddSubview(createElements(data.formulieren[i].formulier_naam, hoogteVanButtons));
 			}
 		}
 
-		public UIButton createButton(string formName, int height)
+		public UIButton createElements(string formulierNaam, int hoogteVanButtons)
 		{
-			UIButton btn = new UIButton(UIButtonType.RoundedRect);
-			btn.SetTitle(formName, UIControlState.Normal);
-			btn.Frame = new CoreGraphics.CGRect(0, height, this.View.Frame.Size.Width, 50);
-			btn.TouchDown += delegate
+			UIButton formulierButton = new UIButton(UIButtonType.RoundedRect);
+			formulierButton.SetTitle(formulierNaam, UIControlState.Normal);
+			formulierButton.Frame = new CoreGraphics.CGRect(0, hoogteVanButtons, this.View.Frame.Size.Width, 50);
+			formulierButton.TouchDown += delegate
 			{
-				var formulierScherm = new UIView();
-				formulierScherm.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, this.View.Frame.Size.Height);
-				formulierScherm.BackgroundColor = UIColor.White;
-				NavigationItem.Title = formName;
-				this.View.AddSubview(formulierScherm);		
-             };
-			return btn;
+				var formulierController = Storyboard.InstantiateViewController("FormulierenInhoud");
+				formulierController.Title = formulierNaam;
+				NavigationController.PushViewController(formulierController, true);
+            };
+			return formulierButton;
 		}
 	}
 }
