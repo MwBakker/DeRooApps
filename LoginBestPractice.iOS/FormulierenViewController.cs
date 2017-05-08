@@ -37,14 +37,21 @@ namespace LoginBestPractice.iOS
 				var formulierController = Storyboard.InstantiateViewController("FormulierenInhoud");
 				formulierController.Title = formulierNaam;
 				NavigationController.PushViewController(formulierController, true);
+
+				UILabel test = new UILabel();
+				test.Text = "leuk"; 
+
 				RootObject data = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.categories);
 				for (int i = 0; i < data.categorien.Count; i++)
-					if (data.categorien[i].formulier_id == formulierID) { 
-						//this.View.AddSubview();
+					if (data.categorien[i].formulier_id == formulierID) {
+						UILabel lbl_catName = new UILabel();
+						this.View.Add(lbl_catName.Text = data.categorien[i].categorie_text);
 					}{
 				}
             };
 			return formulierButton;
 		}
+
+		public 
 	}
 }
