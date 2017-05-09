@@ -18,34 +18,12 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="4" translatesAutoresizingMaskIntoConstraints="NO" image="de-roo.png">
-                    <rect key="frame" x="120" y="176" width="240" height="128"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="74" translatesAutoresizingMaskIntoConstraints="NO" image="Deroo_Bord_Medium.png" misplaced="YES">
+                    <rect key="frame" x="120" y="230" width="240" height="74"/>
                     <constraints>
-                        <constraint id="11" firstAttribute="width" constant="240"/>
-                        <constraint id="12" firstAttribute="height" constant="128"/>
-                        <constraint id="21" firstAttribute="width" constant="240"/>
-                        <constraint id="22" firstAttribute="height" constant="128"/>
+                        <constraint id="78" firstAttribute="width" constant="240"/>
+                        <constraint id="79" firstAttribute="height" constant="128"/>
                     </constraints>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="11"/>
-                            <exclude reference="12"/>
-                            <exclude reference="21"/>
-                            <exclude reference="22"/>
-                        </mask>
-                    </variation>
-                    <variation key="heightClass=regular-widthClass=regular">
-                        <mask key="constraints">
-                            <include reference="11"/>
-                            <include reference="12"/>
-                        </mask>
-                    </variation>
-                    <variation key="heightClass=regular-widthClass=compact">
-                        <mask key="constraints">
-                            <include reference="21"/>
-                            <include reference="22"/>
-                        </mask>
-                    </variation>
                 </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -53,36 +31,23 @@
                 <constraint firstAttribute="bottom" secondItem="8ie-xW-0ye" secondAttribute="bottom" constant="20" id="Kzo-t9-V3l"/>
                 <constraint firstItem="8ie-xW-0ye" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" symbolic="YES" id="MfP-vx-nX0"/>
                 <constraint firstAttribute="centerX" secondItem="8ie-xW-0ye" secondAttribute="centerX" id="ZEH-qu-HZ9"/>
-                <constraint id="19" firstItem="iN0-l3-epB" firstAttribute="trailing" secondItem="4" secondAttribute="trailing" constant="120"/>
-                <constraint id="20" firstItem="iN0-l3-epB" firstAttribute="bottom" secondItem="4" secondAttribute="bottom" constant="176"/>
-                <constraint id="23" firstItem="4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="176"/>
-                <constraint id="24" firstItem="4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="120"/>
+                <constraint id="75" firstItem="74" firstAttribute="centerX" secondItem="8ie-xW-0ye" secondAttribute="centerX"/>
+                <constraint id="76" firstItem="iN0-l3-epB" firstAttribute="bottom" secondItem="74" secondAttribute="bottom" constant="176"/>
+                <constraint id="77" firstItem="74" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="548" y="455"/>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="19"/>
-                    <exclude reference="20"/>
-                    <exclude reference="23"/>
-                    <exclude reference="24"/>
-                </mask>
-            </variation>
-            <variation key="heightClass=regular-widthClass=compact">
-                <mask key="constraints">
-                    <include reference="19"/>
-                    <include reference="20"/>
-                    <include reference="23"/>
-                    <include reference="24"/>
-                </mask>
-            </variation>
         </view>
     </objects>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
     <resources>
         <image name="de-roo.png" width="308" height="166"/>
+        <image name="toolbox.png" width="24" height="24"/>
+        <image name="formulieren.png" width="24" height="24"/>
+        <image name="handboek.png" width="24" height="24"/>
+        <image name="back.png" width="24" height="24"/>
+        <image name="Logout.png" width="50" height="50"/>
+        <image name="logouttemp.png" width="24" height="24"/>
+        <image name="Deroo_Bord_Medium.png" width="944" height="237"/>
     </resources>
 </document>

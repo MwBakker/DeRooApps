@@ -13,6 +13,24 @@ namespace LoginBestPractice.iOS
 		{
         }
 
+		public override void ViewDidLoad()
+		{
+			base.ViewDidLoad();
+			passwordHideShow.TouchUpInside += delegate
+			{
+				if (0 == passwordHideShow.Tag)
+				{
+					passwordHideShow.Tag = 1;
+					PasswordTextView.SecureTextEntry = false;
+				}
+				else if (1 == passwordHideShow.Tag)
+				{
+					passwordHideShow.Tag = 0;
+					PasswordTextView.SecureTextEntry = true;
+				}
+			};
+		}
+
         partial void LoginButton_TouchUpInside(UIButton sender)
         {
             //Validate our Username &Password.
@@ -48,7 +66,7 @@ namespace LoginBestPractice.iOS
         }
 
         private bool IsUserNameValid()
-        {
+		{
             return !String.IsNullOrEmpty(UserNameTextView.Text.Trim());
         }
 
@@ -56,5 +74,6 @@ namespace LoginBestPractice.iOS
         {
             return !String.IsNullOrEmpty(PasswordTextView.Text.Trim());
         }
+
 	}
 }

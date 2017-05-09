@@ -144,11 +144,13 @@
     <BundleResource Include="Resources\de-roo.png" />
     <BundleResource Include="PDF\handboek.pdf" />
     <BundleResource Include="handboek.pdf" />
-    <BundleResource Include="Resources\logout.png" />
     <BundleResource Include="Resources\toolbox.png" />
     <BundleResource Include="Resources\formulieren.png" />
     <BundleResource Include="Resources\handboek.png" />
     <BundleResource Include="Resources\back.png" />
+    <BundleResource Include="Resources\Logout.png" />
+    <BundleResource Include="Resources\logouttemp.png" />
+    <BundleResource Include="Resources\Deroo_Bord_Medium.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="PDF\" />

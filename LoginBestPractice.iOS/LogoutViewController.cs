@@ -12,27 +12,43 @@ namespace LoginBestPractice.iOS
 			
         }
 
-        //Implement a Logout Feature
-        partial void LogOutButtonYes_TouchUpInside(UIButton sender)
-        {
-			//Create an instance of our AppDelegate
-			var appDelegate = UIApplication.SharedApplication.Delegate as AppDelegate;
+		public override void ViewDidLoad()
+		{
+			base.ViewDidLoad();
 
-			//Get an instance of our MainStoryboard.storyboard
-			var mainStoryboard = appDelegate.MainStoryboard;
-
-			//Get an instance of our Login Page View Controller
-			var loginPageViewController = appDelegate.GetViewController(mainStoryboard, "LoginPageViewController") as LoginPageViewController;
-
-			//Wire our event handler to show the MainTabBarController after we successfully logged in.
-			loginPageViewController.OnLoginSuccess += (s, e) =>
+            this.NavigationItem.SetRightBarButtonItem(
+			new UIBarButtonItem(UIImage.FromFile("logouttemp.png"), UIBarButtonItemStyle.Plain, (sender,args) => 
 			{
-				var tabBarController = appDelegate.GetViewController(mainStoryboard, "MainTabBarController");
-				appDelegate.SetRootViewController(tabBarController, true);
-			};
+				var Confirm = new UIAlertView("Uitloggen", "Weet u zeker dat u wilt uitloggen?", null, "Nee", "Ja");
+				Confirm.Show();
+	            Confirm.Clicked += (object senders, UIButtonEventArgs es) => 
+	            {
+	               	if (es.ButtonIndex == 0 ) 
+					{
+	                	
+	                }else
+	                {
+						//Create an instance of our AppDelegate
+						var appDelegate = UIApplication.SharedApplication.Delegate as AppDelegate;
 
-			//Set the Login Page as our RootViewController
-			appDelegate.SetRootViewController(loginPageViewController, true);
-        }
+						//Get an instance of our MainStoryboard.storyboard
+						var mainStoryboard = appDelegate.MainStoryboard;
+
+						//Get an instance of our Login Page View Controller
+						var loginPageViewController = appDelegate.GetViewController(mainStoryboard, "LoginPageViewController") as LoginPageViewController;
+
+						//Wire our event handler to show the MainTabBarController after we successfully logged in.
+						loginPageViewController.OnLoginSuccess += (s, e) =>
+						{
+							var tabBarController = appDelegate.GetViewController(mainStoryboard, "MainTabBarController");
+							appDelegate.SetRootViewController(tabBarController, true);
+						};
+
+						//Set the Login Page as our RootViewController
+						appDelegate.SetRootViewController(loginPageViewController, true);
+	                }
+	            };
+    		}), true);
+		}
     }
 }

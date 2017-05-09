@@ -16,7 +16,15 @@ namespace LoginBestPractice.iOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel labelHideShowPassword { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton LoginButton { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UISwitch passwordHideShow { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -32,9 +40,19 @@ namespace LoginBestPractice.iOS
 
         void ReleaseDesignerOutlets ()
         {
+            if (labelHideShowPassword != null) {
+                labelHideShowPassword.Dispose ();
+                labelHideShowPassword = null;
+            }
+
             if (LoginButton != null) {
                 LoginButton.Dispose ();
                 LoginButton = null;
+            }
+
+            if (passwordHideShow != null) {
+                passwordHideShow.Dispose ();
+                passwordHideShow = null;
             }
 
             if (PasswordTextView != null) {
