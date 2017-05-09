@@ -19,11 +19,6 @@
 <<<<<<< HEAD
 /Users/deroo/Downloads/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone8.4-10.3/optimized/Deroo_Bord_Medium.png
 =======
-/Users/deroo/Downloads/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone8.4-10.3/optimized/logout.png
-/Users/deroo/Downloads/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone8.4-10.3/optimized/toolbox.png
-/Users/deroo/Downloads/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone8.4-10.3/optimized/formulieren.png
-/Users/deroo/Downloads/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone8.4-10.3/optimized/handboek.png
-/Users/deroo/Downloads/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone8.4-10.3/optimized/back.png
 /Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/Xamarin.iOS,Version=v1.0.AssemblyAttribute.cs
 /Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone9.1-10.3/ibtool/_BundleResourceWithLogicalName.items
 /Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone9.1-10.3/actool/_PartialAppManifest.items

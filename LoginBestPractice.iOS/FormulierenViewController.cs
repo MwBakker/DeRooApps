@@ -23,7 +23,6 @@ namespace LoginBestPractice.iOS
 			for (int i = 0; i < data.formulieren.Count; i++)
 			{
 				hoogteVanButtons += 40;
-<<<<<<< HEAD
 				this.View.AddSubview(createElements(data.formulieren[i].formulier_naam, hoogteVanButtons));
 			}
 
@@ -63,13 +62,9 @@ namespace LoginBestPractice.iOS
 	                }
 	            };
     		}), true);
-=======
-				this.View.Add(createFormTextButtons(data.formulieren[i].formulier_id, data.formulieren[i].formulier_naam, hoogteVanButtons));
-			}
->>>>>>> origin/master
 		}
 
-		public UIButton createFormTextButtons(string formulierID, string formulierNaam, int hoogteVanButtons) 
+		public UIButton createElements(string formulierNaam, int hoogteVanButtons)
 		{
 			UIButton formulierButton = new UIButton(UIButtonType.RoundedRect);
 			formulierButton.SetTitle(formulierNaam, UIControlState.Normal);
@@ -80,7 +75,6 @@ namespace LoginBestPractice.iOS
 				formulierController.Title = formulierNaam;
 				NavigationController.PushViewController(formulierController, true);
 
-<<<<<<< HEAD
 				RootObject datacategorie = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.categories);
 				int hoogteText = 100;
 				for (int i = 0; i<datacategorie.categorien.Count; i++)
@@ -90,22 +84,9 @@ namespace LoginBestPractice.iOS
 					label.Text = datacategorie.categorien[i].categorie_text;
 					label.Frame = new CoreGraphics.CGRect(0, hoogteText, this.View.Frame.Size.Width, 50);
 					formulierController.Add(label);
-=======
-				UILabel test = new UILabel();
-				test.Text = "leuk"; 
-
-				RootObject data = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.categories);
-				for (int i = 0; i < data.categorien.Count; i++)
-					if (data.categorien[i].formulier_id == formulierID) {
-						UILabel lbl_catName = new UILabel();
-						this.View.Add(lbl_catName.Text = data.categorien[i].categorie_text);
-					}{
->>>>>>> origin/master
 				}
             };
 			return formulierButton;
 		}
-
-		public 
 	}
 }
