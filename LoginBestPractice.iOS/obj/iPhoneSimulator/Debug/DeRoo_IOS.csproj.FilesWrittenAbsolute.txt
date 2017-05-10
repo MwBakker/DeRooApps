@@ -89,3 +89,16 @@
 /Users/mwb/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone7.2-10.3/optimized/logouttemp.png
 /Users/mwb/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone7.2-10.3/optimized/Deroo_Bord_Medium.png
 /Users/mwb/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone7.2-10.3/optimized/
+/Users/mwb/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/ipad4.2-10.3/ibtool/_BundleResourceWithLogicalName.items
+/Users/mwb/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/ipad4.2-10.3/actool/_PartialAppManifest.items
+/Users/mwb/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/ipad4.2-10.3/actool/_BundleResourceWithLogicalName.items
+/Users/mwb/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/ipad4.2-10.3/optimized/de-roo.png
+/Users/mwb/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/ipad4.2-10.3/optimized/toolbox.png
+/Users/mwb/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/ipad4.2-10.3/optimized/formulieren.png
+/Users/mwb/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/ipad4.2-10.3/optimized/handboek.png
+/Users/mwb/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/ipad4.2-10.3/optimized/back.png
+/Users/mwb/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/ipad4.2-10.3/optimized/logout.png
+/Users/mwb/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/ipad4.2-10.3/optimized/logouttemp.png
+/Users/mwb/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/ipad4.2-10.3/optimized/Deroo_Bord_Medium.png
+/Users/mwb/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/ipad4.2-10.3/optimized/
+/Users/mwb/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone9.1-10.3/ibtool/_BundleResourceWithLogicalName.items

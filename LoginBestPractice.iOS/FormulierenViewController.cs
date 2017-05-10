@@ -79,8 +79,9 @@ namespace LoginBestPractice.iOS
 				RootObject dataCategorie = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.categories);
 				RootObject dataVraag = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.items);
 				int catEnVraagHoogte = 50;
-				//UIScrollView scrollView = new UIScrollView();
-				//scrollView.Frame = new CoreGraphics.CGRect(0,0, 200, this.View.Frame.Height+100);
+				UIScrollView scrollView = new UIScrollView();
+				scrollView.ScrollEnabled = true;
+				scrollView.Frame = new CoreGraphics.CGRect(0,0, this.View.Frame.Width, this.View.Frame.Height+100);
 
 
 				for (int i = 0; i < dataCategorie.categorien.Count; i++)
@@ -91,20 +92,14 @@ namespace LoginBestPractice.iOS
 						// container cat + vraag // 
 						UIStackView catEnVraag = new UIStackView();
 						catEnVraag.Axis = UILayoutConstraintAxis.Vertical;
-						catEnVraag.Alignment = UIStackViewAlignment.Fill;
-						catEnVraag.Distribution = UIStackViewDistribution.Fill;
-						catEnVraag.Spacing = 8;
 						catEnVraag.Frame = new CoreGraphics.CGRect(0, catEnVraagHoogte, this.View.Frame.Size.Width, 300);
 
 
 						// categorie // 
 						UILabel lbl_cat = new UILabel();
-						//lbl_cat.ContentMode = UIViewContentMode.ScaleAspectFit;
 						//lbl_cat.Frame = new CoreGraphics.CGRect(0, catEnVraagHoogte, this.View.Frame.Size.Width, 50);
 						lbl_cat.Text = dataCategorie.categorien[i].categorie_text;
-
 						catEnVraag.AddArrangedSubview(lbl_cat);
-						//scrollView.Add(lbl_cat)
 
 
 						// vraag // 
@@ -124,12 +119,15 @@ namespace LoginBestPractice.iOS
 								catEnVraag.AddArrangedSubview(opties);
 							}
 						}
-						formulierController.View.Add(catEnVraag);
+						formulierController.Add(catEnVraag);
+						//scrollView.Add(catEnVraag);
 					}
 				}
-				//formulierController.View.Add(scrollView); 
-				//UIButton btn_verzend = new UIButton();
-				//btn_verzend.SetTitle("Verzend formulier", UIControlState.Normal); 
+				UIButton btn_verzend = new UIButton();
+				btn_verzend.SetTitle("Verzend formulier", UIControlState.Normal);
+				btn_verzend.Frame = new CoreGraphics.CGRect(this.View.Frame.Left, this.View.Frame.Bottom ,280,40);
+				//scrollView.Add(btn_verzend); 
+				formulierController.Add(btn_verzend); 
             };
 			return formulierButton;
 		}

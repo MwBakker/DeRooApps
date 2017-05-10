@@ -25,11 +25,6 @@
       <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
       <Optimize>false</Optimize>
     </_BundleResourceWithLogicalName>
-    <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/iphone9.1-10.3/ibtool/MainStoryboard.storyboardc/25-view-33.nib">
-      <LogicalName>MainStoryboard.storyboardc/25-view-33.nib</LogicalName>
-      <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
-      <Optimize>false</Optimize>
-    </_BundleResourceWithLogicalName>
     <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/iphone9.1-10.3/ibtool/MainStoryboard.storyboardc/522-view-524.nib">
       <LogicalName>MainStoryboard.storyboardc/522-view-524.nib</LogicalName>
       <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
@@ -52,11 +47,6 @@
     </_BundleResourceWithLogicalName>
     <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/iphone9.1-10.3/ibtool/MainStoryboard.storyboardc/LoginPageViewController.nib">
       <LogicalName>MainStoryboard.storyboardc/LoginPageViewController.nib</LogicalName>
-      <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
-      <Optimize>false</Optimize>
-    </_BundleResourceWithLogicalName>
-    <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/iphone9.1-10.3/ibtool/MainStoryboard.storyboardc/LogoutViewController.nib">
-      <LogicalName>MainStoryboard.storyboardc/LogoutViewController.nib</LogicalName>
       <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
       <Optimize>false</Optimize>
     </_BundleResourceWithLogicalName>
