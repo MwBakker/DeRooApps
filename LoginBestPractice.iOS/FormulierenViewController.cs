@@ -16,14 +16,14 @@ namespace LoginBestPractice.iOS
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-			Thread.Sleep(500);
-			RootObject data = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.forms);
+			Thread.Sleep(750);
+			RootObject formData = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.forms);
 			int hoogteVanButtons = 20;
 
-			for (int i = 0; i < data.formulieren.Count; i++)
+			for (int i = 0; i < formData.formulieren.Count; i++)
 			{
 				hoogteVanButtons += 40;
-				this.View.AddSubview(createElements(data.formulieren[i].formulier_naam, hoogteVanButtons));
+				this.View.AddSubview(createElements(formData.formulieren[i].formulier_id, formData.formulieren[i].formulier_naam, hoogteVanButtons));
 			}
 
 			base.ViewDidLoad();
@@ -64,7 +64,7 @@ namespace LoginBestPractice.iOS
     		}), true);
 		}
 
-		public UIButton createElements(string formulierNaam, int hoogteVanButtons)
+		public UIButton createElements(string formulierID, string formulierNaam, int hoogteVanButtons)
 		{
 			UIButton formulierButton = new UIButton(UIButtonType.RoundedRect);
 			formulierButton.SetTitle(formulierNaam, UIControlState.Normal);
@@ -75,16 +75,61 @@ namespace LoginBestPractice.iOS
 				formulierController.Title = formulierNaam;
 				NavigationController.PushViewController(formulierController, true);
 
-				RootObject datacategorie = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.categories);
-				int hoogteText = 100;
-				for (int i = 0; i<datacategorie.categorien.Count; i++)
+
+				RootObject dataCategorie = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.categories);
+				RootObject dataVraag = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.items);
+				int catEnVraagHoogte = 50;
+				//UIScrollView scrollView = new UIScrollView();
+				//scrollView.Frame = new CoreGraphics.CGRect(0,0, 200, this.View.Frame.Height+100);
+
+
+				for (int i = 0; i < dataCategorie.categorien.Count; i++)
 				{
-					hoogteText += 20;
-					UILabel label = new UILabel();
-					label.Text = datacategorie.categorien[i].categorie_text;
-					label.Frame = new CoreGraphics.CGRect(0, hoogteText, this.View.Frame.Size.Width, 50);
-					formulierController.Add(label);
+					if (dataCategorie.categorien[i].formulier_id == formulierID)
+					{
+						catEnVraagHoogte += 20;
+						// container cat + vraag // 
+						UIStackView catEnVraag = new UIStackView();
+						catEnVraag.Axis = UILayoutConstraintAxis.Vertical;
+						catEnVraag.Alignment = UIStackViewAlignment.Fill;
+						catEnVraag.Distribution = UIStackViewDistribution.Fill;
+						catEnVraag.Spacing = 8;
+						catEnVraag.Frame = new CoreGraphics.CGRect(0, catEnVraagHoogte, this.View.Frame.Size.Width, 300);
+
+
+						// categorie // 
+						UILabel lbl_cat = new UILabel();
+						//lbl_cat.ContentMode = UIViewContentMode.ScaleAspectFit;
+						//lbl_cat.Frame = new CoreGraphics.CGRect(0, catEnVraagHoogte, this.View.Frame.Size.Width, 50);
+						lbl_cat.Text = dataCategorie.categorien[i].categorie_text;
+
+						catEnVraag.AddArrangedSubview(lbl_cat);
+						//scrollView.Add(lbl_cat)
+
+
+						// vraag // 
+						for (int j = 0; j < dataVraag.vragen.Count; j++)
+						{
+							if (dataVraag.vragen[j].categorie_id == dataCategorie.categorien[i].categorie_id)
+							{
+								UILabel lbl_vraag = new UILabel();
+								lbl_vraag.Text = dataVraag.vragen[j].vraag_text;
+								UISegmentedControl opties = new UISegmentedControl(); 
+								opties.Frame = new CoreGraphics.CGRect(0,0,280,40);
+								opties.InsertSegment("Ja", 0, false);
+								opties.InsertSegment("Nee", 1, false);
+								opties.InsertSegment("Nvt", 2, false);
+								opties.SelectedSegment = 2;;
+								catEnVraag.AddArrangedSubview(lbl_vraag);
+								catEnVraag.AddArrangedSubview(opties);
+							}
+						}
+						formulierController.View.Add(catEnVraag);
+					}
 				}
+				//formulierController.View.Add(scrollView); 
+				//UIButton btn_verzend = new UIButton();
+				//btn_verzend.SetTitle("Verzend formulier", UIControlState.Normal); 
             };
 			return formulierButton;
 		}
