@@ -196,7 +196,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="527" id="528">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -250,22 +250,16 @@
         </scene>
         <scene sceneID="1887">
             <objects>
-                <viewController id="1888" sceneMemberID="viewController" storyboardIdentifier="FormulierenInhoud">
+                <viewController id="1888" sceneMemberID="viewController" storyboardIdentifier="FormulierInhoud" customClass="FormulierInhoudViewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1997"/>
                         <viewControllerLayoutGuide type="bottom" id="1998"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="1889">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <subviews/>
-                    </view>
                     <connections/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1890" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1391" y="-372"/>
+            <point key="canvasLocation" x="1391" y="-367"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

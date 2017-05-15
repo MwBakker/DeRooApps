@@ -140,6 +140,10 @@
     <Compile Include="FormulierenViewController.designer.cs">
       <DependentUpon>FormulierenViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormulierInhoudViewController.cs" />
+    <Compile Include="FormulierInhoudViewController.designer.cs">
+      <DependentUpon>FormulierInhoudViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\de-roo.png" />

@@ -70,15 +70,16 @@ namespace LoginBestPractice.iOS
 			formulierButton.Frame = new CoreGraphics.CGRect(0, hoogteVanButtons, this.View.Frame.Size.Width, 50);
 			formulierButton.TouchDown += delegate
 			{
-				var formulierController = Storyboard.InstantiateViewController("FormulierenInhoud");
-				formulierController.Title = formulierNaam;
-				NavigationController.PushViewController(formulierController, true);
-
-
+				FormulierInhoudViewController formulierInhoudController = Storyboard.InstantiateViewController("FormulierInhoud") as FormulierInhoudViewController;
+				formulierInhoudController.Title = formulierNaam;
+				NavigationController.PushViewController(formulierInhoudController, true);
 				RootObject dataCategorie = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.categories);
 				RootObject dataVraag = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.items);
-				int catEnVraagHoogte = 0;
+
+				UIScrollView scrollView = new UIScrollView();
 				UIStackView mainStack = new UIStackView();
+				scrollView.ContentSize = mainStack.Frame.Size; 
+				int catEnVraagHoogte = 0;
 				mainStack.Axis = UILayoutConstraintAxis.Vertical;
 				mainStack.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, this.View.Frame.Size.Height);
 
@@ -126,10 +127,13 @@ namespace LoginBestPractice.iOS
 							//}
 						//}
 						mainStack.AddArrangedSubview(catEnVraag);
-						//scrollView.Add(catEnVraag);
+
+						//formulierInhoudController.Add
+						scrollView.Add(mainStack);
 					}
 				}
-				formulierController.Add(mainStack);
+
+				formulierInhoudController.View.AddSubview(scrollView);
 				UIButton btn_verzend = new UIButton(UIButtonType.RoundedRect);
 				btn_verzend.SetTitle("Verzend formulier", UIControlState.Normal);
 				// een verandering
@@ -139,7 +143,8 @@ namespace LoginBestPractice.iOS
 				//.TouchDown += ;
 				//scrollView.Add(btn_verzend); 
 				btn_verzend.Frame = new CoreGraphics.CGRect(this.View.Frame.Left, this.View.Frame.Bottom ,280,40);
-				formulierController.Add(btn_verzend); 
+				formulierInhoudController.Add(btn_verzend); 
+
 
             };
 			return formulierButton;
