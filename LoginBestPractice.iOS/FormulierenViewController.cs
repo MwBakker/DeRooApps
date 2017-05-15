@@ -132,6 +132,8 @@ namespace LoginBestPractice.iOS
 				formulierController.Add(mainStack);
 				UIButton btn_verzend = new UIButton(UIButtonType.RoundedRect);
 				btn_verzend.SetTitle("Verzend formulier", UIControlState.Normal);
+				// een verandering
+
 
 				btn_verzend.Frame = new CoreGraphics.CGRect(this.View.Frame.Left, this.View.Frame.Bottom ,50,50);
 				//.TouchDown += ;

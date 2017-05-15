@@ -6,4 +6,7 @@
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
+  <DisabledProjects>
+    <String>LoginBestPractice.iOS/LoginBestPractice.iOS.csproj</String>
+  </DisabledProjects>
 </Properties>
