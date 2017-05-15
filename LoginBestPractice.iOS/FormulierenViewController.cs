@@ -3,6 +3,7 @@ using UIKit;
 using DeRoo_iOS;
 using System.Threading;
 
+
 namespace LoginBestPractice.iOS
 {
 	public partial class FormulierenViewController : UIViewController
@@ -94,8 +95,13 @@ namespace LoginBestPractice.iOS
 						// cat + vraag // 
 						UIStackView catEnVraag = new UIStackView();
 						catEnVraag.Axis = UILayoutConstraintAxis.Vertical;
-						//catEnVraag.ContentMode = UIViewContentMode.ScaleAspectFit;
-						catEnVraag.Frame = new CoreGraphics.CGRect(0, catEnVraagHoogte, this.View.Frame.Size.Width, 200);
+						catEnVraag.ContentMode = UIViewContentMode.ScaleAspectFit;
+						//catEnVraag.Frame = new CoreGraphics.CGRect(0, catEnVraagHoogte, this.View.Frame.Size.Width, 300);
+						//catEnVraag.LayoutMargins = new UIEdgeInsets(0, 0, 30, 0);
+						//catEnVraag.LayoutMarginsRelativeArrangement = true;
+						//CALayer bottomBorder = CALayer();
+						//bottomBorder.frame = new CoreGraphics.CGRect(0.0f, 43.0f, this.View.Frame.Size.Width, 1.0f);
+						//catEnVraag.LeadingAnchor.ConstraintEqualTo(catEnVraag.Frame.Height).active = true
 
 						// categorie // 
 						UILabel lbl_cat = new UILabel();
