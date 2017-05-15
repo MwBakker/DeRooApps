@@ -1,7 +1,6 @@
 using System;
 using UIKit;
 using DeRoo_iOS;
-using System.Drawing;
 using System.Threading;
 
 namespace LoginBestPractice.iOS
@@ -32,11 +31,11 @@ namespace LoginBestPractice.iOS
 			this.NavigationItem.SetRightBarButtonItem(
 			new UIBarButtonItem(UIImage.FromFile("logouttemp.png"), UIBarButtonItemStyle.Plain, (sender,args) => 
 			{
-				var Confirm = new UIAlertView("Uitloggen", "Weet u zeker dat u wilt uitloggen?", null, "Ja", "Nee");
+				var Confirm = new UIAlertView("Uitloggen", "Weet u zeker dat u wilt uitloggen?", null, "Nee", "Ja");
 				Confirm.Show();
 	            Confirm.Clicked += (object senders, UIButtonEventArgs es) => 
 	            {
-	               	if (es.ButtonIndex == 0 ) 
+	               	if (es.ButtonIndex == 1 ) 
 					{
 						//Create an instance of our AppDelegate
 						var appDelegate = UIApplication.SharedApplication.Delegate as AppDelegate;
@@ -78,29 +77,36 @@ namespace LoginBestPractice.iOS
 
 				RootObject dataCategorie = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.categories);
 				RootObject dataVraag = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.items);
-				int catEnVraagHoogte = 50;
-				UIScrollView scrollView = new UIScrollView();
-				scrollView.ScrollEnabled = true;
-				scrollView.Frame = new CoreGraphics.CGRect(0,0, this.View.Frame.Width, this.View.Frame.Height+100);
-
+				int catEnVraagHoogte = 20;
 
 				for (int i = 0; i < dataCategorie.categorien.Count; i++)
 				{
 					if (dataCategorie.categorien[i].formulier_id == formulierID)
 					{
-						catEnVraagHoogte += 20;
+						catEnVraagHoogte += 45;
 						// container cat + vraag // 
-						UIStackView catEnVraag = new UIStackView();
-						catEnVraag.Axis = UILayoutConstraintAxis.Vertical;
-						catEnVraag.Frame = new CoreGraphics.CGRect(0, catEnVraagHoogte, this.View.Frame.Size.Width, 300);
+						//UIStackView catEnVraag = new UIStackView();
+						//catEnVraag.Axis = UILayoutConstraintAxis.Vertical;
+						//catEnVraag.Frame = new CoreGraphics.CGRect(0, catEnVraagHoogte, this.View.Frame.Size.Width, 300);
 
+
+						//sepator
+						//UILabel lbl_sepator = new UILabel();
+						//lbl_sepator.Frame = new CoreGraphics.CGRect(0, catEnVraagHoogte + 10, this.View.Frame.Size.Width, 1);
+						//lbl_sepator.Layer.BorderWidth = 1;
+						//lbl_sepator.Layer.BorderColor = UIColor.LightGray.CGColor;
+						//formulierController.Add(lbl_sepator);
 
 						// categorie // 
 						UILabel lbl_cat = new UILabel();
-						//lbl_cat.Frame = new CoreGraphics.CGRect(0, catEnVraagHoogte, this.View.Frame.Size.Width, 50);
+						lbl_cat.Frame = new CoreGraphics.CGRect(0, catEnVraagHoogte, this.View.Frame.Size.Width, 50);
 						lbl_cat.Text = dataCategorie.categorien[i].categorie_text;
-						catEnVraag.AddArrangedSubview(lbl_cat);
-
+						lbl_cat.TextAlignment = UITextAlignment.Center;
+						lbl_cat.Font = UIFont.FromName("Helvetica-Bold", 18f);
+						lbl_cat.AdjustsFontSizeToFitWidth = true;
+						lbl_cat.MinimumFontSize = 12f;
+						//catEnVraag.AddArrangedSubview(lbl_cat);
+						formulierController.Add(lbl_cat);
 
 						// vraag // 
 						for (int j = 0; j < dataVraag.vragen.Count; j++)
@@ -108,18 +114,26 @@ namespace LoginBestPractice.iOS
 							if (dataVraag.vragen[j].categorie_id == dataCategorie.categorien[i].categorie_id)
 							{
 								UILabel lbl_vraag = new UILabel();
+								lbl_vraag.Frame = new CoreGraphics.CGRect(0, catEnVraagHoogte + 50, this.View.Frame.Size.Width, 50);
 								lbl_vraag.Text = dataVraag.vragen[j].vraag_text;
+								lbl_vraag.Font = UIFont.FromName("Helvetica-Bold", 12f);
+								lbl_vraag.AdjustsFontSizeToFitWidth = true;
+
+								//segmentedcontrols
 								UISegmentedControl opties = new UISegmentedControl(); 
-								opties.Frame = new CoreGraphics.CGRect(0,0,280,40);
-								opties.InsertSegment("Ja", 0, false);
-								opties.InsertSegment("Nee", 1, false);
-								opties.InsertSegment("Nvt", 2, false);
-								opties.SelectedSegment = 2;;
-								catEnVraag.AddArrangedSubview(lbl_vraag);
-								catEnVraag.AddArrangedSubview(opties);
+								opties.Frame = new CoreGraphics.CGRect(0, catEnVraagHoogte + 85, this.View.Frame.Size.Width, 20);
+								opties.InsertSegment("Akkoord", 0, false);
+								opties.InsertSegment("Niet akkoord", 1, false);
+								opties.InsertSegment("N.v.t.", 2, false);
+								opties.SelectedSegment = 2;
+								formulierController.Add(lbl_vraag);
+								formulierController.Add(opties);
+								//catEnVraag.AddArrangedSubview(lbl_vraag);
+								//catEnVraag.AddArrangedSubview(opties);
+								catEnVraagHoogte += 50;
 							}
 						}
-						formulierController.Add(catEnVraag);
+						//formulierController.Add(catEnVraag);
 						//scrollView.Add(catEnVraag);
 					}
 				}
@@ -129,6 +143,7 @@ namespace LoginBestPractice.iOS
 				btn_verzend.Frame = new CoreGraphics.CGRect(this.View.Frame.Left, this.View.Frame.Bottom ,50,50);
 				//.TouchDown += ;
 				//scrollView.Add(btn_verzend); 
+				btn_verzend.Frame = new CoreGraphics.CGRect(this.View.Frame.Left, this.View.Frame.Bottom ,280,40);
 				formulierController.Add(btn_verzend); 
 
             };

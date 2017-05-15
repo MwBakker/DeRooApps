@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="21">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES" initialViewController="21" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -30,8 +30,8 @@
             <objects>
                 <viewController id="23" sceneMemberID="viewController" storyboardIdentifier="Formulieren" customClass="FormulierenViewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="16"/>
-                        <viewControllerLayoutGuide type="bottom" id="17"/>
+                        <viewControllerLayoutGuide type="top" id="1991"/>
+                        <viewControllerLayoutGuide type="bottom" id="1992"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="29">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
@@ -73,53 +73,86 @@
             <objects>
                 <viewController storyboardIdentifier="LoginPageViewController" id="207" customClass="LoginPageViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="204"/>
-                        <viewControllerLayoutGuide type="bottom" id="205"/>
+                        <viewControllerLayoutGuide type="top" id="1993"/>
+                        <viewControllerLayoutGuide type="bottom" id="1994"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="208">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="211" placeholder="Gebruikersnaam">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="211" placeholder="Gebruikersnaam" translatesAutoresizingMaskIntoConstraints="NO">
                                 <rect key="frame" x="20" y="192" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <constraints>
+                                    <constraint id="2024" firstAttribute="width" constant="280"/>
+                                </constraints>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Wachtwoord" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="212">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Wachtwoord" minimumFontSize="17" id="212" translatesAutoresizingMaskIntoConstraints="NO">
                                 <rect key="frame" x="20" y="241" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <constraints>
+                                    <constraint id="2027" firstAttribute="width" constant="280"/>
+                                </constraints>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="213">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="213" translatesAutoresizingMaskIntoConstraints="NO">
                                 <rect key="frame" x="70" y="430" width="181" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Inloggen">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="LoginButton_TouchUpInside:" destination="207" eventType="touchUpInside" id="229"/>
                                 </connections>
+                                <constraints>
+                                    <constraint id="2036" firstAttribute="width" constant="181"/>
+                                </constraints>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="256" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" image="Deroo_Bord_Medium.png">
-                                <rect key="frame" x="40" y="39" width="240" height="98"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="256" image="Deroo_Bord_Medium.png" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="40" y="39" width="240" height="76"/>
+                                <constraints>
+                                    <constraint id="2001" firstAttribute="width" constant="240"/>
+                                    <constraint id="2002" firstAttribute="height" constant="76"/>
+                                </constraints>
                             </imageView>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="1919" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="1919" translatesAutoresizingMaskIntoConstraints="NO">
                                 <rect key="frame" x="249" y="318" width="51" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections/>
                             </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1927" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" text="Wachtwoord weergeven:">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1927" text="Wachtwoord weergeven:" translatesAutoresizingMaskIntoConstraints="NO">
                                 <rect key="frame" x="20" y="323" width="180" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <constraints>
+                                    <constraint id="2030" firstAttribute="width" constant="180"/>
+                                    <constraint id="2031" firstAttribute="height" constant="21"/>
+                                </constraints>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint id="2013" firstItem="208" firstAttribute="trailing" secondItem="256" secondAttribute="trailing" constant="40"/>
+                            <constraint id="2014" firstItem="256" firstAttribute="top" secondItem="208" secondAttribute="top" constant="39"/>
+                            <constraint id="2015" firstItem="256" firstAttribute="leading" secondItem="208" secondAttribute="leading" constant="40"/>
+                            <constraint id="2017" firstItem="256" firstAttribute="leading" secondItem="208" secondAttribute="leading" constant="40"/>
+                            <constraint id="2019" firstItem="256" firstAttribute="top" secondItem="1993" secondAttribute="bottom" constant="19"/>
+                            <constraint id="2039" firstItem="208" firstAttribute="trailing" secondItem="212" secondAttribute="trailing" constant="20"/>
+                            <constraint id="2041" firstItem="212" firstAttribute="top" secondItem="1993" secondAttribute="bottom" constant="221"/>
+                            <constraint id="2042" firstItem="208" firstAttribute="trailing" secondItem="211" secondAttribute="trailing" constant="20"/>
+                            <constraint id="2043" firstItem="211" firstAttribute="top" secondItem="208" secondAttribute="top" constant="192"/>
+                            <constraint id="2044" firstItem="211" firstAttribute="top" secondItem="1993" secondAttribute="bottom" constant="172"/>
+                            <constraint id="2045" firstItem="211" firstAttribute="leading" secondItem="208" secondAttribute="leading" constant="20"/>
+                            <constraint id="2046" firstItem="212" firstAttribute="leading" secondItem="208" secondAttribute="leading" constant="20"/>
+                            <constraint id="2047" firstItem="256" firstAttribute="leading" secondItem="208" secondAttribute="leading" constant="40"/>
+                            <constraint id="2052" firstItem="1927" firstAttribute="leading" secondItem="208" secondAttribute="leading" constant="20"/>
+                            <constraint id="2054" firstItem="1927" firstAttribute="top" secondItem="1993" secondAttribute="bottom" constant="303"/>
+                            <constraint id="2055" firstItem="208" firstAttribute="trailing" secondItem="1919" secondAttribute="trailing" constant="22"/>
+                            <constraint id="2057" firstItem="1919" firstAttribute="top" secondItem="1993" secondAttribute="bottom" constant="298"/>
+                            <constraint id="2058" firstItem="208" firstAttribute="trailing" secondItem="213" secondAttribute="trailing" constant="69"/>
+                            <constraint id="2060" firstItem="213" firstAttribute="top" secondItem="1993" secondAttribute="bottom" constant="410"/>
+                            <constraint id="2063" firstItem="213" firstAttribute="leading" secondItem="208" secondAttribute="leading" constant="70"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="LoginButton" destination="213" id="name-outlet-213"/>
@@ -131,7 +164,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="209" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-205" y="644"/>
+            <point key="canvasLocation" x="-206" y="635"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="275">
@@ -200,8 +233,8 @@
             <objects>
                 <viewController id="1819" sceneMemberID="viewController" customClass="HandboekViewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="1816"/>
-                        <viewControllerLayoutGuide type="bottom" id="1817"/>
+                        <viewControllerLayoutGuide type="top" id="1995"/>
+                        <viewControllerLayoutGuide type="bottom" id="1996"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="1820">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
@@ -219,8 +252,8 @@
             <objects>
                 <viewController id="1888" sceneMemberID="viewController" storyboardIdentifier="FormulierenInhoud">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="1885"/>
-                        <viewControllerLayoutGuide type="bottom" id="1886"/>
+                        <viewControllerLayoutGuide type="top" id="1997"/>
+                        <viewControllerLayoutGuide type="bottom" id="1998"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="1889">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
@@ -238,7 +271,7 @@
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4_0.fullscreen"/>
+        <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <resources>
         <image name="de-roo.png" width="308" height="166"/>
