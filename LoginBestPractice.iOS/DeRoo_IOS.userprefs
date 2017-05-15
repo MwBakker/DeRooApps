@@ -1,12 +1,13 @@
 ﻿<Properties StartupConfiguration="{84563AF5-67F4-46D6-B49C-BF8D718F3C64}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="MainStoryboard.storyboard">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Login.cs">
     <Files>
-      <File FileName="FormulierenViewController.cs" Line="86" Column="18" />
+      <File FileName="FormulierenViewController.cs" Line="130" Column="22" />
       <File FileName="Main.cs" Line="17" Column="1" />
       <File FileName="MainStoryboard.storyboard" />
+      <File FileName="Login.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
@@ -14,5 +15,5 @@
     <Watch file="FormulierenViewController.cs" line="31" offsetX="299" offsetY="450" expression="test" liveUpdate="False" />
   </MonoDevelop.Ide.DebuggingService.PinnedWatches>
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.DeRoo__IOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.2C4C37E2-67DB-490E-867E-A9CB096B0080" />
+  <MonoDevelop.Ide.ItemProperties.DeRoo__IOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget" />
 </Properties>

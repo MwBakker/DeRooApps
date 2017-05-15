@@ -123,11 +123,14 @@ namespace LoginBestPractice.iOS
 						//scrollView.Add(catEnVraag);
 					}
 				}
-				UIButton btn_verzend = new UIButton();
+				UIButton btn_verzend = new UIButton(UIButtonType.RoundedRect);
 				btn_verzend.SetTitle("Verzend formulier", UIControlState.Normal);
-				btn_verzend.Frame = new CoreGraphics.CGRect(this.View.Frame.Left, this.View.Frame.Bottom ,280,40);
+
+				btn_verzend.Frame = new CoreGraphics.CGRect(this.View.Frame.Left, this.View.Frame.Bottom ,50,50);
+				//.TouchDown += ;
 				//scrollView.Add(btn_verzend); 
 				formulierController.Add(btn_verzend); 
+
             };
 			return formulierButton;
 		}
