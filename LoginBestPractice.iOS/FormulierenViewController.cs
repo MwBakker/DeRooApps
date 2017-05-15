@@ -70,82 +70,76 @@ namespace LoginBestPractice.iOS
 			formulierButton.Frame = new CoreGraphics.CGRect(0, hoogteVanButtons, this.View.Frame.Size.Width, 50);
 			formulierButton.TouchDown += delegate
 			{
+				// ViewController //
 				FormulierInhoudViewController formulierInhoudController = Storyboard.InstantiateViewController("FormulierInhoud") as FormulierInhoudViewController;
 				formulierInhoudController.Title = formulierNaam;
+				formulierInhoudController.View.BackgroundColor = UIColor.White;
 				NavigationController.PushViewController(formulierInhoudController, true);
 				RootObject dataCategorie = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.categories);
 				RootObject dataVraag = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.items);
 
+				// ScrollView + Content
 				UIScrollView scrollView = new UIScrollView();
+				scrollView.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, this.View.Frame.Size.Height);
 				UIStackView mainStack = new UIStackView();
-				scrollView.ContentSize = mainStack.Frame.Size; 
-				int catEnVraagHoogte = 0;
-				mainStack.Axis = UILayoutConstraintAxis.Vertical;
 				mainStack.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, this.View.Frame.Size.Height);
+				mainStack.Axis = UILayoutConstraintAxis.Vertical;
 
+				int catEnVraagHoogte = 0;
 				for (int i = 0; i < dataCategorie.categorien.Count; i++)
 				{
 					if (dataCategorie.categorien[i].formulier_id == formulierID)
 					{
-						catEnVraagHoogte += 20;
-						// container cat + vraag // 
+						catEnVraagHoogte += 50;
+						// cat + vraag // 
 						UIStackView catEnVraag = new UIStackView();
 						catEnVraag.Axis = UILayoutConstraintAxis.Vertical;
-						catEnVraag.ContentMode = UIViewContentMode.ScaleAspectFit;
-						//catEnVraag.Frame = new CoreGraphics.CGRect(0, catEnVraagHoogte, this.View.Frame.Size.Width, 300);
-
+						//catEnVraag.ContentMode = UIViewContentMode.ScaleAspectFit;
+						catEnVraag.Frame = new CoreGraphics.CGRect(0, catEnVraagHoogte, this.View.Frame.Size.Width, 200);
 
 						// categorie // 
 						UILabel lbl_cat = new UILabel();
 						lbl_cat.ContentMode = UIViewContentMode.ScaleAspectFit;
-						//lbl_cat.Frame = new CoreGraphics.CGRect(0, catEnVraagHoogte, this.View.Frame.Size.Width, 50);
 						lbl_cat.Text = dataCategorie.categorien[i].categorie_text;
 						lbl_cat.MinimumFontSize = 12f;
 						catEnVraag.AddArrangedSubview(lbl_cat);
 
 						// vraag // 
-						//for (int j = 0; j < dataVraag.vragen.Count; j++)
-						//{
-					//		if (dataVraag.vragen[j].categorie_id == dataCategorie.categorien[i].categorie_id)
-					//		{
-					//			UILabel lbl_vraag = new UILabel();
-					//			lbl_vraag.Frame = new CoreGraphics.CGRect(0, catEnVraagHoogte + 50, this.View.Frame.Size.Width, 50);
-					//			lbl_vraag.Text = dataVraag.vragen[j].vraag_text;
-					//			lbl_vraag.Font = UIFont.FromName("Helvetica-Bold", 12f);
-					//			lbl_vraag.AdjustsFontSizeToFitWidth = true;
+						for (int j = 0; j < dataVraag.vragen.Count; j++)
+						{
+							if (dataVraag.vragen[j].categorie_id == dataCategorie.categorien[i].categorie_id)
+							{
+								UILabel lbl_vraag = new UILabel();
+								lbl_cat.ContentMode = UIViewContentMode.ScaleAspectFit;
+								lbl_vraag.Text = dataVraag.vragen[j].vraag_text;
+								lbl_vraag.Font = UIFont.FromName("Helvetica-Bold", 12f);
+								lbl_vraag.AdjustsFontSizeToFitWidth = true;
 
-								//segmentedcontrols
+								// opties //
 								UISegmentedControl opties = new UISegmentedControl(); 
-								//opties.Frame = new CoreGraphics.CGRect(0, catEnVraagHoogte + 85, this.View.Frame.Size.Width, 20);
 								opties.InsertSegment("Akkoord", 0, false);
 								opties.InsertSegment("Niet akkoord", 1, false);
 								opties.InsertSegment("N.v.t.", 2, false);
 								opties.SelectedSegment = 2;
-					//			formulierController.Add(lbl_vraag);
-								//catEnVraag.AddArrangedSubview(lbl_vraag);
+								catEnVraag.AddArrangedSubview(lbl_vraag);
 								catEnVraag.AddArrangedSubview(opties);
-							//}
-						//}
+							}
+						}
 						mainStack.AddArrangedSubview(catEnVraag);
-
-						//formulierInhoudController.Add
-						scrollView.Add(mainStack);
 					}
 				}
-
-				formulierInhoudController.View.AddSubview(scrollView);
-				UIButton btn_verzend = new UIButton(UIButtonType.RoundedRect);
+				// verzendbutton //
+				UIButton btn_verzend = new UIButton(UIButtonType.System);
 				btn_verzend.SetTitle("Verzend formulier", UIControlState.Normal);
-				// een verandering
+				btn_verzend.ContentMode = UIViewContentMode.ScaleAspectFit;
+				//btn_verzend.Frame = new CoreGraphics.CGRect(this.View.Frame.Left, this.View.Frame.Bottom ,250, 50);
+				mainStack.AddArrangedSubview(btn_verzend);
 
-
-				btn_verzend.Frame = new CoreGraphics.CGRect(this.View.Frame.Left, this.View.Frame.Bottom ,50,50);
+				scrollView.ContentSize = mainStack.Frame.Size; 
+				scrollView.AddSubview(mainStack);
 				//.TouchDown += ;
-				//scrollView.Add(btn_verzend); 
-				btn_verzend.Frame = new CoreGraphics.CGRect(this.View.Frame.Left, this.View.Frame.Bottom ,280,40);
-				formulierInhoudController.Add(btn_verzend); 
-
-
+				//scrollView.Add(btn_verzend);  
+				formulierInhoudController.View.AddSubview(scrollView);
             };
 			return formulierButton;
 		}
