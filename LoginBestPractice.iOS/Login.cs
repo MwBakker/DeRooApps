@@ -2,7 +2,6 @@
 using System.Text;
 using System.Net;
 
-
 namespace DeRoo_iOS
 {
 	public class Login
