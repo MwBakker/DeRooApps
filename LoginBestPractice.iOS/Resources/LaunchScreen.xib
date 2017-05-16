@@ -34,7 +34,7 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jue-jM-25L" text="© Copyright De Roo 2017">
-                    <rect key="frame" x="20" y="424" width="440" height="51"/>
+                    <rect key="frame" x="121" y="228" width="238" height="24"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                     <color key="textColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                     <nil key="highlightedColor"/>
@@ -46,7 +46,9 @@
                 <constraint firstAttribute="bottom" secondItem="kdW-wp-hmE" secondAttribute="bottom" constant="-16" id="dyO-hz-lUO"/>
                 <constraint firstAttribute="trailing" secondItem="oo4-J8-zNh" secondAttribute="trailing" constant="-16" id="eMC-Y7-Zw2"/>
                 <constraint firstAttribute="centerX" secondItem="Jue-jM-25L" secondAttribute="centerX" id="hGL-kd-FnG"/>
-                <constraint firstAttribute="centerY" secondItem="Jue-jM-25L" secondAttribute="centerY" constant="-125" id="hOO-qR-GEP"/>
+                <constraint firstAttribute="centerY" secondItem="Jue-jM-25L" secondAttribute="centerY" constant="-125" id="hOO-qR-GEP">
+                    <variation key="heightClass=regular-widthClass=compact" constant="-5"/>
+                </constraint>
                 <constraint firstItem="oo4-J8-zNh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="-16" id="iJN-XV-iJk"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
@@ -57,7 +59,6 @@
     <resources>
         <image name="BottomXamagons.png" width="151" height="178"/>
         <image name="TopXamagons.png" width="151" height="178"/>
-        <image name="Xamagon.png" width="167" height="147"/>
         <image name="de-roo.png" width="308" height="166"/>
         <image name="toolbox.png" width="24" height="24"/>
         <image name="formulieren.png" width="24" height="24"/>
@@ -67,10 +68,9 @@
         <image name="logouttemp.png" width="24" height="24"/>
         <image name="Deroo_Bord_Medium.png" width="944" height="237"/>
         <image name="openstaandeformulieren.png" width="24" height="24"/>
-        <image name="loading.gif" width="64" height="64"/>
-        <image name="deroofoto.jpg" width="224" height="150"/>
-        <image name="Icon-60.png" width="60" height="60"/>
-        <image name="Logo.png" width="512" height="512"/>
         <image name="Monkey.png" width="539" height="560"/>
     </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
 </document>
