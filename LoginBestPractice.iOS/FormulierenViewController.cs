@@ -16,7 +16,7 @@ namespace LoginBestPractice.iOS
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-			Thread.Sleep(1250);
+			Thread.Sleep(750);
 			RootObject formData = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.forms);
 			int hoogteVanButtons = 20;
 
@@ -83,7 +83,6 @@ namespace LoginBestPractice.iOS
 				UIScrollView scrollView = new UIScrollView();
 				scrollView.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, this.View.Frame.Size.Height);
 				UIStackView mainStack = new UIStackView();
-				mainStack.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, this.View.Frame.Size.Height);
 				mainStack.Axis = UILayoutConstraintAxis.Vertical;
 
 				int catEnVraagHoogte = 0;
@@ -95,19 +94,10 @@ namespace LoginBestPractice.iOS
 						// cat + vraag // 
 						UIStackView catEnVraag = new UIStackView();
 						catEnVraag.Axis = UILayoutConstraintAxis.Vertical;
-						catEnVraag.ContentMode = UIViewContentMode.ScaleAspectFit;
-<<<<<<< Updated upstream
-						catEnVraag.BackgroundColor = UIColor.Blue;
-						//catEnVraag.Frame = new CoreGraphics.CGRect(0, catEnVraagHoogte, this.View.Frame.Size.Width, 300);
-=======
-						catEnVraag.LayoutMargins = new UIEdgeInsets(50, 0, 0, 0);
-						//catEnVraag.Frame = n
->>>>>>> Stashed changes
-						//catEnVraag.LayoutMargins = new UIEdgeInsets(0, 0, 30, 0);
-						//catEnVraag.LayoutMarginsRelativeArrangement = true;
-						//CALayer bottomBorder = CALayer();
-						//bottomBorder.frame = new CoreGraphics.CGRect(0.0f, 43.0f, this.View.Frame.Size.Width, 1.0f);
-						//catEnVraag.LeadingAnchor.ConstraintEqualTo(catEnVraag.Frame.Height).active = true
+						//catEnVraag.ContentMode = UIViewContentMode.ScaleAspectFit;
+						catEnVraag.LayoutMargins = new UIEdgeInsets(0, 0, 30, 0);
+						catEnVraag.LayoutMarginsRelativeArrangement = true;;
+						catEnVraag.LayoutIfNeeded();
 
 						// categorie // 
 						UILabel lbl_cat = new UILabel();
@@ -144,13 +134,21 @@ namespace LoginBestPractice.iOS
 				UIButton btn_verzend = new UIButton(UIButtonType.System);
 				btn_verzend.SetTitle("Verzend formulier", UIControlState.Normal);
 				btn_verzend.ContentMode = UIViewContentMode.ScaleAspectFit;
-				//btn_verzend.Frame = new CoreGraphics.CGRect(this.View.Frame.Left, this.View.Frame.Bottom ,250, 50);
 				mainStack.AddArrangedSubview(btn_verzend);
 
+				// mainStack hoogte // 
+				/*
+				nfloat mainStackHeight = 0.0f;
+				foreach (UIStackView view in mainStack.Subviews)
+				{
+	   				mainStackHeight += View.Frame.Size.Height;
+				}
+				*/
+				mainStack.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, 1200);
 				scrollView.ContentSize = mainStack.Frame.Size; 
 				scrollView.AddSubview(mainStack);
 				//.TouchDown += ;
-				//scrollView.Add(btn_verzend);  
+				scrollView.AddSubview(btn_verzend);  
 				formulierInhoudController.View.AddSubview(scrollView);
             };
 			return formulierButton;

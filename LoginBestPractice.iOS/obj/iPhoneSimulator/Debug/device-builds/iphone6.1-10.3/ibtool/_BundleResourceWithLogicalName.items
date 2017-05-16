@@ -15,6 +15,11 @@
       <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
       <Optimize>false</Optimize>
     </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3/ibtool/MainStoryboard.storyboardc/2076-view-2078.nib">
+      <LogicalName>MainStoryboard.storyboardc/2076-view-2078.nib</LogicalName>
+      <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
     <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3/ibtool/MainStoryboard.storyboardc/23-view-29.nib">
       <LogicalName>MainStoryboard.storyboardc/23-view-29.nib</LogicalName>
       <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
