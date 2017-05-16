@@ -322,5 +322,13 @@
         <image name="logouttemp.png" width="24" height="24"/>
         <image name="Deroo_Bord_Medium.png" width="944" height="237"/>
         <image name="openstaandeformulieren.png" width="24" height="24"/>
+        <image name="loading.gif" width="64" height="64"/>
+        <image name="deroofoto.jpg" width="224" height="150"/>
+        <image name="BottomXamagons.png" width="151" height="178"/>
+        <image name="Icon-60.png" width="60" height="60"/>
+        <image name="Logo.png" width="512" height="512"/>
+        <image name="Monkey.png" width="539" height="560"/>
+        <image name="TopXamagons.png" width="151" height="178"/>
+        <image name="Xamagon.png" width="167" height="147"/>
     </resources>
 </document>

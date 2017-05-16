@@ -45,7 +45,7 @@
     <ConsolePause>false</ConsolePause>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <MtouchProfiling>true</MtouchProfiling>
+    <MtouchProfiling>false</MtouchProfiling>
     <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
   </PropertyGroup>
@@ -163,9 +163,30 @@
     <BundleResource Include="Resources\logouttemp.png" />
     <BundleResource Include="Resources\Deroo_Bord_Medium.png" />
     <BundleResource Include="Resources\openstaandeformulieren.png" />
+    <BundleResource Include="Resources\loading.gif" />
+    <BundleResource Include="Resources\deroofoto.jpg" />
+    <BundleResource Include="Resources\BottomXamagons.png" />
+    <BundleResource Include="Resources\BottomXamagons%402x.png" />
+    <BundleResource Include="Resources\BottomXamagons%403x.png" />
+    <BundleResource Include="Resources\Icon-60.png" />
+    <BundleResource Include="Resources\Logo.png" />
+    <BundleResource Include="Resources\Logo%402x.png" />
+    <BundleResource Include="Resources\Monkey.png" />
+    <BundleResource Include="Resources\Monkey%402x.png" />
+    <BundleResource Include="Resources\Monkey%403x.png" />
+    <BundleResource Include="Resources\TopXamagons.png" />
+    <BundleResource Include="Resources\TopXamagons%402x.png" />
+    <BundleResource Include="Resources\TopXamagons%403x.png" />
+    <BundleResource Include="Resources\Xamagon.png" />
+    <BundleResource Include="Resources\Xamagon%402x.png" />
+    <BundleResource Include="Resources\Xamagon%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="PDF\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ITunesArtwork Include="Resources\iTunesArtwork.png" />
+    <ITunesArtwork Include="Resources\iTunesArtwork%402x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="packages\Xamarin.Swift3.3.0.1\build\Xamarin.Swift3.targets" Condition="Exists('packages\Xamarin.Swift3.3.0.1\build\Xamarin.Swift3.targets')" />

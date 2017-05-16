@@ -16,7 +16,7 @@ namespace LoginBestPractice.iOS
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-			Thread.Sleep(1250);
+			Thread.Sleep(500);
 			RootObject formData = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.forms);
 			int hoogteVanButtons = 20;
 
@@ -96,13 +96,11 @@ namespace LoginBestPractice.iOS
 						UIStackView catEnVraag = new UIStackView();
 						catEnVraag.Axis = UILayoutConstraintAxis.Vertical;
 						catEnVraag.ContentMode = UIViewContentMode.ScaleAspectFit;
-<<<<<<< Updated upstream
 						catEnVraag.BackgroundColor = UIColor.Blue;
 						//catEnVraag.Frame = new CoreGraphics.CGRect(0, catEnVraagHoogte, this.View.Frame.Size.Width, 300);
-=======
 						catEnVraag.LayoutMargins = new UIEdgeInsets(50, 0, 0, 0);
 						//catEnVraag.Frame = n
->>>>>>> Stashed changes
+
 						//catEnVraag.LayoutMargins = new UIEdgeInsets(0, 0, 30, 0);
 						//catEnVraag.LayoutMarginsRelativeArrangement = true;
 						//CALayer bottomBorder = CALayer();
