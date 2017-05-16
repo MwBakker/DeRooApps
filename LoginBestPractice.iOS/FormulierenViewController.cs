@@ -96,6 +96,7 @@ namespace LoginBestPractice.iOS
 						UIStackView catEnVraag = new UIStackView();
 						catEnVraag.Axis = UILayoutConstraintAxis.Vertical;
 						catEnVraag.ContentMode = UIViewContentMode.ScaleAspectFit;
+						catEnVraag.BackgroundColor = UIColor.Blue;
 						//catEnVraag.Frame = new CoreGraphics.CGRect(0, catEnVraagHoogte, this.View.Frame.Size.Width, 300);
 						//catEnVraag.LayoutMargins = new UIEdgeInsets(0, 0, 30, 0);
 						//catEnVraag.LayoutMarginsRelativeArrangement = true;
