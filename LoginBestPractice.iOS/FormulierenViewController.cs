@@ -143,6 +143,7 @@ namespace LoginBestPractice.iOS
 				UIButton btn_verzend = new UIButton(UIButtonType.System);
 				btn_verzend.SetTitle("Verzend formulier", UIControlState.Normal);
 				btn_verzend.ContentMode = UIViewContentMode.ScaleAspectFit;
+				//btn_verzend.TouchDown = (object sender, EventArgs e) => ;
 				//nfloat test = mainStack.Frame.Height;
 				//mainStack.AddArrangedSubview(btn_verzend);
 
