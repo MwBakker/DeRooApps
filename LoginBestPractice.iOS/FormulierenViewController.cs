@@ -8,6 +8,7 @@ namespace LoginBestPractice.iOS
 {
 	public partial class FormulierenViewController : UIViewController
 	{
+		nfloat mainStackHeight; 
 		public FormulierenViewController(IntPtr handle) : base(handle)
 		{
 
@@ -16,7 +17,7 @@ namespace LoginBestPractice.iOS
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-			Thread.Sleep(750);
+			Thread.Sleep(1250);
 			RootObject formData = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.forms);
 			int hoogteVanButtons = 20;
 
@@ -95,6 +96,7 @@ namespace LoginBestPractice.iOS
 						UIStackView catEnVraag = new UIStackView();
 						catEnVraag.Axis = UILayoutConstraintAxis.Vertical;
 						//catEnVraag.ContentMode = UIViewContentMode.ScaleAspectFit;
+						catEnVraag.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, 150);
 						catEnVraag.LayoutMargins = new UIEdgeInsets(0, 0, 30, 0);
 						catEnVraag.LayoutMarginsRelativeArrangement = true;;
 						catEnVraag.LayoutIfNeeded();
@@ -125,6 +127,13 @@ namespace LoginBestPractice.iOS
 								opties.SelectedSegment = 2;
 								catEnVraag.AddArrangedSubview(lbl_vraag);
 								catEnVraag.AddArrangedSubview(opties);
+								if (opties.SelectedSegment == 1)
+								{
+									UIButton btn_foto = new UIButton();
+									btn_foto.SetTitle("Maak foto van situatie", UIControlState.Normal);
+									btn_foto.Frame = new CoreGraphics.CGRect(catEnVraag.Frame.Left, catEnVraag.Frame.Bottom, 200, 50);;
+									catEnVraag.AddArrangedSubview(btn_foto);
+								}
 							}
 						}
 						mainStack.AddArrangedSubview(catEnVraag);
@@ -134,17 +143,19 @@ namespace LoginBestPractice.iOS
 				UIButton btn_verzend = new UIButton(UIButtonType.System);
 				btn_verzend.SetTitle("Verzend formulier", UIControlState.Normal);
 				btn_verzend.ContentMode = UIViewContentMode.ScaleAspectFit;
-				mainStack.AddArrangedSubview(btn_verzend);
+				//nfloat test = mainStack.Frame.Height;
+				//mainStack.AddArrangedSubview(btn_verzend);
 
 				// mainStack hoogte // 
-				/*
-				nfloat mainStackHeight = 0.0f;
-				foreach (UIStackView view in mainStack.Subviews)
+				mainStackHeight = 0.0f;
+				foreach (UIView catVraag in mainStack.ArrangedSubviews)
 				{
-	   				mainStackHeight += View.Frame.Size.Height;
+					mainStackHeight += catVraag.Frame.Height;
 				}
-				*/
-				mainStack.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, 1200);
+
+				mainStack.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, (mainStackHeight + 60));
+
+
 				scrollView.ContentSize = mainStack.Frame.Size; 
 				scrollView.AddSubview(mainStack);
 				//.TouchDown += ;
