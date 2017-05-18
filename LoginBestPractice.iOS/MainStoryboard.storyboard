@@ -196,7 +196,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="527" id="528">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -273,7 +273,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2081" id="2082">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -322,5 +322,9 @@
         <image name="logouttemp.png" width="24" height="24"/>
         <image name="Deroo_Bord_Medium.png" width="944" height="237"/>
         <image name="openstaandeformulieren.png" width="24" height="24"/>
+        <image name="BottomXamagons.png" width="151" height="178"/>
+        <image name="Logo.png" width="512" height="512"/>
+        <image name="TopXamagons.png" width="151" height="178"/>
+        <image name="Xamagon.png" width="167" height="147"/>
     </resources>
 </document>

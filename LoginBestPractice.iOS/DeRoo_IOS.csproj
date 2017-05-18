@@ -108,10 +108,11 @@
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Contents.json" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainStoryboard.storyboard" />
-    <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
+    <InterfaceDefinition Include="LaunchScreen.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -163,6 +164,16 @@
     <BundleResource Include="Resources\logouttemp.png" />
     <BundleResource Include="Resources\Deroo_Bord_Medium.png" />
     <BundleResource Include="Resources\openstaandeformulieren.png" />
+    <BundleResource Include="Resources\BottomXamagons.png" />
+    <BundleResource Include="Resources\BottomXamagons%402x.png" />
+    <BundleResource Include="Resources\BottomXamagons%403x.png" />
+    <BundleResource Include="Resources\Logo.png" />
+    <BundleResource Include="Resources\TopXamagons.png" />
+    <BundleResource Include="Resources\TopXamagons%402x.png" />
+    <BundleResource Include="Resources\TopXamagons%403x.png" />
+    <BundleResource Include="Resources\Xamagon.png" />
+    <BundleResource Include="Resources\Xamagon%402x.png" />
+    <BundleResource Include="Resources\Xamagon%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="PDF\" />

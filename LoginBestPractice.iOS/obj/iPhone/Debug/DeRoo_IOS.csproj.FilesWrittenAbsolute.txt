@@ -1,31 +1,30 @@
-/Users/deroo/Downloads/LoginForiOS-master 2/LoginBestPractice.iOS/obj/iPhone/Debug/Xamarin.iOS,Version=v1.0.AssemblyAttribute.cs
-/Users/deroo/Downloads/LoginForiOS-master 2/LoginBestPractice.iOS/obj/iPhone/Debug/ibtool/_BundleResourceWithLogicalName.items
-/Users/deroo/Downloads/LoginForiOS-master 2/LoginBestPractice.iOS/obj/iPhone/Debug/actool/_PartialAppManifest.items
-/Users/deroo/Downloads/LoginForiOS-master 2/LoginBestPractice.iOS/obj/iPhone/Debug/actool/_BundleResourceWithLogicalName.items
-/Users/deroo/Downloads/LoginForiOS-master 2/LoginBestPractice.iOS/obj/iPhone/Debug/optimized/de-roo.png
-/Users/deroo/Downloads/LoginForiOS-master 2/LoginBestPractice.iOS/obj/iPhone/Debug/optimized/
-/Users/deroo/Downloads/LoginForiOS-master 2/LoginBestPractice.iOS/bin/iPhone/Debug/LoginBestPractice.iOS.exe.mdb
-/Users/deroo/Downloads/LoginForiOS-master 2/LoginBestPractice.iOS/bin/iPhone/Debug/LoginBestPractice.iOS.exe
-/Users/deroo/Downloads/LoginForiOS-master 2/LoginBestPractice.iOS/obj/iPhone/Debug/LoginBestPractice.iOS.exe
-/Users/deroo/Downloads/LoginForiOS-master 2/LoginBestPractice.iOS/obj/iPhone/Debug/LoginBestPractice.iOS.exe.mdb
-/Users/deroo/Downloads/LoginForiOS-master 2/LoginBestPractice.iOS/bin/iPhone/Debug/Newtonsoft.Json.dll
-/Users/deroo/Downloads/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/Xamarin.iOS,Version=v1.0.AssemblyAttribute.cs
-/Users/deroo/Downloads/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/device-builds/iphone7.2-10.3.1/ibtool/_BundleResourceWithLogicalName.items
-/Users/deroo/Downloads/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/device-builds/iphone7.2-10.3.1/actool/_PartialAppManifest.items
-/Users/deroo/Downloads/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/device-builds/iphone7.2-10.3.1/actool/_BundleResourceWithLogicalName.items
-/Users/deroo/Downloads/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/device-builds/iphone7.2-10.3.1/optimized/de-roo.png
-/Users/deroo/Downloads/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/device-builds/iphone7.2-10.3.1/optimized/toolbox.png
-/Users/deroo/Downloads/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/device-builds/iphone7.2-10.3.1/optimized/formulieren.png
-/Users/deroo/Downloads/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/device-builds/iphone7.2-10.3.1/optimized/handboek.png
-/Users/deroo/Downloads/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/device-builds/iphone7.2-10.3.1/optimized/back.png
-/Users/deroo/Downloads/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/device-builds/iphone7.2-10.3.1/optimized/logout.png
-/Users/deroo/Downloads/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/device-builds/iphone7.2-10.3.1/optimized/logouttemp.png
-/Users/deroo/Downloads/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/device-builds/iphone7.2-10.3.1/optimized/Deroo_Bord_Medium.png
-/Users/deroo/Downloads/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/device-builds/iphone7.2-10.3.1/optimized/
-/Users/deroo/Downloads/DeRooIOS-master/LoginBestPractice.iOS/bin/iPhone/Debug/LoginBestPractice.iOS.exe.mdb
-/Users/deroo/Downloads/DeRooIOS-master/LoginBestPractice.iOS/bin/iPhone/Debug/LoginBestPractice.iOS.pdb
-/Users/deroo/Downloads/DeRooIOS-master/LoginBestPractice.iOS/bin/iPhone/Debug/LoginBestPractice.iOS.exe
-/Users/deroo/Downloads/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/LoginBestPractice.iOS.exe
-/Users/deroo/Downloads/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/LoginBestPractice.iOS.exe.mdb
-/Users/deroo/Downloads/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/LoginBestPractice.iOS.pdb
-/Users/deroo/Downloads/DeRooIOS-master/LoginBestPractice.iOS/bin/iPhone/Debug/Newtonsoft.Json.dll
+/Users/deroo/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/Xamarin.iOS,Version=v1.0.AssemblyAttribute.cs
+/Users/deroo/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/ibtool/_BundleResourceWithLogicalName.items
+/Users/deroo/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/actool/_PartialAppManifest.items
+/Users/deroo/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/actool/_BundleResourceWithLogicalName.items
+/Users/deroo/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/optimized/de-roo.png
+/Users/deroo/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/optimized/toolbox.png
+/Users/deroo/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/optimized/formulieren.png
+/Users/deroo/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/optimized/handboek.png
+/Users/deroo/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/optimized/back.png
+/Users/deroo/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/optimized/logout.png
+/Users/deroo/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/optimized/logouttemp.png
+/Users/deroo/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/optimized/Deroo_Bord_Medium.png
+/Users/deroo/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/optimized/openstaandeformulieren.png
+/Users/deroo/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/optimized/BottomXamagons.png
+/Users/deroo/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/optimized/BottomXamagons@2x.png
+/Users/deroo/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/optimized/BottomXamagons@3x.png
+/Users/deroo/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/optimized/Logo.png
+/Users/deroo/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/optimized/TopXamagons.png
+/Users/deroo/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/optimized/TopXamagons@2x.png
+/Users/deroo/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/optimized/TopXamagons@3x.png
+/Users/deroo/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/optimized/Xamagon.png
+/Users/deroo/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/optimized/Xamagon@2x.png
+/Users/deroo/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/optimized/Xamagon@3x.png
+/Users/deroo/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/optimized/
+/Users/deroo/Documents/DeRooIOS-master/LoginBestPractice.iOS/bin/iPhone/Debug/LoginBestPractice.iOS.pdb
+/Users/deroo/Documents/DeRooIOS-master/LoginBestPractice.iOS/bin/iPhone/Debug/LoginBestPractice.iOS.exe
+/Users/deroo/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/LoginBestPractice.iOS.exe
+/Users/deroo/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/LoginBestPractice.iOS.pdb
+/Users/deroo/Documents/DeRooIOS-master/LoginBestPractice.iOS/bin/iPhone/Debug/Xamarin.Swift3.dll
+/Users/deroo/Documents/DeRooIOS-master/LoginBestPractice.iOS/bin/iPhone/Debug/Xamarin.Swift3.QuartzCore.dll
