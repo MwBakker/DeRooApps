@@ -8,8 +8,6 @@ namespace LoginBestPractice.iOS
 {
 	public partial class FormulierenViewController : UIViewController
 	{
-		nfloat catEnVraagHoogte;
-		nfloat mainStackHeight;
 		public FormulierenViewController(IntPtr handle) : base(handle)
 		{
 
@@ -87,26 +85,25 @@ namespace LoginBestPractice.iOS
 				scrollView.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, this.View.Frame.Size.Height);
 				UIStackView mainStack = new UIStackView();
 				mainStack.Axis = UILayoutConstraintAxis.Vertical;
-
-				catEnVraagHoogte = 0;
 				for (int i = 0; i < dataCategorie.categorien.Count; i++)
 				{
 					if (dataCategorie.categorien[i].formulier_id == formulierID)
 					{
-						catEnVraagHoogte += 50;
 						// cat + vraag // 
 						UIStackView catEnVraag = new UIStackView();
 						catEnVraag.Axis = UILayoutConstraintAxis.Vertical;
-						//catEnVraag.ContentMode = UIViewContentMode.ScaleAspectFit
 						catEnVraag.LayoutMargins = new UIEdgeInsets(0, 0, 30, 0);
 						catEnVraag.LayoutMarginsRelativeArrangement = true; ;
-						catEnVraag.LayoutIfNeeded();
+						catEnVraag.LayoutIfNeeded();;
 
 						// categorie // 
 						UILabel lbl_cat = new UILabel();
 						lbl_cat.ContentMode = UIViewContentMode.ScaleAspectFit;
 						lbl_cat.Text = dataCategorie.categorien[i].categorie_text;
+						lbl_cat.TextColor = new UIColor(red: 0.13f, green: 0.49f, blue: 0.21f, alpha: 1.0f); 
 						lbl_cat.MinimumFontSize = 12f;
+						lbl_cat.ContentMode = UIViewContentMode.ScaleAspectFit; 
+						//lbl_cat.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Width, 20);
 						catEnVraag.AddArrangedSubview(lbl_cat);
 
 						// vraag // 
@@ -115,9 +112,10 @@ namespace LoginBestPractice.iOS
 							if (dataVraag.vragen[j].categorie_id == dataCategorie.categorien[i].categorie_id)
 							{
 								UILabel lbl_vraag = new UILabel();
-								lbl_cat.ContentMode = UIViewContentMode.ScaleAspectFit;
 								lbl_vraag.Text = dataVraag.vragen[j].vraag_text;
 								lbl_vraag.Font = UIFont.FromName("Helvetica-Bold", 12f);
+								lbl_vraag.TextColor = new UIColor(red: 0.13f, green: 0.49f, blue: 0.21f, alpha: 1.0f);
+								//lbl_vraag.Frame = new CoreGraphics.CGRect(0,0, this.View.Frame.Width, 20);
 								lbl_vraag.AdjustsFontSizeToFitWidth = true;
 
 								// opties //
@@ -126,26 +124,33 @@ namespace LoginBestPractice.iOS
 								opties.InsertSegment("Niet akkoord", 1, false);
 								opties.InsertSegment("N.v.t.", 2, false);
 								opties.SelectedSegment = 2;
+								//opties.Frame.Height = new nfloat(20);;
 								catEnVraag.AddArrangedSubview(lbl_vraag);
 								catEnVraag.AddArrangedSubview(opties);
 
+								// button // 
+								UIButton btn_foto = new UIButton();
+								btn_foto.Hidden = true;
+								btn_foto.SetTitle("Maak foto van situatie", UIControlState.Normal);
+								//btn_foto.Frame = new CoreGraphics.CGRect(catEnVraag.Frame.Left, catEnVraag.Frame.Bottom, 200, 20); 
+								catEnVraag.AddArrangedSubview(btn_foto);
+
 								opties.ValueChanged += (sender, e) =>
 								{
-									var geselecteerd = (sender as UISegmentedControl).SelectedSegment;
-
 									if (opties.SelectedSegment == 1)
 									{
-										UIButton btn_foto = new UIButton();
-										btn_foto.SetTitle("Maak foto van situatie", UIControlState.Normal);
-										btn_foto.Frame = new CoreGraphics.CGRect(catEnVraag.Frame.Left, catEnVraag.Frame.Bottom, 200, 50); ;
-										catEnVraag.AddArrangedSubview(btn_foto);
-										// setCatVraagHoogte
-										// setMainStackHoogte 
+										//var selectedSegmentId = (sender as UISegmentedControl).Selected;
+										btn_foto.Hidden = false;
+										//catEnVraag.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, setStackHeight(catEnVraag, "catEnVraag"));
+									}
+									else
+									{
+										btn_foto.Hidden = true;
 									}
 								};
 							}
 						}
-                        setStackHeight(catEnVraag, "catEnVraag");
+						catEnVraag.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, 150);
 						mainStack.AddArrangedSubview(catEnVraag);
 					}
 				}
@@ -157,13 +162,14 @@ namespace LoginBestPractice.iOS
 				//nfloat test = mainStack.Frame.Height;
 
 
-				// mainStack hoogte // 
-				setStackHeight(mainStack, "mainStack");
+				// mainStack hoogte //
+				nfloat mainStackHoogte = setStackHeight(mainStack, "mainStack");
+				mainStack.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, (mainStackHoogte + 60));
 				btn_verzend.Frame = new CoreGraphics.CGRect(0, -500, 200, 50);
-				mainStack.AddArrangedSubview(btn_verzend);
+				//mainStack.AddArrangedSubview(btn_verzend);
 
-				scrollView.ContentSize = mainStack.Frame.Size;
 				scrollView.AddSubview(mainStack);
+				scrollView.ContentSize = mainStack.Frame.Size;
 				//.TouchDown += ;
 				scrollView.AddSubview(btn_verzend);
 				formulierInhoudController.View.AddSubview(scrollView);
@@ -171,38 +177,14 @@ namespace LoginBestPractice.iOS
 			return formulierButton;
 		}
 
-		private void setStackHeight(UIStackView stackIn, string type)
+		private nfloat setStackHeight(UIStackView stackIn, string type)
 		{
-
-			if (type == "catEnVraag")
+			nfloat hoogte = 0.0f;
+			foreach (UIView subView in stackIn.ArrangedSubviews)
 			{
-				catEnVraagHoogte = 0.0f;
+				hoogte += subView.Frame.Height;
 			}
-			else 
-			{
-				mainStackHeight = 0.0f;
-			}
-
-			foreach (UIView catVraag in stackIn.ArrangedSubviews)
-			{
-				if (type == "catEnVraag")
-				{
-					catEnVraagHoogte += stackIn.Frame.Height;
-				}
-				else
-				{
-					mainStackHeight += stackIn.Frame.Height;
-				}
-			}
-
-			if (type == "catEnVraag")
-			{
-				stackIn.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, catEnVraagHoogte);
-			}
-			else
-			{
-				stackIn.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, (mainStackHeight + 60));
-			}
+			return hoogte;
 		}
 	}
 }
