@@ -8,7 +8,8 @@ namespace LoginBestPractice.iOS
 {
 	public partial class FormulierenViewController : UIViewController
 	{
-		nfloat mainStackHeight; 
+		nfloat catEnVraagHoogte;
+		nfloat mainStackHeight;
 		public FormulierenViewController(IntPtr handle) : base(handle)
 		{
 
@@ -31,13 +32,13 @@ namespace LoginBestPractice.iOS
 
 
 			this.NavigationItem.SetRightBarButtonItem(
-			new UIBarButtonItem(UIImage.FromFile("logouttemp.png"), UIBarButtonItemStyle.Plain, (sender,args) => 
+			new UIBarButtonItem(UIImage.FromFile("logouttemp.png"), UIBarButtonItemStyle.Plain, (sender, args) =>
 			{
 				var Confirm = new UIAlertView("Uitloggen", "Weet u zeker dat u wilt uitloggen?", null, "Nee", "Ja");
 				Confirm.Show();
-	            Confirm.Clicked += (object senders, UIButtonEventArgs es) => 
-	            {
-	               	if (es.ButtonIndex == 1 ) 
+				Confirm.Clicked += (object senders, UIButtonEventArgs es) =>
+				{
+					if (es.ButtonIndex == 1)
 					{
 						//Create an instance of our AppDelegate
 						var appDelegate = UIApplication.SharedApplication.Delegate as AppDelegate;
@@ -57,12 +58,13 @@ namespace LoginBestPractice.iOS
 
 						//Set the Login Page as our RootViewController
 						appDelegate.SetRootViewController(loginPageViewController, true);
-	                }else
-	                {
-						
-	                }
-	            };
-    		}), true);
+					}
+					else
+					{
+
+					}
+				};
+			}), true);
 		}
 
 		public UIButton createElements(string formulierID, string formulierNaam, int hoogteVanButtons)
@@ -86,7 +88,7 @@ namespace LoginBestPractice.iOS
 				UIStackView mainStack = new UIStackView();
 				mainStack.Axis = UILayoutConstraintAxis.Vertical;
 
-				int catEnVraagHoogte = 0;
+				catEnVraagHoogte = 0;
 				for (int i = 0; i < dataCategorie.categorien.Count; i++)
 				{
 					if (dataCategorie.categorien[i].formulier_id == formulierID)
@@ -95,10 +97,9 @@ namespace LoginBestPractice.iOS
 						// cat + vraag // 
 						UIStackView catEnVraag = new UIStackView();
 						catEnVraag.Axis = UILayoutConstraintAxis.Vertical;
-						//catEnVraag.ContentMode = UIViewContentMode.ScaleAspectFit;
-						catEnVraag.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, 150);
+						//catEnVraag.ContentMode = UIViewContentMode.ScaleAspectFit
 						catEnVraag.LayoutMargins = new UIEdgeInsets(0, 0, 30, 0);
-						catEnVraag.LayoutMarginsRelativeArrangement = true;;
+						catEnVraag.LayoutMarginsRelativeArrangement = true; ;
 						catEnVraag.LayoutIfNeeded();
 
 						// categorie // 
@@ -120,22 +121,31 @@ namespace LoginBestPractice.iOS
 								lbl_vraag.AdjustsFontSizeToFitWidth = true;
 
 								// opties //
-								UISegmentedControl opties = new UISegmentedControl(); 
+								UISegmentedControl opties = new UISegmentedControl();
 								opties.InsertSegment("Akkoord", 0, false);
 								opties.InsertSegment("Niet akkoord", 1, false);
 								opties.InsertSegment("N.v.t.", 2, false);
 								opties.SelectedSegment = 2;
 								catEnVraag.AddArrangedSubview(lbl_vraag);
 								catEnVraag.AddArrangedSubview(opties);
-								if (opties.SelectedSegment == 1)
+
+								opties.ValueChanged += (sender, e) =>
 								{
-									UIButton btn_foto = new UIButton();
-									btn_foto.SetTitle("Maak foto van situatie", UIControlState.Normal);
-									btn_foto.Frame = new CoreGraphics.CGRect(catEnVraag.Frame.Left, catEnVraag.Frame.Bottom, 200, 50);;
-									catEnVraag.AddArrangedSubview(btn_foto);
-								}
+									var geselecteerd = (sender as UISegmentedControl).SelectedSegment;
+
+									if (opties.SelectedSegment == 1)
+									{
+										UIButton btn_foto = new UIButton();
+										btn_foto.SetTitle("Maak foto van situatie", UIControlState.Normal);
+										btn_foto.Frame = new CoreGraphics.CGRect(catEnVraag.Frame.Left, catEnVraag.Frame.Bottom, 200, 50); ;
+										catEnVraag.AddArrangedSubview(btn_foto);
+										// setCatVraagHoogte
+										// setMainStackHoogte 
+									}
+								};
 							}
 						}
+                        setStackHeight(catEnVraag, "catEnVraag");
 						mainStack.AddArrangedSubview(catEnVraag);
 					}
 				}
@@ -145,25 +155,54 @@ namespace LoginBestPractice.iOS
 				btn_verzend.ContentMode = UIViewContentMode.ScaleAspectFit;
 				//btn_verzend.TouchDown = (object sender, EventArgs e) => ;
 				//nfloat test = mainStack.Frame.Height;
-				//mainStack.AddArrangedSubview(btn_verzend);
+
 
 				// mainStack hoogte // 
-				mainStackHeight = 0.0f;
-				foreach (UIView catVraag in mainStack.ArrangedSubviews)
-				{
-					mainStackHeight += catVraag.Frame.Height;
-				}
+				setStackHeight(mainStack, "mainStack");
+				btn_verzend.Frame = new CoreGraphics.CGRect(0, -500, 200, 50);
+				mainStack.AddArrangedSubview(btn_verzend);
 
-				mainStack.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, (mainStackHeight + 60));
-
-
-				scrollView.ContentSize = mainStack.Frame.Size; 
+				scrollView.ContentSize = mainStack.Frame.Size;
 				scrollView.AddSubview(mainStack);
 				//.TouchDown += ;
-				scrollView.AddSubview(btn_verzend);  
+				scrollView.AddSubview(btn_verzend);
 				formulierInhoudController.View.AddSubview(scrollView);
-            };
+			};
 			return formulierButton;
+		}
+
+		private void setStackHeight(UIStackView stackIn, string type)
+		{
+
+			if (type == "catEnVraag")
+			{
+				catEnVraagHoogte = 0.0f;
+			}
+			else 
+			{
+				mainStackHeight = 0.0f;
+			}
+
+			foreach (UIView catVraag in stackIn.ArrangedSubviews)
+			{
+				if (type == "catEnVraag")
+				{
+					catEnVraagHoogte += stackIn.Frame.Height;
+				}
+				else
+				{
+					mainStackHeight += stackIn.Frame.Height;
+				}
+			}
+
+			if (type == "catEnVraag")
+			{
+				stackIn.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, catEnVraagHoogte);
+			}
+			else
+			{
+				stackIn.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, (mainStackHeight + 60));
+			}
 		}
 	}
 }
