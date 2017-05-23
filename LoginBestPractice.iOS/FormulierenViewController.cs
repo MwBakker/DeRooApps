@@ -84,6 +84,8 @@ namespace LoginBestPractice.iOS
 				UIScrollView scrollView = new UIScrollView();
 				scrollView.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, this.View.Frame.Size.Height);
 				UIStackView mainStack = new UIStackView();
+				mainStack.TranslatesAutoresizingMaskIntoConstraints = true;
+				mainStack.Distribution = UIStackViewDistribution.Fill;
 				mainStack.Axis = UILayoutConstraintAxis.Vertical;
 				for (int i = 0; i < dataCategorie.categorien.Count; i++)
 				{
@@ -92,30 +94,31 @@ namespace LoginBestPractice.iOS
 						// cat + vraag // 
 						UIStackView catEnVraag = new UIStackView();
 						catEnVraag.Axis = UILayoutConstraintAxis.Vertical;
+						catEnVraag.TranslatesAutoresizingMaskIntoConstraints = true;
+						catEnVraag.Distribution = UIStackViewDistribution.Fill;
+						catEnVraag.Axis = UILayoutConstraintAxis.Vertical;
 						catEnVraag.LayoutMargins = new UIEdgeInsets(0, 0, 30, 0);
-						catEnVraag.LayoutMarginsRelativeArrangement = true; ;
+						catEnVraag.LayoutMarginsRelativeArrangement = true; 
 						catEnVraag.LayoutIfNeeded();;
 
 						// categorie // 
 						UILabel lbl_cat = new UILabel();
 						lbl_cat.ContentMode = UIViewContentMode.ScaleAspectFit;
 						lbl_cat.Text = dataCategorie.categorien[i].categorie_text;
+						// lbl_cat.LayoutMargins = new UIEdgeInsets(0, 30, 0, 30);
 						lbl_cat.TextColor = new UIColor(red: 0.13f, green: 0.49f, blue: 0.21f, alpha: 1.0f); 
-						lbl_cat.MinimumFontSize = 12f;
-						lbl_cat.ContentMode = UIViewContentMode.ScaleAspectFit; 
-						//lbl_cat.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Width, 20);
+						lbl_cat.MinimumFontSize = 12f; 
 						catEnVraag.AddArrangedSubview(lbl_cat);
 
-						// vraag // 
 						for (int j = 0; j < dataVraag.vragen.Count; j++)
 						{
 							if (dataVraag.vragen[j].categorie_id == dataCategorie.categorien[i].categorie_id)
 							{
+								// vraag // 
 								UILabel lbl_vraag = new UILabel();
 								lbl_vraag.Text = dataVraag.vragen[j].vraag_text;
 								lbl_vraag.Font = UIFont.FromName("Helvetica-Bold", 12f);
-								lbl_vraag.TextColor = new UIColor(red: 0.13f, green: 0.49f, blue: 0.21f, alpha: 1.0f);
-								//lbl_vraag.Frame = new CoreGraphics.CGRect(0,0, this.View.Frame.Width, 20);
+								lbl_vraag.TextColor = new UIColor(red: 0.13f, green: 0.49f, blue: 0.21f, alpha: 1.0f);;
 								lbl_vraag.AdjustsFontSizeToFitWidth = true;
 
 								// opties //
@@ -123,25 +126,25 @@ namespace LoginBestPractice.iOS
 								opties.InsertSegment("Akkoord", 0, false);
 								opties.InsertSegment("Niet akkoord", 1, false);
 								opties.InsertSegment("N.v.t.", 2, false);
-								opties.SelectedSegment = 2;
-								//opties.Frame.Height = new nfloat(20);;
+								opties.SelectedSegment = 2;;
 								catEnVraag.AddArrangedSubview(lbl_vraag);
 								catEnVraag.AddArrangedSubview(opties);
 
-								// button // 
+								// foto-button // 
 								UIButton btn_foto = new UIButton();
 								btn_foto.Hidden = true;
-								btn_foto.SetTitle("Maak foto van situatie", UIControlState.Normal);
-								//btn_foto.Frame = new CoreGraphics.CGRect(catEnVraag.Frame.Left, catEnVraag.Frame.Bottom, 200, 20); 
+								btn_foto.BackgroundColor = new UIColor(red: 0.13f, green: 0.49f, blue: 0.21f, alpha: 1.0f); 
+							    btn_foto.SetTitle("Maak foto van situatie", UIControlState.Normal);
 								catEnVraag.AddArrangedSubview(btn_foto);
-
 								opties.ValueChanged += (sender, e) =>
 								{
 									if (opties.SelectedSegment == 1)
-									{
-										//var selectedSegmentId = (sender as UISegmentedControl).Selected;
+									{;
 										btn_foto.Hidden = false;
-										//catEnVraag.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, setStackHeight(catEnVraag, "catEnVraag"));
+										// UPDATE main VIEW // 
+										nfloat mainStackHoogtee = setStackHeight(mainStack, "mainStack");
+										mainStack.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, (mainStackHoogtee + 60));
+										scrollView.ContentSize = mainStack.Frame.Size;
 									}
 									else
 									{
@@ -150,7 +153,7 @@ namespace LoginBestPractice.iOS
 								};
 							}
 						}
-						catEnVraag.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, 150);
+						catEnVraag.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, 75);
 						mainStack.AddArrangedSubview(catEnVraag);
 					}
 				}

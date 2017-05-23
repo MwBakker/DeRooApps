@@ -2,14 +2,19 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="FormulierenViewController.cs">
     <Files>
       <File FileName="Login.cs" Line="34" Column="6" />
-      <File FileName="FormulierenViewController.cs" Line="172" Column="1" />
+      <File FileName="FormulierenViewController.cs" Line="122" Column="28" />
     </Files>
+    <Pads>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State>
+          <Value>Click here to add a new watch</Value>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/FormulierenViewController.cs" relfile="FormulierenViewController.cs" line="169" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches>
     <Watch file="FormulierenViewController.cs" line="143" offsetX="516" offsetY="2130" expression="mainStack" liveUpdate="False" />
