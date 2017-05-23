@@ -2,7 +2,11 @@ using System;
 using UIKit;
 using DeRoo_iOS;
 using System.Threading;
+<<<<<<< Updated upstream
 using System.IO;
+=======
+
+>>>>>>> Stashed changes
 
 namespace LoginBestPractice.iOS
 {
@@ -154,6 +158,12 @@ namespace LoginBestPractice.iOS
 										catEnVraag.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, 175);
 										//nfloat mainStackHoogtee = setStackHeight(mainStack, "mainStack");
 										mainStack.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, (mainStack.Frame.Height +25));
+										var newVC = new UIViewController()
+										{
+											ModalPresentationStyle = UIModalPresentationStyle.FormSheet,
+											ModalTransitionStyle = UIModalTransitionStyle.CoverVertical
+										};
+										PresentViewController psvc = new PresentViewController(newVC, animated: true, completion: nil);
 									}
 									else
 									{
@@ -171,19 +181,25 @@ namespace LoginBestPractice.iOS
 				UIButton btn_verzend = new UIButton(UIButtonType.System);
 				btn_verzend.SetTitle("Verzend formulier", UIControlState.Normal);
 				btn_verzend.ContentMode = UIViewContentMode.ScaleAspectFit;
-				//btn_verzend.TouchDown = (object sender, EventArgs e) => ;
+				btn_verzend.TouchDown += delegate {
+					foreach (UIStackView stack in mainStack)
+					{
+						foreach (UISegmentedControl opties in stack)
+						{
+							//int geselecteerd = opties.SelectedSegment; 
+						}
+					}	
+				};
 				//nfloat test = mainStack.Frame.Height;
 
 
 				// mainStack hoogte //
 				nfloat mainStackHoogte = setStackHeight(mainStack, "mainStack");
 				mainStack.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, (mainStackHoogte + 60));
-				btn_verzend.Frame = new CoreGraphics.CGRect(0, -500, 200, 50);
 				//mainStack.AddArrangedSubview(btn_verzend);
 
 				scrollView.AddSubview(mainStack);
 				scrollView.ContentSize = mainStack.Frame.Size;
-				//.TouchDown += ;
 				scrollView.AddSubview(btn_verzend);
 				formulierInhoudController.View.AddSubview(scrollView);
 			};
