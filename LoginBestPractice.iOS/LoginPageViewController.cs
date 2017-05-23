@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using DeRoo_iOS;
 using UIKit;
 
@@ -45,6 +46,11 @@ namespace LoginBestPractice.iOS
 
 				if (login.isActive())
 				{
+					//Creeer een file met usertoken erin
+					var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+					var filename = Path.Combine(documents, "login.txt");
+					File.WriteAllText(filename, login.getToken());
+
 					//redirect
 					OnLoginSuccess(sender, new EventArgs());
 				}

@@ -12,12 +12,25 @@ namespace LoginBestPractice.iOS
 	{
 		public HandboekViewController(IntPtr handle) : base(handle)
 		{
-			var webView = new UIWebView(View.Bounds);
-			View.AddSubview(webView);
-			string fileName = "handboek.pdf"; // remember case-sensitive
-			string localDocUrl = Path.Combine(NSBundle.MainBundle.BundlePath, fileName);
-			webView.LoadRequest(new NSUrlRequest(new NSUrl(localDocUrl, false)));
-			webView.ScalesPageToFit = true;
+
+			if(!Reachability.IsHostReachable("http://google.com")) 
+			{
+				var webView = new UIWebView(View.Bounds);
+				View.AddSubview(webView);
+				string fileName = "handboek.pdf"; // remember case-sensitive
+				string localDocUrl = Path.Combine(NSBundle.MainBundle.BundlePath, fileName);
+				webView.LoadRequest(new NSUrlRequest(new NSUrl(localDocUrl, false)));
+				webView.ScalesPageToFit = true;
+			}
+			else
+			{
+				var webView = new UIWebView(View.Bounds);
+				View.AddSubview(webView);
+				var url = "https://amkapp.nl/test/pages/DeRoo/Kwaliteitshandboek%205.1%20cert.pdf";
+				webView.LoadRequest(new NSUrlRequest(new NSUrl(url)));
+				webView.ScalesPageToFit = true;
+			}
+
 		}
 
 		public override void ViewDidLoad()
@@ -36,6 +49,11 @@ namespace LoginBestPractice.iOS
 	                	
 	                }else
 	                {
+						//Delete login-file
+						var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+						var filename = Path.Combine(documents, "login.txt");
+						File.Delete(filename);
+
 						//Create an instance of our AppDelegate
 						var appDelegate = UIApplication.SharedApplication.Delegate as AppDelegate;
 

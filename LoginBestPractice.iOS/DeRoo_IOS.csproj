@@ -163,12 +163,11 @@
     <Compile Include="FormulierInhoudViewController.designer.cs">
       <DependentUpon>FormulierInhoudViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Camera.cs" />
+    <Compile Include="reachability.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\de-roo.png" />
     <BundleResource Include="PDF\handboek.pdf" />
-    <BundleResource Include="handboek.pdf" />
     <BundleResource Include="Resources\toolbox.png" />
     <BundleResource Include="Resources\formulieren.png" />
     <BundleResource Include="Resources\handboek.png" />
@@ -187,6 +186,7 @@
     <BundleResource Include="Resources\Xamagon.png" />
     <BundleResource Include="Resources\Xamagon%402x.png" />
     <BundleResource Include="Resources\Xamagon%403x.png" />
+    <BundleResource Include="handboek.pdf" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="PDF\" />

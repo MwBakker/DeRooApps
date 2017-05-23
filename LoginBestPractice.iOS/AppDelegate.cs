@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.IO;
 using Foundation;
 using UIKit;
 
@@ -8,14 +8,12 @@ namespace LoginBestPractice.iOS
     [Register("AppDelegate")]
     public partial class AppDelegate : UIApplicationDelegate
     {
-        private bool isAuthenticated = false;
-
         public override UIWindow Window
         {
             get;
             set;
         }
-		
+
         //Public property to access our MainStoryboard.storyboard file
         public UIStoryboard MainStoryboard
         {
@@ -49,9 +47,13 @@ namespace LoginBestPractice.iOS
         //Override FinishedLaunching. This executes after the app has started.
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
-            //isAuthenticated can be used for an auto-login feature, you'll have to implement this
-            //as you see fit or get rid of the if statement if you want.
-            if(isAuthenticated)
+			//check exists
+			var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+			var filename = Path.Combine(documents, "login.txt");
+
+			//isAuthenticated can be used for an auto-login feature, you'll have to implement this
+			//as you see fit or get rid of the if statement if you want.
+			if (File.Exists(filename) == true)
             {
                 //We are already authenticated, so go to the main tab bar controller;
                 var tabBarController = GetViewController(MainStoryboard, "MainTabBarController");

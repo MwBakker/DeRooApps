@@ -44,5 +44,34 @@ namespace DeRoo_iOS
 			}
 			return false;
 		}
+
+		public String getToken()
+		{
+			String token = "";
+			try
+			{
+				using (WebClient client = new WebClient())
+				{
+					var values = new System.Collections.Specialized.NameValueCollection();
+					values.Add("gebruikersnaam", username);
+					values.Add("wachtwoord", password);
+					byte[] response = client.UploadValues("https://www.amkapp.nl/test/loginApp.php", "POST", values);
+					string responseString = Encoding.UTF8.GetString(response);
+					data = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(responseString);
+				}
+
+				if (data != null)
+				{
+					token = data.gebruiker[0].token;
+					DataStorage dataStorage = new DataStorage();
+					dataStorage.refresh();
+				}
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex.ToString());
+			}
+			return token;
+		}
 	}
 }

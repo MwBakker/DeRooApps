@@ -1,6 +1,7 @@
 using Foundation;
 using System;
 using UIKit;
+using System.IO;
 
 namespace LoginBestPractice.iOS
 {
@@ -27,6 +28,11 @@ namespace LoginBestPractice.iOS
 					}
 					else
 					{
+						//Delete login-file
+						var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+						var filename = Path.Combine(documents, "login.txt");
+						File.Delete(filename);
+
 						//Create an instance of our AppDelegate
 						var appDelegate = UIApplication.SharedApplication.Delegate as AppDelegate;
 

@@ -1,21 +1,23 @@
 ﻿<Properties StartupConfiguration="{84563AF5-67F4-46D6-B49C-BF8D718F3C64}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Camera.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="HandboekViewController.cs">
     <Files>
-      <File FileName="Login.cs" Line="34" Column="6" />
-      <File FileName="FormulierenViewController.cs" Line="139" Column="41" />
+      <File FileName="Login.cs" Line="66" Column="1" />
+      <File FileName="FormulierenViewController.cs" Line="21" Column="19" />
       <File FileName="Main.cs" Line="17" Column="1" />
-      <File FileName="Media.cs" Line="21" Column="2" />
       <File FileName="Camera.cs" Line="1" Column="14" />
+      <File FileName="User.cs" Line="1" Column="1" />
+      <File FileName="ToolboxViewController.cs" Line="33" Column="25" />
+      <File FileName="LogoutViewController.cs" Line="1" Column="1" />
+      <File FileName="LoginPageViewController.cs" Line="50" Column="19" />
+      <File FileName="HandboekViewController.cs" Line="56" Column="7" />
+      <File FileName="LaunchScreen.xib" />
+      <File FileName="reachability.cs" Line="16" Column="31" />
+      <File FileName="DatabaseData.cs" Line="1" Column="1" />
+      <File FileName="FormulierInhoudViewController.cs" Line="1" Column="1" />
+      <File FileName="AppDelegate.cs" Line="56" Column="31" />
     </Files>
-    <Pads>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State>
-          <Value>Click here to add a new watch</Value>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
@@ -23,5 +25,5 @@
     <Watch file="FormulierenViewController.cs" line="143" offsetX="516" offsetY="2130" expression="mainStack" liveUpdate="False" />
   </MonoDevelop.Ide.DebuggingService.PinnedWatches>
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.DeRoo__IOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.2C4C37E2-67DB-490E-867E-A9CB096B0080" />
+  <MonoDevelop.Ide.ItemProperties.DeRoo__IOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget" />
 </Properties>

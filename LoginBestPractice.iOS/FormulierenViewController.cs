@@ -2,8 +2,7 @@ using System;
 using UIKit;
 using DeRoo_iOS;
 using System.Threading;
-using Xamarin.Media;
-
+using System.IO;
 
 namespace LoginBestPractice.iOS
 {
@@ -17,7 +16,9 @@ namespace LoginBestPractice.iOS
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-			Thread.Sleep(1250);
+			DataStorage dataStorage = new DataStorage();
+			dataStorage.refresh();
+			Thread.Sleep(1000);
 			RootObject formData = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.forms);
 			int hoogteVanButtons = 20;
 
@@ -39,6 +40,11 @@ namespace LoginBestPractice.iOS
 				{
 					if (es.ButtonIndex == 1)
 					{
+						//Delete login-file
+						var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+						var filename = Path.Combine(documents, "login.txt");
+						File.Delete(filename);
+
 						//Create an instance of our AppDelegate
 						var appDelegate = UIApplication.SharedApplication.Delegate as AppDelegate;
 
