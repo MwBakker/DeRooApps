@@ -2,6 +2,7 @@ using System;
 using UIKit;
 using DeRoo_iOS;
 using System.Threading;
+using Xamarin.Media;
 
 
 namespace LoginBestPractice.iOS
@@ -135,6 +136,8 @@ namespace LoginBestPractice.iOS
 								btn_foto.Hidden = true;
 								btn_foto.BackgroundColor = new UIColor(red: 0.13f, green: 0.49f, blue: 0.21f, alpha: 1.0f); 
 							    btn_foto.SetTitle("Maak foto van situatie", UIControlState.Normal);
+								btn_foto.TouchDown += delegate {
+								};
 								catEnVraag.AddArrangedSubview(btn_foto);
 								opties.ValueChanged += (sender, e) =>
 								{
@@ -142,18 +145,19 @@ namespace LoginBestPractice.iOS
 									{;
 										btn_foto.Hidden = false;
 										// UPDATE main VIEW // 
-										nfloat mainStackHoogtee = setStackHeight(mainStack, "mainStack");
-										mainStack.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, (mainStackHoogtee + 60));
-										scrollView.ContentSize = mainStack.Frame.Size;
+										catEnVraag.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, 175);
+										//nfloat mainStackHoogtee = setStackHeight(mainStack, "mainStack");
+										mainStack.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, (mainStack.Frame.Height +25));
 									}
 									else
 									{
 										btn_foto.Hidden = true;
+										mainStack.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, (mainStack.Frame.Height - 25));
 									}
 								};
 							}
 						}
-						catEnVraag.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, 75);
+						catEnVraag.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, 150);
 						mainStack.AddArrangedSubview(catEnVraag);
 					}
 				}

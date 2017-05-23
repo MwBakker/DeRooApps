@@ -1,8 +1,11 @@
 ﻿<Properties StartupConfiguration="{84563AF5-67F4-46D6-B49C-BF8D718F3C64}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="FormulierenViewController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Camera.cs">
     <Files>
       <File FileName="Login.cs" Line="34" Column="6" />
-      <File FileName="FormulierenViewController.cs" Line="122" Column="28" />
+      <File FileName="FormulierenViewController.cs" Line="139" Column="41" />
+      <File FileName="Main.cs" Line="17" Column="1" />
+      <File FileName="Media.cs" Line="21" Column="2" />
+      <File FileName="Camera.cs" Line="1" Column="14" />
     </Files>
     <Pads>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
