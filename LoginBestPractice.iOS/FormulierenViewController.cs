@@ -1,6 +1,6 @@
 using System;
-using UIKit;
 using DeRoo_iOS;
+using UIKit;
 using System.Threading;
 using System.IO;
 
@@ -18,11 +18,7 @@ namespace LoginBestPractice.iOS
 			base.ViewDidLoad();
 			DataStorage dataStorage = new DataStorage();
 			dataStorage.refresh();
-<<<<<<< Updated upstream
 			Thread.Sleep(2000);
-=======
-			Thread.Sleep(4000);
->>>>>>> Stashed changes
 			RootObject formData = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.forms);
 			int hoogteVanButtons = 20;
 
@@ -161,6 +157,11 @@ namespace LoginBestPractice.iOS
 										//Modal modal = new Modal(Handle);
 										UIViewController modal = Storyboard.InstantiateViewController("modalVraag");
 										PresentViewController(modal, animated: true, completionHandler: null);
+										var newVC = new UIViewController()
+										{
+											ModalPresentationStyle = UIModalPresentationStyle.FormSheet,
+											ModalTransitionStyle = UIModalTransitionStyle.CoverVertical
+										};
 									}
 									else
 									{

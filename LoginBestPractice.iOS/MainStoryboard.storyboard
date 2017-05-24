@@ -184,34 +184,6 @@
             </objects>
             <point key="canvasLocation" x="358" y="180"/>
         </scene>
-        <scene sceneID="521">
-            <objects>
-                <tableViewController id="522" sceneMemberID="viewController" customClass="ToolboxViewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="524">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="527">
-                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="527" id="528">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="522" id="525"/>
-                            <outlet property="delegate" destination="522" id="526"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Toolbox" id="523"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="529" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="906" y="793"/>
-        </scene>
         <scene sceneID="530">
             <objects>
                 <navigationController id="531" sceneMemberID="viewController">
@@ -220,7 +192,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="522" kind="relationship" relationship="rootViewController" id="532"/>
+                        <segue id="2700" destination="2606" kind="relationship" relationship="rootViewController"/>
                     </connections>
                     <tabBarItem key="tabBarItem" title="Toolbox" id="597" image="toolbox.png"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -273,7 +245,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2081" id="2082">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -389,6 +361,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2547" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1380" y="194"/>
+        </scene>
+        <scene sceneID="2605">
+            <objects>
+                <viewController id="2606" sceneMemberID="viewController" customClass="ToolboxViewController" storyboardIdentifier="Toolboxen">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2603"/>
+                        <viewControllerLayoutGuide type="bottom" id="2604"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2607">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem title="Title" id="2699" key="navigationItem"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2608" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="928" y="804"/>
+        </scene>
+        <scene sceneID="2612">
+            <objects>
+                <viewController id="2613" sceneMemberID="viewController" storyboardIdentifier="ToolboxInhoud" customClass="ToolboxInhoudViewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2610"/>
+                        <viewControllerLayoutGuide type="bottom" id="2611"/>
+                    </layoutGuides>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2615" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1454" y="800"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

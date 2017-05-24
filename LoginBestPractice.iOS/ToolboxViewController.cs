@@ -2,6 +2,8 @@ using Foundation;
 using System;
 using UIKit;
 using System.IO;
+using DeRoo_iOS;
+using System.Threading;
 
 namespace LoginBestPractice.iOS
 {
@@ -15,6 +17,18 @@ namespace LoginBestPractice.iOS
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
+			DataStorage dataStorage = new DataStorage();
+			dataStorage.refresh();
+			Thread.Sleep(2000);
+			RootObject toolboxSubjects = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.toolboxSubjects);
+
+			int hoogteVanButtons = 20;
+
+			for (int i = 0; i<toolboxSubjects.toolbox.Count; i++)
+			{
+				hoogteVanButtons += 40;this.View.AddSubview(createElements(toolboxSubjects.toolbox[i].toolbox_id, toolboxSubjects.toolbox[i].toolbox_onderwerp, hoogteVanButtons));
+			}
+
 			this.NavigationItem.SetRightBarButtonItem(
 			new UIBarButtonItem(UIImage.FromFile("logouttemp.png"), UIBarButtonItemStyle.Plain, (sender, args) =>
 			{
@@ -54,6 +68,23 @@ namespace LoginBestPractice.iOS
 					}
 				};
 			}), true);
+		}
+
+		public UIButton createElements(string toolboxID, string toolboxNaam, int hoogteVanButtons)
+		{
+			RootObject toolboxElements = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.toolboxSubjects);
+
+			for (int i = 0; i < toolboxElements.toolbox.Count; i++)
+			{
+				if (toolboxElements.toolbox[i].toolbox_id == toolboxID)
+				{
+					UIButton formulierButton = new UIButton(UIButtonType.RoundedRect);
+					formulierButton.SetTitle(toolboxNaam, UIControlState.Normal);
+					formulierButton.Frame = new CoreGraphics.CGRect(0, hoogteVanButtons, this.View.Frame.Size.Width, 50);
+				}
+			}
+
+
 		}
 	}
 }
