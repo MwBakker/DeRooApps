@@ -1,20 +1,13 @@
 ﻿<Properties StartupConfiguration="{84563AF5-67F4-46D6-B49C-BF8D718F3C64}|Default">
+<<<<<<< Updated upstream
   <MonoDevelop.Ide.Workbench ActiveDocument="FormulierenViewController.cs">
+=======
+  <MonoDevelop.Ide.Workbench ActiveDocument="MainStoryboard.storyboard">
+>>>>>>> Stashed changes
     <Files>
-      <File FileName="Login.cs" Line="66" Column="1" />
-      <File FileName="FormulierenViewController.cs" Line="21" Column="4" />
-      <File FileName="Main.cs" Line="17" Column="1" />
-      <File FileName="Camera.cs" Line="1" Column="14" />
-      <File FileName="User.cs" Line="1" Column="1" />
-      <File FileName="ToolboxViewController.cs" Line="33" Column="25" />
-      <File FileName="LogoutViewController.cs" Line="1" Column="1" />
-      <File FileName="LoginPageViewController.cs" Line="50" Column="19" />
-      <File FileName="HandboekViewController.cs" Line="56" Column="7" />
-      <File FileName="LaunchScreen.xib" />
-      <File FileName="reachability.cs" Line="16" Column="31" />
-      <File FileName="DatabaseData.cs" Line="1" Column="1" />
-      <File FileName="FormulierInhoudViewController.cs" Line="1" Column="1" />
-      <File FileName="AppDelegate.cs" Line="56" Column="31" />
+      <File FileName="FormulierenViewController.cs" Line="22" Column="1" />
+      <File FileName="MainStoryboard.storyboard" />
+      <File FileName="Modal.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
@@ -25,5 +18,9 @@
     <Watch file="FormulierenViewController.cs" line="143" offsetX="516" offsetY="2130" expression="mainStack" liveUpdate="False" />
   </MonoDevelop.Ide.DebuggingService.PinnedWatches>
   <MultiItemStartupConfigurations />
+<<<<<<< Updated upstream
   <MonoDevelop.Ide.ItemProperties.DeRoo__IOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.A06C7656-D817-40CA-80E4-243ACBDF5A08" />
+=======
+  <MonoDevelop.Ide.ItemProperties.DeRoo__IOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.2C4C37E2-67DB-490E-867E-A9CB096B0080" />
+>>>>>>> Stashed changes
 </Properties>

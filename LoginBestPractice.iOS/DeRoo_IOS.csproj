@@ -164,6 +164,10 @@
       <DependentUpon>FormulierInhoudViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="reachability.cs" />
+    <Compile Include="Modal.cs" />
+    <Compile Include="Modal.designer.cs">
+      <DependentUpon>Modal.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\de-roo.png" />
