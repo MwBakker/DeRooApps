@@ -1,6 +1,6 @@
 using System;
-using UIKit;
 using DeRoo_iOS;
+using UIKit;
 using System.Threading;
 using System.IO;
 
@@ -18,11 +18,7 @@ namespace LoginBestPractice.iOS
 			base.ViewDidLoad();
 			DataStorage dataStorage = new DataStorage();
 			dataStorage.refresh();
-<<<<<<< Updated upstream
 			Thread.Sleep(2000);
-=======
-			Thread.Sleep(4000);
->>>>>>> Stashed changes
 			RootObject formData = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.forms);
 			int hoogteVanButtons = 20;
 
@@ -86,6 +82,11 @@ namespace LoginBestPractice.iOS
 				// ViewController //
 				FormulierInhoudViewController formulierInhoudController = Storyboard.InstantiateViewController("FormulierInhoud") as FormulierInhoudViewController;
 				formulierInhoudController.Title = formulierNaam;
+<<<<<<< HEAD
+				formulierInhoudController.setCatAndQuest(formulierID);
+				//formulierInhoudController.View.BackgroundColor = UIColor.White;
+				NavigationController.PushViewController(formulierInhoudController, true);
+=======
 				formulierInhoudController.View.BackgroundColor = UIColor.White;
 				NavigationController.PushViewController(formulierInhoudController, true);
 				RootObject dataCategorie = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.categories);
@@ -161,6 +162,11 @@ namespace LoginBestPractice.iOS
 										//Modal modal = new Modal(Handle);
 										UIViewController modal = Storyboard.InstantiateViewController("modalVraag");
 										PresentViewController(modal, animated: true, completionHandler: null);
+										var newVC = new UIViewController()
+										{
+											ModalPresentationStyle = UIModalPresentationStyle.FormSheet,
+											ModalTransitionStyle = UIModalTransitionStyle.CoverVertical
+										};
 									}
 									else
 									{
@@ -199,18 +205,9 @@ namespace LoginBestPractice.iOS
 				scrollView.ContentSize = mainStack.Frame.Size;
 				scrollView.AddSubview(btn_verzend);
 				formulierInhoudController.View.AddSubview(scrollView);
+>>>>>>> origin/master
 			};
 			return formulierButton;
-		}
-
-		private nfloat setStackHeight(UIStackView stackIn, string type)
-		{
-			nfloat hoogte = 0.0f;
-			foreach (UIView subView in stackIn.ArrangedSubviews)
-			{
-				hoogte += subView.Frame.Height;
-			}
-			return hoogte;
 		}
 	}
 }

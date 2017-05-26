@@ -168,6 +168,10 @@
     <Compile Include="Modal.designer.cs">
       <DependentUpon>Modal.cs</DependentUpon>
     </Compile>
+    <Compile Include="ToolboxInhoudViewController.cs" />
+    <Compile Include="ToolboxInhoudViewController.designer.cs">
+      <DependentUpon>ToolboxInhoudViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\de-roo.png" />
