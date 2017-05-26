@@ -30,8 +30,8 @@
       <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
       <Optimize>false</Optimize>
     </_BundleResourceWithLogicalName>
-    <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3/ibtool/MainStoryboard.storyboardc/522-view-524.nib">
-      <LogicalName>MainStoryboard.storyboardc/522-view-524.nib</LogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3/ibtool/MainStoryboard.storyboardc/2606-view-2607.nib">
+      <LogicalName>MainStoryboard.storyboardc/2606-view-2607.nib</LogicalName>
       <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
       <Optimize>false</Optimize>
     </_BundleResourceWithLogicalName>
@@ -57,6 +57,16 @@
     </_BundleResourceWithLogicalName>
     <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3/ibtool/MainStoryboard.storyboardc/MainTabBarController.nib">
       <LogicalName>MainStoryboard.storyboardc/MainTabBarController.nib</LogicalName>
+      <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3/ibtool/MainStoryboard.storyboardc/ToolboxInhoud.nib">
+      <LogicalName>MainStoryboard.storyboardc/ToolboxInhoud.nib</LogicalName>
+      <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3/ibtool/MainStoryboard.storyboardc/Toolboxen.nib">
+      <LogicalName>MainStoryboard.storyboardc/Toolboxen.nib</LogicalName>
       <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
       <Optimize>false</Optimize>
     </_BundleResourceWithLogicalName>

@@ -24,10 +24,12 @@ namespace LoginBestPractice.iOS
 
 			int hoogteVanButtons = 20;
 
+			/*
 			for (int i = 0; i<toolboxSubjects.toolbox.Count; i++)
 			{
 				hoogteVanButtons += 40;this.View.AddSubview(createElements(toolboxSubjects.toolbox[i].toolbox_id, toolboxSubjects.toolbox[i].toolbox_onderwerp, hoogteVanButtons));
 			}
+			*/
 
 			this.NavigationItem.SetRightBarButtonItem(
 			new UIBarButtonItem(UIImage.FromFile("logouttemp.png"), UIBarButtonItemStyle.Plain, (sender, args) =>
@@ -69,7 +71,8 @@ namespace LoginBestPractice.iOS
 				};
 			}), true);
 		}
-
+		 
+		/*
 		public UIButton createElements(string toolboxID, string toolboxNaam, int hoogteVanButtons)
 		{
 			RootObject toolboxElements = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.toolboxSubjects);
@@ -83,8 +86,7 @@ namespace LoginBestPractice.iOS
 					formulierButton.Frame = new CoreGraphics.CGRect(0, hoogteVanButtons, this.View.Frame.Size.Width, 50);
 				}
 			}
-
-
 		}
+		*/
 	}
 }

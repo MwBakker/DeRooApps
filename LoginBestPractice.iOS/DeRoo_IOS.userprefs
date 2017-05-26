@@ -1,54 +1,20 @@
 ﻿<Properties StartupConfiguration="{84563AF5-67F4-46D6-B49C-BF8D718F3C64}|Default">
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  <MonoDevelop.Ide.Workbench ActiveDocument="FormulierInhoudViewController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ToolboxViewController.cs">
     <Files>
-      <File FileName="FormulierenViewController.cs" Line="89" Column="1" />
-      <File FileName="Modal.cs" Line="12" Column="1" />
+      <File FileName="FormulierenViewController.cs" Line="205" Column="59" />
+      <File FileName="Modal.cs" Line="1" Column="1" />
       <File FileName="MainStoryboard.storyboard" />
-      <File FileName="FormulierInhoudViewController.cs" Line="15" Column="5" />
-=======
-=======
->>>>>>> origin/master
-=======
->>>>>>> origin/master
-  <MonoDevelop.Ide.Workbench ActiveDocument="FormulierenViewController.cs">
-    <Files>
-      <File FileName="FormulierenViewController.cs" Line="207" Column="27" />
-      <File FileName="MainStoryboard.storyboard" />
-      <File FileName="ToolboxViewController.cs" Line="84" Column="6" />
-      <File FileName="LoginPageViewController.cs" Line="1" Column="1" />
-      <File FileName="DataStorage.cs" Line="199" Column="21" />
-      <File FileName="DatabaseData.cs" Line="54" Column="28" />
-      <File FileName="FormulierInhoudViewController.cs" Line="1" Column="1" />
-      <File FileName="ToolboxInhoudViewController.cs" Line="1" Column="1" />
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> origin/master
-=======
->>>>>>> origin/master
-=======
->>>>>>> origin/master
+      <File FileName="FormulierInhoudViewController.cs" Line="18" Column="4" />
+      <File FileName="ToolboxViewController.cs" Line="73" Column="19" />
     </Files>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="FormulierenViewController.cs" line="143" offsetX="516" offsetY="2130" expression="mainStack" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
   <MultiItemStartupConfigurations />
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  <MonoDevelop.Ide.ItemProperties.DeRoo__IOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.2C4C37E2-67DB-490E-867E-A9CB096B0080" />
-=======
-  <MonoDevelop.Ide.ItemProperties.DeRoo__IOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.C9282889-9998-40D2-9742-B97198703E25" />
->>>>>>> origin/master
-=======
-  <MonoDevelop.Ide.ItemProperties.DeRoo__IOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.C9282889-9998-40D2-9742-B97198703E25" />
->>>>>>> origin/master
-=======
-  <MonoDevelop.Ide.ItemProperties.DeRoo__IOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.C9282889-9998-40D2-9742-B97198703E25" />
->>>>>>> origin/master
+  <MonoDevelop.Ide.ItemProperties.DeRoo__IOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget" />
 </Properties>
