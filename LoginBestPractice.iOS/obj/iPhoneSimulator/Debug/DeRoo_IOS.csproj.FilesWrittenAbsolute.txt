@@ -36,6 +36,9 @@
 /Users/deroo/Documents/DeRooIOS-master/LoginBestPractice.iOS/bin/iPhoneSimulator/Debug/Rox.Xamarin.Camera.Portable.dll
 <<<<<<< Updated upstream
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> origin/master
+=======
 >>>>>>> origin/master
 =======
 >>>>>>> origin/master
@@ -103,6 +106,9 @@
 /Users/deroo/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone8.4-10.3/optimized/
 >>>>>>> Stashed changes
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> origin/master
+=======
 >>>>>>> origin/master
 =======
 >>>>>>> origin/master

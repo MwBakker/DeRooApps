@@ -1,6 +1,7 @@
 ﻿<Properties StartupConfiguration="{84563AF5-67F4-46D6-B49C-BF8D718F3C64}|Default">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workbench ActiveDocument="FormulierInhoudViewController.cs">
     <Files>
       <File FileName="FormulierenViewController.cs" Line="89" Column="1" />
@@ -8,6 +9,8 @@
       <File FileName="MainStoryboard.storyboard" />
       <File FileName="FormulierInhoudViewController.cs" Line="15" Column="5" />
 =======
+=======
+>>>>>>> origin/master
 =======
 >>>>>>> origin/master
   <MonoDevelop.Ide.Workbench ActiveDocument="FormulierenViewController.cs">
@@ -21,6 +24,9 @@
       <File FileName="FormulierInhoudViewController.cs" Line="1" Column="1" />
       <File FileName="ToolboxInhoudViewController.cs" Line="1" Column="1" />
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> origin/master
+=======
 >>>>>>> origin/master
 =======
 >>>>>>> origin/master
@@ -34,7 +40,11 @@
   <MultiItemStartupConfigurations />
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   <MonoDevelop.Ide.ItemProperties.DeRoo__IOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.2C4C37E2-67DB-490E-867E-A9CB096B0080" />
+=======
+  <MonoDevelop.Ide.ItemProperties.DeRoo__IOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.C9282889-9998-40D2-9742-B97198703E25" />
+>>>>>>> origin/master
 =======
   <MonoDevelop.Ide.ItemProperties.DeRoo__IOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.C9282889-9998-40D2-9742-B97198703E25" />
 >>>>>>> origin/master
