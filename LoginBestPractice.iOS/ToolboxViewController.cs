@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 using Foundation;
 using System;
 using UIKit;
@@ -90,3 +91,5 @@ namespace LoginBestPractice.iOS
 		*/
 	}
 }
+=======
+>>>>>>> Stashed changes

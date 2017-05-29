@@ -151,10 +151,6 @@
     <Compile Include="HandboekViewController.designer.cs">
       <DependentUpon>HandboekViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="ToolboxViewController.cs" />
-    <Compile Include="ToolboxViewController.designer.cs">
-      <DependentUpon>ToolboxViewController.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormulierenViewController.cs" />
     <Compile Include="FormulierenViewController.designer.cs">
       <DependentUpon>FormulierenViewController.cs</DependentUpon>
@@ -168,9 +164,17 @@
     <Compile Include="Modal.designer.cs">
       <DependentUpon>Modal.cs</DependentUpon>
     </Compile>
-    <Compile Include="ToolboxInhoudViewController.cs" />
-    <Compile Include="ToolboxInhoudViewController.designer.cs">
-      <DependentUpon>ToolboxInhoudViewController.cs</DependentUpon>
+    <Compile Include="ToolboxViewController_.cs" />
+    <Compile Include="ToolboxViewController_.designer.cs">
+      <DependentUpon>ToolboxViewController_.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ToolboxNextViewController.cs" />
+    <Compile Include="ToolboxNextViewController.designer.cs">
+      <DependentUpon>ToolboxNextViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeelnemersTableView.cs" />
+    <Compile Include="DeelnemersTableView.designer.cs">
+      <DependentUpon>DeelnemersTableView.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -194,10 +198,12 @@
     <BundleResource Include="Resources\Xamagon.png" />
     <BundleResource Include="Resources\Xamagon%402x.png" />
     <BundleResource Include="Resources\Xamagon%403x.png" />
-    <BundleResource Include="handboek.pdf" />
+    <BundleResource Include="Toolboxen\handboek.pdf" />
+    <BundleResource Include="Resources\add_person_to_toolbox.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="PDF\" />
+    <Folder Include="Toolboxen\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="packages\Xamarin.Swift3.3.0.1\build\Xamarin.Swift3.targets" Condition="Exists('packages\Xamarin.Swift3.3.0.1\build\Xamarin.Swift3.targets')" />
