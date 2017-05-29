@@ -35,16 +35,14 @@ namespace LoginBestPractice.iOS
 					catEnVraag.Axis = UILayoutConstraintAxis.Vertical;
 					catEnVraag.TranslatesAutoresizingMaskIntoConstraints = true;
 					catEnVraag.Distribution = UIStackViewDistribution.Fill;
-					catEnVraag.Axis = UILayoutConstraintAxis.Vertical;
 					catEnVraag.LayoutMargins = new UIEdgeInsets(0, 0, 30, 0);
 					catEnVraag.LayoutMarginsRelativeArrangement = true;
-					catEnVraag.LayoutIfNeeded(); ;
 
 					// categorie // 
 					UILabel lbl_cat = new UILabel();
 					lbl_cat.ContentMode = UIViewContentMode.ScaleAspectFit;
 					lbl_cat.Text = dataCategorie.categorien[i].categorie_text;
-					// lbl_cat.LayoutMargins = new UIEdgeInsets(0, 30, 0, 30);
+					lbl_cat.LayoutMargins = new UIEdgeInsets(0, 30, 0, 30);
 					lbl_cat.TextColor = new UIColor(red: 0.13f, green: 0.49f, blue: 0.21f, alpha: 1.0f);
 					lbl_cat.MinimumFontSize = 12f;
 					catEnVraag.AddArrangedSubview(lbl_cat);
@@ -85,7 +83,7 @@ namespace LoginBestPractice.iOS
 									;
 									btn_foto.Hidden = false;
 									// UPDATE main VIEW // 
-									catEnVraag.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, 175);
+									catEnVraag.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, (catEnVraag.Frame.Height + 25));
 									mainStack.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, (mainStack.Frame.Height + 25));
 									Modal modal = Storyboard.InstantiateViewController("modalVraag") as Modal;
 									PresentViewController(modal, true, null);
@@ -96,12 +94,12 @@ namespace LoginBestPractice.iOS
 									mainStack.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, (mainStack.Frame.Height - 25));
 								}
 							};
-
-							UIView hrLine = new UIView();
-							hrLine.BackgroundColor = UIColor.Black;
-							catEnVraag.AddArrangedSubview(hrLine);
 							catEnVraag.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, 150);
 							mainStack.AddArrangedSubview(catEnVraag);
+							//UIView hrLine = new UIView();
+							//hrLine.BackgroundColor = UIColor.Black;
+							//hrLine.Frame = new CoreGraphics.CGRect(0, 0, 230, 1);
+							//catEnVraag.AddSubview(hrLine);
 						}
 					}
 					// verzendbutton //
