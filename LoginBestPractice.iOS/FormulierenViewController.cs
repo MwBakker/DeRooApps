@@ -56,10 +56,10 @@ namespace LoginBestPractice.iOS
 
 						//Wire our event handler to show the MainTabBarController after we successfully logged in.
 						loginPageViewController.OnLoginSuccess += (s, e) =>
-												{
-													var tabBarController = appDelegate.GetViewController(mainStoryboard, "MainTabBarController");
-													appDelegate.SetRootViewController(tabBarController, true);
-												};
+						{
+							var tabBarController = appDelegate.GetViewController(mainStoryboard, "MainTabBarController");
+							appDelegate.SetRootViewController(tabBarController, true);
+						};
 
 						//Set the Login Page as our RootViewController
 						appDelegate.SetRootViewController(loginPageViewController, true);
@@ -84,8 +84,6 @@ namespace LoginBestPractice.iOS
 				formulierInhoudController.Title = formulierNaam;
 				formulierInhoudController.setCatAndQuest(formulierID);
 				//formulierInhoudController.View.BackgroundColor = UIColor.White;
-				NavigationController.PushViewController(formulierInhoudController, true);
-				formulierInhoudController.View.BackgroundColor = UIColor.White;
 				NavigationController.PushViewController(formulierInhoudController, true);
 			};
 			return formulierButton;

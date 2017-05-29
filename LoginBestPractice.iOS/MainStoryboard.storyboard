@@ -285,10 +285,9 @@
                         <viewControllerLayoutGuide type="top" id="2542"/>
                         <viewControllerLayoutGuide type="bottom" id="2543"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="2546">
+                    <view key="view" contentMode="center" id="2546">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" colorSpace="calibratedWhite" white="0" alpha="0"/>
+                        <autoresizingMask key="autoresizingMask" heightSizable="YES" widthSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2561" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" text="Opmerking">
                                 <rect key="frame" x="42" y="31" width="76" height="21"/>
@@ -297,20 +296,18 @@
                                 <color key="textColor" colorSpace="calibratedRGB" red="0.086274509803921567" green="0.18823529411764706" blue="0.050980392156862744" alpha="1"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" id="2562" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" minimumFontSize="17" id="2562" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" borderStyle="line">
                                 <rect key="frame" x="48" y="60" width="223" height="80"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <color key="textColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                                 <color key="backgroundColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" id="2563" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" borderStyle="line" minimumFontSize="17" id="2563" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
                                 <rect key="frame" x="48" y="177" width="225" height="105"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <color key="textColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                                 <color key="backgroundColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="2564" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" borderStyle="line">
@@ -355,9 +352,27 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                                 </state>
+                                <connections>
+                                    <action selector="UIButton2577_TouchUpInside:" destination="2545" id="2758" eventType="touchUpInside"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2759" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                <rect key="frame" x="95" y="450" width="84" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0.11372549019607843" green="0.25098039215686274" blue="0.062745098039215685" alpha="1"/>
+                                <state key="normal" title="Annuleer" backgroundImage="green">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
+                                </state>
+                                <connections>
+                                    <action selector="UIButton2577_TouchUpInside:" destination="2761" id="2760" eventType="touchUpInside"/>
+                                </connections>
                             </button>
                         </subviews>
+                        <color key="backgroundColor" colorSpace="calibratedWhite" white="0" alpha="0"/>
                     </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="480"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2547" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

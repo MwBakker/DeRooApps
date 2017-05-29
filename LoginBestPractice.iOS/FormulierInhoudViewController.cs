@@ -96,12 +96,12 @@ namespace LoginBestPractice.iOS
 									mainStack.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, (mainStack.Frame.Height - 25));
 								}
 							};
-							catEnVraag.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, 150);
-							mainStack.AddArrangedSubview(catEnVraag);
+
 							UIView hrLine = new UIView();
 							hrLine.BackgroundColor = UIColor.Black;
-							hrLine.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, 1);
-							mainStack.Add(hrLine);
+							catEnVraag.AddArrangedSubview(hrLine);
+							catEnVraag.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, 150);
+							mainStack.AddArrangedSubview(catEnVraag);
 						}
 					}
 					// verzendbutton //
