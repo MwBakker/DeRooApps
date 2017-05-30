@@ -176,6 +176,10 @@
     <Compile Include="DeelnemersTableView.designer.cs">
       <DependentUpon>DeelnemersTableView.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormulierTableViewController.cs" />
+    <Compile Include="FormulierTableViewController.designer.cs">
+      <DependentUpon>FormulierTableViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\de-roo.png" />

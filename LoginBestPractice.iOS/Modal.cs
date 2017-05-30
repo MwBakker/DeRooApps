@@ -9,7 +9,7 @@ namespace LoginBestPractice.iOS
         public Modal (IntPtr handle) : base (handle)
         {
 			//this.View.Frame = new CoreGraphics.CGRect(0, 0, 100,100);
-			this.View.BackgroundColor = UIColor.White;
+			//this.View.BackgroundColor = UIColor.White;
 		}
     }
 }
