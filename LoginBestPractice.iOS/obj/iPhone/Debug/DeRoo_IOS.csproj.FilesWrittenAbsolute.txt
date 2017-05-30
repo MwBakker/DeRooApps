@@ -21,6 +21,7 @@
 /Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/optimized/Xamagon.png
 /Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/optimized/Xamagon@2x.png
 /Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/optimized/Xamagon@3x.png
+/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/optimized/add_person_to_toolbox.png
 /Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/optimized/
 /Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/bin/iPhone/Debug/LoginBestPractice.iOS.pdb
 /Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/bin/iPhone/Debug/LoginBestPractice.iOS.exe

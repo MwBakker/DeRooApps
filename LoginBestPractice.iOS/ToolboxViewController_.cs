@@ -51,7 +51,7 @@ namespace LoginBestPractice.iOS
 
 				//Tableview met deelnemers
 				MedewekersToolbox TableView = Storyboard.InstantiateViewController("ToolboxMedewerkers") as MedewekersToolbox;
-
+				/*
 				toolboxController.NavigationItem.SetRightBarButtonItem(new UIBarButtonItem(UIImage.FromFile("add_person_to_toolbox.png"), UIBarButtonItemStyle.Plain, (sender,args) => 
 				{
        				NavigationController.PushViewController(TableView, true);
@@ -62,12 +62,10 @@ namespace LoginBestPractice.iOS
 
 					string[] namen = new string[medewerkers.medewerkers.Count];  					for (int i = 0; i<medewerkers.medewerkers.Count; i++) 					{ 						namen[i] = medewerkers.medewerkers[i].medewerker_voornaam+ " " + medewerkers.medewerkers[i].medewerker_achternaam; 					}  					UITableView tableView;
 					tableView = new UITableView 					{ 						Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, this.View.Frame.Size.Height),
-<<<<<<< HEAD
 						//Source = new TableSource(namen) 					} ; 					this.View.AddSubview(tableView);
-						Source = new TableSource(namen) 				}; 					TableView.Add(tableView);
-=======
+						Source = new TableSource(namen)
+						/* 				}; 					TableView.Add(tableView);
 						Source = new TableSource(namen), 					}; 					TableView.Add(tableView);
->>>>>>> origin/master
     			}), true);
 
 				//Check of verbinding voor het laden van de toolbox-PDF
@@ -90,9 +88,10 @@ namespace LoginBestPractice.iOS
 					webView.ScalesPageToFit = true;
 				}
 				NavigationController.PushViewController(toolboxController, true);
+				*/
 			};
 			return toolboxButton; 		}
-
+		
 		private nfloat setHeight()
 		{
 			RootObject toolboxOnderwerpen = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.toolboxSubjects);
