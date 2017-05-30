@@ -8,27 +8,27 @@
 	<dict/>
 	<key>com.apple.ibtool.document.warnings</key>
 	<dict>
-		<key>2081</key>
+		<key>3040</key>
 		<array>
 			<dict>
 				<key>affected-objects</key>
 				<array>
-					<string>2081</string>
+					<string>3040</string>
 				</array>
 				<key>message</key>
-				<string>Prototype table cells must have reuse identifiers</string>
+				<string>“Formulier Table View Controller“ is unreachable because it has no entry points, and no identifier for runtime access via -[UIStoryboard instantiateViewControllerWithIdentifier:].</string>
 				<key>type</key>
 				<string>IBUnsupportedConfiguration</string>
 				<key>type-value</key>
 				<integer>9</integer>
 			</dict>
 		</array>
-		<key>2984</key>
+		<key>3045</key>
 		<array>
 			<dict>
 				<key>affected-objects</key>
 				<array>
-					<string>2984</string>
+					<string>3045</string>
 				</array>
 				<key>message</key>
 				<string>Prototype table cells must have reuse identifiers</string>

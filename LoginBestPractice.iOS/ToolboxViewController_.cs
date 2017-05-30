@@ -48,25 +48,16 @@ namespace LoginBestPractice.iOS
 				toolboxController.View.BackgroundColor = UIColor.White;
 
 				//Tableview met deelnemers
-				DeelnemersTableView TableView = Storyboard.InstantiateViewController("DeelnemersToolboxView") as DeelnemersTableView;
-				TableView.Title = "Deelnemers";
-				TableView.View.BackgroundColor = UIColor.White;
+				MedewekersToolbox TableView = Storyboard.InstantiateViewController("ToolboxMedewerkers") as MedewekersToolbox;
 
 				toolboxController.NavigationItem.SetRightBarButtonItem(new UIBarButtonItem(UIImage.FromFile("add_person_to_toolbox.png"), UIBarButtonItemStyle.Plain, (sender,args) => 
 				{
        				NavigationController.PushViewController(TableView, true);
 					RootObject medewerkers = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.employees);
 
-					int hoogteVanCells = 0;
-
-					for (int i = 0; i < medewerkers.medewerkers.Count; i++)
-					{
-						hoogteVanCells += 40;
-						UITableViewCell cel = new UITableViewCell();
-						cel.Frame = new CoreGraphics.CGRect(0, hoogteVanCells, this.View.Frame.Size.Width, 50);
-						cel.TextLabel.Text = "moi";
-						TableView.Add(cel);
-					}
+					string[] namen = new string[medewerkers.medewerkers.Count];  					for (int i = 0; i<medewerkers.medewerkers.Count; i++) 					{ 						namen[i] = medewerkers.medewerkers[i].medewerker_naam; 					}  					UITableView tableView;
+					tableView = new UITableView 					{ 						Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, this.View.Frame.Size.Height),
+						Source = new TableSource(namen) 					} ; 					this.View.AddSubview(tableView);
     			}), true);
 
 				//Check of verbinding voor het laden van de toolbox-PDF

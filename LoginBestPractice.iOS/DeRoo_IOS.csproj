@@ -182,6 +182,10 @@
       <DependentUpon>FormulierTableViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="FormulierenTableDataSource.cs" />
+    <Compile Include="MedewekersToolbox.cs" />
+    <Compile Include="MedewekersToolbox.designer.cs">
+      <DependentUpon>MedewekersToolbox.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\de-roo.png" />
