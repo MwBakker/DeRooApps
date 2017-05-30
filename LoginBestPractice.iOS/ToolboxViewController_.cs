@@ -6,6 +6,8 @@ using System.Threading;
 using System.IO;
 using CoreGraphics;
 using System.Collections;
+using System.Net;
+using System.Text;
 
 namespace LoginBestPractice.iOS
 {
@@ -53,15 +55,18 @@ namespace LoginBestPractice.iOS
 				toolboxController.NavigationItem.SetRightBarButtonItem(new UIBarButtonItem(UIImage.FromFile("add_person_to_toolbox.png"), UIBarButtonItemStyle.Plain, (sender,args) => 
 				{
        				NavigationController.PushViewController(TableView, true);
+					DataStorage dataStorage = new DataStorage();
+					dataStorage.refresh();
+
 					RootObject medewerkers = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.employees);
 
-					string[] namen = new string[medewerkers.medewerkers.Count];  					for (int i = 0; i<medewerkers.medewerkers.Count; i++) 					{ 						namen[i] = medewerkers.medewerkers[i].medewerker_naam; 					}  					UITableView tableView;
+					string[] namen = new string[medewerkers.medewerkers.Count];  					for (int i = 0; i<medewerkers.medewerkers.Count; i++) 					{ 						namen[i] = medewerkers.medewerkers[i].medewerker_voornaam+ " " + medewerkers.medewerkers[i].medewerker_achternaam; 					}  					UITableView tableView;
 					tableView = new UITableView 					{ 						Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, this.View.Frame.Size.Height),
-						Source = new TableSource(namen) 					} ; 					this.View.AddSubview(tableView);
+						Source = new TableSource(namen), 					}; 					TableView.Add(tableView);
     			}), true);
 
 				//Check of verbinding voor het laden van de toolbox-PDF
-				if(!Reachability.IsHostReachable("http://google.com")) 
+				if(Reachability.IsHostReachable("http://google.com")) 
 				{
 					var webView = new UIWebView(View.Bounds);
 					toolboxController.View.AddSubview(webView);
@@ -75,11 +80,10 @@ namespace LoginBestPractice.iOS
 				{
 					var webView = new UIWebView(View.Bounds);
 					toolboxController.View.AddSubview(webView);
-					var url = "https://amkapp.nl/test/pages/DeRoo/Kwaliteitshandboek%205.1%20cert.pdf";
+					var url = "http://amkapp.nl/test/toolbox/" + toolboxNaam + "/" + toolboxNaam;
 					webView.LoadRequest(new NSUrlRequest(new NSUrl(url)));
 					webView.ScalesPageToFit = true;
 				}
-
 				NavigationController.PushViewController(toolboxController, true);
 			};
 			return toolboxButton; 		}

@@ -445,7 +445,7 @@
         </scene>
         <scene sceneID="3078">
             <objects>
-                <viewController id="3079" sceneMemberID="viewController" storyboardIdentifier="ToolboxMedewerkers" customClass="MedewekersToolbox">
+                <viewController id="3079" sceneMemberID="viewController" storyboardIdentifier="ToolboxMedewerkers" customClass="MedewekersToolbox" title="Medewerkers">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3076"/>
                         <viewControllerLayoutGuide type="bottom" id="3077"/>
