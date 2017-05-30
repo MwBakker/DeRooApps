@@ -102,3 +102,4 @@
 /Users/deroo/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone9.1-10.3/optimized/Xamagon@3x.png
 /Users/deroo/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone9.1-10.3/optimized/
 /Users/deroo/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone9.1-10.3/optimized/add_person_to_toolbox.png
+/Users/deroo/Documents/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone8.4-10.3/optimized/add_person_to_toolbox.png

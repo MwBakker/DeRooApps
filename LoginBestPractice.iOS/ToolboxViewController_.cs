@@ -57,14 +57,14 @@ namespace LoginBestPractice.iOS
        				NavigationController.PushViewController(TableView, true);
 					RootObject medewerkers = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.employees);
 
-					int hoogteVanCells = 20;
+					int hoogteVanCells = 0;
 
 					for (int i = 0; i < medewerkers.medewerkers.Count; i++)
 					{
-						hoogteVanCells += 40;;
+						hoogteVanCells += 40;
 						UITableViewCell cel = new UITableViewCell();
 						cel.Frame = new CoreGraphics.CGRect(0, hoogteVanCells, this.View.Frame.Size.Width, 50);
-						cel.TextLabel.Text = medewerkers.medewerkers[i].medewerker_naam;
+						cel.TextLabel.Text = "moi";
 						TableView.Add(cel);
 					}
     			}), true);

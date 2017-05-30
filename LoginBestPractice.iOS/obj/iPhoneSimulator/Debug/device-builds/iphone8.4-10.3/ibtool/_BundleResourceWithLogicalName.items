@@ -35,6 +35,16 @@
       <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
       <Optimize>false</Optimize>
     </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/iphone8.4-10.3/ibtool/MainStoryboard.storyboardc/2980-view-2981.nib">
+      <LogicalName>MainStoryboard.storyboardc/2980-view-2981.nib</LogicalName>
+      <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/iphone8.4-10.3/ibtool/MainStoryboard.storyboardc/DeelnemersToolboxView.nib">
+      <LogicalName>MainStoryboard.storyboardc/DeelnemersToolboxView.nib</LogicalName>
+      <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
     <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/iphone8.4-10.3/ibtool/MainStoryboard.storyboardc/FormulierInhoud.nib">
       <LogicalName>MainStoryboard.storyboardc/FormulierInhoud.nib</LogicalName>
       <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>

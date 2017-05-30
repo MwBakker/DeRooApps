@@ -4,30 +4,33 @@ using UIKit;
 
 namespace LoginBestPractice.iOS
 {
-	public class TableSource
+	public class TableSource : UITableViewSource
 	{
-		protected string[] tableItems;
-		protected string cellIdentifier = "TableCell";
+		string[] TableItems;
+		string CellIdentifier = "TableCell";
 
-		public TableSource(string[] names)
+		public TableSource(string[] items)
 		{
-			tableItems = names;
+			TableItems = items;
 		}
-	
-		public override int RowsInSection(UITableView tableview, int section)
+
+		public override nint RowsInSection(UITableView tableview, nint section)
 		{
-			return tableItems.Length;
+			return TableItems.Length;
 		}
 
 		public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
 		{
-			// request a recycled cell to save memory
-			UITableViewCell cell = tableView.DequeueReusableCell(cellIdentifier);
-			// if there are no cells to reuse, create a new one
+			UITableViewCell cell = tableView.DequeueReusableCell(CellIdentifier);
+			string item = TableItems[indexPath.Row];
+
+			//---- if there are no cells to reuse, create a new one
 			if (cell == null)
-				cell = new UITableViewCell(UITableViewCellStyle.Default, cellIdentifier);
-			cell.TextLabel.Text = tableItems[indexPath.Row];
-			return cel;
+			{ cell = new UITableViewCell(UITableViewCellStyle.Default, CellIdentifier); }
+
+			cell.TextLabel.Text = item;
+
+			return cell;
 		}
 	}
 }
