@@ -1,6 +1,7 @@
 using Foundation;
 using System;
 using UIKit;
+using DeRoo_iOS;
 
 namespace LoginBestPractice.iOS
 {
@@ -9,5 +10,10 @@ namespace LoginBestPractice.iOS
         public DeelnemersTableView (IntPtr handle) : base (handle)
         {
         }
+
+		public override void ViewDidLoad()
+		{
+			base.ViewDidLoad();
+		}
     }
 }

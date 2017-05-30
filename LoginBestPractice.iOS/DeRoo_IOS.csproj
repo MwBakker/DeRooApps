@@ -176,15 +176,14 @@
     <Compile Include="DeelnemersTableView.designer.cs">
       <DependentUpon>DeelnemersTableView.cs</DependentUpon>
     </Compile>
-    <Compile Include="TableSource.cs" />
-    <Compile Include="FormulierTableViewController.cs" />
-    <Compile Include="FormulierTableViewController.designer.cs">
-      <DependentUpon>FormulierTableViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormulierenTableDataSource.cs" />
     <Compile Include="MedewekersToolbox.cs" />
     <Compile Include="MedewekersToolbox.designer.cs">
       <DependentUpon>MedewekersToolbox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormulierTable\FormulierenTableViewSource.cs" />
+    <Compile Include="FormulierTable\FormulierTableViewController.cs" />
+    <Compile Include="FormulierTable\FormulierTableViewController.designer.cs">
+      <DependentUpon>FormulierTableViewController.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -214,6 +213,7 @@
   <ItemGroup>
     <Folder Include="PDF\" />
     <Folder Include="Toolboxen\" />
+    <Folder Include="FormulierTable\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="packages\Xamarin.Swift3.3.0.1\build\Xamarin.Swift3.targets" Condition="Exists('packages\Xamarin.Swift3.3.0.1\build\Xamarin.Swift3.targets')" />

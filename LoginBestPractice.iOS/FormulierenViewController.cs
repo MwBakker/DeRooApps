@@ -80,11 +80,15 @@ namespace LoginBestPractice.iOS
 			formulierButton.TouchDown += delegate
 			{
 				// ViewController //
-				FormulierInhoudViewController formulierInhoudController = Storyboard.InstantiateViewController("FormulierInhoud") as FormulierInhoudViewController;
-				formulierInhoudController.Title = formulierNaam;
-				formulierInhoudController.setCatAndQuest(formulierID);
+				//FormulierInhoudViewController formulierInhoudController = Storyboard.InstantiateViewController("FormulierInhoud") as FormulierInhoudViewController;
+				FormulierTableViewController formulierTableViewController = Storyboard.InstantiateViewController("FormulierTable") as FormulierTableViewController;
+				formulierTableViewController.Title = formulierNaam;
+				formulierTableViewController.setCatAndQuest(formulierID);
+				//formulierInhoudController.Title = formulierNaam;
+				//formulierInhoudController.setCatAndQuest(formulierID);
 				//formulierInhoudController.View.BackgroundColor = UIColor.White;
-				NavigationController.PushViewController(formulierInhoudController, true);
+				//NavigationController.PushViewController(formulierInhoudController, true);
+				NavigationController.PushViewController(formulierTableViewController, true);
 			};
 			return formulierButton;
 		}
