@@ -176,14 +176,12 @@
     <Compile Include="DeelnemersTableView.designer.cs">
       <DependentUpon>DeelnemersTableView.cs</DependentUpon>
     </Compile>
-<<<<<<< HEAD
     <Compile Include="TableSource.cs" />
-=======
     <Compile Include="FormulierTableViewController.cs" />
     <Compile Include="FormulierTableViewController.designer.cs">
       <DependentUpon>FormulierTableViewController.cs</DependentUpon>
     </Compile>
->>>>>>> origin/master
+    <Compile Include="FormulierenTableDataSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\de-roo.png" />

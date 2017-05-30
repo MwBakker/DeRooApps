@@ -1,31 +1,7 @@
 ﻿<Properties StartupConfiguration="{84563AF5-67F4-46D6-B49C-BF8D718F3C64}|Default">
-<<<<<<< HEAD
-  <MonoDevelop.Ide.Workbench ActiveDocument="TableSource.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="DeRoo_IOS.csproj">
     <Files>
-      <File FileName="FormulierenViewController.cs" Line="27" Column="11" />
-      <File FileName="FormulierInhoudViewController.cs" Line="16" Column="28" />
-      <File FileName="ToolboxController.cs" Line="90" Column="4" />
-      <File FileName="ToolboxInhoudViewController.cs" Line="1" Column="1" />
-      <File FileName="MainStoryboard.storyboard" />
-      <File FileName="AppDelegate.cs" Line="78" Column="52" />
-      <File FileName="ToolboxViewController_.cs" Line="117" Column="16" />
-      <File FileName="LoginPageViewController.cs" Line="1" Column="1" />
-      <File FileName="DataStorage.cs" Line="222" Column="89" />
-      <File FileName="Main.cs" Line="17" Column="1" />
-      <File FileName="ToolboxNextViewController.cs" Line="1" Column="1" />
-      <File FileName="HandboekViewController.cs" Line="19" Column="5" />
-      <File FileName="DeelnemersTableView.cs" Line="1" Column="1" />
-      <File FileName="DatabaseData.cs" Line="1" Column="1" />
-      <File FileName="TableSource.cs" Line="33" Column="15" />
-=======
-  <MonoDevelop.Ide.Workbench ActiveDocument="FormulierTableViewController.cs">
-    <Files>
-      <File FileName="TableSource.cs" Line="31" Column="3" />
-      <File FileName="FormulierInhoudViewController.cs" Line="21" Column="4" />
-      <File FileName="MainStoryboard.storyboard" />
-      <File FileName="Modal.cs" Line="12" Column="6" />
-      <File FileName="FormulierTableViewController.cs" Line="1" Column="1" />
->>>>>>> origin/master
+      <File FileName="DeRoo_IOS.csproj" Line="25" Column="44" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
@@ -34,9 +10,5 @@
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
-<<<<<<< HEAD
-  <MonoDevelop.Ide.ItemProperties.DeRoo__IOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.C9282889-9998-40D2-9742-B97198703E25" />
-=======
-  <MonoDevelop.Ide.ItemProperties.DeRoo__IOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.2C4C37E2-67DB-490E-867E-A9CB096B0080" />
->>>>>>> origin/master
+  <MonoDevelop.Ide.ItemProperties.DeRoo__IOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.21935A3D-F442-4E70-BDB0-2B7A59B79398" />
 </Properties>
