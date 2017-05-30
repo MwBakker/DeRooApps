@@ -62,8 +62,12 @@ namespace LoginBestPractice.iOS
 
 					string[] namen = new string[medewerkers.medewerkers.Count];  					for (int i = 0; i<medewerkers.medewerkers.Count; i++) 					{ 						namen[i] = medewerkers.medewerkers[i].medewerker_voornaam+ " " + medewerkers.medewerkers[i].medewerker_achternaam; 					}  					UITableView tableView;
 					tableView = new UITableView 					{ 						Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, this.View.Frame.Size.Height),
+<<<<<<< HEAD
 						//Source = new TableSource(namen) 					} ; 					this.View.AddSubview(tableView);
 						Source = new TableSource(namen) 				}; 					TableView.Add(tableView);
+=======
+						Source = new TableSource(namen), 					}; 					TableView.Add(tableView);
+>>>>>>> origin/master
     			}), true);
 
 				//Check of verbinding voor het laden van de toolbox-PDF
