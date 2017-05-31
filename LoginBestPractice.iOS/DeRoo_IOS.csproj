@@ -185,6 +185,7 @@
     <Compile Include="FormulierTable\FormulierTableViewController.designer.cs">
       <DependentUpon>FormulierTableViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="TableSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\de-roo.png" />
