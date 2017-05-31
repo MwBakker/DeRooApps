@@ -39,7 +39,6 @@ namespace LoginBestPractice.iOS
 					nfloat currentLabelYPosition = 0; 
 					// cat + vraag // 
 					UIView catEnVraag = new UIView();
-					catEnVraag.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, 150);
 
 					// categorie // 
 					UILabel lbl_cat = new UILabel();
@@ -56,6 +55,7 @@ namespace LoginBestPractice.iOS
 					{
 						if (dataVraag.vragen[j].categorie_id == dataCategorie.categorien[i].categorie_id)
 						{
+							//catEnVraag.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, (catEnVraag.Frame.Height + 25));
 							// vraag // 
 							UILabel lbl_vraag = new UILabel();
 							lbl_vraag.Text = dataVraag.vragen[j].vraag_text;
@@ -100,7 +100,7 @@ namespace LoginBestPractice.iOS
 									btn_foto.Hidden = true;
 								}
 							};
-							//catEnVraag.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, 150);
+							catEnVraag.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, currentLabelYPosition);
 							views.Add(catEnVraag);
 						}
 					}
@@ -116,10 +116,10 @@ namespace LoginBestPractice.iOS
 			}
 		}
 
-		private nfloat setStackHeight(UIStackView stackIn, string type)
+		private nfloat setStackHeight(UIView stackIn)
 		{
 			nfloat hoogte = 0.0f;
-			foreach (UIView subView in stackIn.ArrangedSubviews)
+			foreach (UIView subView in stackIn.Subviews)
 			{
 				hoogte += subView.Frame.Height;
 			}

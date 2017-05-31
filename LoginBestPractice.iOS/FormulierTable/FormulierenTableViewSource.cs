@@ -34,9 +34,9 @@ namespace LoginBestPractice.iOS
 
 		public override nfloat GetHeightForRow(UITableView tableView, NSIndexPath indexPath)
 		{
-			nfloat someHeight = 200;
+			nfloat viewHoogte = views[indexPath.Row].Frame.Height;
 
-			return someHeight;
+			return viewHoogte;
 		}
 	}
 }
