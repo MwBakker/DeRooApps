@@ -25,8 +25,6 @@ namespace LoginBestPractice.iOS
 		public override void ViewDidLoad() 
 		{ 
 			base.ViewDidLoad();
-			//List<String> testMeuk = new List<String> {"aap","noot","mies","meuk"};
-			formulierTableView.Source = new FormulierenTableViewSource(views);
             this.View.BackgroundColor = UIColor.White;
 		}
 
@@ -46,7 +44,7 @@ namespace LoginBestPractice.iOS
 					currentLabelYPosition += lbl_cat.Frame.Bottom;
 					lbl_cat.ContentMode = UIViewContentMode.ScaleAspectFit;
 					lbl_cat.Text = dataCategorie.categorien[i].categorie_text;
-					lbl_cat.LayoutMargins = new UIEdgeInsets(0, 15, 0, 15);
+					//lbl_cat.LayoutMargins = new UIEdgeInsets(0, 15, 0, 15);
 					lbl_cat.TextColor = new UIColor(red: 0.13f, green: 0.49f, blue: 0.21f, alpha: 1.0f);
 					lbl_cat.MinimumFontSize = 12f;
 					catEnVraag.AddSubview(lbl_cat);
@@ -78,20 +76,22 @@ namespace LoginBestPractice.iOS
 
 							// foto-button // 
 							UIButton btn_foto = new UIButton();
+							btn_foto.Frame = new CoreGraphics.CGRect(0, currentLabelYPosition, this.View.Frame.Size.Width, 35);
 							btn_foto.Hidden = true;
 							btn_foto.BackgroundColor = new UIColor(red: 0.13f, green: 0.49f, blue: 0.21f, alpha: 1.0f);
 							btn_foto.SetTitle("Maak foto van situatie", UIControlState.Normal);
 							btn_foto.TouchDown += delegate
 							{
 							};
-							//catEnVraag.AddSubview(btn_foto);
+							catEnVraag.AddSubview(btn_foto);
 							opties.ValueChanged += (sender, e) =>
 							{
 								if (opties.SelectedSegment == 1)
 								{
 									btn_foto.Hidden = false;
 									// UPDATE main VIEW // 
-									catEnVraag.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, (catEnVraag.Frame.Height + 25));
+									currentLabelYPosition += btn_foto.Frame.Size.Height;
+									catEnVraag.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, (catEnVraag.Frame.Height + btn_foto.Frame.Size.Height));
 									Modal modal = Storyboard.InstantiateViewController("modalVraag") as Modal;
 									PresentViewController(modal, true, null);
 								}
@@ -100,8 +100,6 @@ namespace LoginBestPractice.iOS
 									btn_foto.Hidden = true;
 								}
 							};
-							catEnVraag.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, currentLabelYPosition);
-							views.Add(catEnVraag);
 						}
 					}
 					// verzendbutton //
@@ -112,8 +110,11 @@ namespace LoginBestPractice.iOS
 					{
 						
 					};
+					catEnVraag.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, (currentLabelYPosition + 15));
+					views.Add(catEnVraag);
 				}
 			}
+			formulierTableView.Source = new FormulierenTableViewSource(views);
 		}
 
 		private nfloat setStackHeight(UIView stackIn)

@@ -98,8 +98,6 @@ namespace LoginBestPractice.iOS
 									mainStack.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, (mainStack.Frame.Height - 25));
 								}
 							};
-							mainStack.AddArrangedSubview(catEnVraag);
-
 							//UIView hrLine = new UIView();
 							//hrLine.BackgroundColor = UIColor.Black;
 							//hrLine.Frame = new CoreGraphics.CGRect(0, 0, 230, 1);
@@ -120,6 +118,7 @@ namespace LoginBestPractice.iOS
 							}
 						}
 					};
+						mainStack.AddArrangedSubview(catEnVraag);
 					// mainStack hoogte //
 					nfloat mainStackHoogte = setStackHeight(mainStack, "mainStack");
 					mainStack.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, (mainStackHoogte + 60));

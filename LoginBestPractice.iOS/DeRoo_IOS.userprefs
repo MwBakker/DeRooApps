@@ -1,21 +1,19 @@
 ﻿<Properties StartupConfiguration="{84563AF5-67F4-46D6-B49C-BF8D718F3C64}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="FormulierInhoudViewController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MainStoryboard.storyboard">
     <Files>
-      <File FileName="FormulierTable/FormulierenTableViewSource.cs" Line="37" Column="25" />
-      <File FileName="FormulierTable/FormulierTableViewController.cs" Line="122" Column="47" />
-      <File FileName="FormulierenViewController.cs" Line="22" Column="1" />
-      <File FileName="ToolboxViewController_.cs" Line="127" Column="8" />
-      <File FileName="TableSource.cs" Line="35" Column="2" />
-      <File FileName="FormulierInhoudViewController.cs" Line="1" Column="1" />
+      <File FileName="FormulierTable/FormulierenTableViewSource.cs" Line="25" Column="39" />
+      <File FileName="FormulierTable/FormulierTableViewController.cs" Line="97" Column="10" />
+      <File FileName="FormulierenViewController.cs" Line="87" Column="5" />
+      <File FileName="ToolboxViewController_.cs" Line="114" Column="6" />
+      <File FileName="Main.cs" Line="17" Column="1" />
+      <File FileName="MainStoryboard.storyboard" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/deroo/Documents/DeRooIOS-master/LoginBestPractice.iOS/FormulierTable/FormulierTableViewController.cs" relfile="FormulierTable/FormulierTableViewController.cs" line="104" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.DeRoo__IOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.C9282889-9998-40D2-9742-B97198703E25" />
+  <MonoDevelop.Ide.ItemProperties.DeRoo__IOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.2C4C37E2-67DB-490E-867E-A9CB096B0080" />
 </Properties>

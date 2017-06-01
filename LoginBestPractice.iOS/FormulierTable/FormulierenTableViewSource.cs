@@ -22,6 +22,7 @@ namespace LoginBestPractice.iOS
 			// nieuwe cell
 			var cell = new UITableViewCell(UITableViewCellStyle.Default, "");
 			cell.ContentView.AddSubview(views[indexPath.Row]);
+			//cell.BackgroundColor = UIColor.Blue;
 			//cell.TextLabel.Text = test[indexPath.Row];
 			return cell; 
 		}
@@ -34,8 +35,7 @@ namespace LoginBestPractice.iOS
 
 		public override nfloat GetHeightForRow(UITableView tableView, NSIndexPath indexPath)
 		{
-			nfloat viewHoogte = views[indexPath.Row].Frame.Height;
-
+			nfloat viewHoogte = (views[indexPath.Row].Frame.Height);
 			return viewHoogte;
 		}
 	}
