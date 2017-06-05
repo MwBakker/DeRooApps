@@ -63,7 +63,7 @@ namespace LoginBestPractice.iOS
 							UILabel lbl_vraag = new UILabel();
 							lbl_vraag.Text = dataVraag.vragen[j].vraag_text;
 							lbl_vraag.Font = UIFont.FromName("Helvetica-Bold", 12f);
-							lbl_vraag.Frame = new CoreGraphics.CGRect(5, 0, 300, 35);
+							lbl_vraag.Frame = new CoreGraphics.CGRect((this.View.Frame.Size.Width * (1 - 0.98)), 0, (this.View.Frame.Size.Width * 0.96), 35);
 							containerElementPos += lbl_vraag.Frame.Bottom;
 							lbl_vraag.TextColor = deRooGroen; 
 							lbl_vraag.AdjustsFontSizeToFitWidth = true;
@@ -71,7 +71,7 @@ namespace LoginBestPractice.iOS
 
 							// opties //
 							UISegmentedControl opties = new UISegmentedControl();
-							opties.Frame = new CoreGraphics.CGRect((this.View.Frame.Size.Width / 2), containerElementPos, (this.View.Frame.Size.Width * 0.85), 30);
+							opties.Frame = new CoreGraphics.CGRect((this.View.Frame.Size.Width * (1 - 0.925)), containerElementPos, (this.View.Frame.Size.Width * 0.85), 30);
 							containerElementPos += opties.Frame.Bottom;
 							opties.InsertSegment("Akkoord", 0, false);
 							opties.InsertSegment("Niet akkoord", 1, false);

@@ -6,9 +6,9 @@ namespace LoginBestPractice.iOS
 {
     public partial class Modal : UIViewController
     {
-		string opmerking;
-		string actie;
-		string persoon;
+		string opmerking { get; set; };
+		string actie { get; set; };
+		string persoon { get; set; };
 		DateTime date;  
 
 		public Modal (IntPtr handle) : base (handle)	
@@ -31,7 +31,8 @@ namespace LoginBestPractice.iOS
 
 		partial void btn_annuleer_TouchUpInside(UIButton sender)
 		{
-			// Laat controller verdwijnen
+			// Laat controller verdwijnen //
+			// test
 			throw new NotImplementedException();
 		}
 	}

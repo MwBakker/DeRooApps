@@ -341,6 +341,7 @@
                                         </state>
                                         <connections>
                                             <action selector="UIButton2577_TouchUpInside:" destination="2761" id="2760" eventType="touchUpInside"/>
+                                            <action selector="btn_annuleer_TouchUpInside:" destination="2545" id="3202" eventType="touchDown"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2577" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
