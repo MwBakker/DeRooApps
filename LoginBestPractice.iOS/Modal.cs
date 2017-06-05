@@ -5,11 +5,10 @@ using UIKit;
 namespace LoginBestPractice.iOS
 {
     public partial class Modal : UIViewController
-    {
-		string opmerking { get; set; };
-		string actie { get; set; };
-		string persoon { get; set; };
-		DateTime date;  
+	{
+		private string opmerking;
+		private string actie;
+		private string persoon;
 
 		public Modal (IntPtr handle) : base (handle)	
         {
@@ -34,6 +33,21 @@ namespace LoginBestPractice.iOS
 			// Laat controller verdwijnen //
 			// test
 			throw new NotImplementedException();
+		}
+
+		string Opmerking
+		{
+			get { return opmerking; }
+		}
+
+		string Actie
+		{
+			get { return actie; }
+		}
+
+		string Persoon
+	    {
+			get { return persoon; }
 		}
 	}
 }
