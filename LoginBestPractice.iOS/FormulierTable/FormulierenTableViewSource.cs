@@ -22,7 +22,7 @@ namespace LoginBestPractice.iOS
 			// nieuwe cell
 			var cell = new UITableViewCell(UITableViewCellStyle.Default, "");
 			cell.ContentView.AddSubview(views[indexPath.Row]);
-			//cell.BackgroundColor = UIColor.Blue;
+			cell.ImageView.Frame = new CoreGraphics.CGRect(0, 0, 10, 10);
 			//cell.TextLabel.Text = test[indexPath.Row];
 			return cell; 
 		}
