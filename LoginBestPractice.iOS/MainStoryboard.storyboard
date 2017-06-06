@@ -378,6 +378,8 @@
                         <outlet property="txtF_opmerking" destination="2562" id="name-outlet-2562"/>
                         <outlet property="txtF_actie" destination="2563" id="name-outlet-2563"/>
                         <outlet property="txtF_doorWie" destination="2564" id="name-outlet-2564"/>
+                        <outlet property="dt_datum" destination="3201" id="name-outlet-3201"/>
+                        <outlet property="modalView" destination="3008" id="name-outlet-3008"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2547" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -433,7 +435,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="3044" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" showsHorizontalScrollIndicator="NO" separatorStyle="default">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="495"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <autoresizingMask key="autoresizingMask" heightSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -448,11 +450,31 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <color key="separatorColor" colorSpace="calibratedWhite" white="0" alpha="1"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3305" translatesAutoresizingMaskIntoConstraints="NO" key="tableFooterView">
+                                    <rect key="frame" x="0.0" y="443" width="320" height="37"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" colorSpace="calibratedRGB" red="0.996078431372549" green="0.8784313725490196" blue="0.0392156862745098" alpha="1"/>
+                                    <color key="tintColor" colorSpace="calibratedWhite" white="0" alpha="1"/>
+                                    <size key="titleShadowOffset" width="0" height="0"/>
+                                    <state key="normal" title="Verzend formulier">
+                                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute keyPath="layer.cornerRadius" type="number">
+                                            <real key="value" value="3"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="btn_verzendFormulier_TouchUpInside:" destination="3040" id="3329" eventType="touchDown"/>
+                                    </connections>
+                                </button>
                             </tableView>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="formulierTableView" destination="3044" id="name-outlet-3044"/>
+                        <outlet property="btn_verzendFormulier" destination="3305" id="name-outlet-3305"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3042" userLabel="First Responder" sceneMemberID="firstResponder"/>

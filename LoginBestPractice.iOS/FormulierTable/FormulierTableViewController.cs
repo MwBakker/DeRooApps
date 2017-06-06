@@ -19,15 +19,16 @@ namespace LoginBestPractice.iOS
 		public FormulierTableViewController (IntPtr handle) : base (handle)
         {
 			views = new List<UIView>();
-			deRooGroen = new UIColor(red: 0.13f, green: 0.49f, blue: 0.21f, alpha: 1.0f);
+			deRooGroen = new UIColor(red:0.10f, green:0.26f, blue:0.03f, alpha:1.0f);
 			dataCategorie = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.categories);
 			dataVraag = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.items);
-        }
+		}
 
 		public override void ViewDidLoad() 
 		{ 
 			base.ViewDidLoad();
-            this.View.BackgroundColor = UIColor.White;
+            this.View.BackgroundColor = UIColor.White;			
+			btn_verzendFormulier.Layer.BorderWidth = 1;
 		}
 
 		public void setCatAndQuest(string formulierID)
@@ -56,7 +57,7 @@ namespace LoginBestPractice.iOS
 						if (dataVraag.vragen[j].categorie_id == dataCategorie.categorien[i].categorie_id)
 						{
 							// vraagcontainer // 
-							UIView vraagEnOptie = new UIView();;
+							VraagBlokView vraagEnOptie = new VraagBlokView();;
 							nfloat containerElementPos = 0;
 
 							// vraag // 
@@ -73,6 +74,7 @@ namespace LoginBestPractice.iOS
 							UISegmentedControl opties = new UISegmentedControl();
 							opties.Frame = new CoreGraphics.CGRect((this.View.Frame.Size.Width * (1 - 0.925)), containerElementPos, (this.View.Frame.Size.Width * 0.85), 30);
 							containerElementPos += opties.Frame.Bottom;
+							opties.TintColor = UIColor.DarkGray;
 							opties.InsertSegment("Akkoord", 0, false);
 							opties.InsertSegment("Niet akkoord", 1, false);
 							opties.InsertSegment("N.v.t.", 2, false);
@@ -87,23 +89,32 @@ namespace LoginBestPractice.iOS
 							btn_foto.TouchDown += delegate
 							{
 							};
-							catBlock.AddSubview(btn_foto);
+							//catBlock.AddSubview(btn_foto);
 							opties.ValueChanged += (sender, e) =>
 							{
 								if (opties.SelectedSegment == 1)
 								{
+									opties.TintColor = new UIColor(red: 0.88f, green: 0.03f, blue: 0.03f, alpha: 1.0f);
 									btn_foto.Hidden = false;
 									// UPDATE main VIEW /
-									containerPos += btn_foto.Frame.Bottom;	
+									//containerPos += btn_foto.Frame.Bottom;	
 									//currentLabelYPosition += btn_foto.Frame.Size.Height;
-									vraagEnOptie.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, (catBlock.Frame.Height + btn_foto.Frame.Size.Height));
+									//vraagEnOptie.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, (catBlock.Frame.Height + btn_foto.Frame.Size.Height));
 									//catBlock.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, (catBlock.Frame.Height + btn_foto.Frame.Size.Height));
 									Modal modal = Storyboard.InstantiateViewController("modalVraag") as Modal;
+									vraagEnOptie.addModal(modal);
 									PresentViewController(modal, true, null);
+
+									// ververs de boel na sluiten modal
+								} 
+								else if (opties.SelectedSegment == 0) 
+								{
+								 	opties.TintColor = new UIColor(red:0.10f, green:0.62f, blue:0.01f, alpha:1.0f);
 								}
 								else
 								{
-									btn_foto.Hidden = true;
+									opties.TintColor = UIColor.DarkGray;
+									//btn_foto.Hidden = true;
 								}
 							};
 							vraagEnOptie.Frame = new CoreGraphics.CGRect(0, containerPos, this.View.Frame.Size.Width, setStackHeight(vraagEnOptie));
@@ -111,21 +122,57 @@ namespace LoginBestPractice.iOS
 							catBlock.AddSubview(vraagEnOptie);
 						}
 					}
-					// verzendbutton //
-					UIButton btn_verzend = new UIButton(UIButtonType.System);
-					btn_verzend.SetTitle("Verzend formulier", UIControlState.Normal);
-					btn_verzend.ContentMode = UIViewContentMode.ScaleAspectFit;
-					btn_verzend.TouchDown += delegate
-					{
-						// Verzamel alle gegevens 
-					};
 					catBlock.Frame = new CoreGraphics.CGRect(0, 10, this.View.Frame.Size.Width, (setStackHeight(catBlock) + 25));
-					//catBlock.Content = new CoreGraphics.CGSize(this.View.Frame.Width, (catBlock.Frame.Size.Height + 10));
-					//catBlock.LayoutMargins = new UIEdgeInsets(10, 0, 0, 10);
 					views.Add(catBlock);
 				}
 			}
 			formulierTableView.Source = new FormulierenTableViewSource(views);
+		}
+
+		partial void btn_verzendFormulier_TouchUpInside(UIButton sender)
+		{
+			// 1. catblok
+			foreach (UIView catView in views)
+			{
+				// 2. vraagblok (inc cat_label)
+				foreach (UIView catSubView in catView.Subviews)
+				{
+					// cat_label text // 
+					if (catSubView is UILabel)
+					{
+						string labelTekst = ((UILabel)catSubView).Text;
+					}
+					// 3. vraagblok (ex cat_label)s
+					if (catSubView is VraagBlokView) 
+					{
+						// modalGegevens
+						Modal vraagModal = ((VraagBlokView)catSubView).getModal();
+						if (vraagModal != null)
+						{
+							string opmerking = vraagModal.getOpmerking();
+							string actie = vraagModal.getActie();
+							string persoon = vraagModal.getPersoon();
+							string datum = vraagModal.getDatum();
+						}
+
+						foreach (UIView vraagSubView in catSubView.Subviews)
+						{
+							// vraagtekst
+							if (vraagSubView is UILabel)
+							{
+								string vraagTekst = ((UILabel)vraagSubView).Text;
+							}
+
+							// geselecteerde optiee
+							if (vraagSubView is UISegmentedControl)
+							{
+								string selected = ((UISegmentedControl)vraagSubView).TitleAt(((UISegmentedControl)vraagSubView).SelectedSegment);
+							}
+						}
+					}	
+				}
+			}
+			//throw new NotImplementedException();
 		}
 
 		private nfloat setStackHeight(UIView viewIn)

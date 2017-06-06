@@ -186,6 +186,7 @@
       <DependentUpon>FormulierTableViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="TableSource.cs" />
+    <Compile Include="FormulierTable\VraagBlokView.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\de-roo.png" />

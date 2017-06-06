@@ -16,10 +16,23 @@ namespace LoginBestPractice.iOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btn_verzendFormulier { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITableView formulierTableView { get; set; }
+
+        [Action ("btn_verzendFormulier_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void btn_verzendFormulier_TouchUpInside (UIKit.UIButton sender);
 
         void ReleaseDesignerOutlets ()
         {
+            if (btn_verzendFormulier != null) {
+                btn_verzendFormulier.Dispose ();
+                btn_verzendFormulier = null;
+            }
+
             if (formulierTableView != null) {
                 formulierTableView.Dispose ();
                 formulierTableView = null;

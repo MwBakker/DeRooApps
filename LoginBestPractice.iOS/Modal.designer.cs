@@ -24,6 +24,14 @@ namespace LoginBestPractice.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIDatePicker dt_datum { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView modalView { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField txtF_actie { get; set; }
 
         [Outlet]
@@ -56,6 +64,16 @@ namespace LoginBestPractice.iOS
             if (btn_ok != null) {
                 btn_ok.Dispose ();
                 btn_ok = null;
+            }
+
+            if (dt_datum != null) {
+                dt_datum.Dispose ();
+                dt_datum = null;
+            }
+
+            if (modalView != null) {
+                modalView.Dispose ();
+                modalView = null;
             }
 
             if (txtF_actie != null) {

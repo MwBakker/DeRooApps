@@ -9,11 +9,17 @@ namespace LoginBestPractice.iOS
 		private string opmerking;
 		private string actie;
 		private string persoon;
+		private string datum;
+		private bool geannuleerd;
+		UIView parentView; 
 
 		public Modal (IntPtr handle) : base (handle)	
         {
-			//this.View.Frame = new CoreGraphics.CGRect(0, 0, 100,100);
-			//this.View.BackgroundColor = UIColor.White;
+		}
+
+		public override void ViewDidLoad()
+		{
+			modalView.Layer.BorderWidth = 1.5f;
 		}
 
 		partial void btn_ok_TouchUpInside(UIButton sender)
@@ -21,33 +27,40 @@ namespace LoginBestPractice.iOS
 			opmerking = txtF_opmerking.Text;
 			actie = txtF_actie.Text; 
 			persoon = txtF_doorWie.Text;
+			datum = dt_datum.Date.ToString();
 
-			if (opmerking == " " && actie == " " && persoon == " ") {
-				//UIAlertView alert = new UIAlertView("fout", "Niet alle velden zijn ingevoerd!", null, "Ok", "Ok"); 
-				//alert.Show ();{
+			if (opmerking == " " && actie == " " && persoon == " ")
+			{
+				UIAlertView alert = new UIAlertView("fout", "Niet alle velden zijn ingevoerd!", null, "Ok", "Ok"); 
+				alert.Show();
 			}
+			else 
+			{
+				this.DismissViewController(true, null);
+			} 
 		}
 
 		partial void btn_annuleer_TouchUpInside(UIButton sender)
 		{
-			// Laat controller verdwijnen //
-			// test
-			throw new NotImplementedException();
+			// Laat controller verdwijnen //t
+			this.DismissViewController(true, null);
+			geannuleerd = true;
+			//throw new NotImplementedException();
 		}
 
-		string Opmerking
+		public void setView(UIView vraagEnOptie)
 		{
-			get { return opmerking; }
+			parentView = vraagEnOptie;
 		}
 
-		string Actie
-		{
-			get { return actie; }
-		}
+		public string getOpmerking() { return opmerking; }
 
-		string Persoon
-	    {
-			get { return persoon; }
-		}
+		public string getActie() { return actie;  } 
+
+		public string getPersoon() { return persoon; }
+
+		public string getDatum() { return datum; }
+
+		public bool getStat() { return geannuleerd; } 
 	}
 }

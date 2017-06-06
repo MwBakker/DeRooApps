@@ -1,12 +1,12 @@
 ﻿<Properties StartupConfiguration="{84563AF5-67F4-46D6-B49C-BF8D718F3C64}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Modal.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Main.cs">
     <Files>
-      <File FileName="FormulierTable/FormulierenTableViewSource.cs" Line="21" Column="3" />
-      <File FileName="FormulierTable/FormulierTableViewController.cs" Line="122" Column="51" />
-      <File FileName="ToolboxViewController_.cs" Line="114" Column="6" />
+      <File FileName="FormulierTable/FormulierenTableViewSource.cs" Line="26" Column="3" />
+      <File FileName="FormulierTable/FormulierTableViewController.cs" Line="135" Column="22" />
       <File FileName="MainStoryboard.storyboard" />
-      <File FileName="FormulierenViewController.cs" Line="21" Column="18" />
-      <File FileName="Modal.cs" Line="15" Column="3" />
+      <File FileName="Modal.cs" Line="3" Column="1" />
+      <File FileName="FormulierTable/VraagBlokView.cs" Line="21" Column="17" />
+      <File FileName="Main.cs" Line="17" Column="1" />
     </Files>
     <Pads>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
@@ -18,7 +18,9 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/FormulierTable/FormulierTableViewController.cs" relfile="FormulierTable/FormulierTableViewController.cs" line="138" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
