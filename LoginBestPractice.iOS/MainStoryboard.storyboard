@@ -343,6 +343,11 @@
                                             <action selector="UIButton2577_TouchUpInside:" destination="2761" id="2760" eventType="touchUpInside"/>
                                             <action selector="btn_annuleer_TouchUpInside:" destination="2545" id="3202" eventType="touchDown"/>
                                         </connections>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute keyPath="layer.cornerRadius" type="number">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2577" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
                                         <rect key="frame" x="176" y="420" width="84" height="30"/>
@@ -356,6 +361,11 @@
                                             <action selector="UIButton2577_TouchUpInside:" destination="2545" id="2758" eventType="touchUpInside"/>
                                             <action selector="btn_ok_TouchUpInside:" destination="2545" id="3200" eventType="touchDown"/>
                                         </connections>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute keyPath="layer.cornerRadius" type="number">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </button>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" id="3201" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
                                         <rect key="frame" x="12" y="363" width="242" height="49"/>
