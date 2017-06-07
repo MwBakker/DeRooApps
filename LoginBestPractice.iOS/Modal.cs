@@ -33,7 +33,7 @@ namespace LoginBestPractice.iOS
 
 			if (opmerking == " " && actie == " " && persoon == " ")
 			{
-				UIAlertView alert = new UIAlertView("fout", "Niet alle velden zijn ingevoerd!", null, "Ok", "Ok"); 
+				UIAlertView alert = new UIAlertView("fout", "Niet alle velden zijn ingevoerd!", null, "Ok"); 
 				alert.Show();
 			}
 			else 

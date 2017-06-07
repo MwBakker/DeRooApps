@@ -20,11 +20,11 @@ namespace LoginBestPractice.iOS
 			dataStorage.refresh();
 			Thread.Sleep(5000);
 			RootObject formData = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.forms);
-			int hoogteVanButtons = 20;
+			nfloat hoogteVanButtons = 20;
 
 			for (int i = 0; i < formData.formulieren.Count; i++)
 			{
-				hoogteVanButtons += 40;
+				hoogteVanButtons += 70;
 				this.View.AddSubview(createElements(formData.formulieren[i].formulier_id, formData.formulieren[i].formulier_naam, hoogteVanButtons));
 			}
 
@@ -72,12 +72,16 @@ namespace LoginBestPractice.iOS
 			}), true);
 		}
 
-		public UIButton createElements(string formulierID, string formulierNaam, int hoogteVanButtons)
+		public UIButton createElements(string formulierID, string formulierNaam, nfloat hoogteVanButtons)
 		{
-			UIButton formulierButton = new UIButton(UIButtonType.RoundedRect);
-			formulierButton.SetTitle(formulierNaam, UIControlState.Normal);
-			formulierButton.Frame = new CoreGraphics.CGRect(0, hoogteVanButtons, this.View.Frame.Size.Width, 50);
-			formulierButton.TouchDown += delegate
+			UIButton btn_formulier = new UIButton(UIButtonType.System);
+			btn_formulier.Frame = new CoreGraphics.CGRect((this.View.Frame.Size.Width * (1-0.875)), (hoogteVanButtons + 20), (this.View.Frame.Size.Width * 0.75), 50);
+			btn_formulier.Layer.BorderWidth = 1.5f;
+			btn_formulier.Layer.CornerRadius = 5;
+			btn_formulier.BackgroundColor = new UIColor(red:0.10f, green:0.26f, blue:0.03f, alpha:1.0f);
+			btn_formulier.SetTitleColor(UIColor.White, UIControlState.Normal);
+			btn_formulier.SetTitle(formulierNaam, UIControlState.Normal);
+			btn_formulier.TouchDown += delegate
 			{
 				// ViewController //
 				//FormulierInhoudViewController formulierInhoudController = Storyboard.InstantiateViewController("FormulierInhoud") as FormulierInhoudViewController;
@@ -90,7 +94,7 @@ namespace LoginBestPractice.iOS
 				//NavigationController.PushViewController(formulierInhoudController, true);
 				NavigationController.PushViewController(formulierTableViewController, true);
 			};
-			return formulierButton;
+			return btn_formulier;
 		}
 	}
 }

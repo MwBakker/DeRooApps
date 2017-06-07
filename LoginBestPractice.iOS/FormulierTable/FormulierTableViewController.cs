@@ -172,6 +172,8 @@ namespace LoginBestPractice.iOS
 					}	
 				}
 			}
+				UIAlertView alert = new UIAlertView("fout", "Verzameling gegevens gelukt, verzending formulier mislukt", null, "Ok");
+				alert.Show();
 			//throw new NotImplementedException();
 		}
 
