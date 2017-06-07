@@ -18,7 +18,7 @@ namespace LoginBestPractice.iOS
 			base.ViewDidLoad();
 			DataStorage dataStorage = new DataStorage();
 			dataStorage.refresh();
-			Thread.Sleep(5000);
+			Thread.Sleep(3000);
 			RootObject formData = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.forms);
 			nfloat hoogteVanButtons = 20;
 
@@ -84,14 +84,9 @@ namespace LoginBestPractice.iOS
 			btn_formulier.TouchDown += delegate
 			{
 				// ViewController //
-				//FormulierInhoudViewController formulierInhoudController = Storyboard.InstantiateViewController("FormulierInhoud") as FormulierInhoudViewController;
 				FormulierTableViewController formulierTableViewController = Storyboard.InstantiateViewController("FormulierTable") as FormulierTableViewController;
 				formulierTableViewController.Title = formulierNaam;
 				formulierTableViewController.setCatAndQuest(formulierID);
-				//formulierInhoudController.Title = formulierNaam;
-				//formulierInhoudController.setCatAndQuest(formulierID);
-				//formulierInhoudController.View.BackgroundColor = UIColor.White;
-				//NavigationController.PushViewController(formulierInhoudController, true);
 				NavigationController.PushViewController(formulierTableViewController, true);
 			};
 			return btn_formulier;

@@ -78,7 +78,6 @@ namespace LoginBestPractice.iOS
 							opties.InsertSegment("Akkoord", 0, false);
 							opties.InsertSegment("Niet akkoord", 1, false);
 							opties.InsertSegment("N.v.t.", 2, false);
-							opties.SelectedSegment = 2; 
 							vraagEnOptie.AddSubview(opties);
 
 							// foto-button // 
@@ -131,6 +130,7 @@ namespace LoginBestPractice.iOS
 
 		partial void btn_verzendFormulier_TouchUpInside(UIButton sender)
 		{
+			Boolean gemarkeerd = false;
 			// 1. catblok
 			foreach (UIView catView in views)
 			{
@@ -154,7 +154,6 @@ namespace LoginBestPractice.iOS
 							string persoon = vraagModal.getPersoon();
 							string datum = vraagModal.getDatum();
 						}
-
 						foreach (UIView vraagSubView in catSubView.Subviews)
 						{
 							// vraagtekst
@@ -163,17 +162,33 @@ namespace LoginBestPractice.iOS
 								string vraagTekst = ((UILabel)vraagSubView).Text;
 							}
 
-							// geselecteerde optiee
+							// geselecteerde optie
 							if (vraagSubView is UISegmentedControl)
 							{
-								string selected = ((UISegmentedControl)vraagSubView).TitleAt(((UISegmentedControl)vraagSubView).SelectedSegment);
+								nfloat index = ((UISegmentedControl)vraagSubView).SelectedSegment; 
+								if (index != 0 && index != 1 && index != 2)
+								{
+									// indien opties niet volledig, geef melding en spring naar desbetreffende view
+									if (gemarkeerd == false)
+									{
+										UIAlertView alertLegeVelden = new UIAlertView("Fout", "Formulier niet volledig ingevuld", null, "Ok");
+										alertLegeVelden.Show();
+										this.formulierTableView.ContentOffset = new CoreGraphics.CGPoint(0, vraagSubView.Frame.Bottom);
+										gemarkeerd = true;
+										return;
+									}
+								} 
+								else 
+								{
+									string selected = ((UISegmentedControl)vraagSubView).TitleAt(((UISegmentedControl)vraagSubView).SelectedSegment);
+								}
 							}
 						}
 					}	
 				}
 			}
-				UIAlertView alert = new UIAlertView("fout", "Verzameling gegevens gelukt, verzending formulier mislukt", null, "Ok");
-				alert.Show();
+			//UIAlertView alert = new UIAlertView("Fout", "Verzameling gegevens gelukt, verzending formulier mislukt", null, "Ok");
+			//alert.Show();
 			//throw new NotImplementedException();
 		}
 
