@@ -42,10 +42,10 @@ namespace LoginBestPractice.iOS
 					nfloat currentLabelYPosition = 0; 
 					// catcontainer // 
 					UIView catBlock = new UIView();
+					catBlock.Tag = int.Parse((dataCategorie.categorien[i].categorie_id));
 
 					// categorie // 
 					UILabel lbl_cat = new UILabel();
-					lbl_cat.ViewWithTag(int.Parse((dataCategorie.categorien[i].categorie_id)));
 					lbl_cat.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, 35);
 					lbl_cat.BackgroundColor = deRooGroen;
 					lbl_cat.TextAlignment = UITextAlignment.Center;
@@ -61,12 +61,11 @@ namespace LoginBestPractice.iOS
 						{
 							// vraagcontainer // 
 							VraagBlokView vraagEnOptie = new VraagBlokView();
-							vraagEnOptie.ViewWithTag(int.Parse(dataVraag.vragen[j].vraag_id)); 
+							vraagEnOptie.Tag = int.Parse(dataVraag.vragen[j].vraag_id); 
 							nfloat containerElementPos = 0;
 
 							// vraag // 
 							UILabel lbl_vraag = new UILabel();
-							lbl_vraag.ViewWithTag(int.Parse(dataVraag.vragen[j].vraag_id));
 							lbl_vraag.Text = dataVraag.vragen[j].vraag_text;
 							lbl_vraag.Font = UIFont.FromName("Helvetica-Bold", 12f);
 							lbl_vraag.Frame = new CoreGraphics.CGRect((this.View.Frame.Size.Width * (1 - 0.98)), 0, (this.View.Frame.Size.Width * 0.96), 35);
@@ -137,20 +136,25 @@ namespace LoginBestPractice.iOS
 		{
 			Formulieren formulier = new Formulieren();
 			formulier.formulier_id = formID;
-			// nu hard-coded
-			formulier.project_naam = "test";
-			formulier.datum = "07/06/2017";
+			formulier.formulier_naam = this.Title;
+			// moet dynamisch worden
+				formulier.locatie = "Tsjernobyl, Oblast Kiev, Oekraïne";
+				formulier.project_naam = "test";
+				formulier.datum = "07-06-2017";
+			// moet dynamisch worden
+			dataStorage.addForm(formulier);
 
 			Boolean gemarkeerd = false;
 			// 1. catblok
 			foreach (UIView catView in views)
 			{
 				Categorien cat = new Categorien();
+				string catID = catView.Tag.ToString();
+				cat.categorie_id = catID;
+
 				// 2. vraagblok (inc cat_label)
 				foreach (UIView catSubView in catView.Subviews)
 				{
-					string catID = catSubView.Tag.ToString();
-					cat.categorie_id = catID;
 					cat.formulier_id = formID;
 					// cat_label text // 
 					if (catSubView is UILabel)
@@ -206,7 +210,9 @@ namespace LoginBestPractice.iOS
 							}
 						}
 					}
-				}}
+				}
+			}
+			dataStorage.sendData();
 			//UIAlertView alert = new UIAlertView("Fout", "Verzameling gegevens gelukt, verzending formulier mislukt", null, "Ok");
 			//alert.Show();
 			//throw new NotImplementedException();
