@@ -16,9 +16,6 @@ namespace LoginBestPractice.iOS
 			this.modal = modal;
 		}
 
-		public Modal getModal()
-		{
-			return modal;
-		}
+		public Modal getModal() { return modal; }
 	}
 }

@@ -76,12 +76,17 @@ namespace LoginBestPractice.iOS
 
 		public UIButton createElements(string formulierID, string formulierNaam, nfloat hoogteVanButtons)
 		{
+<<<<<<< Updated upstream
 			UIButton btn_formulier = new UIButton(UIButtonType.System);
 			btn_formulier.Frame = new CoreGraphics.CGRect((this.View.Frame.Size.Width * (1 - 0.875)), (hoogteVanButtons + 20), (this.View.Frame.Size.Width * 0.75), 50);
 			btn_formulier.Layer.BorderWidth = 1.5f;
 			btn_formulier.Layer.CornerRadius = 5;
 			btn_formulier.BackgroundColor = new UIColor(red: 0.10f, green: 0.26f, blue: 0.03f, alpha: 1.0f);
 			btn_formulier.SetTitleColor(UIColor.White, UIControlState.Normal);
+=======
+			UiDeRooButton btn_formulier = new UiDeRooButton();
+			btn_formulier.Frame = new CoreGraphics.CGRect((this.View.Frame.Size.Width * (1 - 0.875)), (hoogteVanButtons + 20), (this.View.Frame.Size.Width * 0.75), 50);
+>>>>>>> Stashed changes
 			btn_formulier.SetTitle(formulierNaam, UIControlState.Normal);
 			btn_formulier.TouchDown += delegate
 			{

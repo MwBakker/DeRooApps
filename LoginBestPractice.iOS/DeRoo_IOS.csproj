@@ -188,6 +188,7 @@
     <Compile Include="PDFController.designer.cs">
       <DependentUpon>PDFController.cs</DependentUpon>
     </Compile>
+    <Compile Include="UiDeRooButton.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\de-roo.png" />

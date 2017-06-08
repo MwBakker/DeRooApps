@@ -15,6 +15,7 @@ namespace LoginBestPractice.iOS
 		DataStorage dataStorage = new DataStorage();
 		RootObject dataCategorie;
 		RootObject dataVraag;
+		string formID;
 
 		public FormulierTableViewController (IntPtr handle) : base (handle)
         {
@@ -33,6 +34,7 @@ namespace LoginBestPractice.iOS
 
 		public void setCatAndQuest(string formulierID)
 		{
+			formID = formulierID;
 			for (int i = 0; i < dataCategorie.categorien.Count; i++)
 			{
 				if (dataCategorie.categorien[i].formulier_id == formulierID)
@@ -43,6 +45,7 @@ namespace LoginBestPractice.iOS
 
 					// categorie // 
 					UILabel lbl_cat = new UILabel();
+					lbl_cat.ViewWithTag(int.Parse((dataCategorie.categorien[i].categorie_id)));
 					lbl_cat.Frame = new CoreGraphics.CGRect(0, 0, this.View.Frame.Size.Width, 35);
 					lbl_cat.BackgroundColor = deRooGroen;
 					lbl_cat.TextAlignment = UITextAlignment.Center;
@@ -57,11 +60,13 @@ namespace LoginBestPractice.iOS
 						if (dataVraag.vragen[j].categorie_id == dataCategorie.categorien[i].categorie_id)
 						{
 							// vraagcontainer // 
-							VraagBlokView vraagEnOptie = new VraagBlokView();;
+							VraagBlokView vraagEnOptie = new VraagBlokView();
+							vraagEnOptie.ViewWithTag(int.Parse(dataVraag.vragen[j].vraag_id)); 
 							nfloat containerElementPos = 0;
 
 							// vraag // 
 							UILabel lbl_vraag = new UILabel();
+							lbl_vraag.ViewWithTag(int.Parse(dataVraag.vragen[j].vraag_id));
 							lbl_vraag.Text = dataVraag.vragen[j].vraag_text;
 							lbl_vraag.Font = UIFont.FromName("Helvetica-Bold", 12f);
 							lbl_vraag.Frame = new CoreGraphics.CGRect((this.View.Frame.Size.Width * (1 - 0.98)), 0, (this.View.Frame.Size.Width * 0.96), 35);
@@ -130,36 +135,49 @@ namespace LoginBestPractice.iOS
 
 		partial void btn_verzendFormulier_TouchUpInside(UIButton sender)
 		{
+			Formulieren formulier = new Formulieren();
+			formulier.formulier_id = formID;
+			
+
 			Boolean gemarkeerd = false;
 			// 1. catblok
 			foreach (UIView catView in views)
 			{
+				Categorien cat = new Categorien();
 				// 2. vraagblok (inc cat_label)
 				foreach (UIView catSubView in catView.Subviews)
 				{
+					string catID = catSubView.Tag.ToString();
+					cat.categorie_id = catID;
+					cat.formulier_id = formID;
 					// cat_label text // 
 					if (catSubView is UILabel)
 					{
-						string labelTekst = ((UILabel)catSubView).Text;
+						cat.categorie_text = ((UILabel)catSubView).Text;
+						dataStorage.addCat(cat);
 					}
-					// 3. vraagblok (ex cat_label)s
+					// 3. vraagblok (ex cat_label)
 					if (catSubView is VraagBlokView) 
 					{
+						Vragen vraag = new Vragen();
+						vraag.vraag_id = catSubView.Tag.ToString();
 						// modalGegevens
 						Modal vraagModal = ((VraagBlokView)catSubView).getModal();
-						if (vraagModal != null)
+						if (vraagModal != null) 
 						{
-							string opmerking = vraagModal.getOpmerking();
-							string actie = vraagModal.getActie();
-							string persoon = vraagModal.getPersoon();
-							string datum = vraagModal.getDatum();
+							vraag.extra_commentaar = vraagModal.getOpmerking();
+							vraag.actie_ondernomen = vraagModal.getActie();
+							vraag.persoon = vraagModal.getPersoon();
+							vraag.datum_gereed = vraagModal.getDatum();
 						}
 						foreach (UIView vraagSubView in catSubView.Subviews)
 						{
 							// vraagtekst
 							if (vraagSubView is UILabel)
 							{
-								string vraagTekst = ((UILabel)vraagSubView).Text;
+								vraag.vraag_text = ((UILabel)vraagSubView).Text;
+								vraag.vraag_type = "Akkoord/Niet akkoord/N.v.t.";
+								vraag.categorie_id = catID;
 							}
 
 							// geselecteerde optie
@@ -168,7 +186,7 @@ namespace LoginBestPractice.iOS
 								nfloat index = ((UISegmentedControl)vraagSubView).SelectedSegment; 
 								if (index != 0 && index != 1 && index != 2)
 								{
-									// indien opties niet volledig, geef melding en spring naar desbetreffende view
+									// indien opties niet volledig, geef melding en spring naar desbetreffende view (eenmaal springen)
 									if (gemarkeerd == false)
 									{
 										UIAlertView alertLegeVelden = new UIAlertView("Fout", "Formulier niet volledig ingevuld", null, "Ok");
@@ -180,7 +198,8 @@ namespace LoginBestPractice.iOS
 								} 
 								else 
 								{
-									string selected = ((UISegmentedControl)vraagSubView).TitleAt(((UISegmentedControl)vraagSubView).SelectedSegment);
+									vraag.answer = ((UISegmentedControl)vraagSubView).TitleAt(((UISegmentedControl)vraagSubView).SelectedSegment);
+									dataStorage.addQuest(vraag);
 								}
 							}
 						}

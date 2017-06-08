@@ -18,6 +18,11 @@ namespace DeRoo_iOS
 
         public static RootObject formProgress;
 
+		public List<Formulieren> formList;
+		public List<Categorien> catList;
+		public List<Vragen> questList; 
+
+
         /// <summary>
         /// Haalt alle formulieren uit de database
         /// </summary>
@@ -255,5 +260,21 @@ namespace DeRoo_iOS
             getToolboxSubjects();
             getEmployees();
         }
+
+		public void addForm(Formulieren form)
+		{
+			formList.Add(form);
+		}
+
+		public void addCat(Categorien cat)
+		{
+			catList.Add(cat);m
+		}
+
+		public void addQuest(Vragen quest)
+		{
+			catList.Add(quest);t
+		}
+
     }
 }

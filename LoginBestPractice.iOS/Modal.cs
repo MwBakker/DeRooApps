@@ -31,7 +31,7 @@ namespace LoginBestPractice.iOS
 			persoon = txtF_doorWie.Text;
 			datum = dt_datum.Date.ToString();
 
-			if (opmerking == " " && actie == " " && persoon == " ")
+			if (opmerking == "" && actie == "" && persoon == "")
 			{
 				UIAlertView alert = new UIAlertView("fout", "Niet alle velden zijn ingevoerd!", null, "Ok"); 
 				alert.Show();
