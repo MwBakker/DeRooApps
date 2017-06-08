@@ -164,7 +164,6 @@
     <Compile Include="Modal.designer.cs">
       <DependentUpon>Modal.cs</DependentUpon>
     </Compile>
-    <Compile Include="ToolboxViewController_.cs" />
     <Compile Include="ToolboxViewController_.designer.cs">
       <DependentUpon>ToolboxViewController_.cs</DependentUpon>
     </Compile>
@@ -176,10 +175,6 @@
     <Compile Include="DeelnemersTableView.designer.cs">
       <DependentUpon>DeelnemersTableView.cs</DependentUpon>
     </Compile>
-    <Compile Include="MedewekersToolbox.cs" />
-    <Compile Include="MedewekersToolbox.designer.cs">
-      <DependentUpon>MedewekersToolbox.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormulierTable\FormulierenTableViewSource.cs" />
     <Compile Include="FormulierTable\FormulierTableViewController.cs" />
     <Compile Include="FormulierTable\FormulierTableViewController.designer.cs">
@@ -187,6 +182,12 @@
     </Compile>
     <Compile Include="TableSource.cs" />
     <Compile Include="FormulierTable\VraagBlokView.cs" />
+    <Compile Include="n.cs" />
+    <Compile Include="ToolboxViewController_.cs" />
+    <Compile Include="PDFController.cs" />
+    <Compile Include="PDFController.designer.cs">
+      <DependentUpon>PDFController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\de-roo.png" />
