@@ -268,12 +268,12 @@ namespace DeRoo_iOS
 
 		public void addCat(Categorien cat)
 		{
-			catList.Add(cat);m
+			catList.Add(cat);
 		}
 
 		public void addQuest(Vragen quest)
 		{
-			catList.Add(quest);t
+			questList.Add(quest);
 		}
 
     }

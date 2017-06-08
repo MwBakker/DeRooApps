@@ -137,7 +137,9 @@ namespace LoginBestPractice.iOS
 		{
 			Formulieren formulier = new Formulieren();
 			formulier.formulier_id = formID;
-			
+			// nu hard-coded
+			formulier.project_naam = "test";
+			formulier.datum = "07/06/2017";
 
 			Boolean gemarkeerd = false;
 			// 1. catblok
@@ -157,13 +159,13 @@ namespace LoginBestPractice.iOS
 						dataStorage.addCat(cat);
 					}
 					// 3. vraagblok (ex cat_label)
-					if (catSubView is VraagBlokView) 
+					if (catSubView is VraagBlokView)
 					{
 						Vragen vraag = new Vragen();
 						vraag.vraag_id = catSubView.Tag.ToString();
 						// modalGegevens
 						Modal vraagModal = ((VraagBlokView)catSubView).getModal();
-						if (vraagModal != null) 
+						if (vraagModal != null)
 						{
 							vraag.extra_commentaar = vraagModal.getOpmerking();
 							vraag.actie_ondernomen = vraagModal.getActie();
@@ -183,7 +185,7 @@ namespace LoginBestPractice.iOS
 							// geselecteerde optie
 							if (vraagSubView is UISegmentedControl)
 							{
-								nfloat index = ((UISegmentedControl)vraagSubView).SelectedSegment; 
+								nfloat index = ((UISegmentedControl)vraagSubView).SelectedSegment;
 								if (index != 0 && index != 1 && index != 2)
 								{
 									// indien opties niet volledig, geef melding en spring naar desbetreffende view (eenmaal springen)
@@ -195,17 +197,16 @@ namespace LoginBestPractice.iOS
 										gemarkeerd = true;
 										return;
 									}
-								} 
-								else 
+								}
+								else
 								{
 									vraag.answer = ((UISegmentedControl)vraagSubView).TitleAt(((UISegmentedControl)vraagSubView).SelectedSegment);
 									dataStorage.addQuest(vraag);
 								}
 							}
 						}
-					}	
-				}
-			}
+					}
+				}}
 			//UIAlertView alert = new UIAlertView("Fout", "Verzameling gegevens gelukt, verzending formulier mislukt", null, "Ok");
 			//alert.Show();
 			//throw new NotImplementedException();
