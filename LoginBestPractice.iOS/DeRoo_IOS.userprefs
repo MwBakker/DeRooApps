@@ -1,31 +1,8 @@
-﻿<Properties StartupConfiguration="{84563AF5-67F4-46D6-B49C-BF8D718F3C64}|Default">
-<<<<<<< HEAD
-  <MonoDevelop.Ide.Workbench ActiveDocument="FormulierTable/CatBlock.cs">
+﻿<Properties>
+  <MonoDevelop.Ide.Workbench ActiveDocument="DeRoo_IOS.csproj">
     <Files>
-      <File FileName="FormulierTable/FormulierTableViewController.cs" Line="77" Column="40" />
-      <File FileName="FormulierTable/VraagBlokView.cs" Line="2" Column="1" />
-      <File FileName="FormulierTable/CatBlock.cs" Line="3" Column="1" />
-=======
-  <MonoDevelop.Ide.Workbench ActiveDocument="ToolboxViewController_.cs">
-    <Files>
-      <File FileName="FormulierTable/FormulierTableViewController.cs" Line="140" Column="28" />
-      <File FileName="MainStoryboard.storyboard" />
-      <File FileName="DataStorage.cs" Line="308" Column="24" />
-      <File FileName="FormulierenViewController.cs" Line="37" Column="31" />
-      <File FileName="ToolboxViewController_.cs" Line="235" Column="20" />
-      <File FileName="UiDeRooButton.cs" Line="13" Column="61" />
-      <File FileName="DeelnemersTableView.cs" Line="1" Column="1" />
-      <File FileName="ToolboxNextViewController.cs" Line="1" Column="1" />
-      <File FileName="FormulierInhoudViewController.cs" Line="77" Column="23" />
->>>>>>> origin/master
+      <File FileName="DeRoo_IOS.csproj" Line="200" Column="12" />
     </Files>
-    <Pads>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State>
-          <Value>catBlock</Value>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
@@ -33,5 +10,4 @@
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.DeRoo__IOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.C9282889-9998-40D2-9742-B97198703E25" />
 </Properties>

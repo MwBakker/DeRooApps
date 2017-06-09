@@ -184,10 +184,8 @@
     <Compile Include="PDFController.designer.cs">
       <DependentUpon>PDFController.cs</DependentUpon>
     </Compile>
-<<<<<<< HEAD
     <Compile Include="UIDeRooButton.cs" />
     <Compile Include="FormulierTable\CatBlockVIew.cs" />
-=======
     <Compile Include="UiDeRooButton.cs" />
     <Compile Include="ToolboxDeelnemersTableView.cs" />
     <Compile Include="ToolboxDeelnemersTableView.designer.cs">
@@ -197,7 +195,6 @@
     <Compile Include="DeelnemersTableViewController.designer.cs">
       <DependentUpon>DeelnemersTableViewController.cs</DependentUpon>
     </Compile>
->>>>>>> origin/master
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\de-roo.png" />
