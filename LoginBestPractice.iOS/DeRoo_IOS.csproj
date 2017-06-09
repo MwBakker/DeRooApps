@@ -171,10 +171,6 @@
     <Compile Include="ToolboxNextViewController.designer.cs">
       <DependentUpon>ToolboxNextViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="DeelnemersTableView.cs" />
-    <Compile Include="DeelnemersTableView.designer.cs">
-      <DependentUpon>DeelnemersTableView.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormulierTable\FormulierenTableViewSource.cs" />
     <Compile Include="FormulierTable\FormulierTableViewController.cs" />
     <Compile Include="FormulierTable\FormulierTableViewController.designer.cs">
@@ -188,8 +184,20 @@
     <Compile Include="PDFController.designer.cs">
       <DependentUpon>PDFController.cs</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="UIDeRooButton.cs" />
     <Compile Include="FormulierTable\CatBlockVIew.cs" />
+=======
+    <Compile Include="UiDeRooButton.cs" />
+    <Compile Include="ToolboxDeelnemersTableView.cs" />
+    <Compile Include="ToolboxDeelnemersTableView.designer.cs">
+      <DependentUpon>ToolboxDeelnemersTableView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeelnemersTableViewController.cs" />
+    <Compile Include="DeelnemersTableViewController.designer.cs">
+      <DependentUpon>DeelnemersTableViewController.cs</DependentUpon>
+    </Compile>
+>>>>>>> origin/master
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\de-roo.png" />
