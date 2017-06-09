@@ -45,11 +45,6 @@
       <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
       <Optimize>false</Optimize>
     </_BundleResourceWithLogicalName>
-    <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/ibtool/MainStoryboard.storyboardc/FormulierInhoud.nib">
-      <LogicalName>MainStoryboard.storyboardc/FormulierInhoud.nib</LogicalName>
-      <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
-      <Optimize>false</Optimize>
-    </_BundleResourceWithLogicalName>
     <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/ibtool/MainStoryboard.storyboardc/FormulierTable.nib">
       <LogicalName>MainStoryboard.storyboardc/FormulierTable.nib</LogicalName>
       <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>

@@ -286,8 +286,10 @@ namespace DeRoo_iOS
 			questList.Add(quest);
 		}
 
-		public void sendData()
+		public bool sendData()
 		{
+			Boolean succes;
+
 			RootObject data = new RootObject
 			{
 				formulieren = formList,
@@ -306,13 +308,15 @@ namespace DeRoo_iOS
 				string responseString = Encoding.UTF8.GetString(response);
 				UIAlertView alertSucces = new UIAlertView("", "Formulier verzonden", null, "Ok");
 				alertSucces.Show();
+				succes = true;
 			}
 			catch(Exception e)
 			{
 				UIAlertView alertFail = new UIAlertView("Fout", "Verbindingsfout met server", null, "Ok");
 				alertFail.Show();
+				succes = false;
 			}
+			return succes;
 		}
-
 	}
 }

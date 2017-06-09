@@ -12,7 +12,6 @@ namespace LoginBestPractice.iOS
 	{
 		public FormulierenViewController(IntPtr handle) : base(handle)
 		{
-
 		}
 
 		public override void ViewDidLoad()
@@ -20,7 +19,7 @@ namespace LoginBestPractice.iOS
 			base.ViewDidLoad();
 			DataStorage dataStorage = new DataStorage();
 			dataStorage.refresh();
-			Thread.Sleep(3000);
+			Thread.Sleep(4000);
 			RootObject formData = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.forms);
 			nfloat hoogteVanButtons = 20;
 
@@ -76,7 +75,7 @@ namespace LoginBestPractice.iOS
 
 		public UIButton createElements(string formulierID, string formulierNaam, nfloat hoogteVanButtons)
 		{
-			UiDeRooButton btn_formulier = new UiDeRooButton();
+			UIDeRooButton btn_formulier = new UIDeRooButton();
 			btn_formulier.Frame = new CoreGraphics.CGRect((this.View.Frame.Size.Width * (1 - 0.875)), (hoogteVanButtons + 20), (this.View.Frame.Size.Width * 0.75), 50);
 			btn_formulier.SetTitle(formulierNaam, UIControlState.Normal);
 			btn_formulier.TouchDown += delegate
