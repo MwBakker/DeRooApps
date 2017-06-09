@@ -1,0 +1,121 @@
+objc[35830]: Class VCWeakObjectHolder is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/System/Library/PrivateFrameworks/GameKitServices.framework/Frameworks/ViceroyTrace.framework/ViceroyTrace (0x1432d2e8) and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/System/Library/PrivateFrameworks/GameKitServices.framework/Frameworks/AVConference.framework/AVConference (0x1426d54c). One of the two will be used. Which one is undefined.
+objc[35830]: Class PLBuildVersion is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/System/Library/PrivateFrameworks/AssetsLibraryServices.framework/AssetsLibraryServices (0x16333618) and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices (0x15d34764). One of the two will be used. Which one is undefined.
+2017-06-09 12:55:06.786 LoginBestPractice.iOS[35830:415003] Xamarin.iOS: Socket error while connecting to IDE on 127.0.0.1:10000: Connection refused
+2017-06-09 12:55:07.204 LoginBestPractice.iOS[35830:415038] WARNING: An HttpWebRequest was added to the ConnectionGroup queue because the connection limit was reached.
+2017-06-09 12:56:05.974 LoginBestPractice.iOS[35830:414976] 
+Unhandled Exception:
+System.Net.WebException: Error getting response stream (ReadDone2): ReceiveFailure ---> System.Exception:   at System.Net.WebConnection.HandleError (System.Net.WebExceptionStatus st, System.Exception e, System.String where) [0x00031] in <dfac2ad8ae7c42209218a908c3070036>:0 
+  at System.Net.WebConnection.ReadDone (System.IAsyncResult result) [0x00062] in <dfac2ad8ae7c42209218a908c3070036>:0 
+  at System.Net.LazyAsyncResult.Complete (System.IntPtr userToken) [0x0003e] in <dfac2ad8ae7c42209218a908c3070036>:0 
+  at System.Net.LazyAsyncResult.ProtectedInvokeCallback (System.Object result, System.IntPtr userToken) [0x00064] in <dfac2ad8ae7c42209218a908c3070036>:0 
+  at System.Net.LazyAsyncResult.InvokeCallback (System.Object result) [0x00000] in <dfac2ad8ae7c42209218a908c3070036>:0 
+  at Mono.Net.Security.AsyncProtocolRequest.StartOperation () [0x0001b] in <dfac2ad8ae7c42209218a908c3070036>:0 
+  at Mono.Net.Security.AsyncProtocolRequest.<StartOperation>b__17_0 (System.Object _) [0x00000] in <dfac2ad8ae7c42209218a908c3070036>:0 
+  at System.Threading.QueueUserWorkItemCallback.WaitCallback_Context (System.Object state) [0x0000d] in <2f4074c3120b4d80802e10af84b67d41>:0 
+  at System.Threading.ExecutionContext.RunInternal (System.Threading.ExecutionContext executionContext, System.Threading.ContextCallback callback, System.Object state, System.Boolean preserveSyncCtx) [0x00071] in <2f4074c3120b4d80802e10af84b67d41>:0 
+  at System.Threading.ExecutionContext.Run (System.Threading.ExecutionContext executionContext, System.Threading.ContextCallback callback, System.Object state, System.Boolean preserveSyncCtx) [0x00000] in <2f4074c3120b4d80802e10af84b67d41>:0 
+  at System.Threading.QueueUserWorkItemCallback.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem () [0x00021] in <2f4074c3120b4d80802e10af84b67d41>:0 
+  at System.Threading.ThreadPoolWorkQueue.Dispatch () [0x00074] in <2f4074c3120b4d80802e10af84b67d41>:0 
+  at ObjCRuntime.Runtime.ThreadPoolDispatcher (System.Func`1[TResult] callback) [0x00006] in <7593f0e3372945ac803cd9573d505380>:0 
+  at System.Threading._ThreadPoolWaitCallback.PerformWaitCallback () [0x00009] in <2f4074c3120b4d80802e10af84b67d41>:0 
+  at System.Net.WebConnection.HandleError (System.Net.WebExceptionStatus st, System.Exception e, System.String where) [0x00031] in /Library/Frameworks/Xamarin.iOS.framework/Versions/10.10.0.36/src/mono/mcs/class/System/System.Net/WebConnection.cs:446 
+   --- End of inner exception stack trace ---
+  at System.Net.WebClient.UploadValues (System.Uri address, System.String method, System.Collections.Specialized.NameValueCollection data) [0x000ce] in /Library/Frameworks/Xamarin.iOS.framework/Versions/10.10.0.36/src/mono/mcs/class/referencesource/System/net/System/Net/webclient.cs:822 
+  at System.Net.WebClient.UploadValues (System.String address, System.String method, System.Collections.Specialized.NameValueCollection data) [0x0000e] in /Library/Frameworks/Xamarin.iOS.framework/Versions/10.10.0.36/src/mono/mcs/class/referencesource/System/net/System/Net/webclient.cs:790 
+  at LoginBestPractice.iOS.ToolboxViewController.setHeight1 (System.String toolboxNaam) [0x00022] in /Users/deroo/Documents/DeRooIOS-master/LoginBestPractice.iOS/ToolboxViewController_.cs:225 
+  at LoginBestPractice.iOS.ToolboxViewController+<>c__DisplayClass8_0.<createElements>b__0 (System.Object <p0>, System.EventArgs <p1>) [0x00067] in /Users/deroo/Documents/DeRooIOS-master/LoginBestPractice.iOS/ToolboxViewController_.cs:117 
+  at UIKit.UIControlEventProxy.Activated () [0x00007] in /Users/builder/data/lanes/4691/d2270eec/source/xamarin-macios/src/UIKit/UIControl.cs:38 
+--- End of stack trace from previous location where exception was thrown ---
+  at (wrapper managed-to-native) UIKit.UIApplication:UIApplicationMain (int,string[],intptr,intptr)
+  at UIKit.UIApplication.Main (System.String[] args, System.IntPtr principal, System.IntPtr delegate) [0x00005] in /Users/builder/data/lanes/4691/d2270eec/source/xamarin-macios/src/UIKit/UIApplication.cs:79 
+  at UIKit.UIApplication.Main (System.String[] args, System.String principalClassName, System.String delegateClassName) [0x00038] in /Users/builder/data/lanes/4691/d2270eec/source/xamarin-macios/src/UIKit/UIApplication.cs:63 
+  at LoginBestPractice.iOS.Application.Main (System.String[] args) [0x00001] in /Users/deroo/Documents/DeRooIOS-master/LoginBestPractice.iOS/Main.cs:17 
+2017-06-09 12:56:05.975 LoginBestPractice.iOS[35830:414976] Unhandled managed exception:
+Error getting response stream (ReadDone2): ReceiveFailure (System.Net.WebException)
+  at System.Net.WebClient.UploadValues (System.Uri address, System.String method, System.Collections.Specialized.NameValueCollection data) [0x000ce] in /Library/Frameworks/Xamarin.iOS.framework/Versions/10.10.0.36/src/mono/mcs/class/referencesource/System/net/System/Net/webclient.cs:822 
+  at System.Net.WebClient.UploadValues (System.String address, System.String method, System.Collections.Specialized.NameValueCollection data) [0x0000e] in /Library/Frameworks/Xamarin.iOS.framework/Versions/10.10.0.36/src/mono/mcs/class/referencesource/System/net/System/Net/webclient.cs:790 
+  at LoginBestPractice.iOS.ToolboxViewController.setHeight1 (System.String toolboxNaam) [0x00022] in /Users/deroo/Documents/DeRooIOS-master/LoginBestPractice.iOS/ToolboxViewController_.cs:225 
+  at LoginBestPractice.iOS.ToolboxViewController+<>c__DisplayClass8_0.<createElements>b__0 (System.Object <p0>, System.EventArgs <p1>) [0x00067] in /Users/deroo/Documents/DeRooIOS-master/LoginBestPractice.iOS/ToolboxViewController_.cs:117 
+  at UIKit.UIControlEventProxy.Activated () [0x00007] in /Users/builder/data/lanes/4691/d2270eec/source/xamarin-macios/src/UIKit/UIControl.cs:38 
+--- End of stack trace from previous location where exception was thrown ---
+  at (wrapper managed-to-native) UIKit.UIApplication:UIApplicationMain (int,string[],intptr,intptr)
+  at UIKit.UIApplication.Main (System.String[] args, System.IntPtr principal, System.IntPtr delegate) [0x00005] in /Users/builder/data/lanes/4691/d2270eec/source/xamarin-macios/src/UIKit/UIApplication.cs:79 
+  at UIKit.UIApplication.Main (System.String[] args, System.String principalClassName, System.String delegateClassName) [0x00038] in /Users/builder/data/lanes/4691/d2270eec/source/xamarin-macios/src/UIKit/UIApplication.cs:63 
+  at LoginBestPractice.iOS.Application.Main (System.String[] args) [0x00001] in /Users/deroo/Documents/DeRooIOS-master/LoginBestPractice.iOS/Main.cs:17 
+ --- inner exception ---
+  at System.Net.WebConnection.HandleError (System.Net.WebExceptionStatus st, System.Exception e, System.String where) [0x00031] in <dfac2ad8ae7c42209218a908c3070036>:0 
+  at System.Net.WebConnection.ReadDone (System.IAsyncResult result) [0x00062] in <dfac2ad8ae7c42209218a908c3070036>:0 
+  at System.Net.LazyAsyncResult.Complete (System.IntPtr userToken) [0x0003e] in <dfac2ad8ae7c42209218a908c3070036>:0 
+  at System.Net.LazyAsyncResult.ProtectedInvokeCallback (System.Object result, System.IntPtr userToken) [0x00064] in <dfac2ad8ae7c42209218a908c3070036>:0 
+  at System.Net.LazyAsyncResult.InvokeCallback (System.Object result) [0x00000] in <dfac2ad8ae7c42209218a908c3070036>:0 
+  at Mono.Net.Security.AsyncProtocolRequest.StartOperation () [0x0001b] in <dfac2ad8ae7c42209218a908c3070036>:0 
+  at Mono.Net.Security.AsyncProtocolRequest.<StartOperation>b__17_0 (System.Object _) [0x00000] in <dfac2ad8ae7c42209218a908c3070036>:0 
+  at System.Threading.QueueUserWorkItemCallback.WaitCallback_Context (System.Object state) [0x0000d] in <2f4074c3120b4d80802e10af84b67d41>:0 
+  at System.Threading.ExecutionContext.RunInternal (System.Threading.ExecutionContext executionContext, System.Threading.ContextCallback callback, System.Object state, System.Boolean preserveSyncCtx) [0x00071] in <2f4074c3120b4d80802e10af84b67d41>:0 
+  at System.Threading.ExecutionContext.Run (System.Threading.ExecutionContext executionContext, System.Threading.ContextCallback callback, System.Object state, System.Boolean preserveSyncCtx) [0x00000] in <2f4074c3120b4d80802e10af84b67d41>:0 
+  at System.Threading.QueueUserWorkItemCallback.System.Threading.IThreadPoolWorkItem.ExecuteWorkItem () [0x00021] in <2f4074c3120b4d80802e10af84b67d41>:0 
+  at System.Threading.ThreadPoolWorkQueue.Dispatch () [0x00074] in <2f4074c3120b4d80802e10af84b67d41>:0 
+  at ObjCRuntime.Runtime.ThreadPoolDispatcher (System.Func`1[TResult] callback) [0x00006] in <7593f0e3372945ac803cd9573d505380>:0 
+  at System.Threading._ThreadPoolWaitCallback.PerformWaitCallback () [0x00009] in <2f4074c3120b4d80802e10af84b67d41>:0  (System.Exception)
+  at System.Net.WebConnection.HandleError (System.Net.WebExceptionStatus st, System.Exception e, System.String where) [0x00031] in /Library/Frameworks/Xamarin.iOS.framework/Versions/10.10.0.36/src/mono/mcs/class/System/System.Net/WebConnection.cs:446 
+2017-06-09 12:56:05.976 LoginBestPractice.iOS[35830:414976] critical: Stacktrace:
+
+2017-06-09 12:56:05.976 LoginBestPractice.iOS[35830:414976] critical: 
+Native stacktrace:
+
+2017-06-09 12:56:05.979 LoginBestPractice.iOS[35830:414976] critical: 	0   LoginBestPractice.iOS               0x00230b8d mono_handle_native_crash + 269
+2017-06-09 12:56:05.979 LoginBestPractice.iOS[35830:414976] critical: 	1   LoginBestPractice.iOS               0x0023a3d9 sigabrt_signal_handler + 153
+2017-06-09 12:56:05.979 LoginBestPractice.iOS[35830:414976] critical: 	2   libsystem_platform.dylib            0x0b74ae5b _sigtramp + 43
+2017-06-09 12:56:05.980 LoginBestPractice.iOS[35830:414976] critical: 	3   ???                                 0xffffffff 0x0 + 4294967295
+2017-06-09 12:56:05.980 LoginBestPractice.iOS[35830:414976] critical: 	4   libsystem_c.dylib                   0x0b403cd4 abort + 133
+2017-06-09 12:56:05.980 LoginBestPractice.iOS[35830:414976] critical: 	5   LoginBestPractice.iOS               0x003fe730 xamarin_printf + 0
+2017-06-09 12:56:05.980 LoginBestPractice.iOS[35830:414976] critical: 	6   LoginBestPractice.iOS               0x002aedeb mono_invoke_unhandled_exception_hook + 139
+2017-06-09 12:56:05.980 LoginBestPractice.iOS[35830:414976] critical: 	7   LoginBestPractice.iOS               0x0023067f mono_handle_exception_internal + 4703
+2017-06-09 12:56:05.980 LoginBestPractice.iOS[35830:414976] critical: 	8   LoginBestPractice.iOS               0x0022f419 mono_handle_exception + 41
+2017-06-09 12:56:05.980 LoginBestPractice.iOS[35830:414976] critical: 	9   LoginBestPractice.iOS               0x001cdf1c mono_x86_throw_exception + 220
+2017-06-09 12:56:05.981 LoginBestPractice.iOS[35830:414976] critical: 	10  ???                                 0x1e627b6c 0x0 + 509770604
+2017-06-09 12:56:05.981 LoginBestPractice.iOS[35830:414976] critical: 	11  LoginBestPractice.iOS               0x000f5ae6 _ZL31native_to_managed_trampoline_11P11objc_objectP13objc_selectorPP11_MonoMethodj + 326
+2017-06-09 12:56:05.981 LoginBestPractice.iOS[35830:414976] critical: 	12  LoginBestPractice.iOS               0x000ff575 -[UIKit_UIControlEventProxy BridgeSelector] + 69
+2017-06-09 12:56:05.981 LoginBestPractice.iOS[35830:414976] critical: 	13  libobjc.A.dylib                     0x0ae15220 -[NSObject performSelector:withObject:withObject:] + 63
+2017-06-09 12:56:05.981 LoginBestPractice.iOS[35830:414976] critical: 	14  UIKit                               0x0406cd90 -[UIApplication sendAction:to:from:forEvent:] + 91
+2017-06-09 12:56:05.981 LoginBestPractice.iOS[35830:414976] critical: 	15  UIKit                               0x0406cd2a -[UIApplication sendAction:toTarget:fromSender:forEvent:] + 41
+2017-06-09 12:56:05.982 LoginBestPractice.iOS[35830:414976] critical: 	16  UIKit                               0x04214d0b -[UIControl sendAction:to:forEvent:] + 64
+2017-06-09 12:56:05.982 LoginBestPractice.iOS[35830:414976] critical: 	17  UIKit                               0x04215075 -[UIControl _sendActionsForEvents:withEvent:] + 469
+2017-06-09 12:56:05.982 LoginBestPractice.iOS[35830:414976] critical: 	18  UIKit                               0x04213a35 -[UIControl touchesBegan:withEvent:] + 345
+2017-06-09 12:56:05.982 LoginBestPractice.iOS[35830:414976] critical: 	19  UIKit                               0x045fd3fa _UIGestureEnvironmentSortAndSendDelayedTouches + 5856
+2017-06-09 12:56:05.982 LoginBestPractice.iOS[35830:414976] critical: 	20  UIKit                               0x045f7df7 _UIGestureEnvironmentUpdate + 1469
+2017-06-09 12:56:05.982 LoginBestPractice.iOS[35830:414976] critical: 	21  UIKit                               0x045f77fc -[UIGestureEnvironment _deliverEvent:toGestureRecognizers:usingBlock:] + 429
+2017-06-09 12:56:05.982 LoginBestPractice.iOS[35830:414976] critical: 	22  UIKit                               0x045f6992 -[UIGestureEnvironment _updateGesturesForEvent:window:] + 265
+2017-06-09 12:56:05.982 LoginBestPractice.iOS[35830:414976] critical: 	23  UIKit                               0x040e4b6a -[UIWindow sendEvent:] + 4409
+2017-06-09 12:56:05.983 LoginBestPractice.iOS[35830:414976] critical: 	24  UIKit                               0x0408afe0 -[UIApplication sendEvent:] + 363
+2017-06-09 12:56:05.983 LoginBestPractice.iOS[35830:414976] critical: 	25  UIKit                               0x0490716f __dispatchPreprocessedEventFromEventQueue + 2973
+2017-06-09 12:56:05.983 LoginBestPractice.iOS[35830:414976] critical: 	26  UIKit                               0x048fe63f __handleEventQueue + 1255
+2017-06-09 12:56:05.983 LoginBestPractice.iOS[35830:414976] critical: 	27  UIKit                               0x048ffba3 __handleHIDEventFetcherDrain + 66
+2017-06-09 12:56:05.983 LoginBestPractice.iOS[35830:414976] critical: 	28  CoreFoundation                      0x009d2a5f __CFRUNLOOP_IS_CALLING_OUT_TO_A_SOURCE0_PERFORM_FUNCTION__ + 15
+2017-06-09 12:56:05.983 LoginBestPractice.iOS[35830:414976] critical: 	29  CoreFoundation                      0x009b81c4 __CFRunLoopDoSources0 + 500
+2017-06-09 12:56:05.983 LoginBestPractice.iOS[35830:414976] critical: 	30  CoreFoundation                      0x009b769c __CFRunLoopRun + 1084
+2017-06-09 12:56:05.983 LoginBestPractice.iOS[35830:414976] critical: 	31  CoreFoundation                      0x009b6fd4 CFRunLoopRunSpecific + 372
+2017-06-09 12:56:05.984 LoginBestPractice.iOS[35830:414976] critical: 	32  CoreFoundation                      0x009b6e4b CFRunLoopRunInMode + 123
+2017-06-09 12:56:05.984 LoginBestPractice.iOS[35830:414976] critical: 	33  GraphicsServices                    0x0d7c2a7a GSEventRunModal + 71
+2017-06-09 12:56:05.984 LoginBestPractice.iOS[35830:414976] critical: 	34  GraphicsServices                    0x0d7c295f GSEventRun + 80
+2017-06-09 12:56:05.984 LoginBestPractice.iOS[35830:414976] critical: 	35  UIKit                               0x0406acb9 UIApplicationMain + 148
+2017-06-09 12:56:05.984 LoginBestPractice.iOS[35830:414976] critical: 	36  ???                                 0x1e7dc700 0x0 + 511559424
+2017-06-09 12:56:05.984 LoginBestPractice.iOS[35830:414976] critical: 	37  ???                                 0x1e7dc60c 0x0 + 511559180
+2017-06-09 12:56:05.984 LoginBestPractice.iOS[35830:414976] critical: 	38  ???                                 0x1e7db350 0x0 + 511554384
+2017-06-09 12:56:05.984 LoginBestPractice.iOS[35830:414976] critical: 	39  ???                                 0x1e7db1f4 0x0 + 511554036
+2017-06-09 12:56:05.984 LoginBestPractice.iOS[35830:414976] critical: 	40  ???                                 0x1e7db29f 0x0 + 511554207
+2017-06-09 12:56:05.985 LoginBestPractice.iOS[35830:414976] critical: 	41  LoginBestPractice.iOS               0x00241817 mono_jit_runtime_invoke + 759
+2017-06-09 12:56:05.985 LoginBestPractice.iOS[35830:414976] critical: 	42  LoginBestPractice.iOS               0x00313c46 do_runtime_invoke + 86
+2017-06-09 12:56:05.985 LoginBestPractice.iOS[35830:414976] critical: 	43  LoginBestPractice.iOS               0x00316e56 do_exec_main_checked + 150
+2017-06-09 12:56:05.985 LoginBestPractice.iOS[35830:414976] critical: 	44  LoginBestPractice.iOS               0x00315ec9 mono_runtime_run_main_checked + 73
+2017-06-09 12:56:05.985 LoginBestPractice.iOS[35830:414976] critical: 	45  LoginBestPractice.iOS               0x001c56aa mono_jit_exec + 314
+2017-06-09 12:56:05.985 LoginBestPractice.iOS[35830:414976] critical: 	46  LoginBestPractice.iOS               0x0040c78f xamarin_main + 3439
+2017-06-09 12:56:05.985 LoginBestPractice.iOS[35830:414976] critical: 	47  LoginBestPractice.iOS               0x0040e3d1 main + 65
+2017-06-09 12:56:05.986 LoginBestPractice.iOS[35830:414976] critical: 	48  libdyld.dylib                       0x0b35f779 start + 1
+2017-06-09 12:56:05.986 LoginBestPractice.iOS[35830:414976] critical: 
+=================================================================
+Got a SIGABRT while executing native code. This usually indicates
+a fatal error in the mono runtime or one of the native libraries 
+used by your application.
+=================================================================
+
