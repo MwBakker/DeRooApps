@@ -11,10 +11,11 @@ namespace LoginBestPractice.iOS
     public partial class FormulierTableViewController : UIViewController
     {
 		List<UIView> views;
-		UIColor deRooGroen;
 		DataStorage dataStorage = new DataStorage();
 		RootObject dataCategorie;
 		RootObject dataVraag;
+
+		UIColor deRooGroen;
 		string formID;
 
 		public FormulierTableViewController (IntPtr handle) : base (handle)
@@ -31,6 +32,9 @@ namespace LoginBestPractice.iOS
 			btn_verzendFormulier.Layer.BorderWidth = 1;
 		}
 
+		//
+		// Richt en plaatst views die als tablesource gaan dienen
+		//
 		public void setCatAndQuest(string formulierID)
 		{
 			formID = formulierID;
@@ -75,53 +79,28 @@ namespace LoginBestPractice.iOS
 							opties.InsertSegment("N.v.t.", 2, false);
 							vraagEnOptie.AddSubview(opties);
 
-							// foto-button // 
-							UIDeRooButton btn_foto = new UIDeRooButton();
-							btn_foto.Hidden = true;
-
 							//catBlock.AddSubview(btn_foto);
 							opties.ValueChanged += (sender, e) =>
 							{
+								// foto-button // 
+								UIDeRooButton btn_foto = vraagEnOptie.getBtn_foto();
+								btn_foto.Hidden = true;
+
 								if (opties.SelectedSegment == 1)
 								{
-									btn_foto.Frame = new CoreGraphics.CGRect(0, opties.Frame.Bottom, this.View.Frame.Width, 35);
-									btn_foto.BackgroundColor = UIColor.DarkGray;
-									btn_foto.SetTitle("Maak foto van situatie", UIControlState.Normal);
-									vraagEnOptie.AddSubview(btn_foto);
-									btn_foto.TouchDown += delegate
-									{
-									};
 									opties.TintColor = new UIColor(red: 0.88f, green: 0.03f, blue: 0.03f, alpha: 1.0f);
-
-									btn_foto.Hidden = false;
-
-									// viewHoogte zelf aanpassen
-									vraagEnOptie.Frame = new CoreGraphics.CGRect(0, vraagEnOptie.Frame.Y, this.View.Frame.Width, (vraagEnOptie.Frame.Height + btn_foto.Frame.Height));
-									containerElementPos += btn_foto.Frame.Height;
-									vraagEnOptie.SetNeedsDisplay();
-									catBlock.Frame = new CoreGraphics.CGRect(0, 10, this.View.Frame.Width, (setStackHeight(catBlock) + 25));
-									catBlock.SetNeedsDisplay();
-
-
-									// views eronder herpositionerenn
-									foreach (UIView view in catBlock.Subviews) 
-									{
-										if (view is VraagBlokView)
-										{
-											if (btn_foto.IsDescendantOfView(view) == false)
-											{
-												view.Frame = new CoreGraphics.CGRect(view.Frame.X, (view.Frame.Y + btn_foto.Frame.Height), view.Frame.Width, view.Frame.Height);
-											}
-										}
-									}
-
-									formulierTableView.ReloadData();
 
 									Modal modal = Storyboard.InstantiateViewController("modalVraag") as Modal;
 									vraagEnOptie.addModal(modal);
 									PresentViewController(modal, true, null);
 
-									// ververs de boel na sluiten modal
+									btn_foto.Frame = new CoreGraphics.CGRect(0, opties.Frame.Bottom, this.View.Frame.Width, 35);
+									vraagEnOptie.AddSubview(btn_foto);
+									btn_foto.TouchDown += delegate
+									{
+									};
+									btn_foto.Hidden = false;
+									updateView(catBlock, vraagEnOptie, btn_foto);
 								} 
 								else if (opties.SelectedSegment == 0) 
 								{
@@ -146,6 +125,9 @@ namespace LoginBestPractice.iOS
 			formulierTableView.Source = new FormulierenTableViewSource(views);
 		}
 
+		// 
+		// verzameling + doorstuur gegevens na druk op knop 
+		//
 		partial void btn_verzendFormulier_TouchUpInside(UIButton sender)
 		{
 			Formulieren formulier = new Formulieren();
@@ -233,6 +215,9 @@ namespace LoginBestPractice.iOS
 			}
 		}
 
+		// 
+		//	bepaalt hoogte 
+		//
 		private nfloat setStackHeight(UIView viewIn)
 		{
 			nfloat hoogte = 0.0f;
@@ -244,6 +229,31 @@ namespace LoginBestPractice.iOS
 				}
 			}
 			return hoogte;
-		}	
+		}
+
+		// 
+		// update views adhv dynamisch toegevoegd element
+		//
+		private void updateView(CatBlockView catBlock, VraagBlokView vraagEnOptie, UIButton btn_foto)
+		{
+			vraagEnOptie.Frame = new CoreGraphics.CGRect(0, vraagEnOptie.Frame.Y, this.View.Frame.Width, (vraagEnOptie.Frame.Height + btn_foto.Frame.Height));
+			catBlock.Frame = new CoreGraphics.CGRect(0, 10, this.View.Frame.Width, (setStackHeight(catBlock) + 25));
+			catBlock.SetNeedsDisplay();
+
+			// views eronder herpositionerenn
+			foreach (UIView view in catBlock) 
+			{
+				if (view is VraagBlokView)
+				{
+					// Alles behalve deze view!
+
+					if (view.Tag > vraagEnOptie.Tag)
+					{
+						view.Frame = new CoreGraphics.CGRect(view.Frame.X, (view.Frame.Y + btn_foto.Frame.Height), view.Frame.Width, view.Frame.Height);
+					}
+				}
+			}
+			formulierTableView.ReloadData();
+		}
 	}
 }

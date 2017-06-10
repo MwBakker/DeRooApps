@@ -10,7 +10,7 @@ namespace LoginBestPractice.iOS
 
 		public CatBlockView()
 		{
-			deRooGroen = new UIColor(red:0.10f, green:0.26f, blue:0.03f, alpha:1.0f);
+			deRooGroen = new UIColor(0.10f, 0.26f, 0.03f, 1.0f);
 
 			lbl_cat = new UILabel();
 			lbl_cat.BackgroundColor = deRooGroen;

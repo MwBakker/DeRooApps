@@ -8,6 +8,7 @@ namespace LoginBestPractice.iOS
 		UIColor deRooGroen;
 		UILabel lbl_vraag;
 		UISegmentedControl opties;
+		UIDeRooButton btn_foto;
 		Modal modal;
 
 		public VraagBlokView()
@@ -22,6 +23,10 @@ namespace LoginBestPractice.iOS
 			opties = new UISegmentedControl();
 			opties.TintColor = UIColor.DarkGray;
 
+			btn_foto = new UIDeRooButton(); 
+			btn_foto.BackgroundColor = UIColor.DarkGray;
+			btn_foto.SetTitle("Maak foto van situatie", UIControlState.Normal);
+
 		}
 
 		public void addModal(Modal modal)
@@ -32,6 +37,8 @@ namespace LoginBestPractice.iOS
 		public UILabel getLbl_vraag() { return lbl_vraag; }
 
 		public UISegmentedControl getOpties() { return opties; }
+
+		public UIDeRooButton getBtn_foto() { return btn_foto; }
 
 		public Modal getModal() { return modal; }
 	}

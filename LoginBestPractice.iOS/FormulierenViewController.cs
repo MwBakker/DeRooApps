@@ -19,7 +19,7 @@ namespace LoginBestPractice.iOS
 			base.ViewDidLoad();
 			DataStorage dataStorage = new DataStorage();
 			dataStorage.refresh();
-			Thread.Sleep(4000);
+			Thread.Sleep(3000);
 			RootObject formData = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.forms);
 			nfloat hoogteVanButtons = 20;
 
