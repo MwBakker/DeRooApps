@@ -19,6 +19,8 @@ namespace LoginBestPractice.iOS
 			lbl_cat.MinimumFontSize = 12f;
 		}
 
-		public UILabel getLbl_cat() { return lbl_cat; }
+		public UILabel getLbl_cat(string text) {
+			lbl_cat.Text = text;
+			return lbl_cat; }
 	}
 }

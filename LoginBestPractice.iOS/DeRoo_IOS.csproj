@@ -185,7 +185,7 @@
       <DependentUpon>PDFController.cs</DependentUpon>
     </Compile>
     <Compile Include="UIDeRooButton.cs" />
-    <Compile Include="FormulierTable\CatBlockVIew.cs" />
+    <Compile Include="FormulierTable\CatBlockView.cs" />
     <Compile Include="UiDeRooButton.cs" />
     <Compile Include="ToolboxDeelnemersTableView.cs" />
     <Compile Include="ToolboxDeelnemersTableView.designer.cs">

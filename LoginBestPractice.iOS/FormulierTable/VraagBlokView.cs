@@ -9,11 +9,12 @@ namespace LoginBestPractice.iOS
 		UILabel lbl_vraag;
 		UISegmentedControl opties;
 		UIDeRooButton btn_foto;
+		UIDeRooButton btn_modal;
 		Modal modal;
 
 		public VraagBlokView()
 		{
-			deRooGroen = new UIColor(red:0.10f, green:0.26f, blue:0.03f, alpha:1.0f);
+			deRooGroen = new UIColor(0.10f, 0.26f, 0.03f, 1.0f);
 
 		 	lbl_vraag = new UILabel();
 			lbl_vraag.Font = UIFont.FromName("Helvetica-Bold", 12f);
@@ -23,10 +24,11 @@ namespace LoginBestPractice.iOS
 			opties = new UISegmentedControl();
 			opties.TintColor = UIColor.DarkGray;
 
-			btn_foto = new UIDeRooButton(); 
+			btn_foto = new UIDeRooButton();
 			btn_foto.BackgroundColor = UIColor.DarkGray;
-			btn_foto.SetTitle("Maak foto van situatie", UIControlState.Normal);
 
+			btn_modal = new UIDeRooButton();
+			btn_modal.BackgroundColor = UIColor.DarkGray;
 		}
 
 		public void addModal(Modal modal)
@@ -34,11 +36,31 @@ namespace LoginBestPractice.iOS
 			this.modal = modal;
 		}
 
-		public UILabel getLbl_vraag() { return lbl_vraag; }
+		public UILabel getLbl_vraag(string text) { 
+			lbl_vraag.Text = text; 
+			return lbl_vraag; 
+		}
 
-		public UISegmentedControl getOpties() { return opties; }
+		public UISegmentedControl getOpties(string vraagTypeIn) 
+		{
+			string[] vraagType = vraagTypeIn.Split('/');
 
-		public UIDeRooButton getBtn_foto() { return btn_foto; }
+			for (int i = 0; i < vraagType.Length; i++)
+			{
+				opties.InsertSegment(vraagType[i],i,false);
+			}
+			return opties; 
+		}
+
+		public UIDeRooButton getBtn_foto() { 
+			btn_foto.SetTitle("Maak foto van situatie", UIControlState.Normal); 
+			return btn_foto; 
+		}
+
+		public UIDeRooButton getBtn_modal() { 
+			btn_modal.SetTitle("Zie ingevoerd commentaar", UIControlState.Normal); 
+			return btn_modal; 
+		}
 
 		public Modal getModal() { return modal; }
 	}

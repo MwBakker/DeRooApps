@@ -21,6 +21,7 @@ namespace LoginBestPractice.iOS
 			var cell = new UITableViewCell(UITableViewCellStyle.Default, "");
 			cell.ContentView.AddSubview(views[indexPath.Row]);
 			cell.ImageView.Frame = new CoreGraphics.CGRect(0, 0, 10, 10);
+			cell.SelectionStyle = UITableViewCellSelectionStyle.None;
 			return cell; 
 		}
 
