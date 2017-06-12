@@ -23,15 +23,15 @@
 				<integer>9</integer>
 			</dict>
 		</array>
-		<key>3427</key>
+		<key>3443</key>
 		<array>
 			<dict>
 				<key>affected-objects</key>
 				<array>
-					<string>3427</string>
+					<string>3443</string>
 				</array>
 				<key>message</key>
-				<string>Prototype table cells must have reuse identifiers</string>
+				<string>“View Controller“ is unreachable because it has no entry points, and no identifier for runtime access via -[UIStoryboard instantiateViewControllerWithIdentifier:].</string>
 				<key>type</key>
 				<string>IBUnsupportedConfiguration</string>
 				<key>type-value</key>
