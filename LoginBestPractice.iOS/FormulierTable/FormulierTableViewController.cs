@@ -21,8 +21,8 @@ namespace LoginBestPractice.iOS
 
 		public FormulierTableViewController (IntPtr handle) : base (handle)
         {
-			viewWidth = this.View.Frame.Width; 
-
+			viewWidth = this.View.Frame.Width;
+			formulierTableView.Frame = new CoreGraphics.CGRect(0, 0, viewWidth, this.View.Frame.Height);
 			views = new List<UIView>();
 			deRooGroen = new UIColor(0.10f, 0.26f, 0.03f, 1.0f);
 			dataCategorie = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.categories);
@@ -185,7 +185,7 @@ namespace LoginBestPractice.iOS
 					if (catSubView is VraagBlokView)
 					{
 						Vragen vraag = new Vragen();
-						vraag.vraag_id = catSubView.Tag.ToString();
+						vraag.vraag_id = ((VraagBlokView)catSubView).getID();
 						// modalGegevens
 						Modal vraagModal = ((VraagBlokView)catSubView).getModal();
 						if (vraagModal != null)
