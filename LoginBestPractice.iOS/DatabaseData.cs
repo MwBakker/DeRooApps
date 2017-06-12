@@ -3,6 +3,7 @@ using System.Collections.Generic;
 public class Vragen
 {
 	public string vraag_id { get; set; }
+	public string vraag_volgNr { get; set; }
 	public string vraag_text { get; set; }
 	public string categorie_id { get; set; }
 	public string vraag_type { get; set; }

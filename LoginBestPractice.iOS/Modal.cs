@@ -19,9 +19,10 @@ namespace LoginBestPractice.iOS
 
 		public override void ViewDidLoad()
 		{
-			modalView.Layer.BorderWidth = 1.5f;
-			btn_ok.Layer.BorderWidth = 1;;
-			btn_annuleer.Layer.BorderWidth = 1;
+			modalView.Layer.BorderWidth = 0.1f;
+			txtF_opmerking.Layer.BorderWidth = 0.5f;
+			txtF_actie.Layer.BorderWidth = 0.5f;
+			txtF_doorWie.Layer.BorderWidth = 0.5f;
 		}
 
 		partial void btn_ok_TouchUpInside(UIButton sender)

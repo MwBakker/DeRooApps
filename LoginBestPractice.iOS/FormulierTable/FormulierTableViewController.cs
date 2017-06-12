@@ -61,8 +61,8 @@ namespace LoginBestPractice.iOS
 						if (dataVraag.vragen[j].categorie_id == dataCategorie.categorien[i].categorie_id)
 						{
 							// vraagcontainer // 
-							VraagBlokView vraagEnOptie = new VraagBlokView();
-							vraagEnOptie.Tag = int.Parse(dataVraag.vragen[j].vraag_id); 
+							VraagBlokView vraagEnOptie = new VraagBlokView(dataVraag.vragen[j].vraag_id);
+							vraagEnOptie.Tag = int.Parse(dataVraag.vragen[j].vraag_volgNr); 
 							nfloat containerElementPos = 0;
 
 							// vraag // 
@@ -76,7 +76,7 @@ namespace LoginBestPractice.iOS
 							opties.Frame = new CoreGraphics.CGRect((viewWidth * (1 - 0.925)), containerElementPos, (viewWidth * 0.85), 30);
 							containerElementPos += opties.Frame.Bottom;
 							vraagEnOptie.AddSubview(opties);
-
+							Modal modal;
 							bool set = false;
 							opties.ValueChanged += (sender, e) =>
 							{
@@ -97,6 +97,7 @@ namespace LoginBestPractice.iOS
 										updateView(catBlock, vraagEnOptie, btn_modal, "removed");
 										set = false;
 									}
+									modal = null;
 								}
 								else if (opties.SelectedSegment == 1)
 								{
@@ -106,7 +107,7 @@ namespace LoginBestPractice.iOS
 									btn_modal.Hidden = false;
 
 									// modal //
-									Modal modal = Storyboard.InstantiateViewController("modalVraag") as Modal;
+									modal = Storyboard.InstantiateViewController("modalVraag") as Modal;
 									vraagEnOptie.addModal(modal);
 									PresentViewController(modal, true, null);
 
@@ -132,6 +133,7 @@ namespace LoginBestPractice.iOS
 										updateView(catBlock, vraagEnOptie, btn_modal, "removed");
 										set = false;
 									}
+									modal = null;
 								}
 							};
 							vraagEnOptie.Frame = new CoreGraphics.CGRect(0, containerPos, viewWidth, setStackHeight(vraagEnOptie));
@@ -293,6 +295,7 @@ namespace LoginBestPractice.iOS
 						{
 							view.Frame = new CoreGraphics.CGRect(view.Frame.X, vraagOptieBottom, view.Frame.Width, view.Frame.Height);
 						}
+						vraagOptieBottom = view.Frame.Bottom;
 					}
 				}
 			}
