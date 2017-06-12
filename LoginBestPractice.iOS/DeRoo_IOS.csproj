@@ -187,13 +187,9 @@
     <Compile Include="UIDeRooButton.cs" />
     <Compile Include="FormulierTable\CatBlockView.cs" />
     <Compile Include="UiDeRooButton.cs" />
-    <Compile Include="ToolboxDeelnemersTableView.cs" />
-    <Compile Include="ToolboxDeelnemersTableView.designer.cs">
-      <DependentUpon>ToolboxDeelnemersTableView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DeelnemersTableViewController.cs" />
-    <Compile Include="DeelnemersTableViewController.designer.cs">
-      <DependentUpon>DeelnemersTableViewController.cs</DependentUpon>
+    <Compile Include="WerknemersTableView.cs" />
+    <Compile Include="WerknemersTableView.designer.cs">
+      <DependentUpon>WerknemersTableView.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
