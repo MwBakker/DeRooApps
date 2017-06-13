@@ -143,10 +143,6 @@
     <Compile Include="Encrypter.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="User.cs" />
-    <Compile Include="LogoutViewController.cs" />
-    <Compile Include="LogoutViewController.designer.cs">
-      <DependentUpon>LogoutViewController.cs</DependentUpon>
-    </Compile>
     <Compile Include="HandboekViewController.cs" />
     <Compile Include="HandboekViewController.designer.cs">
       <DependentUpon>HandboekViewController.cs</DependentUpon>
@@ -178,7 +174,6 @@
     </Compile>
     <Compile Include="TableSource.cs" />
     <Compile Include="FormulierTable\VraagBlokView.cs" />
-    <Compile Include="n.cs" />
     <Compile Include="ToolboxViewController_.cs" />
     <Compile Include="PDFController.cs" />
     <Compile Include="PDFController.designer.cs">

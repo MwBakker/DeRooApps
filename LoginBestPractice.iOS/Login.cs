@@ -6,6 +6,7 @@ namespace DeRoo_iOS
 {
 	public class Login
 	{
+		//Local variables
 		String username;
 		String password;
 		RootObject data;
@@ -16,6 +17,7 @@ namespace DeRoo_iOS
 			this.password = password;
 		}
 
+		//method checks if given username and password is a existing user in database and returns true if so.
 		public Boolean isActive()
 		{
 			try
@@ -45,6 +47,7 @@ namespace DeRoo_iOS
 			return false;
 		}
 
+		//This methods gets the token of the current user.
 		public String getToken()
 		{
 			String token = "";

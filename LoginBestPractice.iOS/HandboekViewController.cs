@@ -12,7 +12,7 @@ namespace LoginBestPractice.iOS
 	{
 		public HandboekViewController(IntPtr handle) : base(handle)
 		{
-
+			//Checks if google is available, if not, load local file in webview.
 			if(!Reachability.IsHostReachable("http://google.com")) 
 			{
 				var webView = new UIWebView(View.Bounds);
@@ -24,6 +24,7 @@ namespace LoginBestPractice.iOS
 			}
 			else
 			{
+				//loads online-pdf file.
 				var webView = new UIWebView(View.Bounds);
 				View.AddSubview(webView);
 				var url = "https://amkapp.nl/test/pages/DeRoo/Kwaliteitshandboek%205.1%20cert.pdf";
@@ -33,10 +34,12 @@ namespace LoginBestPractice.iOS
 
 		}
 
+		//This method is called everytime the view loads.
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
 
+			//Code for the logout button(image).
 			this.NavigationItem.SetRightBarButtonItem(
 			new UIBarButtonItem(UIImage.FromFile("logouttemp.png"), UIBarButtonItemStyle.Plain, (sender,args) => 
 			{
@@ -75,36 +78,6 @@ namespace LoginBestPractice.iOS
 	                }
 	            };
     		}), true);
-		}
-
-
-
-		public void getPDF()
-		{
-				var webClient = new WebClient();
-
-				webClient.DownloadStringCompleted += (s, e) =>
-				{
-					var text = e.Result; // get the downloaded text
-					string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-					string localFilename = "handboek.pdf";
-					string localPath = Path.Combine(documentsPath, localFilename);
-					File.WriteAllText(localPath, text); // writes to local storage
-				};
-
-				//locatie handboek
-				var url = new Uri("amkapp.nl/test/pages/DeRoo/handboek.pdf");
-
-				//encoding
-				webClient.Encoding = Encoding.UTF8;
-
-				//downloadd
-				webClient.DownloadStringAsync(url);
-			}
-
-		public void openPDF()
-		{
-
 		}
 	}
 	

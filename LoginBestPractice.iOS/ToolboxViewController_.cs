@@ -8,9 +8,6 @@ using CoreGraphics;
 using System.Collections;
 using System.Net;
 using System.Text;
-using System.Drawing;
-using Xamarin.Forms.Xaml;
-using Xamarin.Forms;
 
 namespace LoginBestPractice.iOS
 {
@@ -220,7 +217,8 @@ namespace LoginBestPractice.iOS
 				NavigationController.PushViewController(toolboxController, true);
 			};
 			return toolboxButton; 		}
-		
+
+		//method to get dynamically a nfloat number for the height of the contentsize of the scrollview.
 		private nfloat setHeight()
 		{
 			
@@ -234,6 +232,7 @@ namespace LoginBestPractice.iOS
 			return hoogteScrollview;
 		}
 
+		//method to get dynamically a nfloat number for the height of the contentsize of the scrollview.
 		private nfloat setHeight1(String toolboxNaam)
 		{ 
 			nfloat hoogteScrollview = 0;
