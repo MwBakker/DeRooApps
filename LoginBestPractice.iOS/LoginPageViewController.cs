@@ -14,9 +14,12 @@ namespace LoginBestPractice.iOS
 		{
         }
 
+		//This method is called everytime the view loads.
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
+
+			//Method to show or hide password.
 			passwordHideShow.TouchUpInside += delegate
 			{
 				if (0 == passwordHideShow.Tag)
@@ -32,6 +35,7 @@ namespace LoginBestPractice.iOS
 			};
 		}
 
+		//Onclick event for login button. If user exists, redirect, else give message.
         partial void LoginButton_TouchUpInside(UIButton sender)
         {
             //Validate our Username &Password.
@@ -71,11 +75,13 @@ namespace LoginBestPractice.iOS
 			}
         }
 
+		//Checks if filled in data is valid.
         private bool IsUserNameValid()
 		{
             return !String.IsNullOrEmpty(UserNameTextView.Text.Trim());
         }
 
+		//Checks if filled in data is valid.
         private bool IsPasswordValid()
         {
             return !String.IsNullOrEmpty(PasswordTextView.Text.Trim());

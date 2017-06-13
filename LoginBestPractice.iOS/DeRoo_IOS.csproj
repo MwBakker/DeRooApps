@@ -141,9 +141,23 @@
     <Compile Include="Encrypter.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="User.cs" />
+<<<<<<< HEAD
     <Compile Include="LogoutViewController.cs" />
     <Compile Include="LogoutViewController.designer.cs">
       <DependentUpon>LogoutViewController.cs</DependentUpon>
+=======
+    <Compile Include="HandboekViewController.cs" />
+    <Compile Include="HandboekViewController.designer.cs">
+      <DependentUpon>HandboekViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormulierenViewController.cs" />
+    <Compile Include="FormulierenViewController.designer.cs">
+      <DependentUpon>FormulierenViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormulierInhoudViewController.cs" />
+    <Compile Include="FormulierInhoudViewController.designer.cs">
+      <DependentUpon>FormulierInhoudViewController.cs</DependentUpon>
+>>>>>>> origin/master
     </Compile>
     <Compile Include="reachability.cs" />
     <Compile Include="TableSource.cs" />
@@ -168,12 +182,20 @@
     <Compile Include="Forms\FormulierenViewController.designer.cs">
       <DependentUpon>FormulierenViewController.cs</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="Handbook\HandboekViewController.cs" />
     <Compile Include="Handbook\HandboekViewController.designer.cs">
       <DependentUpon>HandboekViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Handbook\PDFController.cs" />
     <Compile Include="Handbook\PDFController.designer.cs">
+=======
+    <Compile Include="TableSource.cs" />
+    <Compile Include="FormulierTable\VraagBlokView.cs" />
+    <Compile Include="ToolboxViewController_.cs" />
+    <Compile Include="PDFController.cs" />
+    <Compile Include="PDFController.designer.cs">
+>>>>>>> origin/master
       <DependentUpon>PDFController.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormTable\CatBlockView.cs" />
