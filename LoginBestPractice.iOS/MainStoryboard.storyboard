@@ -445,7 +445,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3045" id="3046">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <rect key="contentStretch" x="0.0" y="0" width="1" height="1"/>
                                         </tableViewCellContentView>
@@ -554,5 +554,8 @@
         <image name="TopXamagons.png" width="151" height="178"/>
         <image name="Xamagon.png" width="167" height="147"/>
         <image name="add_person_to_toolbox.png" width="24" height="24"/>
+        <image name="deRooButton.png" width="700" height="40"/>
+        <image name="button.png" width="1000" height="50"/>
+        <image name="buttonGrey.png" width="1000" height="30"/>
     </resources>
 </document>

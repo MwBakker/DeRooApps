@@ -1,30 +1,9 @@
 ﻿<Properties StartupConfiguration="{84563AF5-67F4-46D6-B49C-BF8D718F3C64}|Default">
-<<<<<<< HEAD
-  <MonoDevelop.Ide.Workbench ActiveDocument="Forms/FormTable/FormTableViewController.cs">
-=======
-  <MonoDevelop.Ide.Workbench ActiveDocument="PDFController.cs">
->>>>>>> origin/master
+  <MonoDevelop.Ide.Workbench ActiveDocument="Toolboxes/ToolboxViewController_.cs">
     <Files>
+      <File FileName="DeRoo_IOS.csproj" Line="1" Column="1" />
+      <File FileName="Toolboxes/ToolboxViewController_.cs" Line="128" Column="17" />
       <File FileName="MainStoryboard.storyboard" />
-<<<<<<< HEAD
-      <File FileName="Forms/FormTable/QuestBlockView.cs" Line="11" Column="30" />
-      <File FileName="Forms/FormTable/FormTableViewController.cs" Line="113" Column="19" />
-=======
-      <File FileName="FormulierTable/FormulierenTableViewSource.cs" Line="31" Column="4" />
-      <File FileName="ToolboxViewController_.cs" Line="68" Column="4" />
-      <File FileName="n.cs" Line="1" Column="1" />
-      <File FileName="Info.plist" />
-      <File FileName="AppDelegate.cs" Line="1" Column="1" />
-      <File FileName="Encrypter.cs" Line="1" Column="1" />
-      <File FileName="Entitlements.plist" />
-      <File FileName="FormulierenViewController.cs" Line="1" Column="1" />
-      <File FileName="HandboekViewController.cs" Line="37" Column="3" />
-      <File FileName="Login.cs" Line="50" Column="53" />
-      <File FileName="LoginPageViewController.cs" Line="84" Column="3" />
-      <File FileName="LogoutViewController.cs" Line="1" Column="1" />
-      <File FileName="Modal.cs" Line="1" Column="1" />
-      <File FileName="PDFController.cs" Line="1" Column="1" />
->>>>>>> origin/master
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
@@ -33,5 +12,5 @@
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.DeRoo__IOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.C9282889-9998-40D2-9742-B97198703E25" />
+  <MonoDevelop.Ide.ItemProperties.DeRoo__IOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.2C4C37E2-67DB-490E-867E-A9CB096B0080" />
 </Properties>

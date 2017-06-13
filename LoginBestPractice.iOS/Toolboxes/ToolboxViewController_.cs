@@ -76,7 +76,7 @@ namespace LoginBestPractice.iOS
 				toolboxController.View.BackgroundColor = UIColor.White;
 
 				//Assign stoaryboard ID to viewcontroller.
-				PDFController PDFView = Storyboard.InstantiateViewController("PDFController") as PDFController;
+				UIViewController PDFView = Storyboard.InstantiateViewController("PDFController");
 
 				//Create scrollview and add it to the toolboxcontroller.
 				nfloat Hoogte = setHeight1(toolboxNaam);
@@ -84,22 +84,14 @@ namespace LoginBestPractice.iOS
 				scrollViewToolbox.ContentSize = new CGSize(this.View.Frame.Width, Hoogte);
 				toolboxController.Add(scrollViewToolbox);
 
-<<<<<<< HEAD:LoginBestPractice.iOS/Toolboxes/ToolboxViewController_.cs
-				//choose date
-=======
 				//Create label for date and assign it to the scrollViewToolbox.
->>>>>>> origin/master:LoginBestPractice.iOS/ToolboxViewController_.cs
 				UILabel labelDatum = new UILabel();
 				labelDatum.Frame = new CoreGraphics.CGRect((this.View.Frame.Size.Width* (1 - 0.875)), 0, (this.View.Frame.Size.Width * 0.75), 50);
 				labelDatum.Text = "Datum gegeven toolbox:";
 				labelDatum.TextAlignment = UITextAlignment.Center;
 				scrollViewToolbox.Add(labelDatum);
 
-<<<<<<< HEAD:LoginBestPractice.iOS/Toolboxes/ToolboxViewController_.cs
-				//Datepicker
-=======
 				//Create datepicker and assign it to the scrollViewToolbox. 
->>>>>>> origin/master:LoginBestPractice.iOS/ToolboxViewController_.cs
 				UIDatePicker datepicker = new UIDatePicker();
 				var locale = new NSLocale("nl_NL");
 				datepicker.Frame = new CoreGraphics.CGRect((this.View.Frame.Size.Width* (1 - 0.875)), 35, (this.View.Frame.Size.Width * 0.75), 50);
