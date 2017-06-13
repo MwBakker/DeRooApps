@@ -45,13 +45,13 @@
       <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
       <Optimize>false</Optimize>
     </_BundleResourceWithLogicalName>
-    <_BundleResourceWithLogicalName Include="obj/iPhone/Debug/ibtool/MainStoryboard.storyboardc/3423-view-3424.nib">
-      <LogicalName>MainStoryboard.storyboardc/3423-view-3424.nib</LogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhone/Debug/ibtool/MainStoryboard.storyboardc/3386-view-3387.nib">
+      <LogicalName>MainStoryboard.storyboardc/3386-view-3387.nib</LogicalName>
       <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
       <Optimize>false</Optimize>
     </_BundleResourceWithLogicalName>
-    <_BundleResourceWithLogicalName Include="obj/iPhone/Debug/ibtool/MainStoryboard.storyboardc/FormulierTable.nib">
-      <LogicalName>MainStoryboard.storyboardc/FormulierTable.nib</LogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhone/Debug/ibtool/MainStoryboard.storyboardc/FormTable.nib">
+      <LogicalName>MainStoryboard.storyboardc/FormTable.nib</LogicalName>
       <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
       <Optimize>false</Optimize>
     </_BundleResourceWithLogicalName>
@@ -80,11 +80,6 @@
       <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
       <Optimize>false</Optimize>
     </_BundleResourceWithLogicalName>
-    <_BundleResourceWithLogicalName Include="obj/iPhone/Debug/ibtool/MainStoryboard.storyboardc/TableViewDeelnemersToolbox.nib">
-      <LogicalName>MainStoryboard.storyboardc/TableViewDeelnemersToolbox.nib</LogicalName>
-      <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
-      <Optimize>false</Optimize>
-    </_BundleResourceWithLogicalName>
     <_BundleResourceWithLogicalName Include="obj/iPhone/Debug/ibtool/MainStoryboard.storyboardc/ToolboxController.nib">
       <LogicalName>MainStoryboard.storyboardc/ToolboxController.nib</LogicalName>
       <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
@@ -92,6 +87,11 @@
     </_BundleResourceWithLogicalName>
     <_BundleResourceWithLogicalName Include="obj/iPhone/Debug/ibtool/MainStoryboard.storyboardc/ToolboxNextController.nib">
       <LogicalName>MainStoryboard.storyboardc/ToolboxNextController.nib</LogicalName>
+      <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhone/Debug/ibtool/MainStoryboard.storyboardc/WerknemersTableView.nib">
+      <LogicalName>MainStoryboard.storyboardc/WerknemersTableView.nib</LogicalName>
       <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
       <Optimize>false</Optimize>
     </_BundleResourceWithLogicalName>

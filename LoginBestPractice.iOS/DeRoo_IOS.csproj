@@ -138,8 +138,6 @@
     <Compile Include="LoginPageViewController.designer.cs">
       <DependentUpon>LoginPageViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseData.cs" />
-    <Compile Include="DataStorage.cs" />
     <Compile Include="Encrypter.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="User.cs" />
@@ -147,54 +145,51 @@
     <Compile Include="LogoutViewController.designer.cs">
       <DependentUpon>LogoutViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="HandboekViewController.cs" />
-    <Compile Include="HandboekViewController.designer.cs">
-      <DependentUpon>HandboekViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormulierenViewController.cs" />
-    <Compile Include="FormulierenViewController.designer.cs">
-      <DependentUpon>FormulierenViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormulierInhoudViewController.cs" />
-    <Compile Include="FormulierInhoudViewController.designer.cs">
-      <DependentUpon>FormulierInhoudViewController.cs</DependentUpon>
-    </Compile>
     <Compile Include="reachability.cs" />
-    <Compile Include="Modal.cs" />
-    <Compile Include="Modal.designer.cs">
-      <DependentUpon>Modal.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ToolboxViewController_.designer.cs">
-      <DependentUpon>ToolboxViewController_.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ToolboxNextViewController.cs" />
-    <Compile Include="ToolboxNextViewController.designer.cs">
-      <DependentUpon>ToolboxNextViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormulierTable\FormulierenTableViewSource.cs" />
-    <Compile Include="FormulierTable\FormulierTableViewController.cs" />
-    <Compile Include="FormulierTable\FormulierTableViewController.designer.cs">
-      <DependentUpon>FormulierTableViewController.cs</DependentUpon>
-    </Compile>
     <Compile Include="TableSource.cs" />
-    <Compile Include="FormulierTable\VraagBlokView.cs" />
     <Compile Include="n.cs" />
-    <Compile Include="ToolboxViewController_.cs" />
-    <Compile Include="PDFController.cs" />
-    <Compile Include="PDFController.designer.cs">
-      <DependentUpon>PDFController.cs</DependentUpon>
-    </Compile>
     <Compile Include="UIDeRooButton.cs" />
-    <Compile Include="FormulierTable\CatBlockView.cs" />
     <Compile Include="UiDeRooButton.cs" />
     <Compile Include="WerknemersTableView.cs" />
     <Compile Include="WerknemersTableView.designer.cs">
       <DependentUpon>WerknemersTableView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Toolboxes\ToolboxViewController_.cs" />
+    <Compile Include="Toolboxes\ToolboxViewController_.designer.cs">
+      <DependentUpon>ToolboxViewController_.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Toolboxes\ToolboxNextViewController.cs" />
+    <Compile Include="Toolboxes\ToolboxNextViewController.designer.cs">
+      <DependentUpon>ToolboxNextViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Database_Data\DatabaseData.cs" />
+    <Compile Include="Database_Data\DataStorage.cs" />
+    <Compile Include="Forms\FormulierenViewController.cs" />
+    <Compile Include="Forms\FormulierenViewController.designer.cs">
+      <DependentUpon>FormulierenViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Handbook\HandboekViewController.cs" />
+    <Compile Include="Handbook\HandboekViewController.designer.cs">
+      <DependentUpon>HandboekViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Handbook\PDFController.cs" />
+    <Compile Include="Handbook\PDFController.designer.cs">
+      <DependentUpon>PDFController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormTable\CatBlockView.cs" />
+    <Compile Include="Forms\FormTable\FormTableViewController.cs" />
+    <Compile Include="Forms\FormTable\FormTableViewController.designer.cs">
+      <DependentUpon>FormTableViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormTable\FormTableViewSource.cs" />
+    <Compile Include="Forms\FormTable\Modal.cs" />
+    <Compile Include="Forms\FormTable\Modal.designer.cs">
+      <DependentUpon>..\..\FormTable\Modal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormTable\QuestBlockView.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\de-roo.png" />
-    <BundleResource Include="PDF\handboek.pdf" />
     <BundleResource Include="Resources\toolbox.png" />
     <BundleResource Include="Resources\formulieren.png" />
     <BundleResource Include="Resources\handboek.png" />
@@ -213,13 +208,19 @@
     <BundleResource Include="Resources\Xamagon.png" />
     <BundleResource Include="Resources\Xamagon%402x.png" />
     <BundleResource Include="Resources\Xamagon%403x.png" />
-    <BundleResource Include="Toolboxen\handboek.pdf" />
+    <BundleResource Include="Toolboxes\handboek.pdf" />
     <BundleResource Include="Resources\add_person_to_toolbox.png" />
+    <BundleResource Include="Handbook\handboek.pdf" />
+    <BundleResource Include="Resources\deRooButton.png" />
+    <BundleResource Include="Resources\button.png" />
+    <BundleResource Include="Resources\buttonGrey.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="PDF\" />
-    <Folder Include="Toolboxen\" />
-    <Folder Include="FormulierTable\" />
+    <Folder Include="Toolboxes\" />
+    <Folder Include="Database_Data\" />
+    <Folder Include="Forms\" />
+    <Folder Include="Forms\FormTable\" />
+    <Folder Include="Handbook\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="packages\Xamarin.Swift3.3.0.1\build\Xamarin.Swift3.targets" Condition="Exists('packages\Xamarin.Swift3.3.0.1\build\Xamarin.Swift3.targets')" />

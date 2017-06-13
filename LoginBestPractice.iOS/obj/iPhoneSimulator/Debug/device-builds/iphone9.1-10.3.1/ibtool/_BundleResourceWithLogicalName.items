@@ -50,8 +50,8 @@
       <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
       <Optimize>false</Optimize>
     </_BundleResourceWithLogicalName>
-    <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/iphone9.1-10.3.1/ibtool/MainStoryboard.storyboardc/FormulierTable.nib">
-      <LogicalName>MainStoryboard.storyboardc/FormulierTable.nib</LogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/iphone9.1-10.3.1/ibtool/MainStoryboard.storyboardc/FormTableViewController.nib">
+      <LogicalName>MainStoryboard.storyboardc/FormTableViewController.nib</LogicalName>
       <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
       <Optimize>false</Optimize>
     </_BundleResourceWithLogicalName>

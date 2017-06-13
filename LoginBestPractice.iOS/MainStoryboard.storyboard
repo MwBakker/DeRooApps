@@ -426,7 +426,7 @@
         </scene>
         <scene sceneID="3039">
             <objects>
-                <viewController id="3040" sceneMemberID="viewController" customClass="FormulierTableViewController" storyboardIdentifier="FormulierTable">
+                <viewController id="3040" sceneMemberID="viewController" customClass="FormTableViewController" storyboardIdentifier="FormTableViewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3037"/>
                         <viewControllerLayoutGuide type="bottom" id="3038"/>
@@ -445,7 +445,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3045" id="3046">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <rect key="contentStretch" x="0.0" y="0" width="1" height="1"/>
                                         </tableViewCellContentView>
@@ -467,16 +467,14 @@
                                             <real key="value" value="3"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
-                                    <connections>
-                                        <action selector="btn_verzendFormulier_TouchUpInside:" destination="3040" id="3329" eventType="touchDown"/>
-                                    </connections>
+                                    <connections/>
                                 </button>
                             </tableView>
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="formulierTableView" destination="3044" id="name-outlet-3044"/>
-                        <outlet property="btn_verzendFormulier" destination="3305" id="name-outlet-3305"/>
+                        <outlet property="formTableView" destination="3044" id="name-outlet-3044"/>
+                        <outlet property="btn_sendForm" destination="3305" id="name-outlet-3305"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3042" userLabel="First Responder" sceneMemberID="firstResponder"/>
