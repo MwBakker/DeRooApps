@@ -141,10 +141,6 @@
     <Compile Include="Encrypter.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="User.cs" />
-    <Compile Include="HandboekViewController.cs" />
-    <Compile Include="HandboekViewController.designer.cs">
-      <DependentUpon>HandboekViewController.cs</DependentUpon>
-    </Compile>
     <Compile Include="reachability.cs" />
     <Compile Include="TableSource.cs" />
     <Compile Include="n.cs" />
@@ -173,12 +169,6 @@
       <DependentUpon>HandboekViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="TableSource.cs" />
-    <Compile Include="FormulierTable\VraagBlokView.cs" />
-    <Compile Include="ToolboxViewController_.cs" />
-    <Compile Include="PDFController.cs" />
-    <Compile Include="PDFController.designer.cs">
-      <DependentUpon>PDFController.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\FormTable\CatBlockView.cs" />
     <Compile Include="Forms\FormTable\FormTableViewController.cs" />
     <Compile Include="Forms\FormTable\FormTableViewController.designer.cs">

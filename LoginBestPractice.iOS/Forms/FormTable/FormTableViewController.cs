@@ -30,7 +30,6 @@ namespace LoginBestPractice.iOS
 		public override void ViewDidLoad() 
 		{ 
 			base.ViewDidLoad();
-			btn_sendForm.Layer.BorderWidth = 1;
 		}
 
 		//
@@ -148,7 +147,7 @@ namespace LoginBestPractice.iOS
 		}
 
 		// 
-		// verzameling + doorstuur gegevens na druk op knop 
+		// verzameling + doorstuur gegevens na druk op kno		
 		//
 		partial void btn_sendForm_TouchUpInside(UIButton sender)
 		{
@@ -158,7 +157,7 @@ namespace LoginBestPractice.iOS
 			// moet dynamisch worden
 				formulier.locatie = "Tsjernobyl, Oblast Kiev, Oekraïne";
 				formulier.project_naam = "test";
-				formulier.datum = "07-06-2017";
+				formulier.datum = "14-06-2017";
 			// moet dynamisch worden
 			dataStorage.addForm(formulier);
 
