@@ -13,6 +13,9 @@ namespace LoginBestPractice.iOS
 		UIDeRooButton btn_modal;
 		Modal modal;
 
+		// 
+		// sets main elements in questBlockView
+		//
 		public QuestBlockView(string quest_id)
 		{
 			deRooGreen = new UIColor(0.10f, 0.26f, 0.03f, 1.0f);
@@ -32,16 +35,25 @@ namespace LoginBestPractice.iOS
             btn_modal.BackgroundColor = UIColor.FromPatternImage(UIImage.FromFile("buttonGrey.png"));
 		}
 
+		//
+		// adds the modalView as some sort of a childView into this modalView
+		//
 		public void addModal(Modal modal)
 		{
 			this.modal = modal;
 		}
 
+		// 
+		// returns UILabel with text given through parameter 
+		//
 		public UILabel getlbl_quest(string text) { 
 			lbl_quest.Text = text; 
 			return lbl_quest; 
 		}
 
+		// 
+		// returns options, amount of option is given by type of question
+		//
 		public UISegmentedControl getoptions(string questTypeIn) 
 		{
 			string[] questType = questTypeIn.Split('/');
@@ -65,6 +77,9 @@ namespace LoginBestPractice.iOS
 			return btn_modal; 
 		}
 
+		// 
+		// modal belonging to view returned
+		//
 		public Modal getModal() { return modal; }
 	}
 }

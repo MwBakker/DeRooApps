@@ -6,33 +6,39 @@ namespace LoginBestPractice.iOS
 {
     public partial class Modal : UIViewController
 	{
-		private string opmerking;
-		private string actie;
-		private string persoon;
+		private string comment;
+		private string action;
+		private string person;
 		private string datum;
-		private bool geannuleerd;
+		private bool cancelled;
 		UIView parentView; 
 
 		public Modal (IntPtr handle) : base (handle)	
         {
 		}
 
+		//
+		// sets modal after succesfull loading
+		//
 		public override void ViewDidLoad()
 		{
 			modalView.Layer.BorderWidth = 0.1f;
-			txtF_opmerking.Layer.BorderWidth = 0.5f;
-			txtF_actie.Layer.BorderWidth = 0.5f;
-			txtF_doorWie.Layer.BorderWidth = 0.5f;
+			txtF_comment.Layer.BorderWidth = 0.5f;
+			txtF_action.Layer.BorderWidth = 0.5f;
+			txtF_person.Layer.BorderWidth = 0.5f;
 		}
 
+		//
+		// collects filled data in modal from textfields
+		//
 		partial void btn_ok_TouchUpInside(UIButton sender)
 		{
-			opmerking = txtF_opmerking.Text;
-			actie = txtF_actie.Text; 
-			persoon = txtF_doorWie.Text;
-			datum = dt_datum.Date.ToString();
+			comment = txtF_comment.Text;
+			action = txtF_action.Text; 
+			person = txtF_person.Text;
+			datum = dt_date.Date.ToString();
 
-			if (opmerking == "" && actie == "" && persoon == "")
+			if (comment == "" && action == "" && person == "")
 			{
 				UIAlertView alert = new UIAlertView("fout", "Niet alle velden zijn ingevoerd!", null, "Ok"); 
 				alert.Show();
@@ -43,27 +49,36 @@ namespace LoginBestPractice.iOS
 			} 
 		}
 
+		//
+		// handles cancelation of modal
+		//
 		partial void btn_annuleer_TouchUpInside(UIButton sender)
 		{
 			// Laat controller verdwijnen //t
 			this.DismissViewController(true, null);
-			geannuleerd = true;
+			cancelled = true;
 			//throw new NotImplementedException();
 		}
 
-		public void setView(UIView vraagEnOptie)
+		// 
+		// sets view 
+		//
+		public void setView(UIView questBlock)
 		{
-			parentView = vraagEnOptie;
+			parentView = questBlock;
 		}
 
-		public string getOpmerking() { return opmerking; }
+		public string getComment() { return comment; }
 
-		public string getActie() { return actie;  } 
+		public string getAction() { return action;  } 
 
-		public string getPersoon() { return persoon; }
+		public string getPerson() { return person; }
 
-		public string getDatum() { return datum; }
+		public string getDate() { return datum; }
 
-		public bool getStat() { return geannuleerd; } 
+		//
+		// returns modal-state to determine if user is willing to add modal 
+		//
+		public bool getStat() { return cancelled; } 
 	}
 }

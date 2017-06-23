@@ -24,7 +24,7 @@ namespace LoginBestPractice.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIDatePicker dt_datum { get; set; }
+        UIKit.UIDatePicker dt_date { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -32,15 +32,15 @@ namespace LoginBestPractice.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField txtF_actie { get; set; }
+        UIKit.UITextField txtF_action { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField txtF_doorWie { get; set; }
+        UIKit.UITextField txtF_comment { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField txtF_opmerking { get; set; }
+        UIKit.UITextField txtF_person { get; set; }
 
         [Action ("btn_annuleer_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -66,9 +66,9 @@ namespace LoginBestPractice.iOS
                 btn_ok = null;
             }
 
-            if (dt_datum != null) {
-                dt_datum.Dispose ();
-                dt_datum = null;
+            if (dt_date != null) {
+                dt_date.Dispose ();
+                dt_date = null;
             }
 
             if (modalView != null) {
@@ -76,19 +76,19 @@ namespace LoginBestPractice.iOS
                 modalView = null;
             }
 
-            if (txtF_actie != null) {
-                txtF_actie.Dispose ();
-                txtF_actie = null;
+            if (txtF_action != null) {
+                txtF_action.Dispose ();
+                txtF_action = null;
             }
 
-            if (txtF_doorWie != null) {
-                txtF_doorWie.Dispose ();
-                txtF_doorWie = null;
+            if (txtF_comment != null) {
+                txtF_comment.Dispose ();
+                txtF_comment = null;
             }
 
-            if (txtF_opmerking != null) {
-                txtF_opmerking.Dispose ();
-                txtF_opmerking = null;
+            if (txtF_person != null) {
+                txtF_person.Dispose ();
+                txtF_person = null;
             }
         }
     }

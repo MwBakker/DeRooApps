@@ -25,40 +25,40 @@ namespace LoginBestPractice.iOS
 		{
 		}
 
-		//This method is called everytime the view loads.
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
 
-			//Wait 1000ms before the next codes get executed, because if the code gets executed to fast and the internet is to slow,
-			//the rootobjects will be null and the application will crash.
+			// 1000ms delay in case of slow internet
 			DataStorage dataStorage = new DataStorage();
 			dataStorage.refresh();
 			Thread.Sleep(1000);
 
-			//Create scrollview and add this to the current view. 
-			//Content size of the scrollview is calculated on the number of toolbox subjects(buttons).
+			// create scrollview and add this to the current view. 
+			// content size of the scrollview is calculated on the number of toolbox subjects(buttons).
 			nfloat Hoogte = setHeight();
 			scrollView = new UIScrollView(new CGRect(0, 0, this.View.Frame.Size.Width, this.View.Frame.Size.Height));
 			scrollView.ContentSize = new CGSize(this.View.Frame.Width, Hoogte);
 			this.View.AddSubview (scrollView);
 
 
-			//Load data of all the employees.
+			// load data of all the employees.
 			RootObject medewerkers = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.employees);
 
-			//Add all the employees first and lastname to arrayList; tableItems.
+			// add all the employees first and lastname to arrayList; tableItems.
 			for (int i = 0; i<medewerkers.medewerkers.Count; i++)
 			{
 				tableItems.Add(medewerkers.medewerkers[i].medewerker_voornaam + " " + medewerkers.medewerkers[i].medewerker_achternaam);			
 			} 
-			//Before loading the data of all the toolboxes, wait 1000ms so the method is not null and crashes. 			RootObject toolboxOnderwerpen = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.toolboxSubjects);
+			// before loading the data of all the toolboxes, wait 1000ms so the method is not null and crashes. 			RootObject toolboxOnderwerpen = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.toolboxSubjects);
 
-			//Create all buttons of all the toolboxsubjects and add them to the scrollview.
+			// create all buttons of all the toolboxsubjects and add them to the scrollview.
 			int hoogteVanButtons = -30;  			for (int i = 0; i < toolboxOnderwerpen.toolbox.Count; i++) 			{ 				hoogteVanButtons += 40;
-				scrollView.AddSubview(createElements(toolboxOnderwerpen.toolbox[i].toolbox_id, toolboxOnderwerpen.toolbox[i].toolbox_onderwerp, hoogteVanButtons)); 			}  			//Code for the logout button(image). 			this.NavigationItem.SetRightBarButtonItem( 			new UIBarButtonItem(UIImage.FromFile("logouttemp.png"), UIBarButtonItemStyle.Plain, (sender, args) => 			{ 				var Confirm = new UIAlertView("Uitloggen", "Weet u zeker dat u wilt uitloggen?", null, "Nee", "Ja"); 				Confirm.Show(); 				Confirm.Clicked += (object senders, UIButtonEventArgs es) => 				{ 					if (es.ButtonIndex == 1) 					{ 								//Delete login-file 								var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); 								var filename = Path.Combine(documents, "login.txt"); 								File.Delete(filename);  								//Create an instance of our AppDelegate 								var appDelegate = UIApplication.SharedApplication.Delegate as AppDelegate;  								//Get an instance of our MainStoryboard.storyboard 								var mainStoryboard = appDelegate.MainStoryboard;  								//Get an instance of our Login Page View Controller 								var loginPageViewController = appDelegate.GetViewController(mainStoryboard, "LoginPageViewController") as LoginPageViewController;  								//Wire our event handler to show the MainTabBarController after we successfully logged in. 								loginPageViewController.OnLoginSuccess += (s, e) => 								{ 									var tabBarController = appDelegate.GetViewController(mainStoryboard, "MainTabBarController"); 									appDelegate.SetRootViewController(tabBarController, true); 								} ;  								//Set the Login Page as our RootViewController 								appDelegate.SetRootViewController(loginPageViewController, true); 					} 					else 					{  					} 				} ; 			} ), true); 		}
+				scrollView.AddSubview(createElements(toolboxOnderwerpen.toolbox[i].toolbox_id, toolboxOnderwerpen.toolbox[i].toolbox_onderwerp, hoogteVanButtons)); 			}  			// code for the logout button(image). 			this.NavigationItem.SetRightBarButtonItem( 			new UIBarButtonItem(UIImage.FromFile("logouttemp.png"), UIBarButtonItemStyle.Plain, (sender, args) => 			{ 				var Confirm = new UIAlertView("Uitloggen", "Weet u zeker dat u wilt uitloggen?", null, "Nee", "Ja"); 				Confirm.Show(); 				Confirm.Clicked += (object senders, UIButtonEventArgs es) => 				{ 					if (es.ButtonIndex == 1) 					{ 								//Delete login-file 								var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); 								var filename = Path.Combine(documents, "login.txt"); 								File.Delete(filename);  								//Create an instance of our AppDelegate 								var appDelegate = UIApplication.SharedApplication.Delegate as AppDelegate;  								//Get an instance of our MainStoryboard.storyboard 								var mainStoryboard = appDelegate.MainStoryboard;  								//Get an instance of our Login Page View Controller 								var loginPageViewController = appDelegate.GetViewController(mainStoryboard, "LoginPageViewController") as LoginPageViewController;  								//Wire our event handler to show the MainTabBarController after we successfully logged in. 								loginPageViewController.OnLoginSuccess += (s, e) => 								{ 									var tabBarController = appDelegate.GetViewController(mainStoryboard, "MainTabBarController"); 									appDelegate.SetRootViewController(tabBarController, true); 								} ;  								//Set the Login Page as our RootViewController 								appDelegate.SetRootViewController(loginPageViewController, true); 					} 					else 					{  					} 				} ; 			} ), true); 		}
 
-		//This method creates all the buttons and the functionality within the buttons.
+		//
+		// creates toolboxbuttons and sets their lay-out specifications
+		//
 		public UIButton createElements(string toolboxID, string toolboxNaam, int hoogteVanButtons)
 		{
 			UIButton toolboxButton = new UIButton(UIButtonType.RoundedRect);

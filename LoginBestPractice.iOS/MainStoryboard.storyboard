@@ -375,10 +375,10 @@
                     <connections>
                         <outlet property="btn_annuleer" destination="2759" id="name-outlet-2759"/>
                         <outlet property="btn_ok" destination="2577" id="name-outlet-2577"/>
-                        <outlet property="txtF_opmerking" destination="2562" id="name-outlet-2562"/>
-                        <outlet property="txtF_actie" destination="2563" id="name-outlet-2563"/>
-                        <outlet property="txtF_doorWie" destination="2564" id="name-outlet-2564"/>
-                        <outlet property="dt_datum" destination="3201" id="name-outlet-3201"/>
+                        <outlet property="txtF_comment" destination="2562" id="name-outlet-2562"/>
+                        <outlet property="txtF_action" destination="2563" id="name-outlet-2563"/>
+                        <outlet property="txtF_person" destination="2564" id="name-outlet-2564"/>
+                        <outlet property="dt_date" destination="3201" id="name-outlet-3201"/>
                         <outlet property="modalView" destination="3008" id="name-outlet-3008"/>
                     </connections>
                 </viewController>

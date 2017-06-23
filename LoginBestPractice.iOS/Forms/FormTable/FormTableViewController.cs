@@ -16,7 +16,9 @@ namespace LoginBestPractice.iOS
 		nfloat viewWidth;
 		string formID;
 
+		//
 		// controller with tableView
+		//
 		public FormTableViewController (IntPtr handle) : base (handle)
         {
 			viewWidth = this.View.Frame.Width;
@@ -33,8 +35,9 @@ namespace LoginBestPractice.iOS
 		}
 
 		//
-		// Creates mainView, containing subViews
+		// creates mainView, containing subViews
 		// subViews containing categories and questions
+		// catBlockView and QuestBlockView are custom views
 		//
 		public void setCatAndQuest(string formIDIn)
 		{
@@ -147,7 +150,7 @@ namespace LoginBestPractice.iOS
 		}
 
 		// 
-		// verzameling + doorstuur gegevens na druk op kno		
+		// collects data per view and possible modal belonging to view		
 		//
 		partial void btn_sendForm_TouchUpInside(UIButton sender)
 		{
@@ -188,10 +191,10 @@ namespace LoginBestPractice.iOS
 						Modal vraagModal = ((QuestBlockView)catSubView).getModal();
 						if (vraagModal != null)
 						{
-							vraag.extra_commentaar = vraagModal.getOpmerking();
-							vraag.actie_ondernomen = vraagModal.getActie();
-							vraag.persoon = vraagModal.getPersoon();
-							vraag.datum_gereed = vraagModal.getDatum();
+							vraag.extra_commentaar = vraagModal.getComment();
+							vraag.actie_ondernomen = vraagModal.getAction();
+							vraag.persoon = vraagModal.getPerson();
+							vraag.datum_gereed = vraagModal.getDate();
 							if (vraag.extra_commentaar == null || vraag.actie_ondernomen == null || vraag.persoon == null || vraag.datum_gereed == null)
 							{
 								UIAlertView alertEmptyModal = new UIAlertView("Fout", "Extra gegevens bij niet akkoord ontbreken!", null, "Ok");
@@ -245,7 +248,7 @@ namespace LoginBestPractice.iOS
 		}
 
 		// 
-		// determines height
+		// determines height of view in given parameter by subview's height
 		//
 		private nfloat setStackHeight(UIView viewIn)
 		{

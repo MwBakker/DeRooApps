@@ -8,10 +8,12 @@ namespace LoginBestPractice.iOS
 		UILabel lbl_cat; 
 		UIColor deRooGroen;
 
+		//
+		// sets main elements in catBlockView
+		//
 		public CatBlockView()
 		{
 			deRooGroen = new UIColor(0.10f, 0.26f, 0.03f, 1.0f);
-
 			lbl_cat = new UILabel();
 			lbl_cat.BackgroundColor = deRooGroen;
 			lbl_cat.TextAlignment = UITextAlignment.Center;

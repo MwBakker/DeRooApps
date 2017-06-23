@@ -7,7 +7,7 @@ namespace LoginBestPractice.iOS
 {
 	public class TableSource : UITableViewSource
 	{
-		//string[] TableItems;
+		
 		ArrayList TableItems = new ArrayList();
 		string CellIdentifier = "TableCell";
 
@@ -26,7 +26,7 @@ namespace LoginBestPractice.iOS
 			UITableViewCell cell = tableView.DequeueReusableCell(CellIdentifier);
 			string item = TableItems[indexPath.Row].ToString();
 
-			//---- if there are no cells to reuse, create a new one
+			// if there are no cells to reuse, create a new one
 			if (cell == null)
 			{ cell = new UITableViewCell(UITableViewCellStyle.Default, CellIdentifier); }
 

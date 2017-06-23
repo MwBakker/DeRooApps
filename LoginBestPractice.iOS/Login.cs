@@ -6,7 +6,6 @@ namespace DeRoo_iOS
 {
 	public class Login
 	{
-		//Local variables
 		String username;
 		String password;
 		RootObject data;
@@ -17,7 +16,9 @@ namespace DeRoo_iOS
 			this.password = password;
 		}
 
-		//method checks if given username and password is a existing user in database and returns true if so.
+		//
+		// checks if given username and password is a existing user in database and returns state
+		//
 		public Boolean isActive()
 		{
 			try
@@ -47,7 +48,9 @@ namespace DeRoo_iOS
 			return false;
 		}
 
-		//This methods gets the token of the current user.
+		//
+		// gets the token of the current user given through JSON string
+		//
 		public String getToken()
 		{
 			String token = "";
@@ -62,7 +65,6 @@ namespace DeRoo_iOS
 					string responseString = Encoding.UTF8.GetString(response);
 					data = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(responseString);
 				}
-
 				if (data != null)
 				{
 					token = data.gebruiker[0].token;

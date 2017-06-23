@@ -15,6 +15,9 @@ namespace DeRoo_iOS
 
         public static User instance = null;
 
+		// 
+		// user object definitions, required for login
+		//
         public User(string id, string token, string name, string email)
         {
             this.id = id;

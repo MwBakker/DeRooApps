@@ -143,7 +143,6 @@
     <Compile Include="User.cs" />
     <Compile Include="reachability.cs" />
     <Compile Include="TableSource.cs" />
-    <Compile Include="n.cs" />
     <Compile Include="UIDeRooButton.cs" />
     <Compile Include="UiDeRooButton.cs" />
     <Compile Include="WerknemersTableView.cs" />

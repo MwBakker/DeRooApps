@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Security.Cryptography;
@@ -9,17 +8,19 @@ namespace DeRoo_iOS
 {
     public static class Encrypter
     {
-        // This constant is used to determine the keysize of the encryption algorithm in bits.
-        // We divide this by 8 within the code below to get the equivalent number of bytes.
+        // constant used to determine the keysize of the encryption algorithm in bits
+        // divided by 8 within the code below to get the equivalent number of bytes.
         private const int Keysize = 256;
 
-        // This constant determines the number of iterations for the password bytes generation function.
+        // determines the number of iterations for the password bytes generation function.
         private const int DerivationIterations = 1000;
 
+		//
+		// encrypter used through 3rd party code
+		//
         public static string encrypt(string plainText, string passPhrase)
         {
-            // Salt and IV is randomly generated each time, but is preprended to encrypted cipher text
-            // so that the same Salt and IV values can be used when decrypting.  
+            // salt and IV randomly generated each time, but is preprended to encrypted cipher text so that the same Salt and IV values can be used when decrypting.  
             var saltStringBytes = generate256BitsOfRandomEntropy();
             var ivStringBytes = generate256BitsOfRandomEntropy();
             var plainTextBytes = Encoding.UTF8.GetBytes(plainText);
@@ -39,7 +40,7 @@ namespace DeRoo_iOS
                             {
                                 cryptoStream.Write(plainTextBytes, 0, plainTextBytes.Length);
                                 cryptoStream.FlushFinalBlock();
-                                // Create the final bytes as a concatenation of the random salt bytes, the random iv bytes and the cipher bytes.
+                                // creates the final bytes as a concatenation of the random salt bytes, the random iv bytes and the cipher bytes.
                                 var cipherTextBytes = saltStringBytes;
                                 cipherTextBytes = cipherTextBytes.Concat(ivStringBytes).ToArray();
                                 cipherTextBytes = cipherTextBytes.Concat(memoryStream.ToArray()).ToArray();

@@ -14,19 +14,25 @@ namespace LoginBestPractice.iOS
             set;
         }
 
-        //Public property to access our MainStoryboard.storyboard file
+		//
+        // public property to access our MainStoryboard.storyboard file
+		//
         public UIStoryboard MainStoryboard
         {
             get { return UIStoryboard.FromName("MainStoryboard", NSBundle.MainBundle); }
         }
 
-        //Creates an instance of viewControllerName from storyboard
+		//
+        // creates an instance of viewControllerName from storyboard
+		//
         public UIViewController GetViewController(UIStoryboard storyboard, string viewControllerName)
         {
             return storyboard.InstantiateViewController(viewControllerName);
         }
 
-        //Sets the RootViewController of the Apps main window with an option for animation.
+		//
+        // sets the RootViewController of the Apps main window with an option for animation
+		//
         public void SetRootViewController(UIViewController rootViewController, bool animate)
         {
             if(animate)
@@ -44,7 +50,9 @@ namespace LoginBestPractice.iOS
             }
         }
 
-        //Override FinishedLaunching. This executes after the app has started.
+		//
+        // override FinishedLaunching. This executes after the app has started
+		//
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
 			//check exists
@@ -71,6 +79,9 @@ namespace LoginBestPractice.iOS
             return true;
         }
 
+		//
+		// lets user in by showing main view
+		//
         void LoginViewController_OnLoginSuccess (object sender, EventArgs e)
         {
             //We have successfully Logged In

@@ -23,7 +23,9 @@ namespace DeRoo_iOS
 		public List<Categorien> catList;
 		public List<Vragen> questList;
 
-
+		//
+		// types of lists
+		//
 		public DataStorage()
 		{
 			formList = new List<Formulieren>();
@@ -31,9 +33,10 @@ namespace DeRoo_iOS
 			questList = new List<Vragen>();
 		}
 
-		/// <summary>
-		/// Haalt alle formulieren uit de database
-		/// </summary>
+		// 
+		// retrieves all forms from database per API call retrieveFormulieren.php
+		// recieves JSON string, will be deserialized by NewtonSoft
+		//
 		void getForms()
 		{
 			new Thread(() =>
@@ -77,9 +80,9 @@ namespace DeRoo_iOS
 			}).Start();
 		}
 
-		/// <summary>
-		/// Haalt alle categoriën op uit de database
-		/// </summary>
+		// 
+		// retrieves all categories as JSON through API call at retrieveCategorien.php
+		//
 		void getCategories()
 		{
 			new Thread(() =>
@@ -122,9 +125,9 @@ namespace DeRoo_iOS
 			}).Start();
 		}
 
-		/// <summary>
-		/// Haalt alle items op uit de database
-		/// </summary>
+		// 
+		// retrieves all questions as JSON through API call at retrieveVragen.php		
+		//
 		void getItems()
 		{
 			new Thread(() =>
@@ -167,9 +170,9 @@ namespace DeRoo_iOS
 			}).Start();
 		}
 
-		/// <summary>
-		/// Haalt alle toolboxonderwerpen uit de database
-		/// </summary>
+		// 
+		// retrieves all tooloxsubjects as JSON through API call at getToolbox.php	
+		//
 		void getToolboxSubjects()
 		{
 			new Thread(() =>
@@ -257,9 +260,9 @@ namespace DeRoo_iOS
 			}).Start();
 		}
 
-		/// <summary>
-		/// Voert alle methods in een keer uit
-		/// </summary>
+		// 
+		// calls on all retrieving methods at once 
+		//
 		public void refresh()
 		{
 			getForms();
@@ -284,6 +287,10 @@ namespace DeRoo_iOS
 			questList.Add(quest);
 		}
 
+		// 
+		// serializes all given strings into JSON string
+		// calls on stuurFormulier.php API in order to send the created JSON
+		//
 		public bool sendData()
 		{
 			Boolean succes;

@@ -25,9 +25,11 @@ namespace LoginBestPractice.iOS
 
 		}
 
+		// 
+		// retrieves PDF's and add title + referrence in button 
+		//
 		public void createPDFbuttons(string toolboxName)
 		{
-			//Ophalen PDF's en in button zetten.
 			string[] files = null;
 
 			using (WebClient client = new WebClient())

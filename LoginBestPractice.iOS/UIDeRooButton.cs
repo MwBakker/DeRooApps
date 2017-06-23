@@ -5,6 +5,9 @@ namespace LoginBestPractice.iOS
 {
 	public class UIDeRooButton : UIButton
 	{
+		// 
+		// custom button, pre-set for re-usage of setting button
+		//
 		public UIDeRooButton()
 		{
 			this.Layer.BorderWidth = 1.5f;
