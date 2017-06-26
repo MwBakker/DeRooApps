@@ -161,6 +161,7 @@ namespace LoginBestPractice.iOS
 				formulier.locatie = "Tsjernobyl, Oblast Kiev, Oekraïne";
 				formulier.project_naam = "test";
 				formulier.datum = "14-06-2017";
+				formulier.user = "Testgebruiker";
 			// moet dynamisch worden
 			dataStorage.addForm(formulier);
 
