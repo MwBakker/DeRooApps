@@ -178,7 +178,10 @@
     <Compile Include="UIDeRooButton.cs" />
     <Compile Include="TableSource.cs" />
     <Compile Include="Features\Camera.cs" />
-    <Compile Include="Forms\FormTable\FirstView.cs" />
+    <Compile Include="FirstView.cs" />
+    <Compile Include="FirstView.designer.cs">
+      <DependentUpon>FirstView.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\de-roo.png" />
@@ -206,6 +209,7 @@
     <BundleResource Include="Resources\deRooButton.png" />
     <BundleResource Include="Resources\button.png" />
     <BundleResource Include="Resources\buttonGrey.png" />
+    <BundleResource Include="Resources\simplecompassblue.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Toolboxes\" />

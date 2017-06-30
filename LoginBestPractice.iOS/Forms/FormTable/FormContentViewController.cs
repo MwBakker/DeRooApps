@@ -26,7 +26,7 @@ namespace LoginBestPractice.iOS
 			viewWidth = this.View.Frame.Width;
 			formTableView.Frame = new CoreGraphics.CGRect(0, 0, viewWidth, this.View.Frame.Height);
 			views = new List<UIView>();
-			deRooGreen = new UIColor(0.10f, 0.26f, 0.03f, 1.0f);
+			deRooGreen = new UIColor(0.04f, 0.17f, 0.01f, 1.0f);
 			dataCatagory = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.categories);
 			dataQuest = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.items);
 		}
@@ -44,11 +44,17 @@ namespace LoginBestPractice.iOS
 		public void setCatAndQuest(string formIDIn)
 		{
 			formID = formIDIn;
+
+			// generalInfocontainer //
+			FirstView generalInfo = new FirstView();
+			views.Add(generalInfo);
+
 			for (int i = 0; i < dataCatagory.categorien.Count; i++)
 			{
 				if (dataCatagory.categorien[i].formulier_id == formIDIn)
 				{
-					nfloat currentLabelYPosition = 0; 
+					nfloat currentLabelYPosition = 0;
+
 					// catcontainer // 
 					CatBlockView catBlock = new CatBlockView();
 					catBlock.Tag = int.Parse((dataCatagory.categorien[i].categorie_id));

@@ -18,7 +18,7 @@ namespace LoginBestPractice.iOS
 		//
 		public QuestBlockView(string quest_id)
 		{
-			deRooGreen = new UIColor(0.10f, 0.26f, 0.03f, 1.0f);
+			deRooGreen = new UIColor(0.04f, 0.17f, 0.01f, 1.0f);
 		 	
 			options = new UISegmentedControl();
 			options.TintColor = UIColor.DarkGray;
