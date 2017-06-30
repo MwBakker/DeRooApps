@@ -63,57 +63,54 @@ namespace LoginBestPractice.iOS
 						if (dataQuest.vragen[j].categorie_id == dataCatagory.categorien[i].categorie_id)
 						{
 							// vraagcontainer // 
-							QuestBlockView QuestAndOption = new QuestBlockView(dataQuest.vragen[j].vraag_id);
-							QuestAndOption.Tag = int.Parse(dataQuest.vragen[j].vraag_volgNr); 
+							QuestBlockView questBlock = new QuestBlockView(dataQuest.vragen[j].vraag_id);
+							questBlock.Tag = int.Parse(dataQuest.vragen[j].vraag_volgNr); 
 							nfloat containerElementPos = 0;
 
 							// vraag // 
-							QuestAndOption.lbl_quest.Text = dataQuest.vragen[j].vraag_text;
-							QuestAndOption.lbl_quest.Frame = new CoreGraphics.CGRect((viewWidth * (1 - 0.98)), 0, (viewWidth * 0.96), 35);
-							containerElementPos += QuestAndOption.lbl_quest.Frame.Bottom;
+							questBlock.lbl_quest.Text = dataQuest.vragen[j].vraag_text;
+							questBlock.lbl_quest.Frame = new CoreGraphics.CGRect((viewWidth * (1 - 0.98)), 0, (viewWidth * 0.96), 35);
+							containerElementPos += questBlock.lbl_quest.Frame.Bottom;
 
 							// options //
-							QuestAndOption.setOptions(dataQuest.vragen[j].vraag_type);
-							QuestAndOption.options.Frame = new CoreGraphics.CGRect((viewWidth * (1 - 0.925)), containerElementPos, (viewWidth * 0.85), 30);
-							containerElementPos += QuestAndOption.options.Frame.Bottom;
-							//QuestAndOption.AddSubview(options);
+							questBlock.setOptions(dataQuest.vragen[j].vraag_type);
+							questBlock.options.Frame = new CoreGraphics.CGRect((viewWidth * (1 - 0.925)), containerElementPos, (viewWidth * 0.85), 30);
+							containerElementPos += questBlock.options.Frame.Bottom;
 							Modal modal;
 							bool set = false;
-							QuestAndOption.options.ValueChanged += (sender, e) =>
+							questBlock.options.ValueChanged += (sender, e) =>
 							{
-								UIDeRooButton btn_photo = QuestAndOption.getBtn_photo();
-								UIDeRooButton btn_modal = QuestAndOption.getBtn_modal(); 
-								QuestAndOption.AddSubview(btn_photo);
-								QuestAndOption.AddSubview(btn_modal);
-								btn_photo.Hidden = true;
-								btn_modal.Hidden = true;
+								// only add buttons when needed // 
+								questBlock.addButtons();
+								questBlock.btn_photo.Hidden = true;
+								questBlock.btn_modal.Hidden = true;
 
-								if (QuestAndOption.options.SelectedSegment == 0) 
+								if (questBlock.options.SelectedSegment == 0) 
 								{
-								 	QuestAndOption.options.TintColor = new UIColor(0.10f, 0.62f, 0.01f, 1.0f);
-									btn_photo.Hidden = true;
-									btn_modal.Hidden = true;
+								 	questBlock.options.TintColor = new UIColor(0.10f, 0.62f, 0.01f, 1.0f);
+									questBlock.btn_photo.Hidden = true;
+									questBlock.btn_modal.Hidden = true;
 									if (set == true)
 									{ 
-										updateView(catBlock, QuestAndOption, btn_modal, "removed");
+										updateView(catBlock, questBlock, questBlock.btn_modal, "removed");
 										set = false;
 									}
 									modal = null;
 								}
-								else if (QuestAndOption.options.SelectedSegment == 1)
+								else if (questBlock.options.SelectedSegment == 1)
 								{
 									set = true;
-									QuestAndOption.options.TintColor = new UIColor(0.88f, 0.03f, 0.03f, 1.0f);
-									btn_photo.Hidden = false;
-									btn_modal.Hidden = false;
+									questBlock.options.TintColor = new UIColor(0.88f, 0.03f, 0.03f, 1.0f);
+									questBlock.btn_photo.Hidden = false;
+									questBlock.btn_modal.Hidden = false;
 
 									// modal //
 									modal = Storyboard.InstantiateViewController("modalVraag") as Modal;
-									QuestAndOption.addModal(modal);
+									questBlock.addModal(modal);
 									PresentViewController(modal, true, null);
 
-									btn_photo.Frame = new CoreGraphics.CGRect(viewWidth * (1 - 0.875), (QuestAndOption.options.Frame.Bottom + 10), (viewWidth * 0.75), 30);
-									btn_photo.TouchDown += delegate
+									questBlock.btn_photo.Frame = new CoreGraphics.CGRect(viewWidth * (1 - 0.875), (questBlock.options.Frame.Bottom + 10), (viewWidth * 0.75), 30);
+									questBlock.btn_photo.TouchDown += delegate
 									{
 										// btn_photo.photoAction photo object + meta data
 										Camera.TakePicture (this, (obj) => {
@@ -126,30 +123,30 @@ namespace LoginBestPractice.iOS
 											});
 										});;
 									};
-									btn_modal.Frame = new CoreGraphics.CGRect(viewWidth * (1 - 0.875), (btn_photo.Frame.Bottom + 15), (viewWidth * 0.75), 30);
-									btn_modal.TouchDown += delegate
+									questBlock.btn_modal.Frame = new CoreGraphics.CGRect(viewWidth * (1 - 0.875), (questBlock.btn_photo.Frame.Bottom + 15), (viewWidth * 0.75), 30);
+									questBlock.btn_modal.TouchDown += delegate
 									{
                                       	PresentViewController(modal, true, null);
 									};
 
-									updateView(catBlock, QuestAndOption, btn_modal, "added");
+									updateView(catBlock, questBlock, questBlock.btn_modal, "added");
 								}
 								else
 								{
-									QuestAndOption.options.TintColor = UIColor.DarkGray;
-									btn_photo.Hidden = true;
-									btn_modal.Hidden = true;
+									questBlock.options.TintColor = UIColor.DarkGray;
+									questBlock.btn_photo.Hidden = true;
+									questBlock.btn_modal.Hidden = true;
 									if (set == true)
 									{
-										updateView(catBlock, QuestAndOption, btn_modal, "removed");
+										updateView(catBlock, questBlock, questBlock.btn_modal, "removed");
 										set = false;
 									}
 									modal = null;
 								}
 							};
-							QuestAndOption.Frame = new CoreGraphics.CGRect(0, containerPos, viewWidth, setStackHeight(QuestAndOption));
-							containerPos += QuestAndOption.Frame.Height;
-							catBlock.AddSubview(QuestAndOption);
+							questBlock.Frame = new CoreGraphics.CGRect(0, containerPos, viewWidth, setStackHeight(questBlock));
+							containerPos += questBlock.Frame.Height;
+							catBlock.AddSubview(questBlock);
 						}
 					}
 					catBlock.Frame = new CoreGraphics.CGRect(0, 10, viewWidth, (setStackHeight(catBlock) + 25));
@@ -280,24 +277,24 @@ namespace LoginBestPractice.iOS
 		// 
 		// updates superView height according to subView heights
 		//
-		private void updateView(CatBlockView catBlock, QuestBlockView QuestAndOption, UIButton btn, string stat)
+		private void updateView(CatBlockView catBlock, QuestBlockView questBlock, UIButton btn, string stat)
 		{
 			if (stat == "added")
 			{
-				QuestAndOption.Frame = new CoreGraphics.CGRect(0, QuestAndOption.Frame.Y, viewWidth, setStackHeight(QuestAndOption));
+				questBlock.Frame = new CoreGraphics.CGRect(0, questBlock.Frame.Y, viewWidth, setStackHeight(questBlock));
 			}
 			else if (stat == "removed")
 			{
-				QuestAndOption.Frame = new CoreGraphics.CGRect(0, QuestAndOption.Frame.Y, viewWidth, setStackHeight(QuestAndOption));
+				questBlock.Frame = new CoreGraphics.CGRect(0, questBlock.Frame.Y, viewWidth, setStackHeight(questBlock));
 			}
 
 			// views eronder herpositioneren t.o.v. vorige view
-			nfloat vraagOptieBottom = QuestAndOption.Frame.Bottom;
+			nfloat vraagOptieBottom = questBlock.Frame.Bottom;
 			foreach (UIView view in catBlock) 
 			{
 				if (view is QuestBlockView)
 				{
-					if (view.Tag > QuestAndOption.Tag)
+					if (view.Tag > questBlock.Tag)
 					{
 						if (stat == "added")
 						{
