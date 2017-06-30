@@ -178,6 +178,7 @@
     <Compile Include="UIDeRooButton.cs" />
     <Compile Include="TableSource.cs" />
     <Compile Include="Features\Camera.cs" />
+    <Compile Include="Forms\FormTable\FirstView.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\de-roo.png" />

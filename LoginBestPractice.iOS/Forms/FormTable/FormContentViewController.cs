@@ -54,10 +54,9 @@ namespace LoginBestPractice.iOS
 					catBlock.Tag = int.Parse((dataCatagory.categorien[i].categorie_id));
 
 					// categorie // 
-					UILabel lbl_cat = catBlock.getLbl_cat(dataCatagory.categorien[i].categorie_text);
-					lbl_cat.Frame = new CoreGraphics.CGRect(0, 0, viewWidth, 35);
-					catBlock.AddSubview(lbl_cat);
-					nfloat containerPos = lbl_cat.Frame.Bottom;
+					catBlock.lbl_cat.Text = dataCatagory.categorien[i].categorie_text;
+					catBlock.lbl_cat.Frame = new CoreGraphics.CGRect(0, 0, viewWidth, 35);
+					nfloat containerPos = catBlock.lbl_cat.Frame.Bottom;
 
 					for (int j = 0; j < dataQuest.vragen.Count; j++)
 					{
