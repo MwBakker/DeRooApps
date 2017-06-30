@@ -1,12 +1,13 @@
 ﻿<Properties StartupConfiguration="{84563AF5-67F4-46D6-B49C-BF8D718F3C64}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Main.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MainStoryboard.storyboard">
     <Files>
       <File FileName="WerknemersTableView.cs" Line="16" Column="2" />
       <File FileName="UIDeRooButton.cs" Line="18" Column="4" />
       <File FileName="TableSource.cs" Line="25" Column="4" />
-      <File FileName="Features/Camera.cs" Line="26" Column="22" />
-      <File FileName="Forms/FormTable/FormTableViewController.cs" Line="123" Column="17" />
+      <File FileName="Features/Camera.cs" Line="36" Column="59" />
+      <File FileName="Forms/FormTable/FormTableViewController.cs" Line="120" Column="60" />
       <File FileName="Main.cs" Line="12" Column="1" />
+      <File FileName="MainStoryboard.storyboard" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />

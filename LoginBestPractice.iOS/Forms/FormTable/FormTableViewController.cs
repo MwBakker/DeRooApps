@@ -117,16 +117,16 @@ namespace LoginBestPractice.iOS
 									btn_photo.Frame = new CoreGraphics.CGRect(viewWidth * (1 - 0.875), (options.Frame.Bottom + 10), (viewWidth * 0.75), 30);
 									btn_photo.TouchDown += delegate
 									{
-										// btn_photo.photoAction
-										Camera.TakePicture (this, (obj) =>{
-										var photo = obj.ValueForKey(new NSString("UIImagePickerControllerOriginalImage")) as UIImage;
-										var meta = obj.ValueForKey(new NSString("UIImagePickerControllerMediaMetadata")) as NSDictionary;
-										ALAssetsLibrary library = new ALAssetsLibrary();
-										library.WriteImageToSavedPhotosAlbum(photo.CGImage, meta, (assetUrl, error) =>
-										{
-											Console.WriteLine("assetUrl:" + assetUrl);
-												});
-											});;
+										// btn_photo.photoAction photo object + meta data
+										Camera.TakePicture (this, (obj) => {
+											var photo = obj.ValueForKey(new NSString("UIImagePickerControllerOriginalImage")) as UIImage;
+											var meta = obj.ValueForKey(new NSString("UIImagePickerControllerMediaMetadata")) as NSDictionary;
+											ALAssetsLibrary library = new ALAssetsLibrary();
+											library.WriteImageToSavedPhotosAlbum(photo.CGImage, meta, (assetUrl, error) =>
+											{
+												Console.WriteLine("assetUrl:" + assetUrl);
+											});
+										});;
 									};
 									btn_modal.Frame = new CoreGraphics.CGRect(viewWidth * (1 - 0.875), (btn_photo.Frame.Bottom + 15), (viewWidth * 0.75), 30);
 									btn_modal.TouchDown += delegate
