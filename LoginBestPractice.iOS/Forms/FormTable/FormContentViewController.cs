@@ -10,7 +10,7 @@ namespace LoginBestPractice.iOS
     public partial class FormTableViewController : UIViewController
     {
 		List<UIView> views;
-		DataStorage dataStorage = new DataStorage();
+		public DataStorage dataStorage { get; set; }
 		RootObject dataCatagory;
 		RootObject dataQuest;
 
@@ -35,6 +35,8 @@ namespace LoginBestPractice.iOS
 		{ 
 			base.ViewDidLoad();
 		}
+
+
 
 		//
 		// creates mainView, containing subViews
@@ -255,7 +257,7 @@ namespace LoginBestPractice.iOS
 			}
 			if (dataStorage.sendData() == true)
 			{
-				FormulierenViewController formViewControl = Storyboard.InstantiateViewController("Formulieren") as FormulierenViewController;
+				FormsViewController formViewControl = Storyboard.InstantiateViewController("Formulieren") as FormsViewController;
 				NavigationController.PushViewController(formViewControl, true);
 			}
 		}

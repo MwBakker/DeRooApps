@@ -11,8 +11,8 @@ using UIKit;
 
 namespace LoginBestPractice.iOS
 {
-    [Register ("FormulierenViewController")]
-    partial class FormulierenViewController
+    [Register ("FormsViewController")]
+    partial class FormsViewController
     {
         void ReleaseDesignerOutlets ()
         {

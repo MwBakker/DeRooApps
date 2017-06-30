@@ -18,6 +18,7 @@ namespace DeRoo_iOS
 
 		//
 		// checks if given username and password is a existing user in database and returns state
+		// fills Datastorage object by calling the .refresh method, all required data shall be retrieved
 		//
 		public Boolean isActive()
 		{
@@ -68,8 +69,6 @@ namespace DeRoo_iOS
 				if (data != null)
 				{
 					token = data.gebruiker[0].token;
-					DataStorage dataStorage = new DataStorage();
-					dataStorage.refresh();
 				}
 			}
 			catch (Exception ex)

@@ -8,16 +8,18 @@ using System.Text;
 
 namespace LoginBestPractice.iOS
 {
-	public partial class FormulierenViewController : UIViewController
+	public partial class FormsViewController : UIViewController
 	{
-		public FormulierenViewController(IntPtr handle) : base(handle)
+		DataStorage dataStorage; 
+
+		public FormsViewController(IntPtr handle) : base(handle)
 		{
 		}
 
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-			DataStorage dataStorage = new DataStorage();
+			dataStorage = new DataStorage();
 			dataStorage.refresh();
 			Thread.Sleep(3000);
 			RootObject formData = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.forms);
@@ -82,6 +84,7 @@ namespace LoginBestPractice.iOS
 			{
 				// ViewController //
 				FormTableViewController formTableViewController = Storyboard.InstantiateViewController("FormTableViewController") as FormTableViewController;
+				formTableViewController.dataStorage = dataStorage;
 				formTableViewController.Title = formulierNaam;
 				formTableViewController.setCatAndQuest(formulierID);
 				NavigationController.PushViewController(formTableViewController, true);

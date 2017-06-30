@@ -156,18 +156,18 @@
     </Compile>
     <Compile Include="Database_Data\DatabaseData.cs" />
     <Compile Include="Database_Data\DataStorage.cs" />
-    <Compile Include="Forms\FormulierenViewController.cs" />
+    <Compile Include="Forms\FormsViewController.cs" />
     <Compile Include="Forms\FormulierenViewController.designer.cs">
-      <DependentUpon>FormulierenViewController.cs</DependentUpon>
+      <DependentUpon>FormsViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Handbook\HandboekViewController.cs" />
     <Compile Include="Handbook\HandboekViewController.designer.cs">
       <DependentUpon>HandboekViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormTable\CatBlockView.cs" />
-    <Compile Include="Forms\FormTable\FormTableViewController.cs" />
+    <Compile Include="Forms\FormTable\FormContentViewController.cs" />
     <Compile Include="Forms\FormTable\FormTableViewController.designer.cs">
-      <DependentUpon>FormTableViewController.cs</DependentUpon>
+      <DependentUpon>FormContentViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormTable\FormTableViewSource.cs" />
     <Compile Include="Forms\FormTable\Modal.cs" />
