@@ -7,7 +7,7 @@ using Foundation;
 
 namespace LoginBestPractice.iOS
 {
-    public partial class FormTableViewController : UIViewController
+    public partial class FormContentViewController : UIViewController
     {
 		List<UIView> views;
 		public DataStorage dataStorage { get; set; }
@@ -21,7 +21,7 @@ namespace LoginBestPractice.iOS
 		//
 		// controller with tableView
 		//
-		public FormTableViewController (IntPtr handle) : base (handle)
+		public FormContentViewController (IntPtr handle) : base (handle)
         {
 			viewWidth = this.View.Frame.Width;
 			formTableView.Frame = new CoreGraphics.CGRect(0, 0, viewWidth, this.View.Frame.Height);
@@ -35,8 +35,6 @@ namespace LoginBestPractice.iOS
 		{ 
 			base.ViewDidLoad();
 		}
-
-
 
 		//
 		// creates mainView, containing subViews
@@ -160,7 +158,7 @@ namespace LoginBestPractice.iOS
 					views.Add(catBlock);
 				}
 			}
-			formTableView.Source = new FormTableViewSource(views);
+			formTableView.Source = new FormContentTableViewSource(views);
 		}
 
 		// 

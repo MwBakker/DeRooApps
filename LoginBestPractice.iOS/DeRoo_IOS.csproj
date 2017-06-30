@@ -169,7 +169,7 @@
     <Compile Include="Forms\FormTable\FormTableViewController.designer.cs">
       <DependentUpon>FormContentViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormTable\FormTableViewSource.cs" />
+    <Compile Include="Forms\FormTable\FormContentViewSource.cs" />
     <Compile Include="Forms\FormTable\Modal.cs" />
     <Compile Include="Forms\FormTable\Modal.designer.cs">
       <DependentUpon>..\..\FormTable\Modal.cs</DependentUpon>

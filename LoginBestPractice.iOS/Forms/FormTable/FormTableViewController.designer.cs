@@ -11,8 +11,8 @@ using UIKit;
 
 namespace LoginBestPractice.iOS
 {
-    [Register ("FormTableViewController")]
-    partial class FormTableViewController
+    [Register ("FormContentViewController")]
+    partial class FormContentViewController
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]

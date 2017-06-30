@@ -1,16 +1,16 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Foundation;
 using UIKit;
 
 namespace LoginBestPractice.iOS
 {
-	public class FormTableViewSource : UITableViewSource
+	public class FormContentTableViewSource : UITableViewSource
 	{
 		// all views 
 		List<UIView> views;
 
-		public FormTableViewSource(List<UIView> viewsIn)
+		public FormContentTableViewSource(List<UIView> viewsIn)
 		{
 			views = viewsIn;
 		}
