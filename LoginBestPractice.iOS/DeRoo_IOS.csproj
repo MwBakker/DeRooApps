@@ -177,6 +177,7 @@
     <Compile Include="Forms\FormTable\QuestBlockView.cs" />
     <Compile Include="UIDeRooButton.cs" />
     <Compile Include="TableSource.cs" />
+    <Compile Include="Features\Camera.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\de-roo.png" />
@@ -211,6 +212,7 @@
     <Folder Include="Forms\" />
     <Folder Include="Forms\FormTable\" />
     <Folder Include="Handbook\" />
+    <Folder Include="Features\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="packages\Xamarin.Swift3.3.0.1\build\Xamarin.Swift3.targets" Condition="Exists('packages\Xamarin.Swift3.3.0.1\build\Xamarin.Swift3.targets')" />
