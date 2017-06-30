@@ -16,5 +16,8 @@
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
+  <DisabledProjects>
+    <String>../../../Downloads/DeRoo/DeRoo/DeRoo.csproj</String>
+  </DisabledProjects>
   <MonoDevelop.Ide.ItemProperties.DeRoo__IOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.2C4C37E2-67DB-490E-867E-A9CB096B0080" />
 </Properties>
