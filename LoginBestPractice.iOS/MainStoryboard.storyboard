@@ -539,6 +539,10 @@
                     <connections>
                         <outlet property="formTableView" destination="3044" id="name-outlet-3044"/>
                         <outlet property="btn_sendForm" destination="3305" id="name-outlet-3305"/>
+                        <outlet property="txtf_projectName" destination="3484" id="name-outlet-3484"/>
+                        <outlet property="txtf_location" destination="3485" id="name-outlet-3485"/>
+                        <outlet property="date_dateProject" destination="3515" id="name-outlet-3515"/>
+                        <outlet property="btn_geoLoc" destination="3496" id="name-outlet-3496"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3042" userLabel="First Responder" sceneMemberID="firstResponder"/>

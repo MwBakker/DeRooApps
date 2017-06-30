@@ -8,6 +8,7 @@ namespace LoginBestPractice.iOS
     {
 		public FirstView()
         {
+			
         }
     }
 }

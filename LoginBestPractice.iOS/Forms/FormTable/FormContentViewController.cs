@@ -45,10 +45,6 @@ namespace LoginBestPractice.iOS
 		{
 			formID = formIDIn;
 
-			// generalInfocontainer //
-			FirstView generalInfo = new FirstView();
-			views.Add(generalInfo);
-
 			for (int i = 0; i < dataCatagory.categorien.Count; i++)
 			{
 				if (dataCatagory.categorien[i].formulier_id == formIDIn)
@@ -167,15 +163,15 @@ namespace LoginBestPractice.iOS
 		//
 		partial void btn_sendForm_TouchUpInside(UIButton sender)
 		{
+			// main. Form //
 			Formulieren formulier = new Formulieren();
 			formulier.formulier_id = formID;
 			formulier.formulier_naam = this.Title;
+			formulier.locatie = this.txtf_location.Text;
+			formulier.project_naam = this.txtf_projectName.Text;
+			formulier.datum = this.date_dateProject.ToString();
 			// moet dynamisch worden
-				formulier.locatie = "Tsjernobyl, Oblast Kiev, Oekraïne";
-				formulier.project_naam = "test";
-				formulier.datum = "14-06-2017";
 				formulier.user = "Testgebruiker";
-			// moet dynamisch worden
 			dataStorage.addForm(formulier);
 
 			Boolean gemarkeerd = false;

@@ -178,8 +178,8 @@
     <Compile Include="UIDeRooButton.cs" />
     <Compile Include="TableSource.cs" />
     <Compile Include="Features\Camera.cs" />
-    <Compile Include="FirstView.cs" />
-    <Compile Include="FirstView.designer.cs">
+    <Compile Include="Forms\FormTable\FirstView.cs" />
+    <Compile Include="Forms\FormTable\FirstView.designer.cs">
       <DependentUpon>FirstView.cs</DependentUpon>
     </Compile>
   </ItemGroup>
