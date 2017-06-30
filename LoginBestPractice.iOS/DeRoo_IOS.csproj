@@ -142,9 +142,6 @@
     <Compile Include="Login.cs" />
     <Compile Include="User.cs" />
     <Compile Include="reachability.cs" />
-    <Compile Include="TableSource.cs" />
-    <Compile Include="UIDeRooButton.cs" />
-    <Compile Include="UiDeRooButton.cs" />
     <Compile Include="WerknemersTableView.cs" />
     <Compile Include="WerknemersTableView.designer.cs">
       <DependentUpon>WerknemersTableView.cs</DependentUpon>
@@ -167,7 +164,6 @@
     <Compile Include="Handbook\HandboekViewController.designer.cs">
       <DependentUpon>HandboekViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="TableSource.cs" />
     <Compile Include="Forms\FormTable\CatBlockView.cs" />
     <Compile Include="Forms\FormTable\FormTableViewController.cs" />
     <Compile Include="Forms\FormTable\FormTableViewController.designer.cs">
@@ -179,6 +175,8 @@
       <DependentUpon>..\..\FormTable\Modal.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormTable\QuestBlockView.cs" />
+    <Compile Include="UIDeRooButton.cs" />
+    <Compile Include="TableSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\de-roo.png" />

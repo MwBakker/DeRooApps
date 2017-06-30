@@ -7,7 +7,7 @@ namespace LoginBestPractice.iOS
 {
 	public class TableSource : UITableViewSource
 	{
-		
+
 		ArrayList TableItems = new ArrayList();
 		string CellIdentifier = "TableCell";
 
