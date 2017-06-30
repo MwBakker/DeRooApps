@@ -13,12 +13,13 @@ namespace LoginBestPractice.iOS
 		//
 		public CatBlockView()
 		{
+			lbl_cat = new UILabel();
 			deRooGroen = new UIColor(0.10f, 0.26f, 0.03f, 1.0f);
+			setElements();
 		}
 
 		private void setElements()
 		{
-			lbl_cat = new UILabel();
 			lbl_cat.BackgroundColor = deRooGroen;
 			lbl_cat.TextAlignment = UITextAlignment.Center;
 			lbl_cat.TextColor = UIColor.White;

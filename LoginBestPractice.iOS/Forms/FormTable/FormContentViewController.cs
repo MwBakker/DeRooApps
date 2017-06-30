@@ -68,19 +68,18 @@ namespace LoginBestPractice.iOS
 							nfloat containerElementPos = 0;
 
 							// vraag // 
-							UILabel lbl_quest = QuestAndOption.getlbl_quest(dataQuest.vragen[j].vraag_text);
-							lbl_quest.Frame = new CoreGraphics.CGRect((viewWidth * (1 - 0.98)), 0, (viewWidth * 0.96), 35);
-							containerElementPos += lbl_quest.Frame.Bottom;
-							QuestAndOption.AddSubview(lbl_quest);
+							QuestAndOption.lbl_quest.Text = dataQuest.vragen[j].vraag_text;
+							QuestAndOption.lbl_quest.Frame = new CoreGraphics.CGRect((viewWidth * (1 - 0.98)), 0, (viewWidth * 0.96), 35);
+							containerElementPos += QuestAndOption.lbl_quest.Frame.Bottom;
 
 							// options //
-							UISegmentedControl options = QuestAndOption.getoptions(dataQuest.vragen[j].vraag_type);
-							options.Frame = new CoreGraphics.CGRect((viewWidth * (1 - 0.925)), containerElementPos, (viewWidth * 0.85), 30);
-							containerElementPos += options.Frame.Bottom;
-							QuestAndOption.AddSubview(options);
+							QuestAndOption.setOptions(dataQuest.vragen[j].vraag_type);
+							QuestAndOption.options.Frame = new CoreGraphics.CGRect((viewWidth * (1 - 0.925)), containerElementPos, (viewWidth * 0.85), 30);
+							containerElementPos += QuestAndOption.options.Frame.Bottom;
+							//QuestAndOption.AddSubview(options);
 							Modal modal;
 							bool set = false;
-							options.ValueChanged += (sender, e) =>
+							QuestAndOption.options.ValueChanged += (sender, e) =>
 							{
 								UIDeRooButton btn_photo = QuestAndOption.getBtn_photo();
 								UIDeRooButton btn_modal = QuestAndOption.getBtn_modal(); 
@@ -89,9 +88,9 @@ namespace LoginBestPractice.iOS
 								btn_photo.Hidden = true;
 								btn_modal.Hidden = true;
 
-								if (options.SelectedSegment == 0) 
+								if (QuestAndOption.options.SelectedSegment == 0) 
 								{
-								 	options.TintColor = new UIColor(0.10f, 0.62f, 0.01f, 1.0f);
+								 	QuestAndOption.options.TintColor = new UIColor(0.10f, 0.62f, 0.01f, 1.0f);
 									btn_photo.Hidden = true;
 									btn_modal.Hidden = true;
 									if (set == true)
@@ -101,10 +100,10 @@ namespace LoginBestPractice.iOS
 									}
 									modal = null;
 								}
-								else if (options.SelectedSegment == 1)
+								else if (QuestAndOption.options.SelectedSegment == 1)
 								{
 									set = true;
-									options.TintColor = new UIColor(0.88f, 0.03f, 0.03f, 1.0f);
+									QuestAndOption.options.TintColor = new UIColor(0.88f, 0.03f, 0.03f, 1.0f);
 									btn_photo.Hidden = false;
 									btn_modal.Hidden = false;
 
@@ -113,7 +112,7 @@ namespace LoginBestPractice.iOS
 									QuestAndOption.addModal(modal);
 									PresentViewController(modal, true, null);
 
-									btn_photo.Frame = new CoreGraphics.CGRect(viewWidth * (1 - 0.875), (options.Frame.Bottom + 10), (viewWidth * 0.75), 30);
+									btn_photo.Frame = new CoreGraphics.CGRect(viewWidth * (1 - 0.875), (QuestAndOption.options.Frame.Bottom + 10), (viewWidth * 0.75), 30);
 									btn_photo.TouchDown += delegate
 									{
 										// btn_photo.photoAction photo object + meta data
@@ -137,7 +136,7 @@ namespace LoginBestPractice.iOS
 								}
 								else
 								{
-									options.TintColor = UIColor.DarkGray;
+									QuestAndOption.options.TintColor = UIColor.DarkGray;
 									btn_photo.Hidden = true;
 									btn_modal.Hidden = true;
 									if (set == true)

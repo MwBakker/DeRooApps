@@ -6,9 +6,10 @@ namespace LoginBestPractice.iOS
 	public class QuestBlockView : UIView
 	{
 		UIColor deRooGreen;
-		UILabel lbl_quest;
+		public UILabel lbl_quest { get; set; }
 		string quest_id;
-		UISegmentedControl options;
+		public UISegmentedControl options { get; set; }
+		//UISegmentedControl options;
 		UIDeRooButton btn_photo;
 		UIDeRooButton btn_modal;
 		Modal modal;
@@ -19,21 +20,28 @@ namespace LoginBestPractice.iOS
 		public QuestBlockView(string quest_id)
 		{
 			deRooGreen = new UIColor(0.10f, 0.26f, 0.03f, 1.0f);
+		 	
+			options = new UISegmentedControl();
+			options.TintColor = UIColor.DarkGray;
+			btn_photo = new UIDeRooButton();
+			btn_modal = new UIDeRooButton();
+			setElements();
+		}
 
-		 	lbl_quest = new UILabel();
+		private void setElements()
+		{
+			lbl_quest = new UILabel();
 			lbl_quest.Font = UIFont.FromName("Helvetica-Bold", 12f);
 			lbl_quest.TextColor = deRooGreen; 
 			lbl_quest.AdjustsFontSizeToFitWidth = true;
 
-			options = new UISegmentedControl();
-			options.TintColor = UIColor.DarkGray;
-
-			btn_photo = new UIDeRooButton();
 			btn_photo.BackgroundColor = UIColor.FromPatternImage(UIImage.FromFile("buttonGrey.png"));
+			btn_modal.BackgroundColor = UIColor.FromPatternImage(UIImage.FromFile("buttonGrey.png"));
 
-			btn_modal = new UIDeRooButton();
-            btn_modal.BackgroundColor = UIColor.FromPatternImage(UIImage.FromFile("buttonGrey.png"));
+			this.AddSubview(lbl_quest);
+			this.AddSubview(options);
 		}
+			
 
 		//
 		// adds the modalView as some sort of a childView into this modalView
@@ -54,7 +62,7 @@ namespace LoginBestPractice.iOS
 		// 
 		// returns options, amount of option is given by type of question
 		//
-		public UISegmentedControl getoptions(string questTypeIn) 
+		public void setOptions(string questTypeIn) 
 		{
 			string[] questType = questTypeIn.Split('/');
 
@@ -62,7 +70,6 @@ namespace LoginBestPractice.iOS
 			{
 				options.InsertSegment(questType[i],i,false);
 			}
-			return options; 
 		}
 
 		public string getID() { return quest_id; }
