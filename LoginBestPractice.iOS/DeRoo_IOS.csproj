@@ -124,7 +124,7 @@
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainStoryboard.storyboard" />
-    <InterfaceDefinition Include="LaunchScreen.xib" />
+    <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -134,58 +134,58 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="LoginPageViewController.cs" />
-    <Compile Include="LoginPageViewController.designer.cs">
-      <DependentUpon>LoginPageViewController.cs</DependentUpon>
-    </Compile>
     <Compile Include="Encrypter.cs" />
-    <Compile Include="Login.cs" />
-    <Compile Include="User.cs" />
     <Compile Include="reachability.cs" />
-    <Compile Include="WerknemersTableView.cs" />
-    <Compile Include="WerknemersTableView.designer.cs">
-      <DependentUpon>WerknemersTableView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Toolbox\ToolboxViewController_.cs" />
-    <Compile Include="Toolbox\ToolboxViewController_.designer.cs">
-      <DependentUpon>ToolboxViewController_.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Toolbox\ToolboxNextViewController.cs" />
-    <Compile Include="Toolbox\ToolboxNextViewController.designer.cs">
-      <DependentUpon>ToolboxNextViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Database_Data\DatabaseData.cs" />
-    <Compile Include="Database_Data\DataStorage.cs" />
-    <Compile Include="Forms\FormsViewController.cs" />
-    <Compile Include="Forms\FormulierenViewController.designer.cs">
-      <DependentUpon>FormsViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Handbook\HandboekViewController.cs" />
-    <Compile Include="Handbook\HandboekViewController.designer.cs">
-      <DependentUpon>HandboekViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FormTable\CatBlockView.cs" />
-    <Compile Include="Forms\FormTable\FormContentViewController.cs" />
-    <Compile Include="Forms\FormTable\FormTableViewController.designer.cs">
-      <DependentUpon>FormContentViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FormTable\FormContentViewSource.cs" />
-    <Compile Include="Forms\FormTable\Modal.cs" />
-    <Compile Include="Forms\FormTable\Modal.designer.cs">
-      <DependentUpon>..\..\FormTable\Modal.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FormTable\QuestBlockView.cs" />
-    <Compile Include="UIDeRooButton.cs" />
     <Compile Include="TableSource.cs" />
     <Compile Include="Features\Camera.cs" />
-    <Compile Include="Forms\FormTable\FirstView.cs" />
-    <Compile Include="Forms\FormTable\FirstView.designer.cs">
-      <DependentUpon>FirstView.cs</DependentUpon>
+    <Compile Include="Data\Database_Data\DatabaseData.cs" />
+    <Compile Include="Data\Database_Data\DataStorage.cs" />
+    <Compile Include="_Main Subjects\Forms\FormsViewController.cs" />
+    <Compile Include="_Main Subjects\Forms\FormTable\CatBlockView.cs" />
+    <Compile Include="_Main Subjects\Forms\FormTable\FirstView.cs" />
+    <Compile Include="_Main Subjects\Forms\FormTable\FirstView.designer.cs">
+      <DependentUpon>..\..\..\Forms\FormTable\FirstView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Navigation Controllers\UnsendFormsNavigationController.cs" />
-    <Compile Include="Navigation Controllers\UnsendFormsNavigationController.designer.cs">
-      <DependentUpon>UnsendFormsNavigationController.cs</DependentUpon>
+    <Compile Include="_Main Subjects\Forms\FormTable\FormContentViewController.cs" />
+    <Compile Include="_Main Subjects\Forms\FormTable\FormContentViewSource.cs" />
+    <Compile Include="_Main Subjects\Forms\FormTable\FormTableViewController.designer.cs">
+      <DependentUpon>..\..\..\Forms\FormTable\FormContentViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="_Main Subjects\Forms\FormTable\Modal.cs" />
+    <Compile Include="_Main Subjects\Forms\FormTable\Modal.designer.cs">
+      <DependentUpon>..\..\..\FormTable\Modal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Main Subjects\Forms\FormTable\QuestBlockView.cs" />
+    <Compile Include="_Main Subjects\Forms\FormulierenViewController.designer.cs">
+      <DependentUpon>..\..\Forms\FormsViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Main Subjects\Handbook\HandboekViewController.cs" />
+    <Compile Include="_Main Subjects\Handbook\HandboekViewController.designer.cs">
+      <DependentUpon>..\..\Handbook\HandboekViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Main Subjects\Navigation Controllers\UnsendFormsNavigationController.cs" />
+    <Compile Include="_Main Subjects\Navigation Controllers\UnsendFormsNavigationController.designer.cs">
+      <DependentUpon>..\..\Navigation Controllers\UnsendFormsNavigationController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Main Subjects\Toolbox\ToolboxNextViewController.cs" />
+    <Compile Include="_Main Subjects\Toolbox\ToolboxNextViewController.designer.cs">
+      <DependentUpon>ToolboxNextViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Main Subjects\Toolbox\ToolboxViewController_.cs" />
+    <Compile Include="_Main Subjects\Toolbox\ToolboxViewController_.designer.cs">
+      <DependentUpon>ToolboxViewController_.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Main Subjects\Employees\WerknemersTableView.cs" />
+    <Compile Include="_Main Subjects\Employees\WerknemersTableView.designer.cs">
+      <DependentUpon>..\..\Employees\WerknemersTableView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Main Subjects\Login.cs" />
+    <Compile Include="_Main Subjects\LoginPageViewController.cs" />
+    <Compile Include="_Main Subjects\LoginPageViewController.designer.cs">
+      <DependentUpon>LoginPageViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\UIDeRooButton.cs" />
+    <Compile Include="_Main Subjects\User.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\de-roo.png" />
@@ -207,23 +207,24 @@
     <BundleResource Include="Resources\Xamagon.png" />
     <BundleResource Include="Resources\Xamagon%402x.png" />
     <BundleResource Include="Resources\Xamagon%403x.png" />
-    <BundleResource Include="Toolbox\handboek.pdf" />
     <BundleResource Include="Resources\add_person_to_toolbox.png" />
-    <BundleResource Include="Handbook\handboek.pdf" />
     <BundleResource Include="Resources\deRooButton.png" />
     <BundleResource Include="Resources\button.png" />
     <BundleResource Include="Resources\buttonGrey.png" />
     <BundleResource Include="Resources\simplecompassblue.png" />
+    <BundleResource Include="_Main Subjects\Handbook\handboek.pdf" />
+    <BundleResource Include="_Main Subjects\Toolbox\handboek.pdf" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Toolbox\" />
-    <Folder Include="Database_Data\" />
-    <Folder Include="Forms\" />
-    <Folder Include="Forms\FormTable\" />
-    <Folder Include="Handbook\" />
     <Folder Include="Features\" />
-    <Folder Include="Navigation Controllers\" />
     <Folder Include="Data\" />
+    <Folder Include="Data\Database_Data\" />
+    <Folder Include="_Main Subjects\" />
+    <Folder Include="_Main Subjects\Forms\" />
+    <Folder Include="_Main Subjects\Handbook\" />
+    <Folder Include="_Main Subjects\Navigation Controllers\" />
+    <Folder Include="_Main Subjects\Toolbox\" />
+    <Folder Include="_Main Subjects\Employees\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="packages\Xamarin.Swift3.3.0.1\build\Xamarin.Swift3.targets" Condition="Exists('packages\Xamarin.Swift3.3.0.1\build\Xamarin.Swift3.targets')" />
