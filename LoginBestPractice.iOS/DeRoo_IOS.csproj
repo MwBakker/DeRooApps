@@ -146,12 +146,12 @@
     <Compile Include="WerknemersTableView.designer.cs">
       <DependentUpon>WerknemersTableView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Toolboxes\ToolboxViewController_.cs" />
-    <Compile Include="Toolboxes\ToolboxViewController_.designer.cs">
+    <Compile Include="Toolbox\ToolboxViewController_.cs" />
+    <Compile Include="Toolbox\ToolboxViewController_.designer.cs">
       <DependentUpon>ToolboxViewController_.cs</DependentUpon>
     </Compile>
-    <Compile Include="Toolboxes\ToolboxNextViewController.cs" />
-    <Compile Include="Toolboxes\ToolboxNextViewController.designer.cs">
+    <Compile Include="Toolbox\ToolboxNextViewController.cs" />
+    <Compile Include="Toolbox\ToolboxNextViewController.designer.cs">
       <DependentUpon>ToolboxNextViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Database_Data\DatabaseData.cs" />
@@ -182,6 +182,10 @@
     <Compile Include="Forms\FormTable\FirstView.designer.cs">
       <DependentUpon>FirstView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Navigation Controllers\UnsendFormsNavigationController.cs" />
+    <Compile Include="Navigation Controllers\UnsendFormsNavigationController.designer.cs">
+      <DependentUpon>UnsendFormsNavigationController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\de-roo.png" />
@@ -203,7 +207,7 @@
     <BundleResource Include="Resources\Xamagon.png" />
     <BundleResource Include="Resources\Xamagon%402x.png" />
     <BundleResource Include="Resources\Xamagon%403x.png" />
-    <BundleResource Include="Toolboxes\handboek.pdf" />
+    <BundleResource Include="Toolbox\handboek.pdf" />
     <BundleResource Include="Resources\add_person_to_toolbox.png" />
     <BundleResource Include="Handbook\handboek.pdf" />
     <BundleResource Include="Resources\deRooButton.png" />
@@ -212,12 +216,14 @@
     <BundleResource Include="Resources\simplecompassblue.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Toolboxes\" />
+    <Folder Include="Toolbox\" />
     <Folder Include="Database_Data\" />
     <Folder Include="Forms\" />
     <Folder Include="Forms\FormTable\" />
     <Folder Include="Handbook\" />
     <Folder Include="Features\" />
+    <Folder Include="Navigation Controllers\" />
+    <Folder Include="Data\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="packages\Xamarin.Swift3.3.0.1\build\Xamarin.Swift3.targets" Condition="Exists('packages\Xamarin.Swift3.3.0.1\build\Xamarin.Swift3.targets')" />

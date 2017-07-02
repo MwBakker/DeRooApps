@@ -34,6 +34,10 @@ namespace LoginBestPractice.iOS
 		public override void ViewDidLoad() 
 		{ 
 			base.ViewDidLoad();
+			if (this.IsMovingToParentViewController) {
+				// pass viewList to another viewController
+
+			}
 		}
 
 		//
@@ -163,7 +167,7 @@ namespace LoginBestPractice.iOS
 		//
 		partial void btn_sendForm_TouchUpInside(UIButton sender)
 		{
-			// main. Form //
+			// main. form //
 			Formulieren formulier = new Formulieren();
 			formulier.formulier_id = formID;
 			formulier.formulier_naam = this.Title;
