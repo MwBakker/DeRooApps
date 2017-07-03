@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using DeRoo_iOS;
 using AssetsLibrary;
 using Foundation;
+using Plugin.Geolocator;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace LoginBestPractice.iOS
 {
@@ -14,6 +17,7 @@ namespace LoginBestPractice.iOS
 		RootObject dataCatagory;
 		RootObject dataQuest;
 
+		bool succesSend;
 		UIColor deRooGreen;
 		nfloat viewWidth;
 		string formID;
@@ -31,12 +35,20 @@ namespace LoginBestPractice.iOS
 			dataQuest = DataStorage.data;
 		}
 
-		public override void ViewDidLoad() 
-		{ 
-			base.ViewDidLoad();
-			if (this.IsMovingToParentViewController) {
-				// pass viewList to another viewController
-
+		//
+		// before we go back...
+		//
+		public override void ViewWillDisappear(bool animated)
+		{
+			// views gaan naar JSON string
+			if (succesSend == true)
+			{
+				var test = views[1];
+				string openForm = JsonConvert.SerializeObject(test);
+				var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+				var filename = Path.Combine(documents, "openFormData.txt");
+				File.WriteAllText(filename, openForm);
+				base.ViewWillDisappear(animated);
 			}
 		}
 
@@ -48,7 +60,6 @@ namespace LoginBestPractice.iOS
 		public void setCatAndQuest(string formIDIn)
 		{
 			formID = formIDIn;
-
 			for (int i = 0; i < dataCatagory.categorien.Count; i++)
 			{
 				if (dataCatagory.categorien[i].formulier_id == formIDIn)
@@ -59,7 +70,7 @@ namespace LoginBestPractice.iOS
 					CatBlockView catBlock = new CatBlockView();
 					catBlock.Tag = int.Parse((dataCatagory.categorien[i].categorie_id));
 
-					// categorie // 
+					// category // 
 					catBlock.lbl_cat.Text = dataCatagory.categorien[i].categorie_text;
 					catBlock.lbl_cat.Frame = new CoreGraphics.CGRect(0, 0, viewWidth, 35);
 					nfloat containerPos = catBlock.lbl_cat.Frame.Bottom;
@@ -134,7 +145,6 @@ namespace LoginBestPractice.iOS
 									{
                                       	PresentViewController(modal, true, null);
 									};
-
 									updateView(catBlock, questBlock, questBlock.btn_modal, "added");
 								}
 								else
@@ -162,8 +172,74 @@ namespace LoginBestPractice.iOS
 			formTableView.Source = new FormContentTableViewSource(views);
 		}
 
+
 		// 
-		// collects data per view and possible modal belonging to view		
+		// sets automated location 
+		//
+		partial void btn_geoLocationTouchUpInside(UIButton sender)
+		{
+			var pos = CrossGeolocator.Current.GetPositionAsync();
+		}
+
+		// 
+		// determines height of view in given parameter by subview's height
+		//
+		private nfloat setStackHeight(UIView viewIn)
+		{
+			nfloat hoogte = 0.0f;
+			nfloat prevBottom = 0;
+			foreach (UIView subView in viewIn.Subviews)
+			{
+				if (subView.Hidden == false)
+				{
+					// viewhoogte + delta Y as t.o.v. vorige view onderrand      (deze.view Y-as minus bottomwaarde vorige view)
+					hoogte += (subView.Frame.Height + (subView.Frame.Y - prevBottom));
+					prevBottom = subView.Frame.Bottom;
+				}
+			}
+			return hoogte;
+		}
+
+		// 
+		// updates superView height according to subView heights
+		//
+		private void updateView (CatBlockView catBlock, QuestBlockView questBlock, UIButton btn, string stat)
+		{
+			if (stat == "added")
+			{
+				questBlock.Frame = new CoreGraphics.CGRect(0, questBlock.Frame.Y, viewWidth, setStackHeight(questBlock));
+			}
+			else if (stat == "removed")
+			{
+				questBlock.Frame = new CoreGraphics.CGRect(0, questBlock.Frame.Y, viewWidth, setStackHeight(questBlock));
+			}
+
+			// views eronder herpositioneren t.o.v. vorige view
+			nfloat vraagOptieBottom = questBlock.Frame.Bottom;
+			foreach (UIView view in catBlock) 
+			{
+				if (view is QuestBlockView)
+				{
+					if (view.Tag > questBlock.Tag)
+					{
+						if (stat == "added")
+						{
+							view.Frame = new CoreGraphics.CGRect(view.Frame.X, vraagOptieBottom, view.Frame.Width, view.Frame.Height);
+						}
+						else if (stat == "removed")
+						{
+							view.Frame = new CoreGraphics.CGRect(view.Frame.X, vraagOptieBottom, view.Frame.Width, view.Frame.Height);
+						}
+						vraagOptieBottom = view.Frame.Bottom;
+					}
+				}
+			}
+			catBlock.Frame = new CoreGraphics.CGRect(0, 10, viewWidth, (setStackHeight(catBlock) + 25));
+			formTableView.ReloadData();
+		}
+
+		// 
+		// collects data per view and possible modal belonging to view	
 		//
 		partial void btn_sendForm_TouchUpInside(UIButton sender)
 		{
@@ -174,8 +250,7 @@ namespace LoginBestPractice.iOS
 			formulier.locatie = this.txtf_location.Text;
 			formulier.project_naam = this.txtf_projectName.Text;
 			formulier.datum = this.date_dateProject.ToString();
-			// moet dynamisch worden
-				formulier.user = "Testgebruiker";
+			formulier.user = User.instance.name;
 			dataStorage.addForm(formulier);
 
 			Boolean gemarkeerd = false;
@@ -189,8 +264,7 @@ namespace LoginBestPractice.iOS
 				// 2. questBlock (inc cat_label)
 				foreach (UIView catSubView in catView.Subviews)
 				{
-					cat.formulier_id = formID;
-					// cat_label text // 
+					cat.formulier_id = formID; 
 					if (catSubView is UILabel)
 					{
 						cat.categorie_text = ((UILabel)catSubView).Text;
@@ -256,66 +330,14 @@ namespace LoginBestPractice.iOS
 			}
 			if (dataStorage.sendData() == true)
 			{
+				succesSend = true;
 				FormsViewController formViewControl = Storyboard.InstantiateViewController("Formulieren") as FormsViewController;
 				NavigationController.PushViewController(formViewControl, true);
 			}
 		}
 
-		// 
-		// determines height of view in given parameter by subview's height
-		//
-		private nfloat setStackHeight(UIView viewIn)
-		{
-			nfloat hoogte = 0.0f;
-			nfloat prevBottom = 0;
-			foreach (UIView subView in viewIn.Subviews)
-			{
-				if (subView.Hidden == false)
-				{
-					// viewhoogte + delta Y as t.o.v. vorige view onderrand      (deze.view Y-as minus bottomwaarde vorige view)
-					hoogte += (subView.Frame.Height + (subView.Frame.Y - prevBottom));
-					prevBottom = subView.Frame.Bottom;;
-				}
-			}
-			return hoogte;
-		}
 
-		// 
-		// updates superView height according to subView heights
-		//
-		private void updateView(CatBlockView catBlock, QuestBlockView questBlock, UIButton btn, string stat)
-		{
-			if (stat == "added")
-			{
-				questBlock.Frame = new CoreGraphics.CGRect(0, questBlock.Frame.Y, viewWidth, setStackHeight(questBlock));
-			}
-			else if (stat == "removed")
-			{
-				questBlock.Frame = new CoreGraphics.CGRect(0, questBlock.Frame.Y, viewWidth, setStackHeight(questBlock));
-			}
 
-			// views eronder herpositioneren t.o.v. vorige view
-			nfloat vraagOptieBottom = questBlock.Frame.Bottom;
-			foreach (UIView view in catBlock) 
-			{
-				if (view is QuestBlockView)
-				{
-					if (view.Tag > questBlock.Tag)
-					{
-						if (stat == "added")
-						{
-							view.Frame = new CoreGraphics.CGRect(view.Frame.X, vraagOptieBottom, view.Frame.Width, view.Frame.Height);
-						}
-						else if (stat == "removed")
-						{
-							view.Frame = new CoreGraphics.CGRect(view.Frame.X, vraagOptieBottom, view.Frame.Width, view.Frame.Height);
-						}
-						vraagOptieBottom = view.Frame.Bottom;
-					}
-				}
-			}
-			catBlock.Frame = new CoreGraphics.CGRect(0, 10, viewWidth, (setStackHeight(catBlock) + 25));
-			formTableView.ReloadData();
-		}
+
 	}
 }

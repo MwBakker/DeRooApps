@@ -1,7 +1,6 @@
 using System;
 using DeRoo_iOS;
 using UIKit;
-using System.Threading;
 using System.IO;
 
 namespace LoginBestPractice.iOS
@@ -12,26 +11,20 @@ namespace LoginBestPractice.iOS
 
 		public FormsViewController(IntPtr handle) : base(handle)
 		{
-		}
-
-		public override void ViewDidLoad()
-		{
-			base.ViewDidLoad();
 			dataStorage = new DataStorage();
-			dataStorage.getData();
-			Thread.Sleep(3000);
 			RootObject formData = DataStorage.data;
 			nfloat hoogteVanButtons = 20;
-
 			for (int i = 0; i < formData.formulieren.Count; i++)
 			{
 				hoogteVanButtons += 70;
 				this.View.AddSubview(createElements(formData.formulieren[i].formulier_id, formData.formulieren[i].formulier_naam, hoogteVanButtons));
 			}
+			dataStorage.getData();
+		}
 
+		public override void ViewDidLoad()
+		{
 			base.ViewDidLoad();
-
-
 			this.NavigationItem.SetRightBarButtonItem(
 			new UIBarButtonItem(UIImage.FromFile("logouttemp.png"), UIBarButtonItemStyle.Plain, (sender, args) =>
 			{

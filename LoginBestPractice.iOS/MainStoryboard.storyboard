@@ -156,8 +156,8 @@
                     </view>
                     <connections>
                         <outlet property="LoginButton" destination="213" id="name-outlet-213"/>
-                        <outlet property="PasswordTextView" destination="212" id="name-outlet-212"/>
-                        <outlet property="UserNameTextView" destination="211" id="name-outlet-211"/>
+                        <outlet property="txtF_password" destination="212" id="name-outlet-212"/>
+                        <outlet property="txtF_userName" destination="211" id="name-outlet-211"/>
                         <outlet property="passwordHideShow" destination="1919" id="name-outlet-1919"/>
                         <outlet property="labelHideShowPassword" destination="1927" id="name-outlet-1927"/>
                     </connections>
@@ -469,13 +469,13 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <subviews>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="3484" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="3484" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" borderStyle="roundedRect">
                                             <rect key="frame" x="29" y="97" width="164" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="3485" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="3485" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" borderStyle="roundedRect">
                                             <rect key="frame" x="29" y="172" width="206" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -513,6 +513,9 @@
                                             <state key="normal" title="Button" image="simplecompassblue.png">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="btn_geoLocationTouchUpInside:" destination="3040" id="3536" eventType="touchDown"/>
+                                            </connections>
                                         </button>
                                         <datePicker contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" id="3515" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
                                             <rect key="frame" x="0.0" y="240" width="320" height="55"/>

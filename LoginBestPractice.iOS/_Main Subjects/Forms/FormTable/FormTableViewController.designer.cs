@@ -38,6 +38,10 @@ namespace LoginBestPractice.iOS
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField txtf_projectName { get; set; }
 
+        [Action ("btn_geoLocationTouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void btn_geoLocationTouchUpInside (UIKit.UIButton sender);
+
         [Action ("btn_sendForm_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void btn_sendForm_TouchUpInside (UIKit.UIButton sender);

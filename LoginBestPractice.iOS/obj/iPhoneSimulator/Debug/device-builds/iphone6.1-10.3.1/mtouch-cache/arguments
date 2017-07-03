@@ -51,6 +51,10 @@
 	-r \
 	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/packages/Rox.Xamarin.Camera.1.1.0/lib/Xamarin.iOS10/Rox.Xamarin.Camera.Portable.dll \
 	-r \
+	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/packages/Xam.Plugin.Geolocator.3.0.4/lib/Xamarin.iOS10/Plugin.Geolocator.Abstractions.dll \
+	-r \
+	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/packages/Xam.Plugin.Geolocator.3.0.4/lib/Xamarin.iOS10/Plugin.Geolocator.dll \
+	-r \
 	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/mscorlib.dll \
 	-r \
 	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/Facades/Microsoft.Win32.Primitives.dll \
@@ -330,6 +334,10 @@
 	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/packages/Rox.Xamarin.Camera.1.1.0/lib/Xamarin.iOS10/Rox.Xamarin.Camera.Ios.dll \
 	-r \
 	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/packages/Rox.Xamarin.Camera.1.1.0/lib/Xamarin.iOS10/Rox.Xamarin.Camera.Portable.dll \
+	-r \
+	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/packages/Xam.Plugin.Geolocator.3.0.4/lib/Xamarin.iOS10/Plugin.Geolocator.Abstractions.dll \
+	-r \
+	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/packages/Xam.Plugin.Geolocator.3.0.4/lib/Xamarin.iOS10/Plugin.Geolocator.dll \
 	--target-framework \
 	"Xamarin.iOS,v1.0" \
 	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/bin/iPhoneSimulator/Debug/LoginBestPractice.iOS.exe \

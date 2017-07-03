@@ -117,6 +117,12 @@
     <Reference Include="Rox.Xamarin.Camera.Portable">
       <HintPath>packages\Rox.Xamarin.Camera.1.1.0\lib\Xamarin.iOS10\Rox.Xamarin.Camera.Portable.dll</HintPath>
     </Reference>
+    <Reference Include="Plugin.Geolocator.Abstractions">
+      <HintPath>packages\Xam.Plugin.Geolocator.3.0.4\lib\Xamarin.iOS10\Plugin.Geolocator.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Geolocator">
+      <HintPath>packages\Xam.Plugin.Geolocator.3.0.4\lib\Xamarin.iOS10\Plugin.Geolocator.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json" />
@@ -133,7 +139,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
-    <Compile Include="AppDelegate.cs" />
     <Compile Include="Encrypter.cs" />
     <Compile Include="reachability.cs" />
     <Compile Include="TableSource.cs" />
@@ -175,16 +180,17 @@
     <Compile Include="_Main Subjects\Employees\WerknemersTableView.designer.cs">
       <DependentUpon>..\..\Employees\WerknemersTableView.cs</DependentUpon>
     </Compile>
-    <Compile Include="_Main Subjects\Login.cs" />
-    <Compile Include="_Main Subjects\LoginPageViewController.cs" />
-    <Compile Include="_Main Subjects\LoginPageViewController.designer.cs">
-      <DependentUpon>LoginPageViewController.cs</DependentUpon>
-    </Compile>
     <Compile Include="Features\UIDeRooButton.cs" />
-    <Compile Include="_Main Subjects\User.cs" />
     <Compile Include="_Main Subjects\UnsendFormsNavigationController.cs" />
     <Compile Include="_Main Subjects\UnsendFormsNavigationController.designer.cs">
       <DependentUpon>..\Navigation Controllers\UnsendFormsNavigationController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Database_Data\User.cs" />
+    <Compile Include="Login\AppDelegate.cs" />
+    <Compile Include="Login\Login.cs" />
+    <Compile Include="Login\LoginPageViewController.cs" />
+    <Compile Include="Login\LoginPageViewController.designer.cs">
+      <DependentUpon>LoginPageViewController.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -224,6 +230,7 @@
     <Folder Include="_Main Subjects\Handbook\" />
     <Folder Include="_Main Subjects\Toolbox\" />
     <Folder Include="_Main Subjects\Employees\" />
+    <Folder Include="Login\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="packages\Xamarin.Swift3.3.0.1\build\Xamarin.Swift3.targets" Condition="Exists('packages\Xamarin.Swift3.3.0.1\build\Xamarin.Swift3.targets')" />

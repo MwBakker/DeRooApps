@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>You are about to use location!</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>This will be called if location is used behind the scenes</string>
 	<key>CFBundleDisplayName</key>
 	<string>LoginBestPractice.iOS</string>
 	<key>CFBundleIdentifier</key>
@@ -36,5 +40,12 @@
 	<string>LoginBestPractice.iOS</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>CFBundleTypeName</string>
+		</dict>
+	</array>
 </dict>
 </plist>
