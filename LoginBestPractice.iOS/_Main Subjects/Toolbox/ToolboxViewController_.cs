@@ -31,7 +31,7 @@ namespace LoginBestPractice.iOS
 
 			// 1000ms delay in case of slow internet
 			DataStorage dataStorage = new DataStorage();
-			dataStorage.refresh();
+			dataStorage.getData();
 			Thread.Sleep(1000);
 
 			// create scrollview and add this to the current view. 
@@ -43,14 +43,14 @@ namespace LoginBestPractice.iOS
 
 
 			// load data of all the employees.
-			RootObject medewerkers = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.employees);
+			RootObject medewerkers = DataStorage.data;
 
 			// add all the employees first and lastname to arrayList; tableItems.
 			for (int i = 0; i<medewerkers.medewerkers.Count; i++)
 			{
 				tableItems.Add(medewerkers.medewerkers[i].medewerker_voornaam + " " + medewerkers.medewerkers[i].medewerker_achternaam);			
 			} 
-			// before loading the data of all the toolboxes, wait 1000ms so the method is not null and crashes. 			RootObject toolboxOnderwerpen = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.toolboxSubjects);
+			// before loading the data of all the toolboxes, wait 1000ms so the method is not null and crashes. 			RootObject toolboxOnderwerpen = DataStorage.data;
 
 			// create all buttons of all the toolboxsubjects and add them to the scrollview.
 			int hoogteVanButtons = -30;  			for (int i = 0; i < toolboxOnderwerpen.toolbox.Count; i++) 			{ 				hoogteVanButtons += 40;
@@ -222,7 +222,7 @@ namespace LoginBestPractice.iOS
 		private nfloat setHeight()
 		{
 			
-			RootObject toolboxOnderwerpen = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.toolboxSubjects);
+			RootObject toolboxOnderwerpen = DataStorage.data;
 
 			nfloat hoogteScrollview = 0;
 			for (int i = 0; i < toolboxOnderwerpen.toolbox.Count; i++)

@@ -27,8 +27,8 @@ namespace LoginBestPractice.iOS
 			formTableView.Frame = new CoreGraphics.CGRect(0, 0, viewWidth, this.View.Frame.Height);
 			views = new List<UIView>();
 			deRooGreen = new UIColor(0.04f, 0.17f, 0.01f, 1.0f);
-			dataCatagory = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.categories);
-			dataQuest = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.items);
+			dataCatagory = DataStorage.data;
+			dataQuest = DataStorage.data;
 		}
 
 		public override void ViewDidLoad() 

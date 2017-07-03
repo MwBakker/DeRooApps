@@ -3,8 +3,6 @@ using DeRoo_iOS;
 using UIKit;
 using System.Threading;
 using System.IO;
-using System.Net;
-using System.Text;
 
 namespace LoginBestPractice.iOS
 {
@@ -20,9 +18,9 @@ namespace LoginBestPractice.iOS
 		{
 			base.ViewDidLoad();
 			dataStorage = new DataStorage();
-			dataStorage.refresh();
+			dataStorage.getData();
 			Thread.Sleep(3000);
-			RootObject formData = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(DataStorage.forms);
+			RootObject formData = DataStorage.data;
 			nfloat hoogteVanButtons = 20;
 
 			for (int i = 0; i < formData.formulieren.Count; i++)

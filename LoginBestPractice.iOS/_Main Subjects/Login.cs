@@ -38,7 +38,7 @@ namespace DeRoo_iOS
 				{
 					User user = new User(data.gebruiker[0].gebruiker_id, data.gebruiker[0].token, data.gebruiker[0].gebruiker_naam, data.gebruiker[0].gebruiker_email);
 					DataStorage dataStorage = new DataStorage();
-					dataStorage.refresh();
+					dataStorage.getData();
 					return true;
 				}
 			}
