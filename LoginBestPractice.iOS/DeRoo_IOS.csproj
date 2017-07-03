@@ -163,10 +163,6 @@
     <Compile Include="_Main Subjects\Handbook\HandboekViewController.designer.cs">
       <DependentUpon>..\..\Handbook\HandboekViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="_Main Subjects\Navigation Controllers\UnsendFormsNavigationController.cs" />
-    <Compile Include="_Main Subjects\Navigation Controllers\UnsendFormsNavigationController.designer.cs">
-      <DependentUpon>..\..\Navigation Controllers\UnsendFormsNavigationController.cs</DependentUpon>
-    </Compile>
     <Compile Include="_Main Subjects\Toolbox\ToolboxNextViewController.cs" />
     <Compile Include="_Main Subjects\Toolbox\ToolboxNextViewController.designer.cs">
       <DependentUpon>ToolboxNextViewController.cs</DependentUpon>
@@ -186,6 +182,10 @@
     </Compile>
     <Compile Include="Features\UIDeRooButton.cs" />
     <Compile Include="_Main Subjects\User.cs" />
+    <Compile Include="_Main Subjects\UnsendFormsNavigationController.cs" />
+    <Compile Include="_Main Subjects\UnsendFormsNavigationController.designer.cs">
+      <DependentUpon>..\Navigation Controllers\UnsendFormsNavigationController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\de-roo.png" />
@@ -222,7 +222,6 @@
     <Folder Include="_Main Subjects\" />
     <Folder Include="_Main Subjects\Forms\" />
     <Folder Include="_Main Subjects\Handbook\" />
-    <Folder Include="_Main Subjects\Navigation Controllers\" />
     <Folder Include="_Main Subjects\Toolbox\" />
     <Folder Include="_Main Subjects\Employees\" />
   </ItemGroup>
