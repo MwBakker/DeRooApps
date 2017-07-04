@@ -12,10 +12,15 @@ namespace LoginBestPractice.iOS
 
         public OpenFormsViewController (IntPtr handle) : base (handle)
         {
+        }
+
+        public override void ViewDidLoad()
+        {
+            base.ViewDidLoad();
 			fileName = Path.Combine(documents, "openFormData.txt");
 			string rawJSON = File.ReadAllText(fileName);
-			RootObject data = JsonConvert.DeserializeObject<RootObject>(rawJSON);
-          //  OpenFormTableViewSource openFormTV = new OpenFormTableViewSource(data);
+            RootObject data = JsonConvert.DeserializeObject<RootObject>(rawJSON);
+            this.openFormTableView.Source = new OpenFormTableViewSource(data);
         }
     }
 }

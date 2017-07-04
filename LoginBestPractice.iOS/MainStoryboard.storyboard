@@ -235,7 +235,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue id="3611" destination="3558" kind="relationship" relationship="rootViewController"/>
+                        <segue id="3903" destination="3558" kind="relationship" relationship="rootViewController"/>
                     </connections>
                     <tabBarItem key="tabBarItem" id="2263" title="Open formulieren" image="openstaandeformulieren.png"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>

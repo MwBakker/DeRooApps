@@ -58,9 +58,7 @@ namespace LoginBestPractice.iOS
 						                    formulieren = formList,
 						                    categorien = catList,
 						                    vragen = questList	};
-                
                 string JSONAllData = JsonConvert.SerializeObject(formData); 
-
 				var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
                 var filename = Path.Combine(documents, "openFormData.txt");
                 File.WriteAllText(filename, JSONAllData);

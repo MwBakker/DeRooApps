@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Foundation;
 using UIKit;
 
-namespace LoginBestPractice.iOS._MainSubjects.Forms.FormTable.OpenForms
+namespace LoginBestPractice.iOS
 {
     public class OpenFormTableViewSource : UITableViewSource
     {
@@ -18,7 +18,7 @@ namespace LoginBestPractice.iOS._MainSubjects.Forms.FormTable.OpenForms
 		public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
 		{
 			// new cell, with <view> object as continious cell-source
-			var cell = tableView.DequeueReusableCell("buttonCell");
+            var cell = tableView.DequeueReusableCell("buttonCell");
             foreach (Formulieren form in root.formulieren)
 			{
                 cell.TextLabel.Text = form.formulier_naam;
