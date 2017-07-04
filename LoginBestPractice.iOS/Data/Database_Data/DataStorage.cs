@@ -47,15 +47,15 @@ namespace DeRoo_iOS
 		// serializes all given strings into JSON string
 		// calls on stuurFormulier.php API in order to send the created JSON
 		//
-		public bool sendData()
+		public bool sendData(List<Formulieren> formListIn, List<Categorien> catListIn, List<Vragen> questListIn)
 		{
 			Boolean succes;
 
 			RootObject formData = new RootObject
 			{
-				formulieren = formList,
-				categorien = catList,
-				vragen = questList
+				formulieren = formListIn,
+				categorien = catListIn,
+				vragen = questListIn
 			};
 
 			WebClient client = new WebClient();

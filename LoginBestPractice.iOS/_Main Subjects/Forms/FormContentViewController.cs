@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using UIKit;
 using System.Collections.Generic;
 using DeRoo_iOS;
@@ -13,11 +13,15 @@ namespace LoginBestPractice.iOS
     public partial class FormContentViewController : UIViewController
     {
 		List<UIView> views;
-		public DataStorage dataStorage { get; set; }
+
+        List<Formulieren> formList;
+        List<Categorien> catList;
+        List<Vragen> questList;
+        public DataStorage dataStorage { get; set; }
 		RootObject dataCatagory;
 		RootObject dataQuest;
-
-		bool succesSend;
+		
+        bool succesSend;
 		UIColor deRooGreen;
 		nfloat viewWidth;
 		string formID;
@@ -27,6 +31,10 @@ namespace LoginBestPractice.iOS
 		//
 		public FormContentViewController (IntPtr handle) : base (handle)
         {
+            formList = new List<Formulieren>();
+            catList = new List<Categorien>();
+            questList = new List<Vragen>();
+
 			viewWidth = this.View.Frame.Width;
 			formTableView.Frame = new CoreGraphics.CGRect(0, 0, viewWidth, this.View.Frame.Height);
 			views = new List<UIView>();
@@ -43,12 +51,11 @@ namespace LoginBestPractice.iOS
 			// views gaan naar JSON string
 			if (succesSend == true)
 			{
-				var test = views[1];
-				string openForm = JsonConvert.SerializeObject(test);
+				//string openForm = JsonConvert.SerializeObject(test);
 				var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 				var filename = Path.Combine(documents, "openFormData.txt");
-				File.WriteAllText(filename, openForm);
-				base.ViewWillDisappear(animated);
+				//File.WriteAllText(filename, openForm);
+				//base.ViewWillDisappear(animated);
 			}
 		}
 
@@ -99,14 +106,12 @@ namespace LoginBestPractice.iOS
 							{
 								// only add buttons when needed // 
 								questBlock.addButtons();
-								questBlock.btn_photo.Hidden = true;
-								questBlock.btn_modal.Hidden = true;
+								questBlock.btn_photo.Hidden = true;	questBlock.btn_modal.Hidden = true;
 
 								if (questBlock.options.SelectedSegment == 0) 
 								{
 								 	questBlock.options.TintColor = new UIColor(0.10f, 0.62f, 0.01f, 1.0f);
-									questBlock.btn_photo.Hidden = true;
-									questBlock.btn_modal.Hidden = true;
+									questBlock.btn_photo.Hidden = true;     questBlock.btn_modal.Hidden = true;
 									if (set == true)
 									{ 
 										updateView(catBlock, questBlock, questBlock.btn_modal, "removed");
@@ -118,8 +123,7 @@ namespace LoginBestPractice.iOS
 								{
 									set = true;
 									questBlock.options.TintColor = new UIColor(0.88f, 0.03f, 0.03f, 1.0f);
-									questBlock.btn_photo.Hidden = false;
-									questBlock.btn_modal.Hidden = false;
+                                    questBlock.btn_photo.Hidden = false;    questBlock.btn_modal.Hidden = false;
 
 									// modal //
 									modal = Storyboard.InstantiateViewController("modalVraag") as Modal;
@@ -150,8 +154,7 @@ namespace LoginBestPractice.iOS
 								else
 								{
 									questBlock.options.TintColor = UIColor.DarkGray;
-									questBlock.btn_photo.Hidden = true;
-									questBlock.btn_modal.Hidden = true;
+									questBlock.btn_photo.Hidden = true;     questBlock.btn_modal.Hidden = true;
 									if (set == true)
 									{
 										updateView(catBlock, questBlock, questBlock.btn_modal, "removed");
@@ -185,18 +188,18 @@ namespace LoginBestPractice.iOS
 		//
 		private nfloat setStackHeight(UIView viewIn)
 		{
-			nfloat hoogte = 0.0f;
+			nfloat height = 0.0f;
 			nfloat prevBottom = 0;
 			foreach (UIView subView in viewIn.Subviews)
 			{
 				if (subView.Hidden == false)
 				{
 					// viewhoogte + delta Y as t.o.v. vorige view onderrand      (deze.view Y-as minus bottomwaarde vorige view)
-					hoogte += (subView.Frame.Height + (subView.Frame.Y - prevBottom));
+                    height += (subView.Frame.Height + (subView.Frame.Y - prevBottom));
 					prevBottom = subView.Frame.Bottom;
 				}
 			}
-			return hoogte;
+			return height;
 		}
 
 		// 
@@ -242,17 +245,24 @@ namespace LoginBestPractice.iOS
 		//
 		partial void btn_sendForm_TouchUpInside(UIButton sender)
 		{
+            collectData();
+            if (dataStorage.sendData(formList,catList,questList) == true)
+			{
+				succesSend = true;
+				FormsViewController formViewControl = Storyboard.InstantiateViewController("Formulieren") as FormsViewController;
+				NavigationController.PushViewController(formViewControl, true);
+			}
+		}
+
+        private void collectData() 
+        {
 			// main. form //
 			Formulieren formulier = new Formulieren();
-			formulier.formulier_id = formID;
-			formulier.formulier_naam = this.Title;
-			formulier.locatie = this.txtf_location.Text;
-			formulier.project_naam = this.txtf_projectName.Text;
-			formulier.datum = this.date_dateProject.ToString();
-			formulier.user = User.instance.name;
-			dataStorage.addForm(formulier);
-
-			Boolean gemarkeerd = false;
+			formulier.formulier_id = formID;    formulier.formulier_naam = this.Title;
+			formulier.locatie = this.txtf_location.Text;    formulier.project_naam = this.txtf_projectName.Text;
+			formulier.datum = this.date_dateProject.ToString();     formulier.user = User.instance.name;
+            formList.Add(formulier);
+			Boolean marked = false;
 			// 1. catblok
 			foreach (UIView catView in views)
 			{
@@ -263,11 +273,11 @@ namespace LoginBestPractice.iOS
 				// 2. questBlock (inc cat_label)
 				foreach (UIView catSubView in catView.Subviews)
 				{
-					cat.formulier_id = formID; 
+					cat.formulier_id = formID;
 					if (catSubView is UILabel)
 					{
 						cat.categorie_text = ((UILabel)catSubView).Text;
-						dataStorage.addCat(cat);
+                        catList.Add(cat);
 					}
 					// 3. vraagblok (ex cat_label)
 					if (catSubView is QuestBlockView)
@@ -278,16 +288,14 @@ namespace LoginBestPractice.iOS
 						Modal vraagModal = ((QuestBlockView)catSubView).getModal();
 						if (vraagModal != null)
 						{
-							vraag.extra_commentaar = vraagModal.getComment();
-							vraag.actie_ondernomen = vraagModal.getAction();
-							vraag.persoon = vraagModal.getPerson();
-							vraag.datum_gereed = vraagModal.getDate();
+							vraag.extra_commentaar = vraagModal.getComment();   vraag.actie_ondernomen = vraagModal.getAction();
+							vraag.persoon = vraagModal.getPerson();     vraag.datum_gereed = vraagModal.getDate();
 							if (vraag.extra_commentaar == null || vraag.actie_ondernomen == null || vraag.persoon == null || vraag.datum_gereed == null)
 							{
 								UIAlertView alertEmptyModal = new UIAlertView("Fout", "Extra gegevens bij niet akkoord ontbreken!", null, "Ok");
 								alertEmptyModal.Show();
 								this.formTableView.ContentOffset = new CoreGraphics.CGPoint(0, catSubView.Frame.Y);
-								gemarkeerd = true;
+								marked = true;
 								return;
 							}
 						}
@@ -296,8 +304,7 @@ namespace LoginBestPractice.iOS
 							// vraagtekst
 							if (vraagSubView is UILabel)
 							{
-								vraag.vraag_text = ((UILabel)vraagSubView).Text;
-								vraag.vraag_type = "Akkoord/Niet akkoord/N.v.t.";
+								vraag.vraag_text = ((UILabel)vraagSubView).Text; vraag.vraag_type = "Akkoord/Niet akkoord/N.v.t.";
 								vraag.categorie_id = catID;
 							}
 
@@ -308,35 +315,26 @@ namespace LoginBestPractice.iOS
 								if (index != 0 && index != 1 && index != 2)
 								{
 									// indien options niet volledig, geef melding en spring naar desbetreffende view (eenmaal springen)
-									if (gemarkeerd == false)
+									if (marked == false)
 									{
 										UIAlertView alertEmptyFields = new UIAlertView("Fout", "Formulier niet volledig ingevuld", null, "Ok");
 										alertEmptyFields.Show();
 										this.formTableView.ContentOffset = new CoreGraphics.CGPoint(0, vraagSubView.Frame.Y);
-										gemarkeerd = true;
+										marked = true;
 										return;
 									}
 								}
 								else
 								{
 									vraag.answer = ((UISegmentedControl)vraagSubView).TitleAt(((UISegmentedControl)vraagSubView).SelectedSegment);
-									dataStorage.addQuest(vraag);
+                                    questList.Add(vraag);
 								}
 							}
 						}
 					}
 				}
 			}
-			if (dataStorage.sendData() == true)
-			{
-				succesSend = true;
-				FormsViewController formViewControl = Storyboard.InstantiateViewController("Formulieren") as FormsViewController;
-				NavigationController.PushViewController(formViewControl, true);
-			}
-		}
-
-
-
+        }
 
 	}
 }

@@ -193,6 +193,10 @@
       <DependentUpon>..\..\Employees\WerknemersTableView.cs</DependentUpon>
     </Compile>
     <Compile Include="_Main Subjects\Forms\FormTable\OpenForms\OpenFormTableViewSource.cs" />
+    <Compile Include="Resources\UITableStyleButton.cs" />
+    <Compile Include="Resources\UITableStyleButton.designer.cs">
+      <DependentUpon>UITableStyleButton.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\de-roo.png" />
@@ -221,6 +225,7 @@
     <BundleResource Include="Resources\simplecompassblue.png" />
     <BundleResource Include="_Main Subjects\Handbook\handboek.pdf" />
     <BundleResource Include="_Main Subjects\Toolbox\handboek.pdf" />
+    <BundleResource Include="Resources\compose.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Features\" />

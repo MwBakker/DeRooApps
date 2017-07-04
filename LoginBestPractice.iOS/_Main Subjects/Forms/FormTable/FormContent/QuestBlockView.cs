@@ -10,7 +10,7 @@ namespace LoginBestPractice.iOS
 		string quest_id;
 		public UISegmentedControl options { get; set; }
 		public UIDeRooButton btn_photo { get; set; }
-		public UIDeRooButton btn_modal { get; set; }
+        public UITableStyleButton btn_modal { get; set; }
 		Modal modal;
 
 		// 
@@ -23,7 +23,7 @@ namespace LoginBestPractice.iOS
 			options = new UISegmentedControl();
 			options.TintColor = UIColor.DarkGray;
 			btn_photo = new UIDeRooButton();
-			btn_modal = new UIDeRooButton();
+            btn_modal = new UITableStyleButton();
 			setElements();
 		}
 
@@ -36,7 +36,7 @@ namespace LoginBestPractice.iOS
 
 			btn_photo.BackgroundColor = UIColor.FromPatternImage(UIImage.FromFile("buttonGrey.png"));
 			btn_photo.SetTitle("Maak foto van situatie", UIControlState.Normal);
-			btn_modal.BackgroundColor = UIColor.FromPatternImage(UIImage.FromFile("buttonGrey.png"));
+			//btn_modal.BackgroundColor = UIColor.FromPatternImage(UIImage.FromFile("buttonGrey.png"));
 			btn_modal.SetTitle("Zie ingevoerd commentaar", UIControlState.Normal);
 
 			this.AddSubview(lbl_quest);

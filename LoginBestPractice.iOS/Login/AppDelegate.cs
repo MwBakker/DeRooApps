@@ -64,7 +64,7 @@ namespace LoginBestPractice.iOS
 			if (File.Exists(filename) == true)
             {
 				// earlier credentials from file, set User
-				string[] text = System.IO.File.ReadAllText(filename).Split('/');
+				string[] text = File.ReadAllText(filename).Split('/');
 				Login login = new Login(text[0], text[1]);
 				login.isActive();
                 var tabBarController = GetViewController(MainStoryboard, "MainTabBarController");
