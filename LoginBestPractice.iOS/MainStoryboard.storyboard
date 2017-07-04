@@ -597,7 +597,7 @@
         </scene>
         <scene sceneID="3557">
             <objects>
-                <viewController id="3558" sceneMemberID="viewController">
+                <viewController id="3558" sceneMemberID="viewController" customClass="OpenFormsViewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3555"/>
                         <viewControllerLayoutGuide type="bottom" id="3556"/>

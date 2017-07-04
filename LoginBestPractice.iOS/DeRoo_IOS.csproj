@@ -146,17 +146,6 @@
     <Compile Include="Data\Database_Data\DatabaseData.cs" />
     <Compile Include="Data\Database_Data\DataStorage.cs" />
     <Compile Include="_Main Subjects\Forms\FormsViewController.cs" />
-    <Compile Include="_Main Subjects\Forms\FormTable\CatBlockView.cs" />
-    <Compile Include="_Main Subjects\Forms\FormTable\FirstView.cs" />
-    <Compile Include="_Main Subjects\Forms\FormTable\FirstView.designer.cs">
-      <DependentUpon>..\..\..\Forms\FormTable\FirstView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="_Main Subjects\Forms\FormTable\FormContentViewSource.cs" />
-    <Compile Include="_Main Subjects\Forms\FormTable\Modal.cs" />
-    <Compile Include="_Main Subjects\Forms\FormTable\Modal.designer.cs">
-      <DependentUpon>..\..\..\FormTable\Modal.cs</DependentUpon>
-    </Compile>
-    <Compile Include="_Main Subjects\Forms\FormTable\QuestBlockView.cs" />
     <Compile Include="_Main Subjects\Forms\FormulierenViewController.designer.cs">
       <DependentUpon>..\..\Forms\FormsViewController.cs</DependentUpon>
     </Compile>
@@ -171,10 +160,6 @@
     <Compile Include="_Main Subjects\Toolbox\ToolboxViewController_.cs" />
     <Compile Include="_Main Subjects\Toolbox\ToolboxViewController_.designer.cs">
       <DependentUpon>ToolboxViewController_.cs</DependentUpon>
-    </Compile>
-    <Compile Include="_Main Subjects\Employees\WerknemersTableView.cs" />
-    <Compile Include="_Main Subjects\Employees\WerknemersTableView.designer.cs">
-      <DependentUpon>..\..\Employees\WerknemersTableView.cs</DependentUpon>
     </Compile>
     <Compile Include="Features\UIDeRooButton.cs" />
     <Compile Include="_Main Subjects\UnsendFormsNavigationController.cs" />
@@ -191,6 +176,25 @@
     <Compile Include="_Main Subjects\Forms\FormContentViewController.cs" />
     <Compile Include="_Main Subjects\Forms\FormTableViewController.designer.cs">
       <DependentUpon>..\..\Forms\FormTable\FormContentViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Main Subjects\Forms\FormTable\FormContent\CatBlockView.cs" />
+    <Compile Include="_Main Subjects\Forms\FormTable\FormContent\FirstView.cs" />
+    <Compile Include="_Main Subjects\Forms\FormTable\FormContent\FirstView.designer.cs">
+      <DependentUpon>..\..\..\..\Forms\FormTable\FirstView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Main Subjects\Forms\FormTable\FormContent\FormContentViewSource.cs" />
+    <Compile Include="_Main Subjects\Forms\FormTable\FormContent\Modal.cs" />
+    <Compile Include="_Main Subjects\Forms\FormTable\FormContent\Modal.designer.cs">
+      <DependentUpon>..\..\..\..\FormTable\Modal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Main Subjects\Forms\FormTable\FormContent\QuestBlockView.cs" />
+    <Compile Include="_Main Subjects\Forms\OpenFormsViewController.cs" />
+    <Compile Include="_Main Subjects\Forms\OpenFormsViewController.designer.cs">
+      <DependentUpon>OpenFormsViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Main Subjects\Toolbox\WerknemersTableView.cs" />
+    <Compile Include="_Main Subjects\Toolbox\WerknemersTableView.designer.cs">
+      <DependentUpon>..\..\Employees\WerknemersTableView.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -229,9 +233,9 @@
     <Folder Include="_Main Subjects\Forms\" />
     <Folder Include="_Main Subjects\Handbook\" />
     <Folder Include="_Main Subjects\Toolbox\" />
-    <Folder Include="_Main Subjects\Employees\" />
     <Folder Include="Login\" />
     <Folder Include="_Main Subjects\Forms\FormTable\FormContent\" />
+    <Folder Include="_Main Subjects\Forms\FormTable\OpenForms\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="packages\Xamarin.Swift3.3.0.1\build\Xamarin.Swift3.targets" Condition="Exists('packages\Xamarin.Swift3.3.0.1\build\Xamarin.Swift3.targets')" />
