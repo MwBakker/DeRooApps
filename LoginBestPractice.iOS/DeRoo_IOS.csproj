@@ -197,6 +197,10 @@
     <Compile Include="Resources\UITableStyleButton.designer.cs">
       <DependentUpon>UITableStyleButton.cs</DependentUpon>
     </Compile>
+    <Compile Include="_Main Subjects\Forms\FormTable\OpenForms\UIOpenFormCell.cs" />
+    <Compile Include="_Main Subjects\Forms\FormTable\OpenForms\UIOpenFormCell.designer.cs">
+      <DependentUpon>UIOpenFormCell.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\de-roo.png" />

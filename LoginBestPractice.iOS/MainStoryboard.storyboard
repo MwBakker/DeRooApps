@@ -612,7 +612,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" id="3614" style="IBUITableViewCellStyleDefault" textLabel="3649" detailTextLabel="3648" accessoryType="disclosureIndicator">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" id="3614" style="IBUITableViewCellStyleDefault" textLabel="3649" detailTextLabel="3648" accessoryType="disclosureIndicator" reuseIdentifier="buttonCell" customClass="UIOpenFormCell">
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3614" id="3615">

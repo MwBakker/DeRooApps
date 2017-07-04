@@ -8,34 +8,28 @@ namespace LoginBestPractice.iOS._MainSubjects.Forms.FormTable.OpenForms
     public class OpenFormTableViewSource : UITableViewSource
     {
 		// all views 
-		List<UIView> views;
+        RootObject root;
 
-		public OpenFormTableViewSource(List<UIView> viewsIn)
+        public OpenFormTableViewSource(RootObject rootIn)
 		{
-			views = viewsIn;
+            root = rootIn;
 		}
 
 		public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
 		{
 			// new cell, with <view> object as continious cell-source
-			var cell = new UITableViewCell(UITableViewCellStyle.Default, "");
-			cell.ContentView.AddSubview(views[indexPath.Row]);
-			cell.ImageView.Frame = new CoreGraphics.CGRect(0, 0, 10, 10);
-			cell.SelectionStyle = UITableViewCellSelectionStyle.None;
+			var cell = tableView.DequeueReusableCell("buttonCell");
+            foreach (Formulieren form in root.formulieren)
+			{
+                cell.TextLabel.Text = form.formulier_naam;
+			}
 			return cell;
 		}
 
 		// returns amount of rows
 		public override nint RowsInSection(UITableView tableview, nint section)
 		{
-			return views.Count;
-		}
-
-		// returns height of each row
-		public override nfloat GetHeightForRow(UITableView tableView, NSIndexPath indexPath)
-		{
-			nfloat viewHeight = (views[indexPath.Row].Frame.Height);
-			return viewHeight;
+            return root.formulieren.Count;
 		}
     }
 }

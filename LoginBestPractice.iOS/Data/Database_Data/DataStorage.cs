@@ -119,11 +119,10 @@ namespace DeRoo_iOS
 			}
 		}
 
-
 		//
 		// creates alert at baseline from empty fields
 		//
-		public UIAlertController createAlert(string text)
+		private UIAlertController createAlert(string text)
 		{
 			UIAlertController alert = UIAlertController.Create("Fout", text, UIAlertControllerStyle.Alert);
 			alert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, a => Console.WriteLine("Okay was clicked")));

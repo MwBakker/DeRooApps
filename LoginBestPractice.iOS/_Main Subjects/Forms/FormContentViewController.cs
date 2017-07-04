@@ -251,7 +251,7 @@ namespace LoginBestPractice.iOS
         //
         // creates alert at baseline from empty fields
         //
-        public UIAlertController createAlert(string text) 
+        private UIAlertController createAlert(string text) 
         {
 			UIAlertController alert = UIAlertController.Create("Fout", text, UIAlertControllerStyle.Alert);
 			alert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, a => Console.WriteLine("Okay was clicked")));
@@ -337,7 +337,7 @@ namespace LoginBestPractice.iOS
 									// indien options niet volledig, geef melding en spring naar desbetreffende view (eenmaal springen)
 									if (marked == false)
 									{
-                                        PresentViewController(CreateAlert("Formulier niet volledig ingevuld"), true, null);
+                                        PresentViewController(createAlert("Formulier niet volledig ingevuld"), true, null);
 										this.formTableView.ContentOffset = new CoreGraphics.CGPoint(0, vraagSubView.Frame.Y);
 										marked = true;
 										return;
