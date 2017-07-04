@@ -51,9 +51,9 @@ namespace LoginBestPractice.iOS
 			// views gaan naar JSON string
 			if (succesSend == true)
 			{
-				//string openForm = JsonConvert.SerializeObject(test);
+				string openForm = JsonConvert.SerializeObject(test);
 				var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-				var filename = Path.Combine(documents, "openFormData.txt");
+				//var filename = Path.Combine(documents, "openFormData.txt");
 				//File.WriteAllText(filename, openForm);
 				//base.ViewWillDisappear(animated);
 			}
@@ -111,7 +111,7 @@ namespace LoginBestPractice.iOS
 								if (questBlock.options.SelectedSegment == 0) 
 								{
 								 	questBlock.options.TintColor = new UIColor(0.10f, 0.62f, 0.01f, 1.0f);
-									questBlock.btn_photo.Hidden = true;     questBlock.btn_modal.Hidden = true;
+									questBlock.btn_photo.Hidden = true; questBlock.btn_modal.Hidden = true;
 									if (set == true)
 									{ 
 										updateView(catBlock, questBlock, questBlock.btn_modal, "removed");
@@ -123,7 +123,7 @@ namespace LoginBestPractice.iOS
 								{
 									set = true;
 									questBlock.options.TintColor = new UIColor(0.88f, 0.03f, 0.03f, 1.0f);
-                                    questBlock.btn_photo.Hidden = false;    questBlock.btn_modal.Hidden = false;
+                                    questBlock.btn_photo.Hidden = false; questBlock.btn_modal.Hidden = false;
 
 									// modal //
 									modal = Storyboard.InstantiateViewController("modalVraag") as Modal;
@@ -154,7 +154,7 @@ namespace LoginBestPractice.iOS
 								else
 								{
 									questBlock.options.TintColor = UIColor.DarkGray;
-									questBlock.btn_photo.Hidden = true;     questBlock.btn_modal.Hidden = true;
+									questBlock.btn_photo.Hidden = true; questBlock.btn_modal.Hidden = true;
 									if (set == true)
 									{
 										updateView(catBlock, questBlock, questBlock.btn_modal, "removed");
@@ -188,18 +188,18 @@ namespace LoginBestPractice.iOS
 		//
 		private nfloat setStackHeight(UIView viewIn)
 		{
-			nfloat height = 0.0f;
+			nfloat hoogte = 0.0f;
 			nfloat prevBottom = 0;
 			foreach (UIView subView in viewIn.Subviews)
 			{
 				if (subView.Hidden == false)
 				{
 					// viewhoogte + delta Y as t.o.v. vorige view onderrand      (deze.view Y-as minus bottomwaarde vorige view)
-                    height += (subView.Frame.Height + (subView.Frame.Y - prevBottom));
+					hoogte += (subView.Frame.Height + (subView.Frame.Y - prevBottom));
 					prevBottom = subView.Frame.Bottom;
 				}
 			}
-			return height;
+			return hoogte;
 		}
 
 		// 
@@ -258,9 +258,9 @@ namespace LoginBestPractice.iOS
         {
 			// main. form //
 			Formulieren formulier = new Formulieren();
-			formulier.formulier_id = formID;    formulier.formulier_naam = this.Title;
-			formulier.locatie = this.txtf_location.Text;    formulier.project_naam = this.txtf_projectName.Text;
-			formulier.datum = this.date_dateProject.ToString();     formulier.user = User.instance.name;
+			formulier.formulier_id = formID; formulier.formulier_naam = this.Title;
+			formulier.locatie = this.txtf_location.Text; formulier.project_naam = this.txtf_projectName.Text;
+			formulier.datum = this.date_dateProject.Date.ToString(); formulier.user = User.instance.name;
             formList.Add(formulier);
 			Boolean marked = false;
 			// 1. catblok
@@ -288,8 +288,8 @@ namespace LoginBestPractice.iOS
 						Modal vraagModal = ((QuestBlockView)catSubView).getModal();
 						if (vraagModal != null)
 						{
-							vraag.extra_commentaar = vraagModal.getComment();   vraag.actie_ondernomen = vraagModal.getAction();
-							vraag.persoon = vraagModal.getPerson();     vraag.datum_gereed = vraagModal.getDate();
+							vraag.extra_commentaar = vraagModal.getComment(); vraag.actie_ondernomen = vraagModal.getAction();
+							vraag.persoon = vraagModal.getPerson(); vraag.datum_gereed = vraagModal.getDate();
 							if (vraag.extra_commentaar == null || vraag.actie_ondernomen == null || vraag.persoon == null || vraag.datum_gereed == null)
 							{
 								UIAlertView alertEmptyModal = new UIAlertView("Fout", "Extra gegevens bij niet akkoord ontbreken!", null, "Ok");
@@ -323,9 +323,7 @@ namespace LoginBestPractice.iOS
 										marked = true;
 										return;
 									}
-								}
-								else
-								{
+								} else {
 									vraag.answer = ((UISegmentedControl)vraagSubView).TitleAt(((UISegmentedControl)vraagSubView).SelectedSegment);
                                     questList.Add(vraag);
 								}
