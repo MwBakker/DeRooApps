@@ -1,8 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 
 namespace DeRoo_iOS
 {
@@ -12,6 +8,7 @@ namespace DeRoo_iOS
         public string token { get; set; }
         public string name { get; set; }
         public string email { get; set; }
+        static List<RootObject> unsendForms { get; set; }
 
         public static User instance = null;
 
@@ -20,6 +17,7 @@ namespace DeRoo_iOS
 		//
         public User(string id, string token, string name, string email)
         {
+            unsendForms = new List<RootObject>();
             this.id = id;
             this.token = token;
             this.name = name;
@@ -30,5 +28,10 @@ namespace DeRoo_iOS
                 instance = this;
             }
         }
+
+        public static void addUnsendForm(RootObject form)
+		{
+            unsendForms.Add(form);
+		}
     }
 }

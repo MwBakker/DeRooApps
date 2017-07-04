@@ -5,6 +5,7 @@ using System.Net;
 using System.IO;
 using Newtonsoft.Json;
 using UIKit;
+using LoginBestPractice.iOS;
 
 namespace DeRoo_iOS
 {
@@ -28,36 +29,21 @@ namespace DeRoo_iOS
 			questList = new List<Vragen>();
 		}
 
-		public void addForm(Formulieren form)
-		{
-			formList.Add(form);
-		}
-
-		public void addCat(Categorien cat)
-		{
-			catList.Add(cat);
-		}
-
-		public void addQuest(Vragen quest)
-		{
-			questList.Add(quest);
-		}
-
 		// 
 		// serializes all given strings into JSON string
 		// calls on stuurFormulier.php API in order to send the created JSON
+        // IF no data traffic is present, form shall be send when data available
+        // user notified at every event
 		//
 		public bool sendData(List<Formulieren> formListIn, List<Categorien> catListIn, List<Vragen> questListIn)
 		{
+			var window = UIApplication.SharedApplication.KeyWindow;
+			var vc = window.RootViewController;
 			Boolean succes;
-
-			RootObject formData = new RootObject
-			{
-				formulieren = formListIn,
-				categorien = catListIn,
-				vragen = questListIn
-			};
-
+			RootObject formData = new RootObject() {
+										formulieren = formListIn,
+										categorien = catListIn,
+										vragen = questListIn };
 			WebClient client = new WebClient();
 			string jsonData = JsonConvert.SerializeObject(formData);
 			var values = new System.Collections.Specialized.NameValueCollection();
@@ -67,19 +53,30 @@ namespace DeRoo_iOS
 			{
 				byte[] response = client.UploadValues("https://amkapp.nl/test/stuurFormulier.php", "POST", values);
 				string responseString = Encoding.UTF8.GetString(response);
-				UIAlertView alertSucces = new UIAlertView("", "Formulier verzonden", null, "Ok");
-				alertSucces.Show();
-				succes = true;
+				vc.PresentViewController(createAlert("Formulier Verzonden"), true, null);
+                succes = true;
 			}
-			catch (Exception e)
+			catch (Exception)
 			{
-				UIAlertView alertFail = new UIAlertView("Fout", "Verbindingsfout met server", null, "Ok");
-				alertFail.Show();
+				if (!Reachability.IsHostReachable("https://amkapp.nl"))
+				{
+                    vc.PresentViewController(createAlert("Er is op dit moment geen data-verbinding aanwezig. Indien aanwezigheid dataverbinding wordt dit formulier automatisch verzonden"), true, null);
+                    User.addUnsendForm(formData);
+				}
+				else
+				{
+                    vc.PresentViewController(createAlert("Verzending ongedaan door interne fout"), true, null);
+				}
 				succes = false;
 			}
 			return succes;
 		}
 
+
+        //
+        // retrieves data from database
+        // deserializes the rootObject given 
+        //
 		public void getData()
 		{
 			try
@@ -120,6 +117,17 @@ namespace DeRoo_iOS
 				Console.WriteLine(e);
 				return;
 			}
+		}
+
+
+		//
+		// creates alert at baseline from empty fields
+		//
+		public UIAlertController createAlert(string text)
+		{
+			UIAlertController alert = UIAlertController.Create("Fout", text, UIAlertControllerStyle.Alert);
+			alert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, a => Console.WriteLine("Okay was clicked")));
+			return alert;
 		}
 	}
 }

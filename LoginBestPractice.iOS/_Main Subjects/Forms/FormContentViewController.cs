@@ -35,6 +35,7 @@ namespace LoginBestPractice.iOS
             catList = new List<Categorien>();
             questList = new List<Vragen>();
 
+            succesSend = false;
 			viewWidth = this.View.Frame.Width;
 			formTableView.Frame = new CoreGraphics.CGRect(0, 0, viewWidth, this.View.Frame.Height);
 			views = new List<UIView>();
@@ -48,14 +49,21 @@ namespace LoginBestPractice.iOS
 		//
 		public override void ViewWillDisappear(bool animated)
 		{
-			// views gaan naar JSON string
-			if (succesSend == true)
+            // viewData to rootObject containing all required JSON data
+            if (succesSend == false)
 			{
-				string openForm = JsonConvert.SerializeObject(test);
+                collectData();
+
+				RootObject formData = new RootObject() {   
+						                    formulieren = formList,
+						                    categorien = catList,
+						                    vragen = questList	};
+                
+                string JSONAllData = JsonConvert.SerializeObject(formData); 
+
 				var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-				//var filename = Path.Combine(documents, "openFormData.txt");
-				//File.WriteAllText(filename, openForm);
-				//base.ViewWillDisappear(animated);
+                var filename = Path.Combine(documents, "openFormData.txt");
+                File.WriteAllText(filename, JSONAllData);
 			}
 		}
 
@@ -240,6 +248,16 @@ namespace LoginBestPractice.iOS
 			formTableView.ReloadData();
 		}
 
+        //
+        // creates alert at baseline from empty fields
+        //
+        public UIAlertController createAlert(string text) 
+        {
+			UIAlertController alert = UIAlertController.Create("Fout", text, UIAlertControllerStyle.Alert);
+			alert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, a => Console.WriteLine("Okay was clicked")));
+            return alert;
+        }
+
 		// 
 		// collects data per view and possible modal belonging to view	
 		//
@@ -254,6 +272,9 @@ namespace LoginBestPractice.iOS
 			}
 		}
 
+        //
+        // collects all the given data by user
+        //
         private void collectData() 
         {
 			// main. form //
@@ -292,8 +313,7 @@ namespace LoginBestPractice.iOS
 							vraag.persoon = vraagModal.getPerson(); vraag.datum_gereed = vraagModal.getDate();
 							if (vraag.extra_commentaar == null || vraag.actie_ondernomen == null || vraag.persoon == null || vraag.datum_gereed == null)
 							{
-								UIAlertView alertEmptyModal = new UIAlertView("Fout", "Extra gegevens bij niet akkoord ontbreken!", null, "Ok");
-								alertEmptyModal.Show();
+								PresentViewController(createAlert("Extra gegevens bij niet akkoord ontbreken!"), true, null);
 								this.formTableView.ContentOffset = new CoreGraphics.CGPoint(0, catSubView.Frame.Y);
 								marked = true;
 								return;
@@ -317,8 +337,7 @@ namespace LoginBestPractice.iOS
 									// indien options niet volledig, geef melding en spring naar desbetreffende view (eenmaal springen)
 									if (marked == false)
 									{
-										UIAlertView alertEmptyFields = new UIAlertView("Fout", "Formulier niet volledig ingevuld", null, "Ok");
-										alertEmptyFields.Show();
+                                        PresentViewController(CreateAlert("Formulier niet volledig ingevuld"), true, null);
 										this.formTableView.ContentOffset = new CoreGraphics.CGPoint(0, vraagSubView.Frame.Y);
 										marked = true;
 										return;
@@ -333,6 +352,5 @@ namespace LoginBestPractice.iOS
 				}
 			}
         }
-
 	}
 }
