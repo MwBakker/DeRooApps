@@ -50,6 +50,11 @@
       <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
       <Optimize>false</Optimize>
     </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhone/Debug/ibtool/MainStoryboard.storyboardc/3558-view-3559.nib">
+      <LogicalName>MainStoryboard.storyboardc/3558-view-3559.nib</LogicalName>
+      <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
+      <Optimize>false</Optimize>
+    </_BundleResourceWithLogicalName>
     <_BundleResourceWithLogicalName Include="obj/iPhone/Debug/ibtool/MainStoryboard.storyboardc/FormContentViewController.nib">
       <LogicalName>MainStoryboard.storyboardc/FormContentViewController.nib</LogicalName>
       <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>

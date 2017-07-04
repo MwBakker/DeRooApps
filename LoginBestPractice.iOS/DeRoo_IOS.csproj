@@ -151,11 +151,7 @@
     <Compile Include="_Main Subjects\Forms\FormTable\FirstView.designer.cs">
       <DependentUpon>..\..\..\Forms\FormTable\FirstView.cs</DependentUpon>
     </Compile>
-    <Compile Include="_Main Subjects\Forms\FormTable\FormContentViewController.cs" />
     <Compile Include="_Main Subjects\Forms\FormTable\FormContentViewSource.cs" />
-    <Compile Include="_Main Subjects\Forms\FormTable\FormTableViewController.designer.cs">
-      <DependentUpon>..\..\..\Forms\FormTable\FormContentViewController.cs</DependentUpon>
-    </Compile>
     <Compile Include="_Main Subjects\Forms\FormTable\Modal.cs" />
     <Compile Include="_Main Subjects\Forms\FormTable\Modal.designer.cs">
       <DependentUpon>..\..\..\FormTable\Modal.cs</DependentUpon>
@@ -191,6 +187,10 @@
     <Compile Include="Login\LoginPageViewController.cs" />
     <Compile Include="Login\LoginPageViewController.designer.cs">
       <DependentUpon>LoginPageViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Main Subjects\Forms\FormContentViewController.cs" />
+    <Compile Include="_Main Subjects\Forms\FormTableViewController.designer.cs">
+      <DependentUpon>..\..\Forms\FormTable\FormContentViewController.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -231,6 +231,7 @@
     <Folder Include="_Main Subjects\Toolbox\" />
     <Folder Include="_Main Subjects\Employees\" />
     <Folder Include="Login\" />
+    <Folder Include="_Main Subjects\Forms\FormTable\FormContent\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="packages\Xamarin.Swift3.3.0.1\build\Xamarin.Swift3.targets" Condition="Exists('packages\Xamarin.Swift3.3.0.1\build\Xamarin.Swift3.targets')" />
