@@ -172,7 +172,6 @@ namespace LoginBestPractice.iOS
 			formTableView.Source = new FormContentTableViewSource(views);
 		}
 
-
 		// 
 		// sets automated location 
 		//

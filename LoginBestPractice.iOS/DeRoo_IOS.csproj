@@ -162,10 +162,6 @@
       <DependentUpon>ToolboxViewController_.cs</DependentUpon>
     </Compile>
     <Compile Include="Features\UIDeRooButton.cs" />
-    <Compile Include="_Main Subjects\UnsendFormsNavigationController.cs" />
-    <Compile Include="_Main Subjects\UnsendFormsNavigationController.designer.cs">
-      <DependentUpon>..\Navigation Controllers\UnsendFormsNavigationController.cs</DependentUpon>
-    </Compile>
     <Compile Include="Data\Database_Data\User.cs" />
     <Compile Include="Login\AppDelegate.cs" />
     <Compile Include="Login\Login.cs" />
@@ -182,7 +178,7 @@
     <Compile Include="_Main Subjects\Forms\FormTable\FormContent\FirstView.designer.cs">
       <DependentUpon>..\..\..\..\Forms\FormTable\FirstView.cs</DependentUpon>
     </Compile>
-    <Compile Include="_Main Subjects\Forms\FormTable\FormContent\FormContentViewSource.cs" />
+    <Compile Include="_Main Subjects\Forms\FormTable\FormContent\FormContentTableViewSource.cs" />
     <Compile Include="_Main Subjects\Forms\FormTable\FormContent\Modal.cs" />
     <Compile Include="_Main Subjects\Forms\FormTable\FormContent\Modal.designer.cs">
       <DependentUpon>..\..\..\..\FormTable\Modal.cs</DependentUpon>
@@ -196,6 +192,7 @@
     <Compile Include="_Main Subjects\Toolbox\WerknemersTableView.designer.cs">
       <DependentUpon>..\..\Employees\WerknemersTableView.cs</DependentUpon>
     </Compile>
+    <Compile Include="_Main Subjects\Forms\FormTable\OpenForms\OpenFormTableViewSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\de-roo.png" />
