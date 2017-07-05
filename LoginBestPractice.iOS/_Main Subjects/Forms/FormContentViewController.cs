@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using UIKit;
 using System.Collections.Generic;
 using DeRoo_iOS;
@@ -17,10 +17,10 @@ namespace LoginBestPractice.iOS
         List<Formulieren> formList;
         List<Categorien> catList;
         List<Vragen> questList;
+
         public DataStorage dataStorage { get; set; }
 
-		RootObject dataCatagory;
-		RootObject dataQuest;
+        RootObject formData;
 		
         bool succesSend;
 		UIColor deRooGreen;
@@ -40,8 +40,7 @@ namespace LoginBestPractice.iOS
 			formTableView.Frame = new CoreGraphics.CGRect(0, 0, viewWidth, this.View.Frame.Height);
 			views = new List<UIView>();
 			deRooGreen = new UIColor(0.04f, 0.17f, 0.01f, 1.0f);
-			dataCatagory = DataStorage.data;
-			dataQuest = DataStorage.data;
+            formData = DataStorage.data;
 		}
 
 		//
@@ -66,37 +65,37 @@ namespace LoginBestPractice.iOS
 		public void setCatAndQuest(string formIDIn)
 		{
 			formID = formIDIn;
-			for (int i = 0; i < dataCatagory.categorien.Count; i++)
+			for (int i = 0; i < formData.categorien.Count; i++)
 			{
-				if (dataCatagory.categorien[i].formulier_id == formIDIn)
+				if (formData.categorien[i].formulier_id == formIDIn)
 				{
 					nfloat currentLabelYPosition = 0;
 
 					// catcontainer // 
 					CatBlockView catBlock = new CatBlockView();
-					catBlock.Tag = int.Parse((dataCatagory.categorien[i].categorie_id));
+					catBlock.Tag = int.Parse((formData.categorien[i].categorie_id));
 
 					// category // 
-					catBlock.lbl_cat.Text = dataCatagory.categorien[i].categorie_text;
+					catBlock.lbl_cat.Text = formData.categorien[i].categorie_text;
 					catBlock.lbl_cat.Frame = new CoreGraphics.CGRect(0, 0, viewWidth, 35);
 					nfloat containerPos = catBlock.lbl_cat.Frame.Bottom;
 
-					for (int j = 0; j < dataQuest.vragen.Count; j++)
+					for (int j = 0; j < formData.vragen.Count; j++)
 					{
-						if (dataQuest.vragen[j].categorie_id == dataCatagory.categorien[i].categorie_id)
+						if (formData.vragen[j].categorie_id == formData.categorien[i].categorie_id)
 						{
 							// vraagcontainer // 
-							QuestBlockView questBlock = new QuestBlockView(dataQuest.vragen[j].vraag_id);
-							questBlock.Tag = int.Parse(dataQuest.vragen[j].vraag_volgNr); 
+							QuestBlockView questBlock = new QuestBlockView(formData.vragen[j].vraag_id);
+							questBlock.Tag = int.Parse(formData.vragen[j].vraag_volgNr); 
 							nfloat containerElementPos = 0;
 
 							// vraag // 
-							questBlock.lbl_quest.Text = dataQuest.vragen[j].vraag_text;
+							questBlock.lbl_quest.Text = formData.vragen[j].vraag_text;
 							questBlock.lbl_quest.Frame = new CoreGraphics.CGRect((viewWidth * (1 - 0.98)), 0, (viewWidth * 0.96), 35);
 							containerElementPos += questBlock.lbl_quest.Frame.Bottom;
 
 							// options //
-							questBlock.setOptions(dataQuest.vragen[j].vraag_type);
+							questBlock.setOptions(formData.vragen[j].vraag_type);
 							questBlock.options.Frame = new CoreGraphics.CGRect((viewWidth * (1 - 0.925)), containerElementPos, (viewWidth * 0.85), 30);
 							containerElementPos += questBlock.options.Frame.Bottom;
 							Modal modal;
