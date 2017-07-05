@@ -35,17 +35,13 @@ namespace DeRoo_iOS
         // IF no data traffic is present, form shall be send when data available
         // user notified at every event
 		//
-		public bool sendData(List<Formulieren> formListIn, List<Categorien> catListIn, List<Vragen> questListIn)
+        public bool sendDataWeb(RootObject filledForm)
 		{
 			var window = UIApplication.SharedApplication.KeyWindow;
 			var vc = window.RootViewController;
 			Boolean succes;
-			RootObject formData = new RootObject() {
-										formulieren = formListIn,
-										categorien = catListIn,
-										vragen = questListIn };
 			WebClient client = new WebClient();
-			string jsonData = JsonConvert.SerializeObject(formData);
+			string jsonData = JsonConvert.SerializeObject(filledForm);
 			var values = new System.Collections.Specialized.NameValueCollection();
 			values.Add("gebruiker_id", "1");
 			values.Add("formulier", jsonData);
@@ -53,25 +49,67 @@ namespace DeRoo_iOS
 			{
 				byte[] response = client.UploadValues("https://amkapp.nl/test/stuurFormulier.php", "POST", values);
 				string responseString = Encoding.UTF8.GetString(response);
-				vc.PresentViewController(createAlert("Formulier Verzonden"), true, null);
                 succes = true;
 			}
 			catch (Exception)
 			{
 				if (!Reachability.IsHostReachable("https://amkapp.nl"))
 				{
-                    vc.PresentViewController(createAlert("Er is op dit moment geen data-verbinding aanwezig. Indien aanwezigheid dataverbinding wordt dit formulier automatisch verzonden"), true, null);
-                    User.addUnsendForm(formData);
+                    vc.PresentViewController(createAlert("Er is op dit moment geen data-verbinding aanwezig. Indien aanwezigheid dataverbinding wordt dit formulier automatisch verzonden", "Info"), true, null);
+                    User.addUnsendForm(filledForm);
 				}
 				else
 				{
-                    vc.PresentViewController(createAlert("Verzending ongedaan door interne fout"), true, null);
+                    vc.PresentViewController(createAlert("Verzending ongedaan door interne fout", "Fout"), true, null);
 				}
 				succes = false;
 			}
 			return succes;
 		}
 
+        //
+        // check if file exists
+        // get possible JSON from file
+        // add data to JSON, rewrite
+        //
+        public bool sendDataFile(RootObject unfilledForm)
+        {
+            Boolean succes = true;
+			var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+			var filename = Path.Combine(documents, "openFormData.txt");
+			RootObject unfilledFormsFromFile;
+			FileStream fs;
+			StreamWriter sw;
+			if (File.Exists(filename))
+			{
+				// retrieve earlier unfilled forms
+				string preRawJSON = File.ReadAllText(filename);
+                unfilledFormsFromFile = JsonConvert.DeserializeObject<RootObject>(preRawJSON);
+				// add new form to old form
+                unfilledFormsFromFile.formulieren.Add(unfilledForm.formulieren[0]);
+                foreach (Categorien c in unfilledForm.categorien)
+				{
+					unfilledFormsFromFile.categorien.Add(c);
+				}
+                foreach (Vragen q in unfilledForm.vragen)
+				{
+					unfilledFormsFromFile.vragen.Add(q);
+				}
+                // re-serialize + write JSON back to file
+                string postRawJSON = JsonConvert.SerializeObject(unfilledFormsFromFile);
+				fs = File.Open(filename, FileMode.Truncate);
+				sw = new StreamWriter(fs);
+				sw.Write(postRawJSON); sw.Flush();
+			}
+			else
+			{
+				string jsonData = JsonConvert.SerializeObject(unfilledForm);
+				fs = new FileStream(filename, FileMode.Create, FileAccess.ReadWrite);
+				sw = new StreamWriter(fs);
+				sw.Write(jsonData); sw.Flush();
+			}
+            return succes;
+        }
 
         //
         // retrieves data from database
@@ -121,9 +159,9 @@ namespace DeRoo_iOS
 		//
 		// creates alert at baseline from empty fields
 		//
-		private UIAlertController createAlert(string text)
+		private UIAlertController createAlert(string text, string type)
 		{
-			UIAlertController alert = UIAlertController.Create("Fout", text, UIAlertControllerStyle.Alert);
+			UIAlertController alert = UIAlertController.Create(type, text, UIAlertControllerStyle.Alert);
 			alert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, a => Console.WriteLine("Okay was clicked")));
 			return alert;
 		}

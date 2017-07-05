@@ -1,25 +1,20 @@
-﻿﻿using System;
+﻿﻿﻿using System;
 using UIKit;
 using System.Collections.Generic;
 using DeRoo_iOS;
 using AssetsLibrary;
 using Foundation;
 using Plugin.Geolocator;
-using Newtonsoft.Json;
-using System.IO;
 
 namespace LoginBestPractice.iOS
 {
     public partial class FormContentViewController : UIViewController
     {
 		List<UIView> views;
-
         List<Formulieren> formList;
         List<Categorien> catList;
         List<Vragen> questList;
-
         public DataStorage dataStorage { get; set; }
-
         RootObject formData;
 		
         bool succesSend;
@@ -32,9 +27,6 @@ namespace LoginBestPractice.iOS
 		//
 		public FormContentViewController (IntPtr handle) : base (handle)
         {
-            formList = new List<Formulieren>();
-            catList = new List<Categorien>();
-            questList = new List<Vragen>();
             succesSend = false;
 			viewWidth = this.View.Frame.Width;
 			formTableView.Frame = new CoreGraphics.CGRect(0, 0, viewWidth, this.View.Frame.Height);
@@ -53,7 +45,10 @@ namespace LoginBestPractice.iOS
             if (succesSend == false)
             {
                 collectData();
-                unfilledForm();
+				if (questList.Count != 0 || (txtf_projectName.Text != "" && txtf_location.Text != ""))
+				{
+					dataStorage.sendDataWeb(formData);
+				}
 			}
 		}
 
@@ -70,11 +65,9 @@ namespace LoginBestPractice.iOS
 				if (formData.categorien[i].formulier_id == formIDIn)
 				{
 					nfloat currentLabelYPosition = 0;
-
 					// catcontainer // 
 					CatBlockView catBlock = new CatBlockView();
 					catBlock.Tag = int.Parse((formData.categorien[i].categorie_id));
-
 					// category // 
 					catBlock.lbl_cat.Text = formData.categorien[i].categorie_text;
 					catBlock.lbl_cat.Frame = new CoreGraphics.CGRect(0, 0, viewWidth, 35);
@@ -88,12 +81,10 @@ namespace LoginBestPractice.iOS
 							QuestBlockView questBlock = new QuestBlockView(formData.vragen[j].vraag_id);
 							questBlock.Tag = int.Parse(formData.vragen[j].vraag_volgNr); 
 							nfloat containerElementPos = 0;
-
 							// vraag // 
 							questBlock.lbl_quest.Text = formData.vragen[j].vraag_text;
 							questBlock.lbl_quest.Frame = new CoreGraphics.CGRect((viewWidth * (1 - 0.98)), 0, (viewWidth * 0.96), 35);
 							containerElementPos += questBlock.lbl_quest.Frame.Bottom;
-
 							// options //
 							questBlock.setOptions(formData.vragen[j].vraag_type);
 							questBlock.options.Frame = new CoreGraphics.CGRect((viewWidth * (1 - 0.925)), containerElementPos, (viewWidth * 0.85), 30);
@@ -105,7 +96,6 @@ namespace LoginBestPractice.iOS
 								// only add buttons when needed // 
 								questBlock.addButtons();
 								questBlock.btn_photo.Hidden = true;	questBlock.btn_modal.Hidden = true;
-
 								if (questBlock.options.SelectedSegment == 0) 
 								{
 								 	questBlock.options.TintColor = new UIColor(0.10f, 0.62f, 0.01f, 1.0f);
@@ -122,7 +112,6 @@ namespace LoginBestPractice.iOS
 									set = true;
 									questBlock.options.TintColor = new UIColor(0.88f, 0.03f, 0.03f, 1.0f);
                                     questBlock.btn_photo.Hidden = false; questBlock.btn_modal.Hidden = false;
-
 									// modal //
 									modal = Storyboard.InstantiateViewController("modalVraag") as Modal;
 									questBlock.addModal(modal);
@@ -238,66 +227,18 @@ namespace LoginBestPractice.iOS
 			formTableView.ReloadData();
 		}
 
-        //
-        // checks if form has at least two given values
-        // IF so, file shall be created/written with rootObject containing unFilled form
-        //
-        private void unfilledForm() 
-        {
-			if (questList.Count != 0 || (txtf_projectName.Text != "" && txtf_location.Text != ""))
-			{
-                var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-				var filename = Path.Combine(documents, "openFormData.txt");
-                RootObject unfilledForms;
-                FileStream fs;
-                StreamWriter sw;
-                if (File.Exists(filename))
-                {
-                    // retrieve earlier unfilled forms
-                    string preRawJSON = File.ReadAllText(filename);
-                    unfilledForms = JsonConvert.DeserializeObject<RootObject>(preRawJSON);
-                    // add new forms
-                    unfilledForms.formulieren.Add(formList[0]);
-                    foreach (Categorien c in catList)
-                    {
-                        unfilledForms.categorien.Add(c);
-                    }
-                    foreach (Vragen q in questList)
-                    {
-                        unfilledForms.vragen.Add(q);
-                    }
-                    // write new json to file
-                    string postRawJSON = JsonConvert.SerializeObject(unfilledForms);
-                    fs = File.Open(filename, FileMode.Truncate);
-                    sw = new StreamWriter(fs);
-                    sw.Write(postRawJSON); sw.Flush();
-                } else 
-                {
-                    unfilledForms = new RootObject()
-					{
-						formulieren = formList,
-						categorien = catList,
-						vragen = questList
-					};
-                    string jsonData = JsonConvert.SerializeObject(unfilledForms);
-                    fs = new FileStream(filename, FileMode.Create, FileAccess.ReadWrite);
-					sw = new StreamWriter(fs);
-					sw.Write(jsonData); sw.Flush();
-                }
-			}
-        }
-
 		// 
 		// collects data per view and possible modal belonging to view	
 		//
 		partial void btn_sendForm_TouchUpInside(UIButton sender)
 		{
             collectData();
-            if (dataStorage.sendData(formList,catList,questList) == true)
+            if (dataStorage.sendDataWeb(formData) == true)
 			{
 				succesSend = true;
-				FormsViewController formViewControl = Storyboard.InstantiateViewController("Formulieren") as FormsViewController;
-				NavigationController.PushViewController(formViewControl, true);
+				FormsViewController formViewControl = Storyboard.InstantiateViewController("Forms") as FormsViewController;
+                NavigationController.PushViewController(formViewControl, true);
+				this.PresentViewController(createAlert("Formulier Verzonden", ""), true, null);
 			}
 		}
 
@@ -306,12 +247,16 @@ namespace LoginBestPractice.iOS
         //
         private void collectData() 
         {
-			// main. form //
-			Formulieren formulier = new Formulieren();
-			formulier.formulier_id = formID; formulier.formulier_naam = this.Title;
-			formulier.locatie = this.txtf_location.Text; formulier.project_naam = this.txtf_projectName.Text;
-			formulier.datum = this.date_dateProject.Date.ToString(); formulier.user = User.instance.name;
-            formList.Add(formulier);
+			formList = new List<Formulieren>();
+			catList = new List<Categorien>();
+			questList = new List<Vragen>();
+
+			// form //
+			Formulieren form = new Formulieren();
+			form.formulier_id = formID; form.formulier_naam = this.Title;
+			form.locatie = this.txtf_location.Text; form.project_naam = this.txtf_projectName.Text;
+			form.datum = this.date_dateProject.Date.ToString(); form.user = User.instance.name;
+            formList.Add(form);
 			Boolean marked = false;
 			// 1. catblok
 			foreach (UIView catView in views)
@@ -319,7 +264,6 @@ namespace LoginBestPractice.iOS
 				Categorien cat = new Categorien();
 				string catID = catView.Tag.ToString();
 				cat.categorie_id = catID;
-
 				// 2. questBlock (inc cat_label)
 				foreach (UIView catSubView in catView.Subviews)
 				{
@@ -332,17 +276,17 @@ namespace LoginBestPractice.iOS
 					// 3. vraagblok (ex cat_label)
 					if (catSubView is QuestBlockView)
 					{
-						Vragen vraag = new Vragen();
-						vraag.vraag_id = ((QuestBlockView)catSubView).getID();
+						Vragen quest = new Vragen();
+						quest.vraag_id = ((QuestBlockView)catSubView).getID();
 						// modalGegevens
 						Modal vraagModal = ((QuestBlockView)catSubView).getModal();
 						if (vraagModal != null)
 						{
-							vraag.extra_commentaar = vraagModal.getComment(); vraag.actie_ondernomen = vraagModal.getAction();
-							vraag.persoon = vraagModal.getPerson(); vraag.datum_gereed = vraagModal.getDate();
-							if (vraag.extra_commentaar == null || vraag.actie_ondernomen == null || vraag.persoon == null || vraag.datum_gereed == null)
+							quest.extra_commentaar = vraagModal.getComment(); quest.actie_ondernomen = vraagModal.getAction();
+							quest.persoon = vraagModal.getPerson(); quest.datum_gereed = vraagModal.getDate();
+							if (quest.extra_commentaar == null || quest.actie_ondernomen == null || quest.persoon == null || quest.datum_gereed == null)
 							{
-								PresentViewController(createAlert("Extra gegevens bij niet akkoord ontbreken!"), true, null);
+								PresentViewController(createAlert("Extra gegevens bij niet akkoord ontbreken!", "Fout"), true, null);
 								this.formTableView.ContentOffset = new CoreGraphics.CGPoint(0, catSubView.Frame.Y);
 								marked = true;
 								return;
@@ -353,10 +297,9 @@ namespace LoginBestPractice.iOS
 							// vraagtekst
 							if (vraagSubView is UILabel)
 							{
-								vraag.vraag_text = ((UILabel)vraagSubView).Text; vraag.vraag_type = "Akkoord/Niet akkoord/N.v.t.";
-								vraag.categorie_id = catID;
+								quest.vraag_text = ((UILabel)vraagSubView).Text; quest.vraag_type = "Akkoord/Niet akkoord/N.v.t.";
+								quest.categorie_id = catID;
 							}
-
 							// geselecteerde optie
 							if (vraagSubView is UISegmentedControl)
 							{
@@ -366,28 +309,31 @@ namespace LoginBestPractice.iOS
 									// indien options niet volledig, geef melding en spring naar desbetreffende view (eenmaal springen)
 									if (marked == false)
 									{
-                                        PresentViewController(createAlert("Formulier niet volledig ingevuld"), true, null);
+                                        PresentViewController(createAlert("Formulier niet volledig ingevuld", "Fout"), true, null);
 										this.formTableView.ContentOffset = new CoreGraphics.CGPoint(0, vraagSubView.Frame.Y);
 										marked = true;
 										return;
 									}
 								} else {
-									vraag.answer = ((UISegmentedControl)vraagSubView).TitleAt(((UISegmentedControl)vraagSubView).SelectedSegment);
-                                    questList.Add(vraag);
+									quest.answer = ((UISegmentedControl)vraagSubView).TitleAt(((UISegmentedControl)vraagSubView).SelectedSegment);
+                                    questList.Add(quest);
 								}
 							}
 						}
 					}
 				}
 			}
+            formData.formulieren = formList;
+            formData.categorien = catList;
+            formData.vragen = questList;
         }
 
 		//
 		// creates alert at baseline from empty fields
 		//
-		private UIAlertController createAlert(string text)
+		private UIAlertController createAlert(string text, string type)
 		{
-			UIAlertController alert = UIAlertController.Create("Fout", text, UIAlertControllerStyle.Alert);
+			UIAlertController alert = UIAlertController.Create(type, text, UIAlertControllerStyle.Alert);
 			alert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, a => Console.WriteLine("Okay was clicked")));
 			return alert;
 		}

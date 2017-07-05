@@ -29,7 +29,7 @@
         <!--Tab 1-->
         <scene sceneID="28">
             <objects>
-                <viewController id="23" sceneMemberID="viewController" storyboardIdentifier="Formulieren" customClass="FormsViewController">
+                <viewController id="23" sceneMemberID="viewController" storyboardIdentifier="Forms" customClass="FormsViewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1991"/>
                         <viewControllerLayoutGuide type="bottom" id="1992"/>
