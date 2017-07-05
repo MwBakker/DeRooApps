@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using UIKit;
 using Foundation;
 
@@ -40,8 +40,8 @@ namespace LoginBestPractice.iOS
         //
 		public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
 		{
-            FormContentViewController FormContentViewController = Storyboard.InstantiateViewController("FormContentViewController") as FormContentViewController;
-            FormContentViewController.dataStorage = unfilledForms;
+            FormContentViewController FormContentViewController = new FormContentViewController(this.Handle);
+            FormContentViewController.dataStorage = unFilledForms;
             FormContentViewController.Title = cell.TextLabel.Text;
             FormContentViewController.setCatAndQuest(formulierID);
             NavigationController.PushViewController(FormContentViewController, true);

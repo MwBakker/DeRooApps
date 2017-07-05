@@ -1,9 +1,12 @@
 ﻿<Properties StartupConfiguration="{84563AF5-67F4-46D6-B49C-BF8D718F3C64}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="_Main Subjects/Forms/FormTable/OpenForms/OpenFormTableViewSource.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="_Main Subjects/Forms/FormContentViewController.cs">
     <Files>
       <File FileName="MainStoryboard.storyboard" />
-      <File FileName="_Main Subjects/Forms/FormTable/OpenForms/OpenFormTableViewSource.cs" Line="5" Column="8" />
-      <File FileName="_Main Subjects/Forms/FormsViewController.cs" Line="16" Column="33" />
+      <File FileName="_Main Subjects/Forms/FormTable/OpenForms/OpenFormTableViewSource.cs" Line="31" Column="14" />
+      <File FileName="_Main Subjects/Forms/FormsViewController.cs" Line="77" Column="81" />
+      <File FileName="_Main Subjects/Forms/OpenFormsViewController.cs" Line="28" Column="5" />
+      <File FileName="_Main Subjects/Forms/FormTable/FormContent/FormContentTableViewSource.cs" Line="1" Column="1" />
+      <File FileName="_Main Subjects/Forms/FormContentViewController.cs" Line="287" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
