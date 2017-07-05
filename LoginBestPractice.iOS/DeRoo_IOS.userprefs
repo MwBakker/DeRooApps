@@ -2,20 +2,13 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="_Main Subjects/Forms/FormTable/OpenForms/OpenFormTableViewSource.cs">
     <Files>
       <File FileName="MainStoryboard.storyboard" />
-      <File FileName="_Main Subjects/Forms/FormTable/OpenForms/OpenFormTableViewSource.cs" Line="49" Column="14" />
-      <File FileName="_Main Subjects/Forms/OpenFormsViewController.cs" Line="30" Column="1" />
-      <File FileName="_Main Subjects/Forms/FormContentViewController.cs" Line="287" Column="1" />
-      <File FileName="_Main Subjects/Forms/FormTable/FormContent/QuestBlockView.cs" Line="39" Column="6" />
-      <File FileName="Data/Database_Data/DataStorage.cs" Line="48" Column="4" />
-      <File FileName="Data/Database_Data/DatabaseData.cs" Line="71" Column="38" />
+      <File FileName="_Main Subjects/Forms/FormTable/OpenForms/OpenFormTableViewSource.cs" Line="5" Column="8" />
+      <File FileName="_Main Subjects/Forms/FormsViewController.cs" Line="16" Column="33" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/_Main Subjects/Forms/FormContentViewController.cs" relfile="_Main Subjects/Forms/FormContentViewController.cs" line="254" column="1" />
-      <Breakpoint file="/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/_Main Subjects/Forms/FormTable/OpenForms/OpenFormTableViewSource.cs" relfile="_Main Subjects/Forms/FormTable/OpenForms/OpenFormTableViewSource.cs" line="32" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />

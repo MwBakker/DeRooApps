@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using Foundation;
 using UIKit;
+using Foundation;
 
 namespace LoginBestPractice.iOS
 {
@@ -10,11 +9,9 @@ namespace LoginBestPractice.iOS
         // forms + entire data
         RootObject unFilledForms;
         bool areForms;
-        //List<RootObject> entireForms;
 
         public OpenFormTableViewSource(RootObject unFilledForms)
 		{
-            // entireForms = entireFormsIn;
             if (unFilledForms != null)
             {
                 areForms = true;
@@ -37,6 +34,18 @@ namespace LoginBestPractice.iOS
             }
 			return cell;
 		}
+
+        // 
+        // Handles click 
+        //
+		public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
+		{
+            FormContentViewController FormContentViewController = Storyboard.InstantiateViewController("FormContentViewController") as FormContentViewController;
+            FormContentViewController.dataStorage = unfilledForms;
+            FormContentViewController.Title = cell.TextLabel.Text;
+            FormContentViewController.setCatAndQuest(formulierID);
+            NavigationController.PushViewController(FormContentViewController, true);
+        }
 
         //
 		// returns amount of rows

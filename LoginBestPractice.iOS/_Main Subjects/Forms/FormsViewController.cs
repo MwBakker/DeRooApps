@@ -74,7 +74,7 @@ namespace LoginBestPractice.iOS
 			btn_formulier.TouchDown += delegate
 			{
 				// ViewController //
-				FormContentViewController FormContentViewController = Storyboard.InstantiateViewController("FormContentViewController") as FormContentViewController;
+                FormContentViewController FormContentViewController = Storyboard.InstantiateViewController("FormContentViewController") as FormContentViewController;
 				FormContentViewController.dataStorage = dataStorage;
 				FormContentViewController.Title = formulierNaam;
 				FormContentViewController.setCatAndQuest(formulierID);
