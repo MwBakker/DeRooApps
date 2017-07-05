@@ -34,7 +34,6 @@ namespace LoginBestPractice.iOS
             formList = new List<Formulieren>();
             catList = new List<Categorien>();
             questList = new List<Vragen>();
-
             succesSend = false;
 			viewWidth = this.View.Frame.Width;
 			formTableView.Frame = new CoreGraphics.CGRect(0, 0, viewWidth, this.View.Frame.Height);
@@ -61,7 +60,7 @@ namespace LoginBestPractice.iOS
                 string JSONAllData = JsonConvert.SerializeObject(formData); 
 				var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
                 var filename = Path.Combine(documents, "openFormData.txt");
-                File.WriteAllText(filename, JSONAllData);
+                TextWriter writer = new StreamWriter(filename, true);
 			}
 		}
 

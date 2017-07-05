@@ -162,7 +162,6 @@
       <DependentUpon>ToolboxViewController_.cs</DependentUpon>
     </Compile>
     <Compile Include="Features\UIDeRooButton.cs" />
-    <Compile Include="Data\Database_Data\User.cs" />
     <Compile Include="Login\AppDelegate.cs" />
     <Compile Include="Login\Login.cs" />
     <Compile Include="Login\LoginPageViewController.cs" />
@@ -201,6 +200,7 @@
     <Compile Include="_Main Subjects\Forms\FormTable\OpenForms\UIOpenFormCell.designer.cs">
       <DependentUpon>UIOpenFormCell.cs</DependentUpon>
     </Compile>
+    <Compile Include="Data\User.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\de-roo.png" />
@@ -230,6 +230,7 @@
     <BundleResource Include="_Main Subjects\Handbook\handboek.pdf" />
     <BundleResource Include="_Main Subjects\Toolbox\handboek.pdf" />
     <BundleResource Include="Resources\compose.png" />
+    <BundleResource Include="Resources\formIcon.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Features\" />

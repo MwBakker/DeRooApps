@@ -15,6 +15,9 @@ namespace LoginBestPractice.iOS
 			views = viewsIn;
 		}
 
+		//
+		// dedicates cell per row to tableview 
+		//
 		public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
 		{
 			// new cell, with <view> object as continious cell-source
@@ -25,13 +28,17 @@ namespace LoginBestPractice.iOS
 			return cell; 
 		}
 
+        //
 		// returns amount of rows
+        //
 		public override nint RowsInSection(UITableView tableview, nint section)
 		{
 			return views.Count;
 		}
 
+        //
 		// returns height of each row
+        //
 		public override nfloat GetHeightForRow(UITableView tableView, NSIndexPath indexPath)
 		{
 			nfloat viewHeight = (views[indexPath.Row].Frame.Height);

@@ -7,29 +7,47 @@ namespace LoginBestPractice.iOS
 {
     public class OpenFormTableViewSource : UITableViewSource
     {
-		// all views 
-        RootObject root;
+        // forms + entire data
+        RootObject allForms;
+        bool areForms;
+        //List<RootObject> entireForms;
 
-        public OpenFormTableViewSource(RootObject rootIn)
+        public OpenFormTableViewSource(RootObject allForms)
 		{
-            root = rootIn;
+            //entireForms = entireFormsIn;
+            if (allForms != null)
+            {
+                this.allForms = allForms;
+            } else {
+                areForms = false;
+            }
 		}
 
+        //
+        // dedicates cell per row to tableview 
+        //
 		public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
 		{
-			// new cell, with <view> object as continious cell-source
-            var cell = tableView.DequeueReusableCell("buttonCell");
-            foreach (Formulieren form in root.formulieren)
-			{
-                cell.TextLabel.Text = form.formulier_naam;
-			}
+            var cell = tableView.DequeueReusableCell("buttonCell") as UIOpenFormCell;
+            if (areForms == true) 
+            {
+				cell.entireForm = allForms;
+				cell.TextLabel.Text = allForms.formulieren[indexPath.Row].formulier_naam;
+            }
 			return cell;
 		}
 
+        //
 		// returns amount of rows
+        //
 		public override nint RowsInSection(UITableView tableview, nint section)
 		{
-            return root.formulieren.Count;
+            if (areForms == true) {
+			    return allForms.formulieren.Count;
+            } else {
+                return 0;
+            }
+         
 		}
     }
 }

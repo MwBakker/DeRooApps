@@ -103,7 +103,6 @@ namespace DeRoo_iOS
 						streamWriter.WriteLine(encryptedString);
 						streamWriter.Dispose();
 					}
-
 					using (var streamReader = new StreamReader(filename))
 					{
 						encryptedString = streamReader.ReadToEnd();
