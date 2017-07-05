@@ -10,7 +10,7 @@ namespace LoginBestPractice.iOS
 		string quest_id;
 		public UISegmentedControl options { get; set; }
 		public UIDeRooButton btn_photo { get; set; }
-        public UITableStyleButton btn_modal { get; set; }
+        public UIDeRooButton btn_modal { get; set; }
 		Modal modal;
 
 		// 
@@ -23,7 +23,7 @@ namespace LoginBestPractice.iOS
 			options = new UISegmentedControl();
 			options.TintColor = UIColor.DarkGray;
 			btn_photo = new UIDeRooButton();
-            btn_modal = new UITableStyleButton();
+            btn_modal = new UIDeRooButton();
 			setElements();
 		}
 

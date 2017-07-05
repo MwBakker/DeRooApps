@@ -44,23 +44,16 @@ namespace LoginBestPractice.iOS
 		}
 
 		//
-		// before we go back...
+		// before we go back... collect Data
+        // check and possibly store unfilled form
 		//
 		public override void ViewWillDisappear(bool animated)
 		{
             // viewData to rootObject containing all required JSON data
             if (succesSend == false)
-			{
+            {
                 collectData();
-
-				RootObject formData = new RootObject() {   
-						                    formulieren = formList,
-						                    categorien = catList,
-						                    vragen = questList	};
-                string JSONAllData = JsonConvert.SerializeObject(formData); 
-				var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                var filename = Path.Combine(documents, "openFormData.txt");
-                TextWriter writer = new StreamWriter(filename, true);
+                unfilledForm();
 			}
 		}
 
@@ -246,13 +239,52 @@ namespace LoginBestPractice.iOS
 		}
 
         //
-        // creates alert at baseline from empty fields
+        // checks if form has at least two given values
+        // IF so, file shall be created/written with rootObject containing unFilled form
         //
-        private UIAlertController createAlert(string text) 
+        private void unfilledForm() 
         {
-			UIAlertController alert = UIAlertController.Create("Fout", text, UIAlertControllerStyle.Alert);
-			alert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, a => Console.WriteLine("Okay was clicked")));
-            return alert;
+			if (questList.Count != 0 || (txtf_projectName.Text != "" && txtf_location.Text != ""))
+			{
+                var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+				var filename = Path.Combine(documents, "openFormData.txt");
+                RootObject unfilledForms;
+                FileStream fs;
+                StreamWriter sw;
+                if (File.Exists(filename))
+                {
+                    // retrieve earlier unfilled forms
+                    string preRawJSON = File.ReadAllText(filename);
+                    unfilledForms = JsonConvert.DeserializeObject<RootObject>(preRawJSON);
+                    // add new forms
+                    unfilledForms.formulieren.Add(formList[0]);
+                    foreach (Categorien c in catList)
+                    {
+                        unfilledForms.categorien.Add(c);
+                    }
+                    foreach (Vragen q in questList)
+                    {
+                        unfilledForms.vragen.Add(q);
+                    }
+                    // write new json to file
+                    string postRawJSON = JsonConvert.SerializeObject(unfilledForms);
+                    fs = File.Open(filename, FileMode.Truncate);
+                    sw = new StreamWriter(fs);
+                    sw.Write(postRawJSON); sw.Flush();
+                } else 
+                {
+                    unfilledForms = new RootObject()
+					{
+						formulieren = formList,
+						categorien = catList,
+						vragen = questList
+					};
+                    string jsonData = JsonConvert.SerializeObject(unfilledForms);
+                    fs = new FileStream(filename, FileMode.Create, FileAccess.ReadWrite);
+					sw = new StreamWriter(fs);
+					sw.Write(jsonData); sw.Flush();
+                }
+			}
         }
 
 		// 
@@ -349,5 +381,15 @@ namespace LoginBestPractice.iOS
 				}
 			}
         }
+
+		//
+		// creates alert at baseline from empty fields
+		//
+		private UIAlertController createAlert(string text)
+		{
+			UIAlertController alert = UIAlertController.Create("Fout", text, UIAlertControllerStyle.Alert);
+			alert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, a => Console.WriteLine("Okay was clicked")));
+			return alert;
+		}
 	}
 }
