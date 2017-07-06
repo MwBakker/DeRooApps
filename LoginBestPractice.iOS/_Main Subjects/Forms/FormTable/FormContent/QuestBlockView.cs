@@ -1,4 +1,6 @@
-﻿using System;
+﻿﻿using System;
+using AssetsLibrary;
+using Foundation;
 using UIKit;
 
 namespace LoginBestPractice.iOS
@@ -7,8 +9,8 @@ namespace LoginBestPractice.iOS
 	{
 		UIColor deRooGreen;
 		public UILabel lbl_quest { get; set; }
+        public UISegmentedControl options;
 		public string quest_id { get; set; } 
-		public UISegmentedControl options { get; set; }
 		public UIDeRooButton btn_photo { get; set; }
         public UIDeRooButton btn_modal { get; set; }
 		Modal modal;
@@ -20,8 +22,6 @@ namespace LoginBestPractice.iOS
 		{
 			deRooGreen = new UIColor(0.04f, 0.17f, 0.01f, 1.0f);
             this.quest_id = quest_id;
-			options = new UISegmentedControl();
-			options.TintColor = UIColor.DarkGray;
 			btn_photo = new UIDeRooButton();
             btn_modal = new UIDeRooButton();
 			setElements();
@@ -40,9 +40,83 @@ namespace LoginBestPractice.iOS
 			btn_modal.SetTitle("Zie ingevoerd commentaar", UIControlState.Normal);
 
 			this.AddSubview(lbl_quest);
-			this.AddSubview(options);
 		}
 			
+        // 
+        // returns an options-object
+        //
+        public UISegmentedControl optionsControl(FormContentViewController subjectVC, CatBlockView catBlock) 
+        {
+            options = new UISegmentedControl();
+            options.TintColor = UIColor.DarkGray;
+            Modal modal;
+            bool set = false;
+            nfloat viewWidth = subjectVC.View.Frame.Width;
+
+			options.ValueChanged += (sender, e) =>
+			{
+				// only add buttons when needed // 
+			    addButtons();
+				btn_photo.Hidden = true; btn_modal.Hidden = true;
+				if (options.SelectedSegment == 0)
+				{
+					options.TintColor = new UIColor(0.10f, 0.62f, 0.01f, 1.0f);
+					btn_photo.Hidden = true; btn_modal.Hidden = true;
+					if (set == true)
+					{
+                        subjectVC.updateView(catBlock, this, btn_modal, "removed");
+						set = false;
+					}
+					modal = null;
+				}
+				else if (options.SelectedSegment == 1)
+				{
+					set = true;
+					options.TintColor = new UIColor(0.88f, 0.03f, 0.03f, 1.0f);
+					btn_photo.Hidden = false; btn_modal.Hidden = false;
+					// modal //
+                    modal = subjectVC.Storyboard.InstantiateViewController("modalVraag") as Modal;
+					addModal(modal);
+                    subjectVC.PresentViewController(modal, true, null);
+
+					btn_photo.Frame = new CoreGraphics.CGRect(viewWidth * (1 - 0.875), (options.Frame.Bottom + 10), (viewWidth * 0.75), 30);
+					btn_photo.TouchDown += delegate
+					{
+						// btn_photo.photoAction photo object + meta data
+                        Camera.TakePicture(subjectVC, (obj) =>
+						{
+							var photo = obj.ValueForKey(new NSString("UIImagePickerControllerOriginalImage")) as UIImage;
+							var meta = obj.ValueForKey(new NSString("UIImagePickerControllerMediaMetadata")) as NSDictionary;
+							ALAssetsLibrary library = new ALAssetsLibrary();
+							library.WriteImageToSavedPhotosAlbum(photo.CGImage, meta, (assetUrl, error) =>
+							{
+								Console.WriteLine("assetUrl:" + assetUrl);
+							});
+						}); ;
+					};
+					btn_modal.Frame = new CoreGraphics.CGRect(viewWidth * (1 - 0.875), (btn_photo.Frame.Bottom + 15), (viewWidth * 0.75), 30);
+					btn_modal.TouchDown += delegate
+					{
+						subjectVC.PresentViewController(modal, true, null);
+					};
+					subjectVC.updateView(catBlock, this, btn_modal, "added");
+				}
+				else
+				{
+					options.TintColor = UIColor.DarkGray;
+					btn_photo.Hidden = true; btn_modal.Hidden = true;
+					if (set == true)
+					{
+						subjectVC.updateView(catBlock, this, btn_modal, "removed");
+						set = false;
+					}
+					modal = null;
+				}
+			};
+            return options;
+        }
+
+
 
 		//
 		// adds the modalView as some sort of a childView into this modalView

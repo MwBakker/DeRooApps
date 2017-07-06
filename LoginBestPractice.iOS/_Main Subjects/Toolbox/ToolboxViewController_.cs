@@ -29,20 +29,14 @@ namespace LoginBestPractice.iOS
 		{
 			base.ViewDidLoad();
 
-			// 1000ms delay in case of slow internet
 			DataStorage dataStorage = new DataStorage();
 			dataStorage.getData();
 			Thread.Sleep(1000);
-
-			// create scrollview and add this to the current view. 
-			// content size of the scrollview is calculated on the number of toolbox subjects(buttons).
 			nfloat Hoogte = setHeight();
 			scrollView = new UIScrollView(new CGRect(0, 0, this.View.Frame.Size.Width, this.View.Frame.Size.Height));
 			scrollView.ContentSize = new CGSize(this.View.Frame.Width, Hoogte);
 			this.View.AddSubview (scrollView);
 
-
-			// load data of all the employees.
 			RootObject medewerkers = DataStorage.data;
 
 			// add all the employees first and lastname to arrayList; tableItems.
@@ -246,7 +240,6 @@ namespace LoginBestPractice.iOS
 					char[] delimiterChars = { ' ', '\t' };
 					files = responseString.Split(delimiterChars);
 			}
-
 			for (int i = 0; i < files.Length - 1; i++)
 			{
 				hoogteScrollview += 62;

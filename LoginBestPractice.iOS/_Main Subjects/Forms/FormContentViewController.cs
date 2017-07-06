@@ -86,76 +86,17 @@ namespace LoginBestPractice.iOS
 							questBlock.lbl_quest.Text = formData.vragen[j].vraag_text;
 							questBlock.lbl_quest.Frame = new CoreGraphics.CGRect((viewWidth * (1 - 0.98)), 0, (viewWidth * 0.96), 35);
 							containerElementPos += questBlock.lbl_quest.Frame.Bottom;
-							// options //
-							questBlock.setOptions(formData.vragen[j].vraag_type);
-							questBlock.options.Frame = new CoreGraphics.CGRect((viewWidth * (1 - 0.925)), containerElementPos, (viewWidth * 0.85), 30);
+                            // options //
+                            UISegmentedControl options = questBlock.optionsControl(this, catBlock);
+                            questBlock.setOptions(formData.vragen[j].vraag_type);
+                            questBlock.options.Frame = new CoreGraphics.CGRect((viewWidth * (1 - 0.925)), containerElementPos, (viewWidth * 0.85), 30);
+                            questBlock.AddSubview(options);
                             string possibleQAnswer = formData.vragen.First(q => q.vraag_id == questBlock.quest_id).answer;
-                            if (possibleQAnswer != null) {
-                                questBlock.options.SelectedSegment = int.Parse(possibleQAnswer);
-                            }
-							containerElementPos += questBlock.options.Frame.Bottom;
-
-							Modal modal;
-							bool set = false;
-							questBlock.options.ValueChanged += (sender, e) =>
+							if (possibleQAnswer != null)
 							{
-								// only add buttons when needed // 
-								questBlock.addButtons();
-								questBlock.btn_photo.Hidden = true;	questBlock.btn_modal.Hidden = true;
-								if (questBlock.options.SelectedSegment == 0) 
-								{
-								 	questBlock.options.TintColor = new UIColor(0.10f, 0.62f, 0.01f, 1.0f);
-									questBlock.btn_photo.Hidden = true; questBlock.btn_modal.Hidden = true;
-									if (set == true)
-									{ 
-										updateView(catBlock, questBlock, questBlock.btn_modal, "removed");
-										set = false;
-									}
-									modal = null;
-								}
-								else if (questBlock.options.SelectedSegment == 1)
-								{
-									set = true;
-									questBlock.options.TintColor = new UIColor(0.88f, 0.03f, 0.03f, 1.0f);
-                                    questBlock.btn_photo.Hidden = false; questBlock.btn_modal.Hidden = false;
-									// modal //
-									modal = Storyboard.InstantiateViewController("modalVraag") as Modal;
-									questBlock.addModal(modal);
-									PresentViewController(modal, true, null);
-
-									questBlock.btn_photo.Frame = new CoreGraphics.CGRect(viewWidth * (1 - 0.875), (questBlock.options.Frame.Bottom + 10), (viewWidth * 0.75), 30);
-									questBlock.btn_photo.TouchDown += delegate
-									{
-										// btn_photo.photoAction photo object + meta data
-										Camera.TakePicture (this, (obj) => {
-											var photo = obj.ValueForKey(new NSString("UIImagePickerControllerOriginalImage")) as UIImage;
-											var meta = obj.ValueForKey(new NSString("UIImagePickerControllerMediaMetadata")) as NSDictionary;
-											ALAssetsLibrary library = new ALAssetsLibrary();
-											library.WriteImageToSavedPhotosAlbum(photo.CGImage, meta, (assetUrl, error) =>
-											{
-												Console.WriteLine("assetUrl:" + assetUrl);
-											});
-										});;
-									};
-									questBlock.btn_modal.Frame = new CoreGraphics.CGRect(viewWidth * (1 - 0.875), (questBlock.btn_photo.Frame.Bottom + 15), (viewWidth * 0.75), 30);
-									questBlock.btn_modal.TouchDown += delegate
-									{
-                                      	PresentViewController(modal, true, null);
-									};
-									updateView(catBlock, questBlock, questBlock.btn_modal, "added");
-								}
-								else
-								{
-									questBlock.options.TintColor = UIColor.DarkGray;
-									questBlock.btn_photo.Hidden = true; questBlock.btn_modal.Hidden = true;
-									if (set == true)
-									{
-										updateView(catBlock, questBlock, questBlock.btn_modal, "removed");
-										set = false;
-									}
-									modal = null;
-								}
-							};
+                                questBlock.options.SelectedSegment = checkGivenAnswer(possibleQAnswer);
+							}
+                            containerElementPos += questBlock.options.Frame.Bottom;
 							questBlock.Frame = new CoreGraphics.CGRect(0, containerPos, viewWidth, setStackHeight(questBlock));
 							containerPos += questBlock.Frame.Height;
 							catBlock.AddSubview(questBlock);
@@ -175,6 +116,24 @@ namespace LoginBestPractice.iOS
 		{
 			var pos = CrossGeolocator.Current.GetPositionAsync();
 		}
+
+        //
+        // checks given answer based on previous input
+        //
+        public int checkGivenAnswer(string answer) 
+        {
+            int answerIndex = 2;
+            if (answer == "Akkoord"){
+                answerIndex = 0;
+            }
+            else if (answer == "Niet akkoord") {
+                answerIndex = 1;
+            }
+            else if (answer == "N.v.t.") {
+                answerIndex = 2;
+            }
+            return answerIndex;
+        }
 
 		// 
 		// determines height of view in given parameter by subview's height
@@ -198,14 +157,12 @@ namespace LoginBestPractice.iOS
 		// 
 		// updates superView height according to subView heights
 		//
-		private void updateView (CatBlockView catBlock, QuestBlockView questBlock, UIButton btn, string stat)
+		public void updateView (CatBlockView catBlock, QuestBlockView questBlock, UIButton btn, string stat)
 		{
-			if (stat == "added")
-			{
+			if (stat == "added") {
 				questBlock.Frame = new CoreGraphics.CGRect(0, questBlock.Frame.Y, viewWidth, setStackHeight(questBlock));
 			}
-			else if (stat == "removed")
-			{
+			else if (stat == "removed") {
 				questBlock.Frame = new CoreGraphics.CGRect(0, questBlock.Frame.Y, viewWidth, setStackHeight(questBlock));
 			}
 
