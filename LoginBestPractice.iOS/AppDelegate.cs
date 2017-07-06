@@ -9,27 +9,17 @@ namespace LoginBestPractice.iOS
     [Register("AppDelegate")]
     public partial class AppDelegate : UIApplicationDelegate
     {
-        public override UIWindow Window
-        {
-            get;
-            set;
-        }
+        public override UIWindow Window { get; set; }
 
 		//
         // public property to access our MainStoryboard.storyboard file
 		//
-        public UIStoryboard MainStoryboard
-        {
-            get { return UIStoryboard.FromName("MainStoryboard", NSBundle.MainBundle); }
-        }
+        public UIStoryboard MainStoryboard {get { return UIStoryboard.FromName("MainStoryboard", NSBundle.MainBundle); } }
 
 		//
         // creates an instance of viewControllerName from storyboard
 		//
-        public UIViewController GetViewController(UIStoryboard storyboard, string viewControllerName)
-        {
-            return storyboard.InstantiateViewController(viewControllerName);
-        }
+        public UIViewController GetViewController(UIStoryboard storyboard, string viewControllerName) { return storyboard.InstantiateViewController(viewControllerName); }
 
 		//
         // sets the RootViewController of the Apps main window with an option for animation

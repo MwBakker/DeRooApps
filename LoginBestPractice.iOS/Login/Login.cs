@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Text;
 using System.Net;
+using LoginBestPractice.iOS;
+using UIKit;
 
 namespace DeRoo_iOS
 {
@@ -29,9 +31,18 @@ namespace DeRoo_iOS
 					var values = new System.Collections.Specialized.NameValueCollection();
 					values.Add("gebruikersnaam", username);
 					values.Add("wachtwoord", password);
-					byte[] response = client.UploadValues("https://www.amkapp.nl/test/loginApp.php", "POST", values);
-					string responseString = Encoding.UTF8.GetString(response);
-					data = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(responseString);
+                    if (!Reachability.IsHostReachable("https://amkapp.nl"))
+                    {
+                        var window = UIApplication.SharedApplication.KeyWindow;
+                        var vc = window.RootViewController;
+						UIAlertController alert = UIAlertController.Create("Fout", "Er is op dit moment geen verbinding met de server mogelijk", UIAlertControllerStyle.Alert);
+						alert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, a => Console.WriteLine("Okay was clicked")));
+                        vc.PresentViewController(alert, true, null);
+                    } else {
+						byte[] response = client.UploadValues("https://www.amkapp.nl/test/loginApp.php", "POST", values);
+						string responseString = Encoding.UTF8.GetString(response);
+						data = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(responseString);
+                    }
 				}
 
 				if (data != null)

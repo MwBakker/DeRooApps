@@ -60,7 +60,6 @@ namespace LoginBestPractice.iOS
 					}
 					else
 					{
-
 					}
 				};
 			}), true);
@@ -74,11 +73,12 @@ namespace LoginBestPractice.iOS
 			btn_formulier.TouchDown += delegate
 			{
 				// ViewController //
-                FormContentViewController FormContentViewController = Storyboard.InstantiateViewController("FormContentViewController") as FormContentViewController;
-				FormContentViewController.dataStorage = dataStorage;
-				FormContentViewController.Title = formulierNaam;
-				FormContentViewController.setCatAndQuest(formulierID);
-				NavigationController.PushViewController(FormContentViewController, true);
+                FormContentViewController formContentViewController = Storyboard.InstantiateViewController("FormContentViewController") as FormContentViewController;
+                formContentViewController.datastrg = dataStorage;
+                formContentViewController.formData = DataStorage.data;
+				formContentViewController.Title = formulierNaam;
+				formContentViewController.setCatAndQuest(formulierID);
+				NavigationController.PushViewController(formContentViewController, true);
 			};
 			return btn_formulier;
 		}

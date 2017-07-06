@@ -14,8 +14,9 @@ namespace LoginBestPractice.iOS
         List<Formulieren> formList;
         List<Categorien> catList;
         List<Vragen> questList;
-        public DataStorage dataStorage { get; set; }
-        RootObject formData;
+
+        public DataStorage datastrg { get; set; }
+        public RootObject formData { get; set; }
 		
         bool succesSend;
 		UIColor deRooGreen;
@@ -32,7 +33,6 @@ namespace LoginBestPractice.iOS
 			formTableView.Frame = new CoreGraphics.CGRect(0, 0, viewWidth, this.View.Frame.Height);
 			views = new List<UIView>();
 			deRooGreen = new UIColor(0.04f, 0.17f, 0.01f, 1.0f);
-            formData = DataStorage.data;
 		}
 
 		//
@@ -47,7 +47,7 @@ namespace LoginBestPractice.iOS
                 collectData();
 				if (questList.Count != 0 || (txtf_projectName.Text != "" && txtf_location.Text != ""))
 				{
-					dataStorage.sendDataWeb(formData);
+					datastrg.sendDataWeb(formData);
 				}
 			}
 		}
@@ -233,7 +233,7 @@ namespace LoginBestPractice.iOS
 		partial void btn_sendForm_TouchUpInside(UIButton sender)
 		{
             collectData();
-            if (dataStorage.sendDataWeb(formData) == true)
+            if (datastrg.sendDataWeb(formData) == true)
 			{
 				succesSend = true;
 				FormsViewController formViewControl = Storyboard.InstantiateViewController("Forms") as FormsViewController;

@@ -21,7 +21,8 @@ namespace LoginBestPractice.iOS
 			if (!File.Exists(filename))
 			{
                 data = null;
-            } else {
+            } else 
+            {
 				string rawJSON = File.ReadAllText(filename);
 				// data contains ALL non-filled forms // 
 				data = JsonConvert.DeserializeObject<RootObject>(rawJSON);
