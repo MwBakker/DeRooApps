@@ -11,11 +11,11 @@ namespace LoginBestPractice.iOS
     public partial class FormContentViewController : UIViewController
     {
 		List<UIView> views;
-        List<Formulieren> formList;
-        List<Categorien> catList;
-        List<Vragen> questList;
 
         public DataStorage datastrg { get; set; }
+
+        // this is the Root, so it determines the questionType etc in a static way
+        // changes in the database are not relevant to this root IF coming from non-web source
         public RootObject formData { get; set; }
 		
         bool succesSend;
@@ -44,10 +44,10 @@ namespace LoginBestPractice.iOS
             // viewData to rootObject containing all required JSON data
             if (succesSend == false)
             {
-                collectData();
-				if (questList.Count != 0 || (txtf_projectName.Text != "" && txtf_location.Text != ""))
+                RootObject fileForm = collectData();
+				if (txtf_projectName.Text != "" && txtf_location.Text != "")
 				{
-					datastrg.sendDataWeb(formData);
+                    datastrg.sendDataFile(fileForm, date_dateProject.Date.ToString().Replace("+0000", ""));
 				}
 			}
 		}
@@ -211,12 +211,9 @@ namespace LoginBestPractice.iOS
 				{
 					if (view.Tag > questBlock.Tag)
 					{
-						if (stat == "added")
-						{
+						if (stat == "added") {
 							view.Frame = new CoreGraphics.CGRect(view.Frame.X, vraagOptieBottom, view.Frame.Width, view.Frame.Height);
-						}
-						else if (stat == "removed")
-						{
+						} else if (stat == "removed") {
 							view.Frame = new CoreGraphics.CGRect(view.Frame.X, vraagOptieBottom, view.Frame.Width, view.Frame.Height);
 						}
 						vraagOptieBottom = view.Frame.Bottom;
@@ -232,8 +229,8 @@ namespace LoginBestPractice.iOS
 		//
 		partial void btn_sendForm_TouchUpInside(UIButton sender)
 		{
-            collectData();
-            if (datastrg.sendDataWeb(formData) == true)
+            RootObject webForm = collectData();
+            if (datastrg.sendDataWeb(webForm) == true)
 			{
 				succesSend = true;
 				FormsViewController formViewControl = Storyboard.InstantiateViewController("Forms") as FormsViewController;
@@ -244,25 +241,30 @@ namespace LoginBestPractice.iOS
 
         //
         // collects all the given data by user
+        // replaces specific DataStorage object with values containing filled Data
         //
-        private void collectData() 
+        private RootObject collectData() 
         {
-			formList = new List<Formulieren>();
-			catList = new List<Categorien>();
-			questList = new List<Vragen>();
+            // Lists who are going to replace .data lists to maintain only related data
+            List<Formulieren> relevantForm = new List<Formulieren>();
+            List<Categorien> relevantCats = new List<Categorien>();
+            List<Vragen> relevantQuests = new List<Vragen>();
 
 			// form //
-			Formulieren form = new Formulieren();
-			form.formulier_id = formID; form.formulier_naam = this.Title;
-			form.locatie = this.txtf_location.Text; form.project_naam = this.txtf_projectName.Text;
-			form.datum = this.date_dateProject.Date.ToString(); form.user = User.instance.name;
-            formList.Add(form);
+			int dataIndex = DataStorage.data.formulieren.FindIndex(f => f.formulier_id == formID);
+            Formulieren form = DataStorage.data.formulieren[dataIndex];
+			form.formulier_id = formID; form.formulier_naam = Title;
+			form.locatie = txtf_location.Text; form.project_naam = txtf_projectName.Text;
+            form.datum = date_dateProject.Date.ToString().Replace("+0000", ""); form.user = User.instance.name;
+            relevantForm.Add(form);
+
 			Boolean marked = false;
 			// 1. catblok
 			foreach (UIView catView in views)
 			{
-				Categorien cat = new Categorien();
-				string catID = catView.Tag.ToString();
+                string catID = catView.Tag.ToString();
+                dataIndex = DataStorage.data.categorien.FindIndex(c => c.categorie_id == catID);
+                Categorien cat = DataStorage.data.categorien[dataIndex];
 				cat.categorie_id = catID;
 				// 2. questBlock (inc cat_label)
 				foreach (UIView catSubView in catView.Subviews)
@@ -271,13 +273,14 @@ namespace LoginBestPractice.iOS
 					if (catSubView is UILabel)
 					{
 						cat.categorie_text = ((UILabel)catSubView).Text;
-                        catList.Add(cat);
+                        relevantCats.Add(cat);
 					}
 					// 3. vraagblok (ex cat_label)
 					if (catSubView is QuestBlockView)
 					{
-						Vragen quest = new Vragen();
-						quest.vraag_id = ((QuestBlockView)catSubView).getID();
+                        string questID = ((QuestBlockView)catSubView).quest_id;
+                        dataIndex = DataStorage.data.vragen.FindIndex(q => q.vraag_id == questID);
+                        Vragen quest = DataStorage.data.vragen[dataIndex];
 						// modalGegevens
 						Modal vraagModal = ((QuestBlockView)catSubView).getModal();
 						if (vraagModal != null)
@@ -289,7 +292,7 @@ namespace LoginBestPractice.iOS
 								PresentViewController(createAlert("Extra gegevens bij niet akkoord ontbreken!", "Fout"), true, null);
 								this.formTableView.ContentOffset = new CoreGraphics.CGPoint(0, catSubView.Frame.Y);
 								marked = true;
-								return;
+                                return null;
 							}
 						}
 						foreach (UIView vraagSubView in catSubView.Subviews)
@@ -312,20 +315,24 @@ namespace LoginBestPractice.iOS
                                         PresentViewController(createAlert("Formulier niet volledig ingevuld", "Fout"), true, null);
 										this.formTableView.ContentOffset = new CoreGraphics.CGPoint(0, vraagSubView.Frame.Y);
 										marked = true;
-										return;
+										return null;
 									}
 								} else {
 									quest.answer = ((UISegmentedControl)vraagSubView).TitleAt(((UISegmentedControl)vraagSubView).SelectedSegment);
-                                    questList.Add(quest);
+                                    relevantQuests.Add(quest);
 								}
 							}
 						}
 					}
 				}
 			}
-            formData.formulieren = formList;
-            formData.categorien = catList;
-            formData.vragen = questList;
+            RootObject formRoot = new RootObject
+            {
+                formulieren = relevantForm,
+                categorien = relevantCats,
+                vragen = relevantQuests
+            };
+            return formRoot;
         }
 
 		//

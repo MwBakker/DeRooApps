@@ -13,8 +13,6 @@ namespace DeRoo_iOS
 	{
 		public static RootObject data;
 
-		public static RootObject formProgress;
-
 		public List<Formulieren> formList;
 		public List<Categorien> catList;
 		public List<Vragen> questList;
@@ -35,13 +33,13 @@ namespace DeRoo_iOS
         // IF no data traffic is present, form shall be send when data available
         // user notified at every event
 		//
-        public bool sendDataWeb(RootObject filledForm)
+        public bool sendDataWeb(RootObject webForm)
 		{
 			var window = UIApplication.SharedApplication.KeyWindow;
 			var vc = window.RootViewController;
 			Boolean succes;
 			WebClient client = new WebClient();
-			string jsonData = JsonConvert.SerializeObject(filledForm);
+			string jsonData = JsonConvert.SerializeObject(webForm);
 			var values = new System.Collections.Specialized.NameValueCollection();
 			values.Add("gebruiker_id", "1");
 			values.Add("formulier", jsonData);
@@ -56,7 +54,7 @@ namespace DeRoo_iOS
 				if (!Reachability.IsHostReachable("https://amkapp.nl"))
 				{
                     vc.PresentViewController(createAlert("Er is op dit moment geen data-verbinding aanwezig. Indien aanwezigheid dataverbinding wordt dit formulier automatisch verzonden", "Info"), true, null);
-                    User.addUnsendForm(filledForm);
+                    User.addUnsendForm(data);
 				}
 				else
 				{
@@ -68,46 +66,18 @@ namespace DeRoo_iOS
 		}
 
         //
-        // check if file exists
-        // get possible JSON from file
-        // add data to JSON, rewrite
+        // writes rootObject to file
         //
-        public bool sendDataFile(RootObject unfilledForm)
+        public bool sendDataFile(RootObject textForm, string date)
         {
+            date.Replace(":", null);
             Boolean succes = true;
-			var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-			var filename = Path.Combine(documents, "openFormData.txt");
-			RootObject unfilledFormsFromFile;
-			FileStream fs;
-			StreamWriter sw;
-			if (File.Exists(filename))
-			{
-				// retrieve earlier unfilled forms
-				string preRawJSON = File.ReadAllText(filename);
-                unfilledFormsFromFile = JsonConvert.DeserializeObject<RootObject>(preRawJSON);
-				// add new form to old form
-                unfilledFormsFromFile.formulieren.Add(unfilledForm.formulieren[0]);
-                foreach (Categorien c in unfilledForm.categorien)
-				{
-					unfilledFormsFromFile.categorien.Add(c);
-				}
-                foreach (Vragen q in unfilledForm.vragen)
-				{
-					unfilledFormsFromFile.vragen.Add(q);
-				}
-                // re-serialize + write JSON back to file
-                string postRawJSON = JsonConvert.SerializeObject(unfilledFormsFromFile);
-				fs = File.Open(filename, FileMode.Truncate);
-				sw = new StreamWriter(fs);
-				sw.Write(postRawJSON); sw.Flush();
-			}
-			else
-			{
-				string jsonData = JsonConvert.SerializeObject(unfilledForm);
-				fs = new FileStream(filename, FileMode.Create, FileAccess.ReadWrite);
-				sw = new StreamWriter(fs);
-				sw.Write(jsonData); sw.Flush();
-			}
+            var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+			var filename = Path.Combine(documents, "openFormData"+date+".txt");
+			FileStream fs = new FileStream(filename, FileMode.Create, FileAccess.ReadWrite);
+			StreamWriter sw = new StreamWriter(fs);
+            string JSON = JsonConvert.SerializeObject(textForm);
+			sw.Write(JSON); sw.Flush();
             return succes;
         }
 
@@ -145,7 +115,6 @@ namespace DeRoo_iOS
 					{
 						encryptedString = streamReader.ReadToEnd();
 					}
-
 					data = JsonConvert.DeserializeObject<RootObject>(Encrypter.decrypt(encryptedString, "QmWfzsYNCHijXW8"));
 				}
 			}

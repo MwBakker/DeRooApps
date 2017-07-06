@@ -7,7 +7,7 @@ namespace LoginBestPractice.iOS
 	{
 		UIColor deRooGreen;
 		public UILabel lbl_quest { get; set; }
-		string quest_id;
+		public string quest_id { get; set; } 
 		public UISegmentedControl options { get; set; }
 		public UIDeRooButton btn_photo { get; set; }
         public UIDeRooButton btn_modal { get; set; }
@@ -19,7 +19,7 @@ namespace LoginBestPractice.iOS
 		public QuestBlockView(string quest_id)
 		{
 			deRooGreen = new UIColor(0.04f, 0.17f, 0.01f, 1.0f);
-		 	
+            this.quest_id = quest_id;
 			options = new UISegmentedControl();
 			options.TintColor = UIColor.DarkGray;
 			btn_photo = new UIDeRooButton();
