@@ -5,6 +5,7 @@ using DeRoo_iOS;
 using AssetsLibrary;
 using Foundation;
 using Plugin.Geolocator;
+using System.Linq;
 
 namespace LoginBestPractice.iOS
 {
@@ -88,7 +89,12 @@ namespace LoginBestPractice.iOS
 							// options //
 							questBlock.setOptions(formData.vragen[j].vraag_type);
 							questBlock.options.Frame = new CoreGraphics.CGRect((viewWidth * (1 - 0.925)), containerElementPos, (viewWidth * 0.85), 30);
+                            string possibleQAnswer = formData.vragen.First(q => q.vraag_id == questBlock.quest_id).answer;
+                            if (possibleQAnswer != null) {
+                                questBlock.options.SelectedSegment = int.Parse(possibleQAnswer);
+                            }
 							containerElementPos += questBlock.options.Frame.Bottom;
+
 							Modal modal;
 							bool set = false;
 							questBlock.options.ValueChanged += (sender, e) =>

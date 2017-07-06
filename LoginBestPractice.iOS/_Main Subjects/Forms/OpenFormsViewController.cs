@@ -2,6 +2,7 @@ using System;
 using UIKit;
 using Newtonsoft.Json;
 using System.IO;
+using System.Collections.Generic;
 
 namespace LoginBestPractice.iOS
 {
@@ -16,18 +17,19 @@ namespace LoginBestPractice.iOS
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-			string filename = Path.Combine(documents, "openFormData.txt");
-            RootObject data;
-			if (!File.Exists(filename))
+
+			string partialName = "openFormData";
+            DirectoryInfo hdDirectoryInWhichToSearch = new DirectoryInfo(documents);
+			FileInfo[] filesInDir = hdDirectoryInWhichToSearch.GetFiles("*" + partialName + "*.*");
+            List<RootObject> forms = new List<RootObject>();
+			foreach (FileInfo foundFile in filesInDir)
 			{
-                data = null;
-            } else 
-            {
-				string rawJSON = File.ReadAllText(filename);
-				// data contains ALL non-filled forms // 
-				data = JsonConvert.DeserializeObject<RootObject>(rawJSON);
+				string filename = foundFile.FullName;
+                string rawJSON = File.ReadAllText(filename);
+                RootObject unfilledForm = JsonConvert.DeserializeObject<RootObject>(rawJSON);
+                forms.Add(unfilledForm);
 			}
-            this.openFormTableView.Source = new OpenFormTableViewSource(this, data);
+			this.openFormTableView.Source = new OpenFormTableViewSource(this, forms);
         }
     }
 }

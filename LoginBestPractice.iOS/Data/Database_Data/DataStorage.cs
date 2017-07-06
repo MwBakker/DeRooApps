@@ -27,60 +27,6 @@ namespace DeRoo_iOS
 			questList = new List<Vragen>();
 		}
 
-		// 
-		// serializes all given strings into JSON string
-		// calls on stuurFormulier.php API in order to send the created JSON
-        // IF no data traffic is present, form shall be send when data available
-        // user notified at every event
-		//
-        public bool sendDataWeb(RootObject webForm)
-		{
-			var window = UIApplication.SharedApplication.KeyWindow;
-			var vc = window.RootViewController;
-			Boolean succes;
-			WebClient client = new WebClient();
-			string jsonData = JsonConvert.SerializeObject(webForm);
-			var values = new System.Collections.Specialized.NameValueCollection();
-			values.Add("gebruiker_id", "1");
-			values.Add("formulier", jsonData);
-			try
-			{
-				byte[] response = client.UploadValues("https://amkapp.nl/test/stuurFormulier.php", "POST", values);
-				string responseString = Encoding.UTF8.GetString(response);
-                succes = true;
-			}
-			catch (Exception)
-			{
-				if (!Reachability.IsHostReachable("https://amkapp.nl"))
-				{
-                    vc.PresentViewController(createAlert("Er is op dit moment geen data-verbinding aanwezig. Indien aanwezigheid dataverbinding wordt dit formulier automatisch verzonden", "Info"), true, null);
-                    User.addUnsendForm(data);
-				}
-				else
-				{
-                    vc.PresentViewController(createAlert("Verzending ongedaan door interne fout", "Fout"), true, null);
-				}
-				succes = false;
-			}
-			return succes;
-		}
-
-        //
-        // writes rootObject to file
-        //
-        public bool sendDataFile(RootObject textForm, string date)
-        {
-            date.Replace(":", null);
-            Boolean succes = true;
-            var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-			var filename = Path.Combine(documents, "openFormData"+date+".txt");
-			FileStream fs = new FileStream(filename, FileMode.Create, FileAccess.ReadWrite);
-			StreamWriter sw = new StreamWriter(fs);
-            string JSON = JsonConvert.SerializeObject(textForm);
-			sw.Write(JSON); sw.Flush();
-            return succes;
-        }
-
         //
         // retrieves data from database
         // deserializes the rootObject given 
@@ -93,12 +39,10 @@ namespace DeRoo_iOS
 				{
 					string path = Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
 					string filename = Path.Combine(path, "data.txt");
-
 					if (File.Exists(filename))
 					{
 						File.Delete(filename);
 					}
-
 					var values = new System.Collections.Specialized.NameValueCollection();
 					values.Add("gebruiker_id", User.instance.id);
 					values.Add("token", User.instance.token);
@@ -123,6 +67,60 @@ namespace DeRoo_iOS
 				Console.WriteLine(e);
 				return;
 			}
+		}
+
+		// 
+		// serializes all given strings into JSON string
+		// calls on stuurFormulier.php API in order to send the created JSON
+		// IF no data traffic is present, form shall be send when data available
+		// user notified at every event
+		//
+		public bool sendDataWeb(RootObject webForm)
+		{
+			var window = UIApplication.SharedApplication.KeyWindow;
+			var vc = window.RootViewController;
+			Boolean succes;
+			WebClient client = new WebClient();
+			string jsonData = JsonConvert.SerializeObject(webForm);
+			var values = new System.Collections.Specialized.NameValueCollection();
+			values.Add("gebruiker_id", "1");
+			values.Add("formulier", jsonData);
+			try
+			{
+				byte[] response = client.UploadValues("https://amkapp.nl/test/stuurFormulier.php", "POST", values);
+				string responseString = Encoding.UTF8.GetString(response);
+				succes = true;
+			}
+			catch (Exception)
+			{
+				if (!Reachability.IsHostReachable("https://amkapp.nl"))
+				{
+					vc.PresentViewController(createAlert("Er is op dit moment geen data-verbinding aanwezig. Indien aanwezigheid dataverbinding wordt dit formulier automatisch verzonden", "Info"), true, null);
+					User.addUnsendForm(data);
+				}
+				else
+				{
+					vc.PresentViewController(createAlert("Verzending ongedaan door interne fout", "Fout"), true, null);
+				}
+				succes = false;
+			}
+			return succes;
+		}
+
+		//
+		// writes rootObject to file
+		//
+		public bool sendDataFile(RootObject textForm, string date)
+		{
+			date.Replace(":", null);
+			Boolean succes = true;
+			var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+			var filename = Path.Combine(documents, "openFormData" + date + ".txt");
+			FileStream fs = new FileStream(filename, FileMode.Create, FileAccess.ReadWrite);
+			StreamWriter sw = new StreamWriter(fs);
+			string JSON = JsonConvert.SerializeObject(textForm);
+			sw.Write(JSON); sw.Flush();
+			return succes;
 		}
 
 		//

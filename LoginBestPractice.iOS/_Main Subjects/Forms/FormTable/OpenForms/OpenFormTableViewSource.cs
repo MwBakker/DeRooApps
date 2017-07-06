@@ -1,16 +1,17 @@
 ﻿﻿﻿using System;
 using UIKit;
 using Foundation;
+using System.Collections.Generic;
 
 namespace LoginBestPractice.iOS
 {
     public class OpenFormTableViewSource : UITableViewSource
     {
         UIViewController parentVC;
-        RootObject unFilledForms;
+        List<RootObject> unFilledForms;
         bool areForms;
 
-        public OpenFormTableViewSource(UIViewController parentVC, RootObject unFilledForms)
+        public OpenFormTableViewSource(UIViewController parentVC, List<RootObject> unFilledForms)
 		{
             this.parentVC = parentVC;
             if (unFilledForms != null)
@@ -30,8 +31,8 @@ namespace LoginBestPractice.iOS
             var cell = tableView.DequeueReusableCell("buttonCell") as UIOpenFormCell;
             if (areForms == true) 
             {
-				cell.entireForm = unFilledForms;
-				cell.TextLabel.Text = unFilledForms.formulieren[indexPath.Row].formulier_naam;
+                cell.entireForm = unFilledForms[indexPath.Row];
+                cell.TextLabel.Text = unFilledForms[indexPath.Row].formulieren[0].formulier_naam;
             }
 			return cell;
 		}
@@ -43,9 +44,9 @@ namespace LoginBestPractice.iOS
 		{
 			var storyboard = UIStoryboard.FromName("MainStoryboard", null);
             FormContentViewController formContentViewController = storyboard.InstantiateViewController("FormContentViewController") as FormContentViewController;
-	            formContentViewController.formData = unFilledForms;
-			    formContentViewController.Title = unFilledForms.formulieren[indexPath.Row].formulier_naam;
-			    formContentViewController.setCatAndQuest(unFilledForms.formulieren[indexPath.Row].formulier_id);
+	            formContentViewController.formData = unFilledForms[indexPath.Row];
+			    formContentViewController.Title = unFilledForms[indexPath.Row].formulieren[0].formulier_naam;
+			    formContentViewController.setCatAndQuest(unFilledForms[indexPath.Row].formulieren[0].formulier_id);
             parentVC.NavigationController.PushViewController(formContentViewController, true);
 		}
 
@@ -55,7 +56,7 @@ namespace LoginBestPractice.iOS
 		public override nint RowsInSection(UITableView tableview, nint section)
 		{
             if (areForms == true) {
-			    return unFilledForms.formulieren.Count;
+                return unFilledForms.Count;
             } else {
                 return 0;
             }
