@@ -6,12 +6,13 @@ namespace LoginBestPractice.iOS
 {
     public class OpenFormTableViewSource : UITableViewSource
     {
-        // forms + entire data
+        UIViewController parentVC;
         RootObject unFilledForms;
         bool areForms;
 
-        public OpenFormTableViewSource(RootObject unFilledForms)
+        public OpenFormTableViewSource(UIViewController parentVC, RootObject unFilledForms)
 		{
+            this.parentVC = parentVC;
             if (unFilledForms != null)
             {
                 areForms = true;
@@ -40,15 +41,12 @@ namespace LoginBestPractice.iOS
         //
 		public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
 		{
-            UINavigationController naCtrl = new UINavigationController();
-            var storyboard = UIStoryboard.FromName("MyStoryboard", null);
-
-            FormContentViewController FormContentViewController = new FormContentViewController(this.Handle);
+			var storyboard = UIStoryboard.FromName("MainStoryboard", null);
             FormContentViewController formContentViewController = storyboard.InstantiateViewController("FormContentViewController") as FormContentViewController;
-            FormContentViewController.formData = unFilledForms;
-		    FormContentViewController.Title = unFilledForms.formulieren[indexPath.Row].formulier_naam;
-		    FormContentViewController.setCatAndQuest(unFilledForms.formulieren[indexPath.Row].formulier_id);
-	        naCtrl.PushViewController(FormContentViewController, true);
+	            formContentViewController.formData = unFilledForms;
+			    formContentViewController.Title = unFilledForms.formulieren[indexPath.Row].formulier_naam;
+			    formContentViewController.setCatAndQuest(unFilledForms.formulieren[indexPath.Row].formulier_id);
+            parentVC.NavigationController.PushViewController(formContentViewController, true);
 		}
 
         //

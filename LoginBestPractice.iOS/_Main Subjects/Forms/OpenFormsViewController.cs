@@ -27,7 +27,7 @@ namespace LoginBestPractice.iOS
 				// data contains ALL non-filled forms // 
 				data = JsonConvert.DeserializeObject<RootObject>(rawJSON);
 			}
-			this.openFormTableView.Source = new OpenFormTableViewSource(data);
+            this.openFormTableView.Source = new OpenFormTableViewSource(this, data);
         }
     }
 }
