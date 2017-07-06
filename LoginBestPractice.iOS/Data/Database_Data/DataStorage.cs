@@ -97,9 +97,7 @@ namespace DeRoo_iOS
 				{
 					vc.PresentViewController(createAlert("Er is op dit moment geen data-verbinding aanwezig. Indien aanwezigheid dataverbinding wordt dit formulier automatisch verzonden", "Info"), true, null);
 					User.addUnsendForm(data);
-				}
-				else
-				{
+				} else {
 					vc.PresentViewController(createAlert("Verzending ongedaan door interne fout", "Fout"), true, null);
 				}
 				succes = false;
@@ -109,6 +107,7 @@ namespace DeRoo_iOS
 
 		//
 		// writes rootObject to file
+        // empties current rootObject so new forms do not have answers
 		//
 		public bool sendDataFile(RootObject textForm, string date)
 		{
@@ -120,7 +119,10 @@ namespace DeRoo_iOS
 			StreamWriter sw = new StreamWriter(fs);
 			string JSON = JsonConvert.SerializeObject(textForm);
 			sw.Write(JSON); sw.Flush();
+            // re-empty the .data Rootobject
+            this.getData();
 			return succes;
+
 		}
 
 		//
