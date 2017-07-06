@@ -120,7 +120,6 @@ namespace DeRoo_iOS
 			string JSON = JsonConvert.SerializeObject(textForm);
 			sw.Write(JSON); sw.Flush();
             // re-empty the .data Rootobject
-            this.getData();
 			return succes;
 
 		}

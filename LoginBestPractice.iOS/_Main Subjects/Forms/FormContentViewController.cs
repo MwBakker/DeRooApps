@@ -14,6 +14,8 @@ namespace LoginBestPractice.iOS
 		List<UIView> views;
 
         public DataStorage datastrg { get; set; }
+        public bool rootFromText  { get; set; }
+
 
         // this is the Root, so it determines the questionType etc in a static way
         // changes in the database are not relevant to this root IF coming from non-web source
@@ -60,6 +62,8 @@ namespace LoginBestPractice.iOS
 		//
 		public void setCatAndQuest(string formIDIn)
 		{
+            // IF not from file, reload web-based data else keep main
+            if (rootFromText == false) { datastrg.getData(); }
 			formID = formIDIn;
 			for (int i = 0; i < formData.categorien.Count; i++)
 			{

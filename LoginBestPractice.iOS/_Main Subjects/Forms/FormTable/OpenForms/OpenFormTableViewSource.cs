@@ -44,6 +44,7 @@ namespace LoginBestPractice.iOS
 		{
 			var storyboard = UIStoryboard.FromName("MainStoryboard", null);
             FormContentViewController formContentViewController = storyboard.InstantiateViewController("FormContentViewController") as FormContentViewController;
+                formContentViewController.rootFromText = true;
 	            formContentViewController.formData = unFilledForms[indexPath.Row];
 			    formContentViewController.Title = unFilledForms[indexPath.Row].formulieren[0].formulier_naam;
 			    formContentViewController.setCatAndQuest(unFilledForms[indexPath.Row].formulieren[0].formulier_id);
