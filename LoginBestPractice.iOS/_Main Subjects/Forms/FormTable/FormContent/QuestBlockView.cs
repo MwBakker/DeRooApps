@@ -51,7 +51,6 @@ namespace LoginBestPractice.iOS
             options = new UISegmentedControl();
             options.TintColor = UIColor.DarkGray;
             Modal modal;
-            bool modalSet = false;
 
 			options.ValueChanged += (sender, e) =>
 			{
@@ -60,25 +59,35 @@ namespace LoginBestPractice.iOS
 				btn_photo.Hidden = true; btn_modal.Hidden = true;
 				if (options.SelectedSegment == 0)
 				{
-                    selectState(0, modalSet, catBlock);
+                    selectState(0, catBlock, false);
 				}
 				else if (options.SelectedSegment == 1)
 				{
-                    selectState(1, modalSet, catBlock);
+                    selectState(1, catBlock, false);
 				}
 				else
 				{
-                    selectState(2, modalSet, catBlock);
+                    selectState(2, catBlock, false);
 				}
 			};
             return options;
         }
 
         // 
+        // determines the selected option
         // sets questBlockView + change in subjectVC main View dimensions
         //
-        public void selectState(int selected, bool modalSet, CatBlockView catBlock) {
-			nfloat viewWidth = subjectVC.View.Frame.Width;
+        public void selectState(int selected, CatBlockView catBlock, bool byHand) 
+        {
+            if (byHand == true) 
+            {
+                options.SelectedSegment = selected;
+            }
+            nfloat viewWidth = subjectVC.View.Frame.Width;
+            bool modalSet = false;
+
+
+
 
             if (selected == 0)
             {
@@ -135,8 +144,6 @@ namespace LoginBestPractice.iOS
 				modal = null;
             }
         }
-
-
 
 		//
 		// adds the modalView as some sort of a childView into this modalView

@@ -215,7 +215,6 @@ namespace LoginBestPractice.iOS
 		//method to get dynamically a nfloat number for the height of the contentsize of the scrollview.
 		private nfloat setHeight()
 		{
-			
 			RootObject toolboxOnderwerpen = DataStorage.data;
 
 			nfloat hoogteScrollview = 0;

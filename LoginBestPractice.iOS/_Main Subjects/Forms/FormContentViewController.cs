@@ -2,10 +2,9 @@
 using UIKit;
 using System.Collections.Generic;
 using DeRoo_iOS;
-using AssetsLibrary;
-using Foundation;
 using Plugin.Geolocator;
 using System.Linq;
+using Foundation;
 
 namespace LoginBestPractice.iOS
 {
@@ -42,6 +41,9 @@ namespace LoginBestPractice.iOS
 		//
 		public override void ViewWillDisappear(bool animated)
 		{
+            if (datastrg == null) {
+                datastrg = new DataStorage();
+            }
             // viewData to rootObject containing all required JSON data
             if (succesSend == false)
             {
@@ -63,7 +65,8 @@ namespace LoginBestPractice.iOS
             // IF from file, reload possible general info
             if (rootFromText == true) {
                 txtf_projectName.Text = formData.formulieren[0].project_naam;
-                txtf_location.Text = formData.formulieren[0].locatie; 
+                txtf_location.Text = formData.formulieren[0].locatie;
+                date_dateProject.SetDate(DateTimeToNSDate(DateTime.Parse(formData.formulieren[0].datum)), true);
             }
 			formID = formIDIn;
 			for (int i = 0; i < formData.categorien.Count; i++)
@@ -91,27 +94,30 @@ namespace LoginBestPractice.iOS
 							questBlock.lbl_quest.Text = formData.vragen[j].vraag_text;
 							questBlock.lbl_quest.Frame = new CoreGraphics.CGRect((viewWidth * (1 - 0.98)), 0, (viewWidth * 0.96), 35);
 							containerElementPos += questBlock.lbl_quest.Frame.Bottom;
-								// POSSIBLE data from file, reload possible modal info
-								if (rootFromText == true) {
-	                                questBlock.modal.comment = formData.vragen[j].extra_commentaar;
-	                                questBlock.modal.action = formData.vragen[j].actie_ondernomen;
-	                                questBlock.modal.person = formData.vragen[j].persoon;
-								}
+	                            // POSSIBLE data from file, reload possible modal info
+	                            if (rootFromText == true)
+	                            {
+	                                string comment = formData.vragen[j].extra_commentaar; string action = formData.vragen[j].actie_ondernomen;
+	                                string person = formData.vragen[j].persoon;
+	                                if (comment != null) { questBlock.modal.comment = comment; }
+	                                if (action != null) { questBlock.modal.action = action; }
+	                                if (person != null) { questBlock.modal.person = person; }
+	                            }
 	                            // POSSIBLE options (type 1 & 2 out of 4) //
 	                            UISegmentedControl options = questBlock.optionsControl(catBlock);
+							    questBlock.options.Frame = new CoreGraphics.CGRect((viewWidth * (1 - 0.925)), containerElementPos, (viewWidth * 0.85), 30);
 	                            questBlock.setOptions(formData.vragen[j].vraag_type);
-	                            questBlock.options.Frame = new CoreGraphics.CGRect((viewWidth * (1 - 0.925)), containerElementPos, (viewWidth * 0.85), 30);
+								string possibleQAnswer = formData.vragen.First(q => q.vraag_id == questBlock.quest_id).answer;
+								if (possibleQAnswer != null)
+								{
+                                    questBlock.selectState(checkGivenAnswer(possibleQAnswer), catBlock, true);
+								}    
 	                            questBlock.AddSubview(options);
-	                            string possibleQAnswer = formData.vragen.First(q => q.vraag_id == questBlock.quest_id).answer;
-								if (possibleQAnswer != null) { 
-	                                questBlock.options.SelectedSegment = checkGivenAnswer(possibleQAnswer);
-								}
 	                            containerElementPos += questBlock.options.Frame.Bottom;
-								questBlock.Frame = new CoreGraphics.CGRect(0, containerPos, viewWidth, setStackHeight(questBlock));
-								containerPos += questBlock.Frame.Height;
-	                            // POSSIBLE date (type 3) 
-	                            // POSSIBLE freeForm (type 4)
-
+								// POSSIBLE date (type 3) 
+								// POSSIBLE freeForm (type 4)
+							questBlock.Frame = new CoreGraphics.CGRect(0, containerPos, viewWidth, setStackHeight(questBlock));
+							containerPos += questBlock.Frame.Height;
 							catBlock.AddSubview(questBlock);
 						}
 					}
@@ -130,8 +136,20 @@ namespace LoginBestPractice.iOS
 			var pos = CrossGeolocator.Current.GetPositionAsync();
 		}
 
+		//
+        // determines date for UIDatePicker
+        //
+        public static NSDate DateTimeToNSDate(DateTime date)
+		{
+			DateTime reference = TimeZone.CurrentTimeZone.ToLocalTime(
+				new DateTime(2001, 1, 1, 0, 0, 0));
+			return NSDate.FromTimeIntervalSinceReferenceDate(
+				(date - reference).TotalSeconds);
+		}
+
         //
         // checks given answer based on previous input
+        // sends required action to method in questBlock, handling the IF- selected actions
         //
         public int checkGivenAnswer(string answer) 
         {
