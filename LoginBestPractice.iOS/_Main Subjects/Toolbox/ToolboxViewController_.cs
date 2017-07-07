@@ -99,7 +99,7 @@ namespace LoginBestPractice.iOS
 				{
 					var values = new System.Collections.Specialized.NameValueCollection();
                     values.Add("toolbox_subject", toolboxNaam);
-					byte[] response = client.UploadValues("https://www.amkapp.nl/test/getFiles.php", "POST", values);
+					byte[] response = client.UploadValues("https://www.amkapp.nl/test/calls/app/getFiles.php", "POST", values);
 					string responseString = Encoding.UTF8.GetString(response);
 					char[] delimiterChars = { ' ', '\t' };
 					files = responseString.Split(delimiterChars);
@@ -235,7 +235,7 @@ namespace LoginBestPractice.iOS
 			{
 					var values = new System.Collections.Specialized.NameValueCollection();
 					values.Add("toolbox_subject", toolboxNaam);
-					byte[] response = client.UploadValues("https://www.amkapp.nl/test/getFiles.php", "POST", values);
+					byte[] response = client.UploadValues("https://www.amkapp.nl/test/calls/app/getFiles.php", "POST", values);
 					string responseString = Encoding.UTF8.GetString(response);
 					char[] delimiterChars = { ' ', '\t' };
 					files = responseString.Split(delimiterChars);

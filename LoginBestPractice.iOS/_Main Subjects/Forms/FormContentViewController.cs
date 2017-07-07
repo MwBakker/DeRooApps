@@ -16,11 +16,9 @@ namespace LoginBestPractice.iOS
         public DataStorage datastrg { get; set; }
         public bool rootFromText  { get; set; }
 
-
         // this is the Root, so it determines the questionType etc in a static way
         // changes in the database are not relevant to this root IF coming from non-web source
         public RootObject formData { get; set; }
-		
         bool succesSend;
 		UIColor deRooGreen;
 		nfloat viewWidth;
@@ -62,8 +60,11 @@ namespace LoginBestPractice.iOS
 		//
 		public void setCatAndQuest(string formIDIn)
 		{
-            // IF not from file, reload web-based data else keep main
-            if (rootFromText == false) { datastrg.getData(); }
+            // IF from file, reload possible general info
+            if (rootFromText == true) {
+                txtf_projectName.Text = formData.formulieren[0].project_naam;
+                txtf_location.Text = formData.formulieren[0].locatie; 
+            }
 			formID = formIDIn;
 			for (int i = 0; i < formData.categorien.Count; i++)
 			{
@@ -90,14 +91,19 @@ namespace LoginBestPractice.iOS
 							questBlock.lbl_quest.Text = formData.vragen[j].vraag_text;
 							questBlock.lbl_quest.Frame = new CoreGraphics.CGRect((viewWidth * (1 - 0.98)), 0, (viewWidth * 0.96), 35);
 							containerElementPos += questBlock.lbl_quest.Frame.Bottom;
+							// IF from file, reload possible modal info
+							if (rootFromText == true) {
+                                questBlock.modal.comment = formData.vragen[j].extra_commentaar;
+                                questBlock.modal.action = formData.vragen[j].actie_ondernomen;
+                                questBlock.modal.person = formData.vragen[j].persoon;
+							}
                             // options //
                             UISegmentedControl options = questBlock.optionsControl(this, catBlock);
                             questBlock.setOptions(formData.vragen[j].vraag_type);
                             questBlock.options.Frame = new CoreGraphics.CGRect((viewWidth * (1 - 0.925)), containerElementPos, (viewWidth * 0.85), 30);
                             questBlock.AddSubview(options);
                             string possibleQAnswer = formData.vragen.First(q => q.vraag_id == questBlock.quest_id).answer;
-							if (possibleQAnswer != null)
-							{
+							if (possibleQAnswer != null) { 
                                 questBlock.options.SelectedSegment = checkGivenAnswer(possibleQAnswer);
 							}
                             containerElementPos += questBlock.options.Frame.Bottom;
@@ -127,10 +133,10 @@ namespace LoginBestPractice.iOS
         public int checkGivenAnswer(string answer) 
         {
             int answerIndex = 2;
-            if (answer == "Akkoord"){
+            if (answer == "Akkoord" || answer == "Ja"){
                 answerIndex = 0;
             }
-            else if (answer == "Niet akkoord") {
+            else if (answer == "Niet akkoord" || answer == "Nee") {
                 answerIndex = 1;
             }
             else if (answer == "N.v.t.") {

@@ -13,7 +13,7 @@ namespace LoginBestPractice.iOS
 		public string quest_id { get; set; } 
 		public UIDeRooButton btn_photo { get; set; }
         public UIDeRooButton btn_modal { get; set; }
-		Modal modal;
+        public Modal modal { get; set; }
 
 		// 
 		// sets main elements in questBlockView
@@ -33,13 +33,11 @@ namespace LoginBestPractice.iOS
 			lbl_quest.Font = UIFont.FromName("Helvetica-Bold", 12f);
 			lbl_quest.TextColor = deRooGreen; 
 			lbl_quest.AdjustsFontSizeToFitWidth = true;
-
-			btn_photo.BackgroundColor = UIColor.FromPatternImage(UIImage.FromFile("buttonGrey.png"));
+            btn_photo.BackgroundColor = UIColor.Gray;
 			btn_photo.SetTitle("Maak foto van situatie", UIControlState.Normal);
-			//btn_modal.BackgroundColor = UIColor.FromPatternImage(UIImage.FromFile("buttonGrey.png"));
+            btn_modal.BackgroundColor = UIColor.Gray;
 			btn_modal.SetTitle("Zie ingevoerd commentaar", UIControlState.Normal);
-
-			this.AddSubview(lbl_quest);
+			AddSubview(lbl_quest);
 		}
 			
         // 
@@ -151,8 +149,8 @@ namespace LoginBestPractice.iOS
 
 		public void addButtons()
 		{
-            this.AddSubview(btn_photo);
-			this.AddSubview(btn_modal);
+            AddSubview(btn_photo);
+			AddSubview(btn_modal);
 		}
 
 		// 

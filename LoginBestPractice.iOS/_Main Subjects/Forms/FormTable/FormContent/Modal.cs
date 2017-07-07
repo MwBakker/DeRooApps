@@ -6,10 +6,10 @@ namespace LoginBestPractice.iOS
 {
     public partial class Modal : UIViewController
 	{
-		private string comment;
-		private string action;
-		private string person;
-		private string datum;
+		public string comment { get; set; } 
+        public string action { get; set; }
+        public string person { get; set; }
+        public string datum { get; set; }
 		private bool cancelled;
 		UIView parentView; 
 
