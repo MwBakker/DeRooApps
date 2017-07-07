@@ -36,7 +36,7 @@ namespace LoginBestPractice.iOS
 			{
 				var values = new System.Collections.Specialized.NameValueCollection();
 				values.Add("toolbox_subject", toolboxName);
-				byte[] response = client.UploadValues("http://www.amkapp.nl/test/getFiles.php", "POST", values);
+				byte[] response = client.UploadValues("http://www.amkapp.nl/test/calls/app/getFiles.php", "POST", values);
 				string responseString = Encoding.UTF8.GetString(response);
 				char[] delimiterChars = { ' ', '\t' };
 				files = responseString.Split(delimiterChars);

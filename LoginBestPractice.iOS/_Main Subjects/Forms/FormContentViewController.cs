@@ -83,32 +83,35 @@ namespace LoginBestPractice.iOS
 					{
 						if (formData.vragen[j].categorie_id == formData.categorien[i].categorie_id)
 						{
-							// vraagcontainer // 
-							QuestBlockView questBlock = new QuestBlockView(formData.vragen[j].vraag_id);
+							// questcontainer // 
+							QuestBlockView questBlock = new QuestBlockView(this, formData.vragen[j].vraag_id);
 							questBlock.Tag = int.Parse(formData.vragen[j].vraag_volgNr); 
 							nfloat containerElementPos = 0;
-							// vraag // 
+							// quest // 
 							questBlock.lbl_quest.Text = formData.vragen[j].vraag_text;
 							questBlock.lbl_quest.Frame = new CoreGraphics.CGRect((viewWidth * (1 - 0.98)), 0, (viewWidth * 0.96), 35);
 							containerElementPos += questBlock.lbl_quest.Frame.Bottom;
-							// IF from file, reload possible modal info
-							if (rootFromText == true) {
-                                questBlock.modal.comment = formData.vragen[j].extra_commentaar;
-                                questBlock.modal.action = formData.vragen[j].actie_ondernomen;
-                                questBlock.modal.person = formData.vragen[j].persoon;
-							}
-                            // options //
-                            UISegmentedControl options = questBlock.optionsControl(this, catBlock);
-                            questBlock.setOptions(formData.vragen[j].vraag_type);
-                            questBlock.options.Frame = new CoreGraphics.CGRect((viewWidth * (1 - 0.925)), containerElementPos, (viewWidth * 0.85), 30);
-                            questBlock.AddSubview(options);
-                            string possibleQAnswer = formData.vragen.First(q => q.vraag_id == questBlock.quest_id).answer;
-							if (possibleQAnswer != null) { 
-                                questBlock.options.SelectedSegment = checkGivenAnswer(possibleQAnswer);
-							}
-                            containerElementPos += questBlock.options.Frame.Bottom;
-							questBlock.Frame = new CoreGraphics.CGRect(0, containerPos, viewWidth, setStackHeight(questBlock));
-							containerPos += questBlock.Frame.Height;
+								// POSSIBLE data from file, reload possible modal info
+								if (rootFromText == true) {
+	                                questBlock.modal.comment = formData.vragen[j].extra_commentaar;
+	                                questBlock.modal.action = formData.vragen[j].actie_ondernomen;
+	                                questBlock.modal.person = formData.vragen[j].persoon;
+								}
+	                            // POSSIBLE options (type 1 & 2 out of 4) //
+	                            UISegmentedControl options = questBlock.optionsControl(catBlock);
+	                            questBlock.setOptions(formData.vragen[j].vraag_type);
+	                            questBlock.options.Frame = new CoreGraphics.CGRect((viewWidth * (1 - 0.925)), containerElementPos, (viewWidth * 0.85), 30);
+	                            questBlock.AddSubview(options);
+	                            string possibleQAnswer = formData.vragen.First(q => q.vraag_id == questBlock.quest_id).answer;
+								if (possibleQAnswer != null) { 
+	                                questBlock.options.SelectedSegment = checkGivenAnswer(possibleQAnswer);
+								}
+	                            containerElementPos += questBlock.options.Frame.Bottom;
+								questBlock.Frame = new CoreGraphics.CGRect(0, containerPos, viewWidth, setStackHeight(questBlock));
+								containerPos += questBlock.Frame.Height;
+	                            // POSSIBLE date (type 3) 
+	                            // POSSIBLE freeForm (type 4)
+
 							catBlock.AddSubview(questBlock);
 						}
 					}

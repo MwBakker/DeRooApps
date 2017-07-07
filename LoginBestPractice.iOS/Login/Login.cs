@@ -39,7 +39,7 @@ namespace DeRoo_iOS
 						alert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, a => Console.WriteLine("Okay was clicked")));
                         vc.PresentViewController(alert, true, null);
                     } else {
-						byte[] response = client.UploadValues("https://www.amkapp.nl/test/loginApp.php", "POST", values);
+						byte[] response = client.UploadValues("https://www.amkapp.nl/test/calls/app/loginApp.php", "POST", values);
 						string responseString = Encoding.UTF8.GetString(response);
 						data = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(responseString);
                     }
@@ -73,7 +73,7 @@ namespace DeRoo_iOS
 					var values = new System.Collections.Specialized.NameValueCollection();
 					values.Add("gebruikersnaam", username);
 					values.Add("wachtwoord", password);
-					byte[] response = client.UploadValues("https://www.amkapp.nl/test/loginApp.php", "POST", values);
+					byte[] response = client.UploadValues("https://www.amkapp.nl/test/calls/app/loginApp.php", "POST", values);
 					string responseString = Encoding.UTF8.GetString(response);
 					data = Newtonsoft.Json.JsonConvert.DeserializeObject<RootObject>(responseString);
 				}
