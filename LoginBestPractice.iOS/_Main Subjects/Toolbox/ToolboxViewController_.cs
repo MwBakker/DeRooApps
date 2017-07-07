@@ -43,8 +43,7 @@ namespace LoginBestPractice.iOS
 			for (int i = 0; i<medewerkers.medewerkers.Count; i++)
 			{
 				tableItems.Add(medewerkers.medewerkers[i].medewerker_voornaam + " " + medewerkers.medewerkers[i].medewerker_achternaam);			
-			} 
-			// before loading the data of all the toolboxes, wait 1000ms so the method is not null and crashes. 			RootObject toolboxOnderwerpen = DataStorage.data;
+			}  			RootObject toolboxOnderwerpen = DataStorage.data;
 
 			// create all buttons of all the toolboxsubjects and add them to the scrollview.
 			int hoogteVanButtons = -30;  			for (int i = 0; i < toolboxOnderwerpen.toolbox.Count; i++) 			{ 				hoogteVanButtons += 40;
@@ -110,7 +109,7 @@ namespace LoginBestPractice.iOS
 
 				//For every file in the webclients result, create a button and with onclick event which redirect to a webview which loads the PDF file.
 				//And assign it to the scrolLViewToolbox.
-				for (int i = 0; i<files.Length - 1; i++)
+				for (int i = 0; i < files.Length - 1; i++)
 				{
 					hoogteButtonPdf += 60;
 					string fileName = files[i];

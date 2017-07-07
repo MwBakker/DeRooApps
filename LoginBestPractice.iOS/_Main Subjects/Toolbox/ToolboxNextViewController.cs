@@ -18,11 +18,9 @@ namespace LoginBestPractice.iOS
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-
 			UIButton buttonPDF = new UIButton(UIButtonType.RoundedRect);
 			buttonPDF.SetTitle("moi", UIControlState.Normal);
 			buttonPDF.Frame = new CoreGraphics.CGRect(0, 200, this.View.Frame.Size.Width, 50);
-
 		}
 
 		// 
@@ -41,9 +39,7 @@ namespace LoginBestPractice.iOS
 				char[] delimiterChars = { ' ', '\t' };
 				files = responseString.Split(delimiterChars);
 			}
-
 			int hoogteButtonPdf = 200;
-
 			for (int i = 0; i < files.Length - 1; i++)
 			{
 				hoogteButtonPdf += 40;

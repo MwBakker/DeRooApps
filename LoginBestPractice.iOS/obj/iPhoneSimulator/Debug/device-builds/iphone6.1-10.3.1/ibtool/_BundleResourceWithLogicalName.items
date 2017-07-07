@@ -95,6 +95,18 @@
       <Optimize>false</Optimize>
       <OriginalItemSpec>obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/ibtool/MainStoryboard.storyboardc</OriginalItemSpec>
     </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/ibtool/MainStoryboard.storyboardc/OpenFormNavigationController .nib">
+      <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
+      <LogicalName>MainStoryboard.storyboardc/OpenFormNavigationController .nib</LogicalName>
+      <Optimize>false</Optimize>
+      <OriginalItemSpec>obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/ibtool/MainStoryboard.storyboardc</OriginalItemSpec>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/ibtool/MainStoryboard.storyboardc/OpenFormsViewController.nib">
+      <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
+      <LogicalName>MainStoryboard.storyboardc/OpenFormsViewController.nib</LogicalName>
+      <Optimize>false</Optimize>
+      <OriginalItemSpec>obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/ibtool/MainStoryboard.storyboardc</OriginalItemSpec>
+    </_BundleResourceWithLogicalName>
     <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/ibtool/MainStoryboard.storyboardc/PDFController.nib">
       <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
       <LogicalName>MainStoryboard.storyboardc/PDFController.nib</LogicalName>

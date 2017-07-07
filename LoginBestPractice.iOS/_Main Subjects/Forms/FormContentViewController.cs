@@ -44,13 +44,17 @@ namespace LoginBestPractice.iOS
             if (datastrg == null) {
                 datastrg = new DataStorage();
             }
-            // viewData to rootObject containing all required JSON data
-            if (succesSend == false)
+			// viewData to rootObject containing all required JSON data
+			if (succesSend == false)
             {
                 RootObject fileForm = collectData();
 				if (txtf_projectName.Text != "" && txtf_location.Text != "")
 				{
                     datastrg.sendDataFile(fileForm, date_dateProject.Date.ToString().Replace("+0000", ""));
+                    UIViewController openFormVC = Storyboard.InstantiateViewController("OpenFormsViewController");
+                    openFormVC.ReloadInputViews();
+                    //UINavigationController openFVC = Storyboard.InstantiateViewController("OpenFormNavigationController") as UINavigationController;
+                    //openFVC.TabBarItem.Image = UIImage.FromFile("openstaandeformulieren.png");
 				}
 			}
 		}
@@ -141,10 +145,10 @@ namespace LoginBestPractice.iOS
         //
         public static NSDate DateTimeToNSDate(DateTime date)
 		{
-			DateTime reference = TimeZone.CurrentTimeZone.ToLocalTime(
-				new DateTime(2001, 1, 1, 0, 0, 0));
-			return NSDate.FromTimeIntervalSinceReferenceDate(
-				(date - reference).TotalSeconds);
+		    DateTime reference = TimeZone.CurrentTimeZone.ToLocalTime(
+			new DateTime(2001, 1, 1, 0, 0, 0));
+		    return NSDate.FromTimeIntervalSinceReferenceDate(
+			(date - reference).TotalSeconds);
 		}
 
         //

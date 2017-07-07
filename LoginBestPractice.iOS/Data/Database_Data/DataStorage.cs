@@ -111,16 +111,14 @@ namespace DeRoo_iOS
 		//
 		public bool sendDataFile(RootObject textForm, string date)
 		{
-			date = date.Replace(":", "/");
+			date = date.Replace(":","");
 			Boolean succes = true;
 			var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            var filename = Path.Combine(documents, "openFormData" + date + ".txt");
-
-            // check if same-name file exists
+			var filename = Path.Combine(documents, "openFormData" + date + ".txt");
             if (File.Exists(filename)) { 
                 File.Delete(filename);
             }
-            FileStream fs = new FileStream(filename, FileMode.Create, FileAccess.ReadWrite);
+			FileStream fs = new FileStream(filename, FileMode.Create, FileAccess.ReadWrite);
 			StreamWriter sw = new StreamWriter(fs);
 			string JSON = JsonConvert.SerializeObject(textForm);
 			sw.Write(JSON); sw.Flush();

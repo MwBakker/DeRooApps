@@ -67,14 +67,14 @@ namespace LoginBestPractice.iOS
 			btn_formulier.SetTitle(formulierNaam, UIControlState.Normal);
 			btn_formulier.TouchDown += delegate
 			{
-				// ViewController //
+			    // ViewController //
                 FormContentViewController formContentViewController = Storyboard.InstantiateViewController("FormContentViewController") as FormContentViewController;
-                    // refresh, because we want a new form with new fields instead of possible filled rootobject from OpenToolbox
-                    dataStorage.getData();
-                    formContentViewController.datastrg = dataStorage;
-	                formContentViewController.formData = DataStorage.data;
-					formContentViewController.Title = formulierNaam;
-					formContentViewController.setCatAndQuest(formulierID);
+                // refresh, because we want a new form with new fields instead of possible filled rootobject from OpenToolbox
+                dataStorage.getData();
+                formContentViewController.datastrg = dataStorage;
+                formContentViewController.formData = DataStorage.data;
+				formContentViewController.Title = formulierNaam;
+				formContentViewController.setCatAndQuest(formulierID);
 				NavigationController.PushViewController(formContentViewController, true);
 			};
 			return btn_formulier;

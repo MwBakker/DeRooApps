@@ -231,6 +231,8 @@
     <BundleResource Include="_Main Subjects\Toolbox\handboek.pdf" />
     <BundleResource Include="Resources\compose.png" />
     <BundleResource Include="Resources\formIcon.png" />
+    <BundleResource Include="Resources\openFormIcon.png" />
+    <BundleResource Include="Resources\122196-200.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Features\" />
