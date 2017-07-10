@@ -1,25 +1,25 @@
-﻿using Foundation;
-using System;
+﻿using System;
 using UIKit;
 using System.Net;
 using System.Text;
+using System.Collections.Generic;
+using System.Threading;
 
 namespace LoginBestPractice.iOS
 {
     public partial class ToolboxContentViewController : UIViewController
     {
-		string toolboxName = "";
+        List<String> toolboxContentSubjects;
+        public string toolboxID { get; set; }
 
 		public ToolboxContentViewController(IntPtr handle) : base(handle)
         {
+            toolboxContentSubjects = new List<string>(); 
 		}
 
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-			UIButton buttonPDF = new UIButton(UIButtonType.RoundedRect);
-			buttonPDF.SetTitle("moi", UIControlState.Normal);
-			buttonPDF.Frame = new CoreGraphics.CGRect(0, 200, this.View.Frame.Size.Width, 50);
 		}
 
 		// 
@@ -37,16 +37,10 @@ namespace LoginBestPractice.iOS
 				string responseString = Encoding.UTF8.GetString(response);
 				char[] delimiterChars = { ' ', '\t' };
 				files = responseString.Split(delimiterChars);
-			}
-			int hoogteButtonPdf = 200;
-			for (int i = 0; i < files.Length - 1; i++)
-			{
-				hoogteButtonPdf += 40;
-				string fileName = files[i];
-				UIButton buttonPDF = new UIButton(UIButtonType.RoundedRect);
-				buttonPDF.SetTitle(fileName, UIControlState.Normal);
-				buttonPDF.Frame = new CoreGraphics.CGRect(0, hoogteButtonPdf, this.View.Frame.Size.Width, 50);
-
+            }
+            for (int i = 0; i < files.Length - 1; i++)
+            {
+                toolboxContentSubjects.Add(files[i]);
 				/*buttonPDF.TouchDown += delegate
                 {
 
@@ -71,6 +65,18 @@ namespace LoginBestPractice.iOS
                     }
                 };*/
 			}
+            toolboxContentSubjectsTable.Source = new ToolboxContentTableSource(toolboxContentSubjects, this.View);
 		}
+
+        partial void btn_continueToAdding_TouchUpInside(UIButton sender)
+        {
+			ParticipantsViewController participantsVC = Storyboard.InstantiateViewController("participantsViewController") as ParticipantsViewController;
+			Thread.Sleep(3000);
+			participantsVC.toolboxID = toolboxID;
+			participantsVC.setEmployees();
+
+			//Push to tableview
+			NavigationController.PushViewController(participantsVC, true);
+        }
     }
 }

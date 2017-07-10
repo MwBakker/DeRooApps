@@ -210,6 +210,11 @@
     </Compile>
     <Compile Include="Features\reachability.cs" />
     <Compile Include="EmployeesTableSource.cs" />
+    <Compile Include="UIToolboxSubjectCell.cs" />
+    <Compile Include="UIToolboxSubjectCell.designer.cs">
+      <DependentUpon>UIToolboxSubjectCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Main Subjects\Toolbox\ToolboxContentTableSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\deroo.png" />

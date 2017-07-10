@@ -16,13 +16,26 @@ namespace LoginBestPractice.iOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton btn_continue { get; set; }
+        UIKit.UIButton btn_continueToAdding { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITableView toolboxContentSubjectsTable { get; set; }
+
+        [Action ("btn_continueToAdding_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void btn_continueToAdding_TouchUpInside (UIKit.UIButton sender);
 
         void ReleaseDesignerOutlets ()
         {
-            if (btn_continue != null) {
-                btn_continue.Dispose ();
-                btn_continue = null;
+            if (btn_continueToAdding != null) {
+                btn_continueToAdding.Dispose ();
+                btn_continueToAdding = null;
+            }
+
+            if (toolboxContentSubjectsTable != null) {
+                toolboxContentSubjectsTable.Dispose ();
+                toolboxContentSubjectsTable = null;
             }
         }
     }

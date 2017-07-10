@@ -413,7 +413,8 @@
                         <viewControllerLayoutGuide type="bottom" id="2937"/>
                     </layoutGuides>
                     <connections>
-                        <outlet property="btn_continue" destination="4265" id="name-outlet-4265"/>
+                        <outlet property="btn_continueToAdding" destination="4265" id="name-outlet-4265"/>
+                        <outlet property="toolboxContentSubjectsTable" destination="4266" id="name-outlet-4266"/>
                     </connections>
                     <view contentMode="scaleToFill" id="4194" key="view">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
@@ -434,21 +435,24 @@
                                 <state key="normal" title="Voeg participanten toe">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="btn_continueToAdding_TouchUpInside:" destination="2939" id="4310" eventType="touchDown"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="4266" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
                                 <rect key="frame" x="0.0" y="144" width="320" height="282"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="4267" style="IBUITableViewCellStyleDefault" textLabel="4269" imageView="4270">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="4267" style="IBUITableViewCellStyleDefault" textLabel="4269" imageView="4270" customClass="UIToolboxSubjectCell" reuseIdentifier="toolboxContentSubjectCell" accessoryType="disclosureIndicator">
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4267" id="4268">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Toolbox-onderwerp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4269">
-                                                    <rect key="frame" x="54" y="0.0" width="251" height="43.5"/>
+                                                    <rect key="frame" x="54" y="0.0" width="231" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -697,55 +701,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3560" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="858" y="1489"/>
-        </scene>
-        <scene sceneID="3655">
-            <objects>
-                <viewController id="3656" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="3653"/>
-                        <viewControllerLayoutGuide type="bottom" id="3654"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="3657">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3660" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" hasAttributedTitle="YES" customClass="UITableStyleButton">
-                                <rect key="frame" x="0.0" y="77" width="320" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <size key="titleShadowOffset" width="0" height="0"/>
-                                <state key="normal" image="compose.png">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Bewerk opgegeven commentaar">
-                                            <attributes>
-                                                <font key="NSFont" name="HelveticaNeue" family="Helvetica Neue" size="17"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                </state>
-                                <rect key="contentStretch" x="0.0" y="0.0" width="1" height="1"/>
-                            </button>
-                            <view contentMode="scaleToFill" id="3688" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" customClass="TestView">
-                                <rect key="frame" x="0.0" y="163" width="320" height="69"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TestView" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3689" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                        <rect key="frame" x="118" y="24" width="88" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </view>
-                        </subviews>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3658" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-202" y="-494"/>
         </scene>
         <scene sceneID="4215">
             <objects>
