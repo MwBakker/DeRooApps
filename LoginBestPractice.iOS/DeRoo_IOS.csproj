@@ -242,6 +242,7 @@
     <BundleResource Include="Resources\formIcon.png" />
     <BundleResource Include="Resources\openFormIcon.png" />
     <BundleResource Include="Resources\122196-200.png" />
+    <BundleResource Include="Resources\personIcon.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Features\" />

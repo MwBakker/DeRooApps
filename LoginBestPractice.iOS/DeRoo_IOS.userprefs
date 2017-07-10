@@ -1,11 +1,11 @@
 ﻿<Properties StartupConfiguration="{84563AF5-67F4-46D6-B49C-BF8D718F3C64}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="_Main Subjects/Forms/FormContentViewController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MainStoryboard.storyboard">
     <Files>
       <File FileName="EmployeesTableSource.cs" Line="36" Column="8" />
-      <File FileName="ParticipantsViewController.cs" Line="13" Column="49" />
+      <File FileName="ParticipantsViewController.cs" Line="40" Column="1" />
+      <File FileName="_Main Subjects/Toolbox/ToolboxesViewController.cs" Line="97" Column="56" />
+      <File FileName="_Main Subjects/Forms/FormContentViewController.cs" Line="341" Column="4" />
       <File FileName="MainStoryboard.storyboard" />
-      <File FileName="_Main Subjects/Toolbox/ToolboxesViewController.cs" Line="222" Column="16" />
-      <File FileName="_Main Subjects/Forms/FormContentViewController.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
@@ -17,5 +17,4 @@
   <DisabledProjects>
     <String>../../../Downloads/DeRoo/DeRoo/DeRoo.csproj</String>
   </DisabledProjects>
-  <MonoDevelop.Ide.ItemProperties.DeRoo__IOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.2C4C37E2-67DB-490E-867E-A9CB096B0080" />
 </Properties>
