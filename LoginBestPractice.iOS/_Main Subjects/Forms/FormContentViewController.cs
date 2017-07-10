@@ -1,4 +1,4 @@
-﻿﻿﻿using System;
+﻿﻿using System;
 using UIKit;
 using System.Collections.Generic;
 using DeRoo_iOS;
@@ -129,7 +129,7 @@ namespace LoginBestPractice.iOS
 					views.Add(catBlock);
 				}
 			}
-			formTableView.Source = new FormContentTableViewSource(views);
+			formTableView.Source = new FormContentTableSource(views);
 		}
 
 		// 
@@ -288,7 +288,7 @@ namespace LoginBestPractice.iOS
 							if (quest.extra_commentaar == null || quest.actie_ondernomen == null || quest.persoon == null || quest.datum_gereed == null)
 							{
 								PresentViewController(createAlert("Extra gegevens bij niet akkoord ontbreken!", "Fout"), true, null);
-								this.formTableView.ContentOffset = new CoreGraphics.CGPoint(0, catSubView.Frame.Y);
+								formTableView.ContentOffset = new CoreGraphics.CGPoint(0, catSubView.Frame.Y);
 								marked = true;
                                 return null;
 							}
@@ -311,7 +311,7 @@ namespace LoginBestPractice.iOS
 									if (marked == false)
 									{
                                         PresentViewController(createAlert("Formulier niet volledig ingevuld", "Fout"), true, null);
-										this.formTableView.ContentOffset = new CoreGraphics.CGPoint(0, vraagSubView.Frame.Y);
+										formTableView.ContentOffset = new CoreGraphics.CGPoint(0, vraagSubView.Frame.Y);
 										marked = true;
 										return null;
 									}

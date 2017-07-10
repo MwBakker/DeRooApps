@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using UIKit;
 using Newtonsoft.Json;
 using System.IO;
@@ -29,7 +29,7 @@ namespace LoginBestPractice.iOS
                 RootObject unfilledForm = JsonConvert.DeserializeObject<RootObject>(rawJSON);
                 forms.Add(unfilledForm);
 			}
-			this.openFormTableView.Source = new OpenFormTableViewSource(this, forms);
+			this.openFormTableView.Source = new OpenFormTableSource(this, forms);
         }
     }
 }

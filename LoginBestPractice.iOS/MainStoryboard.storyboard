@@ -384,18 +384,22 @@
         </scene>
         <scene sceneID="2837">
             <objects>
-                <viewController id="2838" sceneMemberID="viewController" customClass="ToolboxViewController" storyboardIdentifier="ToolboxController" useStoryboardIdentifierAsRestorationIdentifier="YES" title="Toolbox">
+                <viewController id="2838" sceneMemberID="viewController" storyboardIdentifier="ToolboxController" useStoryboardIdentifierAsRestorationIdentifier="YES" title="Toolbox" customClass="ToolboxesViewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2835"/>
                         <viewControllerLayoutGuide type="bottom" id="2836"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="2839">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <subviews/>
-                    </view>
                     <navigationItem title="Toolbox" id="2920" key="navigationItem"/>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="4165" key="view">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews/>
+                        <color key="backgroundColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
+                    </scrollView>
+                    <connections>
+                        <outlet property="toolboxesScrollView" destination="4165" id="name-outlet-4165"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2840" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -403,26 +407,25 @@
         </scene>
         <scene sceneID="2938">
             <objects>
-                <viewController id="2939" sceneMemberID="viewController" customClass="ToolboxNextViewController" storyboardIdentifier="ToolboxNextController">
+                <viewController id="2939" sceneMemberID="viewController" customClass="ToolboxContentViewController" storyboardIdentifier="ToolboxContentViewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2936"/>
                         <viewControllerLayoutGuide type="bottom" id="2937"/>
                     </layoutGuides>
-                    <view contentMode="scaleToFill" id="3007" key="view">
+                    <connections/>
+                    <view contentMode="scaleToFill" id="4194" key="view">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <subviews/>
                     </view>
-                    <connections/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2941" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1393" y="793"/>
+            <point key="canvasLocation" x="1364" y="793"/>
         </scene>
         <scene sceneID="3039">
             <objects>
-                <viewController id="3040" sceneMemberID="viewController" customClass="FormContentViewController" storyboardIdentifier="FormContentViewController">
+                <viewController id="3040" sceneMemberID="viewController" customClass="FormContentViewController" storyboardIdentifier="formContentViewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3037"/>
                         <viewControllerLayoutGuide type="bottom" id="3038"/>
@@ -559,28 +562,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3366" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1833" y="793"/>
-        </scene>
-        <scene sceneID="3385">
-            <objects>
-                <viewController id="3386" sceneMemberID="viewController" customClass="WerknemersTableView" storyboardIdentifier="WerknemersTableView" title="Deelnemers">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="3383"/>
-                        <viewControllerLayoutGuide type="bottom" id="3384"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="3387">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3388" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2286" y="801"/>
+            <point key="canvasLocation" x="1833" y="1343"/>
         </scene>
         <scene sceneID="3442">
             <objects>
-                <viewController id="3443" sceneMemberID="viewController">
+                <viewController id="3443" sceneMemberID="viewController" customClass="SignatureViewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3440"/>
                         <viewControllerLayoutGuide type="bottom" id="3441"/>
@@ -593,7 +579,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3445" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2679" y="797"/>
+            <point key="canvasLocation" x="2234" y="792"/>
         </scene>
         <scene sceneID="3557">
             <objects>
@@ -695,6 +681,72 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3658" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-202" y="-494"/>
+        </scene>
+        <scene sceneID="4215">
+            <objects>
+                <viewController id="4216" sceneMemberID="viewController" customClass="ParticipantsViewController" storyboardIdentifier="participantsViewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4213"/>
+                        <viewControllerLayoutGuide type="bottom" id="4214"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4217">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="4220" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="382"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="4221" customClass="UIEmployeeCell" style="IBUITableViewCellStyleDefault" textLabel="4223" imageView="4224">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4221" id="4222">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4223">
+                                                    <rect key="frame" x="54" y="0.0" width="251" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="4224">
+                                                    <rect key="frame" x="15" y="9" width="24" height="24"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4225" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                <rect key="frame" x="0.0" y="394" width="320" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Voeg externe medewerker toe">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4226" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                <rect key="frame" x="0.0" y="443" width="320" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Voeg geselecteerde werknemers toe">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="employeesTableView" destination="4220" id="name-outlet-4220"/>
+                        <outlet property="btn_addEmployee" destination="4225" id="name-outlet-4225"/>
+                        <outlet property="btn_approveParticipants" destination="4226" id="name-outlet-4226"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4218" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1795" y="790"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

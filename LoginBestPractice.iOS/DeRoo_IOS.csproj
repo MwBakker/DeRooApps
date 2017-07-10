@@ -140,8 +140,6 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="Encrypter.cs" />
-    <Compile Include="reachability.cs" />
-    <Compile Include="TableSource.cs" />
     <Compile Include="Features\Camera.cs" />
     <Compile Include="Data\Database_Data\DatabaseData.cs" />
     <Compile Include="Data\Database_Data\DataStorage.cs" />
@@ -153,14 +151,7 @@
     <Compile Include="_Main Subjects\Handbook\HandboekViewController.designer.cs">
       <DependentUpon>..\..\Handbook\HandboekViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="_Main Subjects\Toolbox\ToolboxNextViewController.cs" />
-    <Compile Include="_Main Subjects\Toolbox\ToolboxNextViewController.designer.cs">
-      <DependentUpon>ToolboxNextViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="_Main Subjects\Toolbox\ToolboxViewController_.cs" />
-    <Compile Include="_Main Subjects\Toolbox\ToolboxViewController_.designer.cs">
-      <DependentUpon>ToolboxViewController_.cs</DependentUpon>
-    </Compile>
+    <Compile Include="_Main Subjects\Toolbox\ToolBoxContentViewController2.cs" />
     <Compile Include="Features\UIDeRooButton.cs" />
     <Compile Include="Login\Login.cs" />
     <Compile Include="Login\LoginPageViewController.cs" />
@@ -176,7 +167,7 @@
     <Compile Include="_Main Subjects\Forms\FormTable\FormContent\FirstView.designer.cs">
       <DependentUpon>..\..\..\..\Forms\FormTable\FirstView.cs</DependentUpon>
     </Compile>
-    <Compile Include="_Main Subjects\Forms\FormTable\FormContent\FormContentTableViewSource.cs" />
+    <Compile Include="_Main Subjects\Forms\FormTable\FormContent\FormContentTableSource.cs" />
     <Compile Include="_Main Subjects\Forms\FormTable\FormContent\Modal.cs" />
     <Compile Include="_Main Subjects\Forms\FormTable\FormContent\Modal.designer.cs">
       <DependentUpon>..\..\..\..\FormTable\Modal.cs</DependentUpon>
@@ -185,10 +176,6 @@
     <Compile Include="_Main Subjects\Forms\OpenFormsViewController.cs" />
     <Compile Include="_Main Subjects\Forms\OpenFormsViewController.designer.cs">
       <DependentUpon>OpenFormsViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="_Main Subjects\Toolbox\WerknemersTableView.cs" />
-    <Compile Include="_Main Subjects\Toolbox\WerknemersTableView.designer.cs">
-      <DependentUpon>..\..\Employees\WerknemersTableView.cs</DependentUpon>
     </Compile>
     <Compile Include="Resources\UITableStyleButton.cs" />
     <Compile Include="Resources\UITableStyleButton.designer.cs">
@@ -200,10 +187,32 @@
     </Compile>
     <Compile Include="Data\User.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="_Main Subjects\Forms\FormTable\OpenForms\OpenFormTableViewSource.cs" />
+    <Compile Include="_Main Subjects\Forms\FormTable\OpenForms\OpenFormTableSource.cs" />
+    <Compile Include="_Main Subjects\Toolbox\ToolboxesViewController.cs" />
+    <Compile Include="_Main Subjects\Toolbox\ToolboxesViewController.designer.cs">
+      <DependentUpon>ToolboxesViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Main Subjects\Toolbox\ToolboxContentViewController.cs" />
+    <Compile Include="_Main Subjects\Toolbox\ToolboxContentViewController.designer.cs">
+      <DependentUpon>ToolboxContentViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Main Subjects\Toolbox\SignatureViewController.cs" />
+    <Compile Include="_Main Subjects\Toolbox\SignatureViewController.designer.cs">
+      <DependentUpon>SignatureViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIEmployeeCell.cs" />
+    <Compile Include="UIEmployeeCell.designer.cs">
+      <DependentUpon>UIEmployeeCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ParticipantsViewController.cs" />
+    <Compile Include="ParticipantsViewController.designer.cs">
+      <DependentUpon>ParticipantsViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\reachability.cs" />
+    <Compile Include="EmployeesTableSource.cs" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\de-roo.png" />
+    <BundleResource Include="Resources\deroo.png" />
     <BundleResource Include="Resources\toolbox.png" />
     <BundleResource Include="Resources\formulieren.png" />
     <BundleResource Include="Resources\handboek.png" />

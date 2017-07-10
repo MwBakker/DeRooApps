@@ -68,7 +68,7 @@ namespace LoginBestPractice.iOS
 			btn_formulier.TouchDown += delegate
 			{
 			    // ViewController //
-                FormContentViewController formContentViewController = Storyboard.InstantiateViewController("FormContentViewController") as FormContentViewController;
+                FormContentViewController formContentViewController = Storyboard.InstantiateViewController("formContentViewController") as FormContentViewController;
                 // refresh, because we want a new form with new fields instead of possible filled rootobject from OpenToolbox
                 dataStorage.getData();
                 formContentViewController.datastrg = dataStorage;
