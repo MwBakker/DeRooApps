@@ -14,5 +14,8 @@ namespace LoginBestPractice.iOS
     [Register ("SignatureViewController")]
     partial class SignatureViewController
     {
+        void ReleaseDesignerOutlets ()
+        {
+        }
     }
 }

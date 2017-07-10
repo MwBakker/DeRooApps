@@ -1,4 +1,4 @@
-﻿﻿﻿using Foundation;
+﻿﻿﻿﻿using Foundation;
 using System;
 using UIKit;
 using DeRoo_iOS;
@@ -35,12 +35,6 @@ namespace LoginBestPractice.iOS
 			nfloat Hoogte = setHeight();
 
             rootObject = DataStorage.data;
-
-			// add all the employees first and lastname to arrayList; tableItems.
-			for (int i = 0; i < rootObject.medewerkers.Count; i++)
-			{
-				tableItems.Add(rootObject.medewerkers[i].medewerker_voornaam + " " + rootObject.medewerkers[i].medewerker_achternaam);
-			}
 
 			// create all buttons of all the toolboxsubjects and add them to the scrollview.
 			int hoogteVanButtons = -30;
@@ -113,7 +107,7 @@ namespace LoginBestPractice.iOS
 				toolboxController.Title = toolboxNaam;
 
 				//Assign stoaryboard ID to viewcontroller.
-				UIViewController PDFView = Storyboard.InstantiateViewController("PDFController");
+				//UIViewController PDFView = Storyboard.InstantiateViewController("PDFController");
 
 				//Create scrollview and add it to the toolboxcontroller.
 				nfloat Hoogte = setHeight1(toolboxNaam);
@@ -142,7 +136,7 @@ namespace LoginBestPractice.iOS
 				{
 					var values = new System.Collections.Specialized.NameValueCollection();
 					values.Add("toolbox_subject", toolboxNaam);
-					byte[] response = client.UploadValues("https://www.amkapp.nl/test/calls/app/getFiles.php", "POST", values);
+					byte[] response = client.UploadValues("https://www.amkapp.nl/calls/app/getFiles.php", "POST", values);
 					string responseString = Encoding.UTF8.GetString(response);
 					char[] delimiterChars = { ' ', '\t' };
 					files = responseString.Split(delimiterChars);
@@ -167,11 +161,11 @@ namespace LoginBestPractice.iOS
 					buttonPDF.TouchDown += delegate
 					{
 						var webView = new UIWebView(View.Bounds);
-						PDFView.Add(webView);
-						var url = "https://amkapp.nl/test/toolbox/" + toolboxNaam + "/" + fileName;
+						//PDFView.Add(webView);
+						var url = "https://amkapp.nl/toolbox/" + toolboxNaam + "/" + fileName;
 						webView.LoadRequest(new NSUrlRequest(new NSUrl(url)));
 						webView.ScalesPageToFit = true;
-						NavigationController.PushViewController(PDFView, true);
+						//NavigationController.PushViewController(PDFView, true);
 					};
 					scrollViewToolbox.Add(buttonPDF);
 				}
@@ -191,52 +185,10 @@ namespace LoginBestPractice.iOS
 				{
 					// Tableview deelnemers van toolbox
 
-
-					//Button for external employees.
-					UIButton ExterneWerknemers = new UIButton(UIButtonType.RoundedRect);
-					ExterneWerknemers.SetTitle("Voeg externe medewerker toe", UIControlState.Normal);
-					ExterneWerknemers.SetTitleColor(UIColor.White, UIControlState.Normal);
-					ExterneWerknemers.Frame = new CoreGraphics.CGRect((this.View.Frame.Size.Width * (1 - 0.875)), this.View.Frame.Size.Height - 175, (this.View.Frame.Size.Width * 0.75), 50);
-					ExterneWerknemers.Layer.BorderWidth = 1.5f;
-					ExterneWerknemers.Layer.CornerRadius = 5;
-					ExterneWerknemers.BackgroundColor = UIColor.Gray;
-
-					//When button is clicked, an alert view will pop up and you can enter a name of an external employee which will be added to the tableview.
-                    /*
-					ExterneWerknemers.TouchDown += delegate
-					{
-						var ExterneDeelnemerToevoegen = new UIAlertView("Externe medewerker toevoegen", "Voer de naam van de medewerker in", null, "Annuleren", "Toevoegen");
-						ExterneDeelnemerToevoegen.AlertViewStyle = UIAlertViewStyle.PlainTextInput;
-						ExterneDeelnemerToevoegen.Show();
-						ExterneDeelnemerToevoegen.Clicked += (object senders, UIButtonEventArgs es) =>
-						{
-							if (es.ButtonIndex == 1)
-							{
-								string externeDeelnemer = ExterneDeelnemerToevoegen.GetTextField(0).Text;
-								tableItems.Add(externeDeelnemer);
-								table.ReloadData();
-							}
-							else
-							{
-							}
-						};
-					};
-					*/
-
-					//Button to send all the toolbox data.
-					UIButton VerstuurToolbox = new UIButton(UIButtonType.RoundedRect);
-					VerstuurToolbox.SetTitle("Verstuur toolbox", UIControlState.Normal);
-					VerstuurToolbox.SetTitleColor(UIColor.White, UIControlState.Normal);
-					VerstuurToolbox.Frame = new CoreGraphics.CGRect((this.View.Frame.Size.Width * (1 - 0.875)), this.View.Frame.Size.Height - 112.5, (this.View.Frame.Size.Width * 0.75), 50);
-					VerstuurToolbox.Layer.BorderWidth = 1.5f;
-					VerstuurToolbox.Layer.CornerRadius = 5;
-					VerstuurToolbox.BackgroundColor = UIColor.Gray;
-
                     ParticipantsViewController participantsVC = Storyboard.InstantiateViewController("participantsViewController") as ParticipantsViewController;
-                    participantsVC.rootObject = this.rootObject;
+                    Thread.Sleep(3000);
+                    participantsVC.toolboxID = toolboxID;
                     participantsVC.setEmployees();
-                   //employeesVC.Add(ExterneWerknemers);
-					//employeesVC.Add(VerstuurToolbox);
 
 					//Push to tableview
                     NavigationController.PushViewController(participantsVC, true);
@@ -253,11 +205,17 @@ namespace LoginBestPractice.iOS
 			RootObject toolboxOnderwerpen = DataStorage.data;
 
 			nfloat hoogteScrollview = 0;
-			for (int i = 0; i < toolboxOnderwerpen.toolbox.Count; i++)
-			{
-				hoogteScrollview += 41;
-			}
-			return hoogteScrollview;
+            try
+            {
+                for (int i = 0; i < toolboxOnderwerpen.toolbox.Count; i++)
+                {
+                    hoogteScrollview += 41;
+                }
+            } catch (Exception e) {
+				UIAlertController alert = UIAlertController.Create("Info", "Er zijn geen toolboxen te weergeven", UIAlertControllerStyle.Alert);
+				alert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, a => Console.WriteLine("Okay was clicked"))); 
+            }
+            return hoogteScrollview;
 		}
 
 		//method to get dynamically a nfloat number for the height of the contentsize of the scrollview.
@@ -269,7 +227,7 @@ namespace LoginBestPractice.iOS
 			{
 				var values = new System.Collections.Specialized.NameValueCollection();
 				values.Add("toolbox_subject", toolboxNaam);
-				byte[] response = client.UploadValues("https://www.amkapp.nl/test/calls/app/getFiles.php", "POST", values);
+				byte[] response = client.UploadValues("https://www.amkapp.nl/calls/app/getFiles.php", "POST", values);
 				string responseString = Encoding.UTF8.GetString(response);
 				char[] delimiterChars = { ' ', '\t' };
 				files = responseString.Split(delimiterChars);

@@ -1,25 +1,21 @@
-﻿<Properties>
-  <MonoDevelop.Ide.Workbench ActiveDocument="Resources/LaunchScreen.xib">
+﻿<Properties StartupConfiguration="{84563AF5-67F4-46D6-B49C-BF8D718F3C64}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="_Main Subjects/Forms/FormContentViewController.cs">
     <Files>
-      <File FileName="ParticipantsViewController.designer.cs" Line="47" Column="2" />
+      <File FileName="EmployeesTableSource.cs" Line="36" Column="8" />
+      <File FileName="ParticipantsViewController.cs" Line="13" Column="49" />
       <File FileName="MainStoryboard.storyboard" />
-      <File FileName="Features/reachability.cs" Line="1" Column="1" />
-      <File FileName="ParticipantsViewController.cs" Line="17" Column="65" />
-      <File FileName="_Main Subjects/Toolbox/ToolboxesViewController.cs" Line="236" Column="64" />
-      <File FileName="_Main Subjects/Forms/FormsViewController.cs" Line="71" Column="110" />
-      <File FileName="EmployeesTableSource.cs" Line="17" Column="51" />
-      <File FileName="Resources/LaunchScreen.xib" />
+      <File FileName="_Main Subjects/Toolbox/ToolboxesViewController.cs" Line="222" Column="16" />
+      <File FileName="_Main Subjects/Forms/FormContentViewController.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
-    <Watch file="_Main Subjects/Toolbox/ToolboxesViewController.cs" line="193" offsetX="1137" offsetY="2880" expression="employeesVC" liveUpdate="False" />
-  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
   <DisabledProjects>
     <String>../../../Downloads/DeRoo/DeRoo/DeRoo.csproj</String>
   </DisabledProjects>
+  <MonoDevelop.Ide.ItemProperties.DeRoo__IOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.2C4C37E2-67DB-490E-867E-A9CB096B0080" />
 </Properties>

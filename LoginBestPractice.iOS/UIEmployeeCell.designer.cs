@@ -14,5 +14,8 @@ namespace LoginBestPractice.iOS
     [Register ("UIEmployeeCell")]
     partial class UIEmployeeCell
     {
+        void ReleaseDesignerOutlets ()
+        {
+        }
     }
 }

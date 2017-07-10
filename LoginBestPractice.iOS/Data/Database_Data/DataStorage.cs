@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Net;
@@ -46,7 +46,7 @@ namespace DeRoo_iOS
 					var values = new System.Collections.Specialized.NameValueCollection();
 					values.Add("gebruiker_id", User.instance.id);
 					values.Add("token", User.instance.token);
-					byte[] response = client.UploadValues("https://www.amkapp.nl/test/calls/app/getAppData.php", "POST", values);
+					byte[] response = client.UploadValues("https://www.amkapp.nl/calls/app/getAppData.php", "POST", values);
 					string responseString = Encoding.UTF8.GetString(response);
 					string encryptedString = Encrypter.encrypt(responseString, "QmWfzsYNCHijXW8");
 
@@ -87,7 +87,7 @@ namespace DeRoo_iOS
 			values.Add("formulier", jsonData);
 			try
 			{
-				byte[] response = client.UploadValues("https://amkapp.nl/test/stuurFormulier.php", "POST", values);
+				byte[] response = client.UploadValues("https://amkapp.nl/stuurFormulier.php", "POST", values);
 				string responseString = Encoding.UTF8.GetString(response);
 				succes = true;
 			}

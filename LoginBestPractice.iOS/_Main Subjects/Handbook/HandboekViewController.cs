@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using UIKit;
 using System.Net;
 using System.IO;
@@ -29,7 +29,7 @@ namespace LoginBestPractice.iOS
 				//loads online-pdf file.
 				var webView = new UIWebView(View.Bounds);
 				View.AddSubview(webView);
-				var url = "https://amkapp.nl/test/pages/DeRoo/Kwaliteitshandboek%205.1%20cert.pdf";
+				var url = "https://amkapp.nl/pages/DeRoo/Kwaliteitshandboek%205.1%20cert.pdf";
 				webView.LoadRequest(new NSUrlRequest(new NSUrl(url)));
 				webView.ScalesPageToFit = true;
 			}

@@ -25,5 +25,15 @@ namespace LoginBestPractice.iOS
 		{
 			return employees.Count;
 		}
+
+		public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
+		{
+            UITableViewCell cell = tableView.CellAt(indexPath);
+            if (indexPath.Row >= 0) {
+				cell.Accessory = UITableViewCellAccessory.Checkmark;
+            } else {
+				cell.Accessory = UITableViewCellAccessory.None;
+		    }
+		}
     }
 }

@@ -14,5 +14,8 @@ namespace LoginBestPractice.iOS
     [Register ("UIOpenFormCell")]
     partial class UIOpenFormCell
     {
+        void ReleaseDesignerOutlets ()
+        {
+        }
     }
 }

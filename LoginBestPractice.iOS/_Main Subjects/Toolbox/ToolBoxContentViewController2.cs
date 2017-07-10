@@ -1,4 +1,4 @@
-using Foundation;
+﻿using Foundation;
 using System;
 using UIKit;
 using System.Net;
@@ -34,7 +34,7 @@ namespace LoginBestPractice.iOS
 			{
 				var values = new System.Collections.Specialized.NameValueCollection();
 				values.Add("toolbox_subject", toolboxName);
-				byte[] response = client.UploadValues("http://www.amkapp.nl/test/calls/app/getFiles.php", "POST", values);
+				byte[] response = client.UploadValues("http://www.amkapp.nl/calls/app/getFiles.php", "POST", values);
 				string responseString = Encoding.UTF8.GetString(response);
 				char[] delimiterChars = { ' ', '\t' };
 				files = responseString.Split(delimiterChars);
@@ -71,7 +71,7 @@ namespace LoginBestPractice.iOS
 					{
 						var webView = new UIWebView(View.Bounds);
 						this.View.AddSubview(webView);
-						var url = "http://amkapp.nl/test/toolbox/" + toolboxNaam + "/" + fileName;
+						var url = "http://amkapp.nl/toolbox/" + toolboxNaam + "/" + fileName;
 						webView.LoadRequest(new NSUrlRequest(new NSUrl(url)));
 						webView.ScalesPageToFit = true;
 					}

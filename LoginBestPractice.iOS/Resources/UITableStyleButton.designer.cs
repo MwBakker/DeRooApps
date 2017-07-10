@@ -14,5 +14,8 @@ namespace LoginBestPractice.iOS
     [Register ("UITableStyleButton")]
     partial class UITableStyleButton
     {
+        void ReleaseDesignerOutlets ()
+        {
+        }
     }
 }

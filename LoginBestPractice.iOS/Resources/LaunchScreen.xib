@@ -50,7 +50,6 @@
         <image name="BottomXamagons.png" width="151" height="178"/>
         <image name="TopXamagons.png" width="151" height="178"/>
         <image name="Xamagon.png" width="167" height="147"/>
-        <image name="de-roo.png" width="308" height="166"/>
         <image name="toolbox.png" width="24" height="24"/>
         <image name="formulieren.png" width="24" height="24"/>
         <image name="handboek.png" width="24" height="24"/>
@@ -60,5 +59,15 @@
         <image name="Deroo_Bord_Medium.png" width="944" height="237"/>
         <image name="openstaandeformulieren.png" width="24" height="24"/>
         <image name="Logo.png" width="512" height="512"/>
+        <image name="deroo.png" width="308" height="166"/>
+        <image name="add_person_to_toolbox.png" width="24" height="24"/>
+        <image name="deRooButton.png" width="700" height="40"/>
+        <image name="button.png" width="1000" height="50"/>
+        <image name="buttonGrey.png" width="1000" height="30"/>
+        <image name="simplecompassblue.png" width="128" height="128"/>
+        <image name="compose.png" width="23" height="23"/>
+        <image name="formIcon.png" width="200" height="200"/>
+        <image name="openFormIcon.png" width="512" height="512"/>
+        <image name="122196-200.png" width="30" height="30"/>
     </resources>
 </document>

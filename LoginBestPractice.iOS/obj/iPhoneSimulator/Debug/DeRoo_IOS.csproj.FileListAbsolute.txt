@@ -50,14 +50,10 @@
 /Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/bin/iPhoneSimulator/Debug/Xamarin.Forms.Xaml.xml
 /Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/bin/iPhoneSimulator/Debug/Plugin.Geolocator.Abstractions.xml
 /Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/bin/iPhoneSimulator/Debug/Plugin.Geolocator.xml
-/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/DeRoo_IOS.csprojResolveAssemblyReference.cache
-/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/DeRoo_IOS.csproj.CoreCompileInputs.cache
-/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/LoginBestPractice.iOS.exe
-/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/LoginBestPractice.iOS.pdb
 /Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/ibtool/_BundleResourceWithLogicalName.items
 /Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/actool/_PartialAppManifest.items
 /Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/actool/_BundleResourceWithLogicalName.items
-/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/optimized/de-roo.png
+/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/optimized/deroo.png
 /Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/optimized/toolbox.png
 /Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/optimized/formulieren.png
 /Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/optimized/handboek.png
@@ -86,3 +82,7 @@
 /Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/optimized/openFormIcon.png
 /Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/optimized/122196-200.png
 /Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/optimized/
+/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/DeRoo_IOS.csproj.CoreCompileInputs.cache
+/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/LoginBestPractice.iOS.exe
+/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/LoginBestPractice.iOS.pdb
+/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/DeRoo_IOS.csprojResolveAssemblyReference.cache
