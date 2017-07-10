@@ -98,20 +98,24 @@ namespace LoginBestPractice.iOS
 							questBlock.lbl_quest.Text = formData.vragen[j].vraag_text;
 							questBlock.lbl_quest.Frame = new CoreGraphics.CGRect((viewWidth * (1 - 0.98)), 0, (viewWidth * 0.96), 35);
 							containerElementPos += questBlock.lbl_quest.Frame.Bottom;
-	                            // POSSIBLE data from file, reload possible modal info
-	                            if (rootFromText == true)
-	                            {
-                                    questBlock.getModal();
-	                               // string comment = formData.vragen[j].extra_commentaar; string action = formData.vragen[j].actie_ondernomen;
-	                                //string person = formData.vragen[j].persoon;
-	                                //if (comment != null) { questBlock.modal.comment = comment; }
-	                                //if (action != null) { questBlock.modal.action = action; }
-	                                //if (person != null) { questBlock.modal.person = person; }
-	                            }
 	                            // POSSIBLE options (type 1 & 2 out of 4) //
 	                            UISegmentedControl options = questBlock.optionsControl(catBlock);
 							    questBlock.options.Frame = new CoreGraphics.CGRect((viewWidth * (1 - 0.925)), containerElementPos, (viewWidth * 0.85), 30);
 	                            questBlock.setOptions(formData.vragen[j].vraag_type);
+								// POSSIBLE data from file, reload possible modal info
+								if (rootFromText == true)
+								{
+									string possibleQAnswer = formData.vragen.First(q => q.vraag_id == questBlock.quest_id).answer;
+                                    if (possibleQAnswer != null)
+									{
+								        questBlock.selectState(checkGivenAnswer(possibleQAnswer), catBlock, true);
+									}
+									// string comment = formData.vragen[j].extra_commentaar; string action = formData.vragen[j].actie_ondernomen;
+									//string person = formData.vragen[j].persoon;
+									//if (comment != null) { questBlock.modal.comment = comment; }
+									//if (action != null) { questBlock.modal.action = action; }
+									//if (person != null) { questBlock.modal.person = person; }
+								}
 	                            questBlock.AddSubview(options);
 	                            containerElementPos += questBlock.options.Frame.Bottom;
 								// POSSIBLE date (type 3) 
@@ -127,9 +131,9 @@ namespace LoginBestPractice.iOS
                     {
                         foreach (UIView qblock in catBlock) {
                             if (qblock is QuestBlockView) {
-                                foreach (UIView qblockView in qblock.Subviews) {
-                                    if (qblockView is UISegmentedControl) {
-                                        if (((UISegmentedControl)qblockView).SelectedSegment == 1)
+                                foreach (UIView qblockSubview in qblock) {
+                                    if (qblockSubview is UISegmentedControl) {
+                                        if (((UISegmentedControl)qblockSubview).SelectedSegment == 1)
                                         {
                                             ((QuestBlockView)qblock).selectState(1, catBlock, true);
                                         } 

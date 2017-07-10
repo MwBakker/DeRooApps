@@ -26,8 +26,6 @@ namespace LoginBestPractice.iOS
             this.subjectVC = subjectVC;
 			deRooGreen = new UIColor(0.04f, 0.17f, 0.01f, 1.0f);
             this.quest_id = quest_id;
-			btn_photo = new UIDeRooButton();
-            btn_modal = new UIDeRooButton();
 			setElements();
 		}
 
@@ -37,10 +35,6 @@ namespace LoginBestPractice.iOS
 			lbl_quest.Font = UIFont.FromName("Helvetica-Bold", 12f);
 			lbl_quest.TextColor = deRooGreen; 
 			lbl_quest.AdjustsFontSizeToFitWidth = true;
-            btn_photo.BackgroundColor = UIColor.Gray;
-			btn_photo.SetTitle("Maak foto van situatie", UIControlState.Normal);
-            btn_modal.BackgroundColor = UIColor.Gray;
-			btn_modal.SetTitle("Zie ingevoerd commentaar", UIControlState.Normal);
 			AddSubview(lbl_quest);
 		}
 			
@@ -52,22 +46,15 @@ namespace LoginBestPractice.iOS
         {
             options = new UISegmentedControl();
             options.TintColor = UIColor.DarkGray;
-
 			options.ValueChanged += (sender, e) =>
 			{
-				// only add buttons when needed // 
-			    addButtons();
-				btn_photo.Hidden = true; btn_modal.Hidden = true;
-				if (options.SelectedSegment == 0)
-				{
+				if (options.SelectedSegment == 0) {
                     selectState(0, catBlock, false);
-				}
-				else if (options.SelectedSegment == 1)
-				{
+				} 
+                else if (options.SelectedSegment == 1) {
                     selectState(1, catBlock, false);
-				}
-				else
-				{
+				} 
+                else {
                     selectState(2, catBlock, false);
 				}
 			};
@@ -87,8 +74,8 @@ namespace LoginBestPractice.iOS
 
             if (selected == 0)
             {
-                options.TintColor = new UIColor(0.10f, 0.62f, 0.01f, 1.0f);
-                btn_photo.Hidden = true; btn_modal.Hidden = true;
+				options.TintColor = new UIColor(0.10f, 0.62f, 0.01f, 1.0f);
+                removeButtons();
                 if (modalSet == true)
                 {
                     subjectVC.updateView(catBlock, this, btn_modal, "removed");
@@ -98,41 +85,23 @@ namespace LoginBestPractice.iOS
             } 
             else if (selected == 1) 
             {
-				modalSet = true;
 				options.TintColor = new UIColor(0.88f, 0.03f, 0.03f, 1.0f);
-				btn_photo.Hidden = false; btn_modal.Hidden = false;
+                addButtons(viewWidth);
+				modalSet = true;
                 // new modal //
                 if (byPrevGiven == false) {
                     modal = subjectVC.Storyboard.InstantiateViewController("modalVraag") as Modal;
                     addModal(modal);
                     subjectVC.PresentViewController(modal, true, null);
+                } else { 
+                    modal = getModal();
                 }
-				btn_photo.Frame = new CoreGraphics.CGRect(viewWidth * (1 - 0.875), (options.Frame.Bottom + 10), (viewWidth * 0.75), 30);
-				btn_photo.TouchDown += delegate
-				{
-					// btn_photo.photoAction photo object + meta data
-					Camera.TakePicture(subjectVC, (obj) =>
-				    {
-					var photo = obj.ValueForKey(new NSString("UIImagePickerControllerOriginalImage")) as UIImage;
-					var meta = obj.ValueForKey(new NSString("UIImagePickerControllerMediaMetadata")) as NSDictionary;
-					ALAssetsLibrary library = new ALAssetsLibrary();
-					library.WriteImageToSavedPhotosAlbum(photo.CGImage, meta, (assetUrl, error) =>
-					    {
-						Console.WriteLine("assetUrl:" + assetUrl);
-					    });
-				    }); ;
-				};
-				btn_modal.Frame = new CoreGraphics.CGRect(viewWidth * (1 - 0.875), (btn_photo.Frame.Bottom + 15), (viewWidth * 0.75), 30);
-				btn_modal.TouchDown += delegate
-				{
-					subjectVC.PresentViewController(modal, true, null);
-				};
 				subjectVC.updateView(catBlock, this, btn_modal, "added");
             }
             else if (selected == 2) 
             {
-				options.TintColor = UIColor.DarkGray;
-				btn_photo.Hidden = true; btn_modal.Hidden = true;
+                options.TintColor = UIColor.DarkGray;
+                removeButtons();
 				if (modalSet == true)
 				{
 					subjectVC.updateView(catBlock, this, btn_modal, "removed");
@@ -141,6 +110,60 @@ namespace LoginBestPractice.iOS
 				modal = null;
             }
         }
+
+		//
+		// adding the required buttons to a question 
+		//
+		public void addButtons(nfloat viewWidth)
+		{
+			if (btn_modal == null && btn_photo == null)
+			{
+				btn_photo = new UIDeRooButton();
+				btn_photo.Frame = new CoreGraphics.CGRect(viewWidth * (1 - 0.875), (options.Frame.Bottom + 10), (viewWidth * 0.75), 30);
+				btn_photo.BackgroundColor = UIColor.Gray;
+				btn_photo.SetTitle("Maak foto van situatie", UIControlState.Normal);
+				btn_photo.TouchDown += delegate
+				{
+					// btn_photo.photoAction photo object + meta data
+					Camera.TakePicture(subjectVC, (obj) =>
+					{
+						var photo = obj.ValueForKey(new NSString("UIImagePickerControllerOriginalImage")) as UIImage;
+						var meta = obj.ValueForKey(new NSString("UIImagePickerControllerMediaMetadata")) as NSDictionary;
+						ALAssetsLibrary library = new ALAssetsLibrary();
+						library.WriteImageToSavedPhotosAlbum(photo.CGImage, meta, (assetUrl, error) =>
+						{
+							Console.WriteLine("assetUrl:" + assetUrl);
+						});
+					}); ;
+				};
+
+				btn_modal = new UIDeRooButton();
+				btn_modal.Frame = new CoreGraphics.CGRect(viewWidth * (1 - 0.875), (btn_photo.Frame.Bottom + 15), (viewWidth * 0.75), 30);
+				btn_modal.BackgroundColor = UIColor.Gray;
+				btn_modal.SetTitle("Zie ingevoerd commentaar", UIControlState.Normal);
+				btn_modal.TouchDown += delegate
+				{
+					subjectVC.PresentViewController(modal, true, null);
+				};
+
+				AddSubview(btn_photo);
+				AddSubview(btn_modal);
+			}
+			else
+			{
+				btn_modal.Hidden = false;
+				btn_photo.Hidden = false;
+			}
+
+		}
+		public void removeButtons()
+		{
+			if (btn_modal != null && btn_photo != null)
+			{
+				btn_modal.Hidden = true;
+				btn_photo.Hidden = true;
+			}
+		}
 
 		//
 		// adds the modalView as some sort of a childView into this modalView
@@ -172,12 +195,6 @@ namespace LoginBestPractice.iOS
 		}
 
 		public string getID() { return quest_id; }
-
-		public void addButtons()
-		{
-            AddSubview(btn_photo);
-			AddSubview(btn_modal);
-		}
 
 		// 
 		// modal belonging to view returned
