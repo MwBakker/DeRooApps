@@ -72,6 +72,7 @@ namespace LoginBestPractice.iOS
                 // refresh, because we want a new form with new fields instead of possible filled rootobject from OpenToolbox
                 dataStorage.getData();
                 formContentViewController.datastrg = dataStorage;
+                formContentViewController.rootFromText = false;
                 formContentViewController.formData = DataStorage.data;
 				formContentViewController.Title = formulierNaam;
 				formContentViewController.setCatAndQuest(formulierID);

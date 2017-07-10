@@ -15,12 +15,14 @@ namespace LoginBestPractice.iOS
         public UIDeRooButton btn_modal { get; set; }
         public FormContentViewController subjectVC;
         public Modal modal { get; set; }
+        bool modalSet;
 
 		// 
 		// sets main elements in questBlockView
 		//
 		public QuestBlockView(FormContentViewController subjectVC, string quest_id)
 		{
+            modalSet = false;
             this.subjectVC = subjectVC;
 			deRooGreen = new UIColor(0.04f, 0.17f, 0.01f, 1.0f);
             this.quest_id = quest_id;
@@ -50,7 +52,6 @@ namespace LoginBestPractice.iOS
         {
             options = new UISegmentedControl();
             options.TintColor = UIColor.DarkGray;
-            Modal modal;
 
 			options.ValueChanged += (sender, e) =>
 			{
@@ -77,17 +78,12 @@ namespace LoginBestPractice.iOS
         // determines the selected option
         // sets questBlockView + change in subjectVC main View dimensions
         //
-        public void selectState(int selected, CatBlockView catBlock, bool byHand) 
+        public void selectState(int selected, CatBlockView catBlock, bool byPrevGiven) 
         {
-            if (byHand == true) 
-            {
+            if (byPrevGiven == true)  {
                 options.SelectedSegment = selected;
             }
             nfloat viewWidth = subjectVC.View.Frame.Width;
-            bool modalSet = false;
-
-
-
 
             if (selected == 0)
             {
@@ -105,25 +101,26 @@ namespace LoginBestPractice.iOS
 				modalSet = true;
 				options.TintColor = new UIColor(0.88f, 0.03f, 0.03f, 1.0f);
 				btn_photo.Hidden = false; btn_modal.Hidden = false;
-				// modal //
-				modal = subjectVC.Storyboard.InstantiateViewController("modalVraag") as Modal;
-				addModal(modal);
-				subjectVC.PresentViewController(modal, true, null);
-
+                // new modal //
+                if (byPrevGiven == false) {
+                    modal = subjectVC.Storyboard.InstantiateViewController("modalVraag") as Modal;
+                    addModal(modal);
+                    subjectVC.PresentViewController(modal, true, null);
+                }
 				btn_photo.Frame = new CoreGraphics.CGRect(viewWidth * (1 - 0.875), (options.Frame.Bottom + 10), (viewWidth * 0.75), 30);
 				btn_photo.TouchDown += delegate
 				{
-						// btn_photo.photoAction photo object + meta data
-						Camera.TakePicture(subjectVC, (obj) =>
+					// btn_photo.photoAction photo object + meta data
+					Camera.TakePicture(subjectVC, (obj) =>
+				    {
+					var photo = obj.ValueForKey(new NSString("UIImagePickerControllerOriginalImage")) as UIImage;
+					var meta = obj.ValueForKey(new NSString("UIImagePickerControllerMediaMetadata")) as NSDictionary;
+					ALAssetsLibrary library = new ALAssetsLibrary();
+					library.WriteImageToSavedPhotosAlbum(photo.CGImage, meta, (assetUrl, error) =>
 					    {
-						var photo = obj.ValueForKey(new NSString("UIImagePickerControllerOriginalImage")) as UIImage;
-						var meta = obj.ValueForKey(new NSString("UIImagePickerControllerMediaMetadata")) as NSDictionary;
-						ALAssetsLibrary library = new ALAssetsLibrary();
-						library.WriteImageToSavedPhotosAlbum(photo.CGImage, meta, (assetUrl, error) =>
-						{
-							Console.WriteLine("assetUrl:" + assetUrl);
-						});
-					}); ;
+						Console.WriteLine("assetUrl:" + assetUrl);
+					    });
+				    }); ;
 				};
 				btn_modal.Frame = new CoreGraphics.CGRect(viewWidth * (1 - 0.875), (btn_photo.Frame.Bottom + 15), (viewWidth * 0.75), 30);
 				btn_modal.TouchDown += delegate

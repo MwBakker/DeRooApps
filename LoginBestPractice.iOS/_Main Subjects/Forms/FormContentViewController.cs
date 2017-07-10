@@ -14,7 +14,6 @@ namespace LoginBestPractice.iOS
 
         public DataStorage datastrg { get; set; }
         public bool rootFromText  { get; set; }
-
         // this is the Root, so it determines the questionType etc in a static way
         // changes in the database are not relevant to this root IF coming from non-web source
         public RootObject formData { get; set; }
@@ -44,12 +43,13 @@ namespace LoginBestPractice.iOS
             if (datastrg == null) {
                 datastrg = new DataStorage();
             }
-			// viewData to rootObject containing all required JSON data
+			// collect so far given data to custom Rootobject meant for .txt 
 			if (succesSend == false)
             {
-                RootObject fileForm = collectData();
 				if (txtf_projectName.Text != "" && txtf_location.Text != "")
 				{
+					rootFromText = true;
+					RootObject fileForm = collectData();
                     datastrg.sendDataFile(fileForm, date_dateProject.Date.ToString().Replace("+0000", ""));
                     UIViewController openFormVC = Storyboard.InstantiateViewController("OpenFormsViewController");
                     openFormVC.ReloadInputViews();
@@ -101,21 +101,17 @@ namespace LoginBestPractice.iOS
 	                            // POSSIBLE data from file, reload possible modal info
 	                            if (rootFromText == true)
 	                            {
-	                                string comment = formData.vragen[j].extra_commentaar; string action = formData.vragen[j].actie_ondernomen;
-	                                string person = formData.vragen[j].persoon;
-	                                if (comment != null) { questBlock.modal.comment = comment; }
-	                                if (action != null) { questBlock.modal.action = action; }
-	                                if (person != null) { questBlock.modal.person = person; }
+                                    questBlock.getModal();
+	                               // string comment = formData.vragen[j].extra_commentaar; string action = formData.vragen[j].actie_ondernomen;
+	                                //string person = formData.vragen[j].persoon;
+	                                //if (comment != null) { questBlock.modal.comment = comment; }
+	                                //if (action != null) { questBlock.modal.action = action; }
+	                                //if (person != null) { questBlock.modal.person = person; }
 	                            }
 	                            // POSSIBLE options (type 1 & 2 out of 4) //
 	                            UISegmentedControl options = questBlock.optionsControl(catBlock);
 							    questBlock.options.Frame = new CoreGraphics.CGRect((viewWidth * (1 - 0.925)), containerElementPos, (viewWidth * 0.85), 30);
 	                            questBlock.setOptions(formData.vragen[j].vraag_type);
-								string possibleQAnswer = formData.vragen.First(q => q.vraag_id == questBlock.quest_id).answer;
-								if (possibleQAnswer != null)
-								{
-                                    questBlock.selectState(checkGivenAnswer(possibleQAnswer), catBlock, true);
-								}    
 	                            questBlock.AddSubview(options);
 	                            containerElementPos += questBlock.options.Frame.Bottom;
 								// POSSIBLE date (type 3) 
@@ -126,6 +122,22 @@ namespace LoginBestPractice.iOS
 						}
 					}
 					catBlock.Frame = new CoreGraphics.CGRect(0, 10, viewWidth, (setStackHeight(catBlock) + 25));
+                    // set the view's dimenstion by selected state
+                    if (rootFromText == true)
+                    {
+                        foreach (UIView qblock in catBlock) {
+                            if (qblock is QuestBlockView) {
+                                foreach (UIView qblockView in qblock.Subviews) {
+                                    if (qblockView is UISegmentedControl) {
+                                        if (((UISegmentedControl)qblockView).SelectedSegment == 1)
+                                        {
+                                            ((QuestBlockView)qblock).selectState(1, catBlock, true);
+                                        } 
+                                    }
+                                }
+                            }
+                        }
+                    }
 					views.Add(catBlock);
 				}
 			}
@@ -250,13 +262,14 @@ namespace LoginBestPractice.iOS
 
 			// form //
 			int dataIndex = DataStorage.data.formulieren.FindIndex(f => f.formulier_id == formID);
+
             Formulieren form = DataStorage.data.formulieren[dataIndex];
 			form.formulier_id = formID; form.formulier_naam = Title;
 			form.locatie = txtf_location.Text; form.project_naam = txtf_projectName.Text;
-            form.datum = date_dateProject.Date.ToString().Replace("+0000", ""); form.user = User.instance.name;
+            form.datum = date_dateProject.Date.ToString().Replace("+0000", ""); 
+            form.user = User.instance.name;
             relevantForm.Add(form);
 
-			Boolean marked = false;
 			// 1. catblok
 			foreach (UIView catView in views)
 			{
@@ -264,66 +277,71 @@ namespace LoginBestPractice.iOS
                 dataIndex = DataStorage.data.categorien.FindIndex(c => c.categorie_id == catID);
                 Categorien cat = DataStorage.data.categorien[dataIndex];
 				cat.categorie_id = catID;
-				// 2. questBlock (inc cat_label)
-				foreach (UIView catSubView in catView.Subviews)
-				{
-					cat.formulier_id = formID;
-					if (catSubView is UILabel)
-					{
-						cat.categorie_text = ((UILabel)catSubView).Text;
+                // 2. questBlock (inc cat_label)
+                foreach (UIView catSubView in catView.Subviews)
+                {
+                    cat.formulier_id = formID;
+                    if (catSubView is UILabel)
+                    {
+                        cat.categorie_text = ((UILabel)catSubView).Text;
                         relevantCats.Add(cat);
-					}
-					// 3. vraagblok (ex cat_label)
-					if (catSubView is QuestBlockView)
-					{
+                    }
+                    // 3. questBlock (ex cat_label)
+                    if (catSubView is QuestBlockView)
+                    {
                         string questID = ((QuestBlockView)catSubView).quest_id;
                         dataIndex = DataStorage.data.vragen.FindIndex(q => q.vraag_id == questID);
                         Vragen quest = DataStorage.data.vragen[dataIndex];
-						// modalGegevens
-						Modal vraagModal = ((QuestBlockView)catSubView).getModal();
-						if (vraagModal != null)
-						{
-							quest.extra_commentaar = vraagModal.getComment(); quest.actie_ondernomen = vraagModal.getAction();
-							quest.persoon = vraagModal.getPerson(); quest.datum_gereed = vraagModal.getDate();
-							if (quest.extra_commentaar == null || quest.actie_ondernomen == null || quest.persoon == null || quest.datum_gereed == null)
-							{
-								PresentViewController(createAlert("Extra gegevens bij niet akkoord ontbreken!", "Fout"), true, null);
-								formTableView.ContentOffset = new CoreGraphics.CGPoint(0, catSubView.Frame.Y);
-								marked = true;
-                                return null;
-							}
-						}
-						foreach (UIView vraagSubView in catSubView.Subviews)
-						{
-							// vraagtekst
-							if (vraagSubView is UILabel)
-							{
-								quest.vraag_text = ((UILabel)vraagSubView).Text; quest.vraag_type = "Akkoord/Niet akkoord/N.v.t.";
-								quest.categorie_id = catID;
-							}
-							// geselecteerde optie
-							if (vraagSubView is UISegmentedControl)
-							{
-								nfloat index = ((UISegmentedControl)vraagSubView).SelectedSegment;
-								if (index != 0 && index != 1 && index != 2)
-								{
-									// indien options niet volledig, geef melding en spring naar desbetreffende view (eenmaal springen)
-									if (marked == false)
-									{
+                        // modalData
+                        Modal vraagModal = ((QuestBlockView)catSubView).getModal();
+                        if (vraagModal != null)
+                        {
+                            quest.extra_commentaar = vraagModal.getComment(); quest.actie_ondernomen = vraagModal.getAction();
+                            quest.persoon = vraagModal.getPerson(); quest.datum_gereed = vraagModal.getDate();
+                            if (quest.extra_commentaar == null || quest.actie_ondernomen == null || quest.persoon == null || quest.datum_gereed == null)
+                            {
+                                PresentViewController(createAlert("Extra gegevens bij niet akkoord ontbreken!", "Fout"), true, null);
+                                formTableView.ContentOffset = new CoreGraphics.CGPoint(0, catSubView.Frame.Y);
+                                if (rootFromText == false) {
+								    return null;
+                                }
+                            }
+                        }
+                        foreach (UIView questSubview in catSubView.Subviews)
+                        {
+                            // questText
+                            if (questSubview is UILabel)
+                            {
+                                quest.vraag_text = ((UILabel)questSubview).Text; quest.vraag_type = "Akkoord/Niet akkoord/N.v.t.";
+                                quest.categorie_id = catID;
+                            }
+	                            // selected option
+	                            if (questSubview is UISegmentedControl)
+	                            {
+	                                nfloat index = ((UISegmentedControl)questSubview).SelectedSegment;
+	                                if (index < 0)
+	                                {
+	                                    // when questType selection does not have selection, jump to this certain optio
                                         PresentViewController(createAlert("Formulier niet volledig ingevuld", "Fout"), true, null);
-										formTableView.ContentOffset = new CoreGraphics.CGPoint(0, vraagSubView.Frame.Y);
-										marked = true;
-										return null;
-									}
-								} else {
-									quest.answer = ((UISegmentedControl)vraagSubView).TitleAt(((UISegmentedControl)vraagSubView).SelectedSegment);
-                                    relevantQuests.Add(quest);
-								}
-							}
-						}
-					}
-				}
+                                        formTableView.ContentOffset = new CoreGraphics.CGPoint(0, questSubview.Frame.Y);
+                                        // check if null is allowed (in case of textSource, it is)
+                                        if (rootFromText == true) { 
+                                            relevantQuests.Add(quest);
+                                        } else {
+                                            return null;
+                                        }
+	                                }
+	                                else
+	                                {
+	                                    quest.answer = ((UISegmentedControl)questSubview).TitleAt(((UISegmentedControl)questSubview).SelectedSegment);
+	                                    relevantQuests.Add(quest);
+	                                }
+                            }
+                        }
+                    }
+                }
 			}
+
             RootObject formRoot = new RootObject
             {
                 formulieren = relevantForm,

@@ -38,35 +38,44 @@ namespace LoginBestPractice.iOS
 				char[] delimiterChars = { ' ', '\t' };
 				files = responseString.Split(delimiterChars);
             }
-            for (int i = 0; i < files.Length - 1; i++)
+            if (files.Length < 1)
             {
-                toolboxContentSubjects.Add(files[i]);
-				/*buttonPDF.TouchDown += delegate
+                UIAlertController alert = UIAlertController.Create("Info", "Er bevinden zich geen toolbox-elementen voor deze toolbox", UIAlertControllerStyle.Alert);
+                alert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, a => Console.WriteLine("Okay was clicked")));
+            }
+            else
+            {
+                for (int i = 0; i < files.Length - 1; i++)
                 {
+                    toolboxContentSubjects.Add(files[i]);
+                    /*buttonPDF.TouchDown += delegate
+	                {
 
-                    //Check of verbinding voor het laden van de toolbox-PDF
-                    if (!Reachability.IsHostReachable("http://google.com"))
-                    {
-                        var webView = new UIWebView(View.Bounds);
-                        this.View.AddSubview(webView);
-                                    //this.View.AddSubview(webView);
-                                    string pdfName = "Toolboxen/handboek.pdf"; // remember case-sensitive
-                                    string localDocUrl = Path.Combine(NSBundle.MainBundle.BundlePath, pdfName);
-                        webView.LoadRequest(new NSUrlRequest(new NSUrl(localDocUrl, false)));
-                        webView.ScalesPageToFit = true;
-                    }
-                    else
-                    {
-                        var webView = new UIWebView(View.Bounds);
-                        this.View.AddSubview(webView);
-                        var url = "http://amkapp.nl/toolbox/" + toolboxNaam + "/" + fileName;
-                        webView.LoadRequest(new NSUrlRequest(new NSUrl(url)));
-                        webView.ScalesPageToFit = true;
-                    }
-                };*/
-			}
+	                    //Check of verbinding voor het laden van de toolbox-PDF
+	                    if (!Reachability.IsHostReachable("http://google.com"))
+	                    {
+	                        var webView = new UIWebView(View.Bounds);
+	                        this.View.AddSubview(webView);
+	                                    //this.View.AddSubview(webView);
+	                                    string pdfName = "Toolboxen/handboek.pdf"; // remember case-sensitive
+	                                    string localDocUrl = Path.Combine(NSBundle.MainBundle.BundlePath, pdfName);
+	                        webView.LoadRequest(new NSUrlRequest(new NSUrl(localDocUrl, false)));
+	                        webView.ScalesPageToFit = true;
+	                    }
+	                    else
+	                    {
+	                        var webView = new UIWebView(View.Bounds);
+	                        this.View.AddSubview(webView);
+	                        var url = "http://amkapp.nl/toolbox/" + toolboxNaam + "/" + fileName;
+	                        webView.LoadRequest(new NSUrlRequest(new NSUrl(url)));
+	                        webView.ScalesPageToFit = true;
+	                    }
+	                };*/
+                }
+            }
             toolboxContentSubjectsTable.Source = new ToolboxContentTableSource(toolboxContentSubjects, this.View);
 		}
+
 
         partial void btn_continueToAdding_TouchUpInside(UIButton sender)
         {

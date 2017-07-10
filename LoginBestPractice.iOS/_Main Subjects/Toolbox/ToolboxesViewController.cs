@@ -98,14 +98,15 @@ namespace LoginBestPractice.iOS
 			toolboxButton.Frame = new CGRect((this.View.Frame.Size.Width * (1 - 0.875)), hoogteVanButtons, (this.View.Frame.Size.Width * 0.75), 35);
 			toolboxButton.Layer.BorderWidth = 1.5f;
 			toolboxButton.Layer.CornerRadius = 5;
-			toolboxButton.BackgroundColor = new UIColor(red: 0.10f, green: 0.26f, blue: 0.03f, alpha: 1.0f);
+			toolboxButton.BackgroundColor = new UIColor(0.10f, 0.26f, 0.03f, 1.0f);
 			toolboxButton.TouchDown += delegate
 			{
-                
 				//Assign storyboard ID to viewcontroller and give it a title of the toolboxsubject.
                 ToolboxContentViewController toolboxContentVC = Storyboard.InstantiateViewController("ToolboxContentViewController") as ToolboxContentViewController;
 				toolboxContentVC.Title = toolboxNaam;
                 toolboxContentVC.toolboxID = toolboxID;
+                toolboxContentVC.createPDFbuttons(toolboxNaam);
+                NavigationController.PushViewController(toolboxContentVC, true);
 			};
 			return toolboxButton;
 		}
