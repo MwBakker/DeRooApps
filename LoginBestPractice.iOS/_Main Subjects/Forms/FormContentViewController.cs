@@ -355,7 +355,6 @@ namespace LoginBestPractice.iOS
                     }
                 }
 			}
-
             RootObject formRoot = new RootObject
             {
                 formulieren = relevantForm,

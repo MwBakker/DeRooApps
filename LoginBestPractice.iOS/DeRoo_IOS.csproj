@@ -202,21 +202,21 @@
     <Compile Include="_Main Subjects\Toolbox\SignatureViewController.designer.cs">
       <DependentUpon>SignatureViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="UIEmployeeCell.cs" />
-    <Compile Include="UIEmployeeCell.designer.cs">
+    <Compile Include="Features\reachability.cs" />
+    <Compile Include="_Main Subjects\Toolbox\ToolboxContentTableSource.cs" />
+    <Compile Include="_Main Subjects\Toolbox\UIEmployeeCell.cs" />
+    <Compile Include="_Main Subjects\Toolbox\UIEmployeeCell.designer.cs">
       <DependentUpon>UIEmployeeCell.cs</DependentUpon>
     </Compile>
-    <Compile Include="ParticipantsViewController.cs" />
-    <Compile Include="ParticipantsViewController.designer.cs">
+    <Compile Include="_Main Subjects\Toolbox\ParticipantsViewController.cs" />
+    <Compile Include="_Main Subjects\Toolbox\ParticipantsViewController.designer.cs">
       <DependentUpon>ParticipantsViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Features\reachability.cs" />
-    <Compile Include="EmployeesTableSource.cs" />
-    <Compile Include="UIToolboxSubjectCell.cs" />
-    <Compile Include="UIToolboxSubjectCell.designer.cs">
+    <Compile Include="_Main Subjects\Toolbox\UIToolboxSubjectCell.cs" />
+    <Compile Include="_Main Subjects\Toolbox\UIToolboxSubjectCell.designer.cs">
       <DependentUpon>UIToolboxSubjectCell.cs</DependentUpon>
     </Compile>
-    <Compile Include="_Main Subjects\Toolbox\ToolboxContentTableSource.cs" />
+    <Compile Include="_Main Subjects\Toolbox\EmployeesTableSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\deroo.png" />

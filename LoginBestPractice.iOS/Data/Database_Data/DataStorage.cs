@@ -75,19 +75,27 @@ namespace DeRoo_iOS
 		// IF no data traffic is present, form shall be send when data available
 		// user notified at every event
 		//
-		public bool sendDataWeb(RootObject webForm)
+		public bool sendDataWeb(RootObject rootForWeb)
 		{
 			var window = UIApplication.SharedApplication.KeyWindow;
 			var vc = window.RootViewController;
 			Boolean succes;
 			WebClient client = new WebClient();
-			string jsonData = JsonConvert.SerializeObject(webForm);
+			string jsonData = JsonConvert.SerializeObject(rootForWeb);
 			var values = new System.Collections.Specialized.NameValueCollection();
 			values.Add("gebruiker_id", "1");
 			values.Add("formulier", jsonData);
-			try
-			{
-				byte[] response = client.UploadValues("https://amkapp.nl/calls/app/stuurFormulier.php", "POST", values);
+            try
+            {
+                byte[] response = null;
+                if (rootForWeb.toolbox == null)
+                {
+                    response = client.UploadValues("https://amkapp.nl/calls/app/stuurFormulier.php", "POST", values);
+                }
+                else if (rootForWeb.toolbox != null) 
+                {
+                    response = client.UploadValues("https://amkapp.nl/calls/app/sendToolbox.php", "POST", values);
+                }
 				string responseString = Encoding.UTF8.GetString(response);
 				succes = true;
 			}
@@ -95,10 +103,10 @@ namespace DeRoo_iOS
 			{
 				if (!Reachability.IsHostReachable("https://amkapp.nl"))
 				{
-					vc.PresentViewController(createAlert("Er is op dit moment geen data-verbinding aanwezig. Indien aanwezigheid dataverbinding wordt dit formulier automatisch verzonden", "Info"), true, null);
+					vc.PresentViewController(createAlert("Er is op dit moment geen data-verbinding aanwezig. Indien aanwezigheid dataverbinding wordt de opgegeven data automatisch verzonden", "INFO"), true, null);
 					User.addUnsendForm(data);
 				} else {
-					vc.PresentViewController(createAlert("Verzending ongedaan door interne fout", "Fout"), true, null);
+					vc.PresentViewController(createAlert("Verzending ongedaan door interne fout", "FOUT"), true, null);
 				}
 				succes = false;
 			}
