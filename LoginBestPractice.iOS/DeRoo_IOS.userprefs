@@ -1,10 +1,7 @@
 ﻿<Properties StartupConfiguration="{84563AF5-67F4-46D6-B49C-BF8D718F3C64}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="MainStoryboard.storyboard">
+  <MonoDevelop.Ide.Workbench ActiveDocument="_Main Subjects/Toolbox/SignatureViewController.cs">
     <Files>
-      <File FileName="_Main Subjects/Toolbox/SignatureViewController.cs" Line="28" Column="19" />
-      <File FileName="_Main Subjects/Forms/FormContentViewController.cs" Line="360" Column="28" />
-      <File FileName="Data/Database_Data/DatabaseData.cs" Line="1" Column="1" />
-      <File FileName="MainStoryboard.storyboard" />
+      <File FileName="_Main Subjects/Toolbox/SignatureViewController.cs" Line="45" Column="36" />
     </Files>
     <Pads>
       <Pad Id="MonoDevelop.Debugger.WatchPad">

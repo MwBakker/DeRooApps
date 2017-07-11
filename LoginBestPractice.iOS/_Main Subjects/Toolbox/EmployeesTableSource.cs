@@ -20,7 +20,7 @@ namespace LoginBestPractice.iOS
 		public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
 		{
             var cell = tableView.DequeueReusableCell("employeeCell") as UIEmployeeCell;
-			cell.TextLabel.Text = employees[indexPath.Row].medewerker_achternaam + " , " + employees[indexPath.Row].medewerker_voornaam;
+			cell.TextLabel.Text = employees[indexPath.Row].medewerker_achternaam + ", " + employees[indexPath.Row].medewerker_voornaam;
             cell.Tag = int.Parse(employees[indexPath.Row].id);
 			return cell;
 		}

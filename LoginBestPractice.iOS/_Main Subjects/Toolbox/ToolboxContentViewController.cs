@@ -82,7 +82,6 @@ namespace LoginBestPractice.iOS
         partial void btn_continueToAdding_TouchUpInside(UIButton sender)
         {
 			ParticipantsViewController participantsVC = Storyboard.InstantiateViewController("participantsViewController") as ParticipantsViewController;
-			Thread.Sleep(3000);
 			participantsVC.toolboxID = toolboxID;
 			participantsVC.setEmployees();
 
