@@ -14,6 +14,7 @@ namespace LoginBestPractice.iOS
 
 		public ToolboxContentViewController(IntPtr handle) : base(handle)
         {
+			base.LoadView();
             toolboxContentSubjects = new List<string>(); 
 		}
 
@@ -33,15 +34,16 @@ namespace LoginBestPractice.iOS
 			{
 				var values = new System.Collections.Specialized.NameValueCollection();
 				values.Add("toolbox_subject", toolboxName);
-				byte[] response = client.UploadValues("http://www.amkapp.nl/calls/app/getFiles.php", "POST", values);
+				byte[] response = client.UploadValues("https://www.amkapp.nl/calls/app/getFiles.php", "POST", values);
 				string responseString = Encoding.UTF8.GetString(response);
-				char[] delimiterChars = { ' ', '\t' };
+				char[] delimiterChars = {'\t'};
 				files = responseString.Split(delimiterChars);
             }
             if (files.Length < 1)
             {
                 UIAlertController alert = UIAlertController.Create("Info", "Er bevinden zich geen toolbox-elementen voor deze toolbox", UIAlertControllerStyle.Alert);
                 alert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, a => Console.WriteLine("Okay was clicked")));
+                this.PresentViewController(alert, true, null);
             }
             else
             {

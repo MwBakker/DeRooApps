@@ -35,6 +35,8 @@
 	-r \
 	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/packages/Rox.Xamarin.Camera.1.1.0/lib/Xamarin.iOS10/Rox.Xamarin.Camera.Portable.dll \
 	-r \
+	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/packages/Xamarin.Controls.SignaturePad.2.1.1/lib/Xamarin.iOS/SignaturePad.dll \
+	-r \
 	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/System.Core.dll \
 	-r \
 	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/System.dll \
@@ -330,6 +332,8 @@
 	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/packages/Rox.Xamarin.Camera.1.1.0/lib/Xamarin.iOS10/Rox.Xamarin.Camera.Ios.dll \
 	-r \
 	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/packages/Rox.Xamarin.Camera.1.1.0/lib/Xamarin.iOS10/Rox.Xamarin.Camera.Portable.dll \
+	-r \
+	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/packages/Xamarin.Controls.SignaturePad.2.1.1/lib/Xamarin.iOS/SignaturePad.dll \
 	-r \
 	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/packages/Xamarin.Forms.1.0.6188/lib/portable-win+net45+wp80+MonoAndroid10+MonoTouch10/Xamarin.Forms.Core.dll \
 	-r \

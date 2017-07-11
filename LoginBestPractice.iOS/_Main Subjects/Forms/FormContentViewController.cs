@@ -5,6 +5,7 @@ using DeRoo_iOS;
 using Plugin.Geolocator;
 using System.Linq;
 using Foundation;
+using CoreGraphics;
 
 namespace LoginBestPractice.iOS
 {
@@ -29,7 +30,7 @@ namespace LoginBestPractice.iOS
         {
             succesSend = false;
 			viewWidth = this.View.Frame.Width;
-			formTableView.Frame = new CoreGraphics.CGRect(0, 0, viewWidth, this.View.Frame.Height);
+			formTableView.Frame = new CGRect(0, 0, viewWidth, this.View.Frame.Height);
 			views = new List<UIView>();
 			deRooGreen = new UIColor(0.04f, 0.17f, 0.01f, 1.0f);
 		}
@@ -83,7 +84,7 @@ namespace LoginBestPractice.iOS
 					catBlock.Tag = int.Parse((formData.categorien[i].categorie_id));
 					// category // 
 					catBlock.lbl_cat.Text = formData.categorien[i].categorie_text;
-					catBlock.lbl_cat.Frame = new CoreGraphics.CGRect(0, 0, viewWidth, 35);
+					catBlock.lbl_cat.Frame = new CGRect(0, 0, viewWidth, 35);
 					nfloat containerPos = catBlock.lbl_cat.Frame.Bottom;
 
 					for (int j = 0; j < formData.vragen.Count; j++)
@@ -96,11 +97,11 @@ namespace LoginBestPractice.iOS
 							nfloat containerElementPos = 0;
 							// quest // 
 							questBlock.lbl_quest.Text = formData.vragen[j].vraag_text;
-							questBlock.lbl_quest.Frame = new CoreGraphics.CGRect((viewWidth * (1 - 0.98)), 0, (viewWidth * 0.96), 35);
+							questBlock.lbl_quest.Frame = new CGRect((viewWidth * (1 - 0.98)), 0, (viewWidth * 0.96), 35);
 							containerElementPos += questBlock.lbl_quest.Frame.Bottom;
 	                            // POSSIBLE options (type 1 & 2 out of 4) //
 	                            UISegmentedControl options = questBlock.optionsControl(catBlock);
-							    questBlock.options.Frame = new CoreGraphics.CGRect((viewWidth * (1 - 0.925)), containerElementPos, (viewWidth * 0.85), 30);
+							    questBlock.options.Frame = new CGRect((viewWidth * (1 - 0.925)), containerElementPos, (viewWidth * 0.85), 30);
 	                            questBlock.setOptions(formData.vragen[j].vraag_type);
 	                            questBlock.AddSubview(options);
 								// POSSIBLE data from file, reload possible modal info
@@ -117,18 +118,19 @@ namespace LoginBestPractice.iOS
 											string person = formData.vragen[j].persoon; if (comment != null) { questBlock.modal.setTxtF_comment(comment); }
 											if (action != null) { questBlock.modal.setTxtF_action(action); }
 											if (person != null) { questBlock.modal.setTxtF_person(person); }
+                                            questBlock.modal.collectData(true);
                                         }
 									}
 								}
 	                            containerElementPos += questBlock.options.Frame.Bottom;
 								// POSSIBLE date (type 3) 
 								// POSSIBLE freeForm (type 4)
-							questBlock.Frame = new CoreGraphics.CGRect(0, containerPos, viewWidth, setStackHeight(questBlock));
+							questBlock.Frame = new CGRect(0, containerPos, viewWidth, setStackHeight(questBlock));
 							containerPos += questBlock.Frame.Height;
 							catBlock.AddSubview(questBlock);
 						}
 					}
-					catBlock.Frame = new CoreGraphics.CGRect(0, 10, viewWidth, (setStackHeight(catBlock) + 25));
+					catBlock.Frame = new CGRect(0, 10, viewWidth, (setStackHeight(catBlock) + 25));
                     // set the view's dimenstion by selected state
                     if (rootFromText == true)
                     {
@@ -195,10 +197,10 @@ namespace LoginBestPractice.iOS
 		public void updateView (CatBlockView catBlock, QuestBlockView questBlock, UIButton btn, string stat)
 		{
 			if (stat == "added") {
-				questBlock.Frame = new CoreGraphics.CGRect(0, questBlock.Frame.Y, viewWidth, setStackHeight(questBlock));
+				questBlock.Frame = new CGRect(0, questBlock.Frame.Y, viewWidth, setStackHeight(questBlock));
 			}
 			else if (stat == "removed") {
-				questBlock.Frame = new CoreGraphics.CGRect(0, questBlock.Frame.Y, viewWidth, setStackHeight(questBlock));
+				questBlock.Frame = new CGRect(0, questBlock.Frame.Y, viewWidth, setStackHeight(questBlock));
 			}
 
 			// re-position views
@@ -210,15 +212,15 @@ namespace LoginBestPractice.iOS
 					if (view.Tag > questBlock.Tag)
 					{
 						if (stat == "added") {
-							view.Frame = new CoreGraphics.CGRect(view.Frame.X, vraagOptieBottom, view.Frame.Width, view.Frame.Height);
+							view.Frame = new CGRect(view.Frame.X, vraagOptieBottom, view.Frame.Width, view.Frame.Height);
 						} else if (stat == "removed") {
-							view.Frame = new CoreGraphics.CGRect(view.Frame.X, vraagOptieBottom, view.Frame.Width, view.Frame.Height);
+							view.Frame = new CGRect(view.Frame.X, vraagOptieBottom, view.Frame.Width, view.Frame.Height);
 						}
 						vraagOptieBottom = view.Frame.Bottom;
 					}
 				}
 			}
-			catBlock.Frame = new CoreGraphics.CGRect(0, 10, viewWidth, (setStackHeight(catBlock) + 25));
+			catBlock.Frame = new CGRect(0, 10, viewWidth, (setStackHeight(catBlock) + 25));
 			formTableView.ReloadData();
 		}
 
@@ -249,6 +251,10 @@ namespace LoginBestPractice.iOS
 		partial void btn_sendForm_TouchUpInside(UIButton sender)
 		{
             RootObject webForm = collectData();
+			if (datastrg == null)
+			{
+				datastrg = new DataStorage();
+			}
             if (datastrg.sendDataWeb(webForm) == true)
 			{
 				succesSend = true;
@@ -271,7 +277,6 @@ namespace LoginBestPractice.iOS
 
 			// form //
 			int dataIndex = DataStorage.data.formulieren.FindIndex(f => f.formulier_id == formID);
-
             Formulieren form = DataStorage.data.formulieren[dataIndex];
 			form.formulier_id = formID; form.formulier_naam = Title;
 			form.locatie = txtf_location.Text; form.project_naam = txtf_projectName.Text;
@@ -302,15 +307,15 @@ namespace LoginBestPractice.iOS
                         dataIndex = DataStorage.data.vragen.FindIndex(q => q.vraag_id == questID);
                         Vragen quest = DataStorage.data.vragen[dataIndex];
                         // modalData
-                        Modal vraagModal = ((QuestBlockView)catSubView).getModal();
-                        if (vraagModal != null)
+                        Modal qModal = ((QuestBlockView)catSubView).getModal();
+                        if (qModal != null)
                         {
-                            quest.extra_commentaar = vraagModal.comment; quest.actie_ondernomen = vraagModal.action;
-                            quest.persoon = vraagModal.person; quest.datum_gereed = vraagModal.datum.Replace("+0000", "");
-                            if (quest.extra_commentaar == null || quest.actie_ondernomen == null || quest.persoon == null || quest.datum_gereed == null)
+                            quest.extra_commentaar = qModal.comment; quest.actie_ondernomen = qModal.action;
+                            quest.persoon = qModal.person; quest.datum_gereed = qModal.date;
+                            if (quest.extra_commentaar == "" || quest.actie_ondernomen == "" || quest.persoon == "" || quest.datum_gereed == "")
                             {
                                 PresentViewController(createAlert("Extra gegevens bij niet akkoord ontbreken!", "FOUT"), true, null);
-                                formTableView.ContentOffset = new CoreGraphics.CGPoint(0, catSubView.Frame.Y);
+                                formTableView.ContentOffset = new CGPoint(0, catSubView.Frame.Y);
                                 if (rootFromText == false) {
 								    return null;
                                 }
@@ -332,7 +337,7 @@ namespace LoginBestPractice.iOS
 	                                {
 	                                    // when questType selection does not have selection, jump to this certain optio
                                         PresentViewController(createAlert("Formulier niet volledig ingevuld", "FOUT"), true, null);
-                                        formTableView.ContentOffset = new CoreGraphics.CGPoint(0, questSubview.Frame.Y);
+                                        formTableView.ContentOffset = new CGPoint(0, questSubview.Frame.Y);
                                         // check if null is allowed (in case of textSource, it is)
                                         if (rootFromText == true) { 
                                             relevantQuests.Add(quest);

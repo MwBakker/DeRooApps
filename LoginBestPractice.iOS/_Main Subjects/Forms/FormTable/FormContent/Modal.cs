@@ -9,7 +9,7 @@ namespace LoginBestPractice.iOS
 		public string comment { get; set; } 
         public string action { get; set; }
         public string person { get; set; }
-        public string datum { get; set; }
+        public string date { get; set; }
 		private bool cancelled;
 
 		public Modal (IntPtr handle) : base (handle)	
@@ -33,21 +33,32 @@ namespace LoginBestPractice.iOS
 		//
 		partial void btn_ok_TouchUpInside(UIButton sender)
 		{
-			comment = txtF_comment.Text;
-			action = txtF_action.Text; 
-			person = txtF_person.Text;
-			datum = dt_date.Date.ToString();
+            collectData(false);
+		}
 
-			if (comment == "" && action == "" && person == "")
-			{
-				UIAlertController alert = UIAlertController.Create("FOUT", "Niet alle velden zijn ingevoerd!", UIAlertControllerStyle.Alert);
-				alert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, a => Console.WriteLine("Okay was clicked"))); 
-                this.PresentViewController(alert, true, null);
-			}
-			else 
-			{
-				this.DismissViewController(true, null);
-			} 
+        // 
+        // collects modal data
+        // checks if data required depending if OK was clicked
+        // 
+        public void collectData(bool fromText) 
+        {
+			comment = txtF_comment.Text;
+			action = txtF_action.Text;
+			person = txtF_person.Text;
+			date = dt_date.Date.ToString().Replace("+0000", "");
+            if (fromText == false)
+            {
+                if (comment == "" || action == "" || person == "")
+                {
+                    UIAlertController alert = UIAlertController.Create("FOUT", "Niet alle velden zijn ingevoerd!", UIAlertControllerStyle.Alert);
+                    alert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, a => Console.WriteLine("Okay was clicked")));
+                    this.PresentViewController(alert, true, null);
+                } 
+                else
+                {
+                    this.DismissViewController(true, null);
+                }
+            }
 		}
 
 		//

@@ -123,6 +123,9 @@
     <Reference Include="Plugin.Geolocator">
       <HintPath>packages\Xam.Plugin.Geolocator.3.0.4\lib\Xamarin.iOS10\Plugin.Geolocator.dll</HintPath>
     </Reference>
+    <Reference Include="SignaturePad">
+      <HintPath>packages\Xamarin.Controls.SignaturePad.2.1.1\lib\Xamarin.iOS\SignaturePad.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json" />
@@ -151,7 +154,6 @@
     <Compile Include="_Main Subjects\Handbook\HandboekViewController.designer.cs">
       <DependentUpon>..\..\Handbook\HandboekViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="_Main Subjects\Toolbox\ToolBoxContentViewController2.cs" />
     <Compile Include="Features\UIDeRooButton.cs" />
     <Compile Include="Login\Login.cs" />
     <Compile Include="Login\LoginPageViewController.cs" />

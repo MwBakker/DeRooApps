@@ -432,6 +432,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4265" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
                                 <rect key="frame" x="0.0" y="442" width="320" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <size key="titleShadowOffset" width="0" height="1"/>
                                 <state key="normal" title="Voeg participanten toe">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -440,7 +441,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="4266" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                <rect key="frame" x="0.0" y="141" width="320" height="300"/>
+                                <rect key="frame" x="0.0" y="156" width="320" height="285"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -495,7 +496,7 @@
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" lineBreakMode="middleTruncation" id="3305" translatesAutoresizingMaskIntoConstraints="NO" key="tableFooterView" buttonType="roundedRect">
                                     <rect key="frame" x="0.0" y="446" width="320" height="34"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <size key="titleShadowOffset" width="0" height="0"/>
+                                    <size key="titleShadowOffset" width="0" height="1"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute keyPath="layer.cornerRadius" type="number">
                                             <real key="value" value="3"/>
@@ -506,7 +507,7 @@
                                     </connections>
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                     <state key="normal" title="Verzend formulier">
-                                        <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="titleShadowColor" colorSpace="calibratedWhite" white="0.666666666666667" alpha="1"/>
                                     </state>
                                 </button>
                                 <view contentMode="scaleToFill" id="3483" key="tableHeaderView" customClass="FirstView">
@@ -617,34 +618,18 @@
         </scene>
         <scene sceneID="3442">
             <objects>
-                <viewController id="3443" sceneMemberID="viewController" customClass="SignatureViewController">
+                <viewController id="3443" sceneMemberID="viewController" customClass="SignatureViewController" storyboardIdentifier="signatureViewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3440"/>
                         <viewControllerLayoutGuide type="bottom" id="3441"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="3444">
+                    <connections/>
+                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="4336" key="view">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="4290" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4291" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                        <rect key="frame" x="0.0" y="434" width="320" height="46"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Rond toolbox af">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                </subviews>
-                            </scrollView>
-                        </subviews>
-                    </view>
-                    <connections>
-                        <outlet property="btn_finishToolbox" destination="4291" id="name-outlet-4291"/>
-                    </connections>
+                        <subviews/>
+                        <color key="backgroundColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
+                    </scrollView>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3445" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -745,8 +730,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4225" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
                                 <rect key="frame" x="0.0" y="394" width="320" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <size key="titleShadowOffset" width="0" height="1"/>
                                 <state key="normal" title="Voeg externe medewerker toe">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" colorSpace="calibratedWhite" white="0.666666666666667" alpha="1"/>
                                 </state>
                                 <connections>
                                     <action selector="btn_addEmployee_TouchUpInside:" destination="4216" id="4253" eventType="touchDown"/>
@@ -755,8 +741,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4226" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
                                 <rect key="frame" x="0.0" y="443" width="320" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <size key="titleShadowOffset" width="0" height="1"/>
                                 <state key="normal" title="Voeg geselecteerde werknemers toe">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" colorSpace="calibratedWhite" white="0.666666666666667" alpha="1"/>
                                 </state>
                                 <connections>
                                     <action selector="btn_approveParticipants_TouchUpInside:" destination="4216" id="4252" eventType="touchDown"/>
@@ -765,7 +752,7 @@
                         </subviews>
                     </view>
                     <connections>
-                        <outlet property="employeesTableViewwww" destination="4220" id="name-outlet-4220"/>
+                        <outlet property="employeesTableView" destination="4220" id="name-outlet-4220"/>
                         <outlet property="btn_addEmployee" destination="4225" id="name-outlet-4225"/>
                         <outlet property="btn_approveParticipants" destination="4226" id="name-outlet-4226"/>
                     </connections>

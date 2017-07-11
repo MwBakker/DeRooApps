@@ -24,7 +24,7 @@ namespace LoginBestPractice.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITableView employeesTableViewwww { get; set; }
+        UIKit.UITableView employeesTableView { get; set; }
 
         [Action ("btn_addEmployee_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -46,9 +46,9 @@ namespace LoginBestPractice.iOS
                 btn_approveParticipants = null;
             }
 
-            if (employeesTableViewwww != null) {
-                employeesTableViewwww.Dispose ();
-                employeesTableViewwww = null;
+            if (employeesTableView != null) {
+                employeesTableView.Dispose ();
+                employeesTableView = null;
             }
         }
     }
