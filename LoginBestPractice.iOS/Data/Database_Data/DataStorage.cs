@@ -87,7 +87,7 @@ namespace DeRoo_iOS
 			values.Add("formulier", jsonData);
 			try
 			{
-				byte[] response = client.UploadValues("https://amkapp.nl/stuurFormulier.php", "POST", values);
+				byte[] response = client.UploadValues("https://amkapp.nl/calls/app/stuurFormulier.php", "POST", values);
 				string responseString = Encoding.UTF8.GetString(response);
 				succes = true;
 			}

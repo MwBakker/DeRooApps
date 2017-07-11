@@ -102,21 +102,24 @@ namespace LoginBestPractice.iOS
 	                            UISegmentedControl options = questBlock.optionsControl(catBlock);
 							    questBlock.options.Frame = new CoreGraphics.CGRect((viewWidth * (1 - 0.925)), containerElementPos, (viewWidth * 0.85), 30);
 	                            questBlock.setOptions(formData.vragen[j].vraag_type);
+	                            questBlock.AddSubview(options);
 								// POSSIBLE data from file, reload possible modal info
 								if (rootFromText == true)
 								{
 									string possibleQAnswer = formData.vragen.First(q => q.vraag_id == questBlock.quest_id).answer;
-                                    if (possibleQAnswer != null)
+									if (possibleQAnswer != null)
 									{
-								        questBlock.selectState(checkGivenAnswer(possibleQAnswer), catBlock, true);
+                                        int givenIndex = checkGivenAnswer(possibleQAnswer);
+										questBlock.selectState(givenIndex, catBlock, true, true);
+                                        if (givenIndex == 1) {
+											// WHEN 'not ok' fill modal if data is present (rootFromText) 
+											string comment = formData.vragen[j].extra_commentaar; string action = formData.vragen[j].actie_ondernomen;
+											string person = formData.vragen[j].persoon; if (comment != null) { questBlock.modal.setTxtF_comment(comment); }
+											if (action != null) { questBlock.modal.setTxtF_action(action); }
+											if (person != null) { questBlock.modal.setTxtF_person(person); }
+                                        }
 									}
-									// string comment = formData.vragen[j].extra_commentaar; string action = formData.vragen[j].actie_ondernomen;
-									//string person = formData.vragen[j].persoon;
-									//if (comment != null) { questBlock.modal.comment = comment; }
-									//if (action != null) { questBlock.modal.action = action; }
-									//if (person != null) { questBlock.modal.person = person; }
 								}
-	                            questBlock.AddSubview(options);
 	                            containerElementPos += questBlock.options.Frame.Bottom;
 								// POSSIBLE date (type 3) 
 								// POSSIBLE freeForm (type 4)
@@ -133,9 +136,8 @@ namespace LoginBestPractice.iOS
                             if (qblock is QuestBlockView) {
                                 foreach (UIView qblockSubview in qblock) {
                                     if (qblockSubview is UISegmentedControl) {
-                                        if (((UISegmentedControl)qblockSubview).SelectedSegment == 1)
-                                        {
-                                            ((QuestBlockView)qblock).selectState(1, catBlock, true);
+                                        if (((UISegmentedControl)qblockSubview).SelectedSegment == 1) {
+                                            ((QuestBlockView)qblock).selectState(1, catBlock, true, false);
                                         } 
                                     }
                                 }
@@ -187,26 +189,8 @@ namespace LoginBestPractice.iOS
         }
 
 		// 
-		// determines height of view in given parameter by subview's height
-		//
-		private nfloat setStackHeight(UIView viewIn)
-		{
-			nfloat hoogte = 0.0f;
-			nfloat prevBottom = 0;
-			foreach (UIView subView in viewIn.Subviews)
-			{
-				if (subView.Hidden == false)
-				{
-					// viewhoogte + delta Y as t.o.v. vorige view onderrand      (deze.view Y-as minus bottomwaarde vorige view)
-					hoogte += (subView.Frame.Height + (subView.Frame.Y - prevBottom));
-					prevBottom = subView.Frame.Bottom;
-				}
-			}
-			return hoogte;
-		}
-
-		// 
-		// updates superView height according to subView heights
+		// updates parenView height according to subView heights
+        // rather view is added or not is important
 		//
 		public void updateView (CatBlockView catBlock, QuestBlockView questBlock, UIButton btn, string stat)
 		{
@@ -217,7 +201,7 @@ namespace LoginBestPractice.iOS
 				questBlock.Frame = new CoreGraphics.CGRect(0, questBlock.Frame.Y, viewWidth, setStackHeight(questBlock));
 			}
 
-			// views eronder herpositioneren t.o.v. vorige view
+			// re-position views
 			nfloat vraagOptieBottom = questBlock.Frame.Bottom;
 			foreach (UIView view in catBlock) 
 			{
@@ -236,6 +220,27 @@ namespace LoginBestPractice.iOS
 			}
 			catBlock.Frame = new CoreGraphics.CGRect(0, 10, viewWidth, (setStackHeight(catBlock) + 25));
 			formTableView.ReloadData();
+		}
+
+
+		// 
+		// sets height, depending on which views are visible in parent
+        // returns total height based on bottom values of views
+		//
+		private nfloat setStackHeight(UIView viewIn)
+		{
+			nfloat hoogte = 0.0f;
+			nfloat prevBottom = 0;
+			foreach (UIView subView in viewIn.Subviews)
+			{
+				if (subView.Hidden == false)
+				{
+                    // viewheight + Y.frame  (Y-axe minus bottomvalue prev view
+					hoogte += (subView.Frame.Height + (subView.Frame.Y - prevBottom));
+					prevBottom = subView.Frame.Bottom;
+				}
+			}
+			return hoogte;
 		}
 
 		// 
@@ -300,11 +305,11 @@ namespace LoginBestPractice.iOS
                         Modal vraagModal = ((QuestBlockView)catSubView).getModal();
                         if (vraagModal != null)
                         {
-                            quest.extra_commentaar = vraagModal.getComment(); quest.actie_ondernomen = vraagModal.getAction();
-                            quest.persoon = vraagModal.getPerson(); quest.datum_gereed = vraagModal.getDate();
+                            quest.extra_commentaar = vraagModal.comment; quest.actie_ondernomen = vraagModal.action;
+                            quest.persoon = vraagModal.person; quest.datum_gereed = vraagModal.datum.Replace("+0000", "");
                             if (quest.extra_commentaar == null || quest.actie_ondernomen == null || quest.persoon == null || quest.datum_gereed == null)
                             {
-                                PresentViewController(createAlert("Extra gegevens bij niet akkoord ontbreken!", "Fout"), true, null);
+                                PresentViewController(createAlert("Extra gegevens bij niet akkoord ontbreken!", "FOUT"), true, null);
                                 formTableView.ContentOffset = new CoreGraphics.CGPoint(0, catSubView.Frame.Y);
                                 if (rootFromText == false) {
 								    return null;
@@ -326,7 +331,7 @@ namespace LoginBestPractice.iOS
 	                                if (index < 0)
 	                                {
 	                                    // when questType selection does not have selection, jump to this certain optio
-                                        PresentViewController(createAlert("Formulier niet volledig ingevuld", "Fout"), true, null);
+                                        PresentViewController(createAlert("Formulier niet volledig ingevuld", "FOUT"), true, null);
                                         formTableView.ContentOffset = new CoreGraphics.CGPoint(0, questSubview.Frame.Y);
                                         // check if null is allowed (in case of textSource, it is)
                                         if (rootFromText == true) { 

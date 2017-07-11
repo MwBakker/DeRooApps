@@ -49,13 +49,13 @@ namespace LoginBestPractice.iOS
 			options.ValueChanged += (sender, e) =>
 			{
 				if (options.SelectedSegment == 0) {
-                    selectState(0, catBlock, false);
+                    selectState(0, catBlock, false, false);
 				} 
                 else if (options.SelectedSegment == 1) {
-                    selectState(1, catBlock, false);
+                    selectState(1, catBlock, false, false);
 				} 
                 else {
-                    selectState(2, catBlock, false);
+                    selectState(2, catBlock, false, false);
 				}
 			};
             return options;
@@ -64,10 +64,11 @@ namespace LoginBestPractice.iOS
         // 
         // determines the selected option
         // sets questBlockView + change in subjectVC main View dimensions
+        // checks wether options comes from file and is at firstSet
         //
-        public void selectState(int selected, CatBlockView catBlock, bool byPrevGiven) 
+        public void selectState(int selected, CatBlockView catBlock, bool rootFromText, bool firstSet) 
         {
-            if (byPrevGiven == true)  {
+            if (rootFromText == true)  {
                 options.SelectedSegment = selected;
             }
             nfloat viewWidth = subjectVC.View.Frame.Width;
@@ -87,16 +88,16 @@ namespace LoginBestPractice.iOS
             {
 				options.TintColor = new UIColor(0.88f, 0.03f, 0.03f, 1.0f);
                 addButtons(viewWidth);
-				modalSet = true;
-                // new modal //
-                if (byPrevGiven == false) {
+                if (modalSet == false) {
                     modal = subjectVC.Storyboard.InstantiateViewController("modalVraag") as Modal;
-                    addModal(modal);
-                    subjectVC.PresentViewController(modal, true, null);
-                } else { 
-                    modal = getModal();
+                    modalSet = true;
                 }
-				subjectVC.updateView(catBlock, this, btn_modal, "added");
+                if (rootFromText == false) {
+                    subjectVC.PresentViewController(modal, true, null);
+                } 
+                if (firstSet == false) {
+                    subjectVC.updateView(catBlock, this, btn_modal, "added");
+                }
             }
             else if (selected == 2) 
             {
@@ -163,14 +164,6 @@ namespace LoginBestPractice.iOS
 				btn_modal.Hidden = true;
 				btn_photo.Hidden = true;
 			}
-		}
-
-		//
-		// adds the modalView as some sort of a childView into this modalView
-		//
-		public void addModal(Modal modal)
-		{
-			this.modal = modal;
 		}
 
 		// 

@@ -11,10 +11,10 @@ namespace LoginBestPractice.iOS
         public string person { get; set; }
         public string datum { get; set; }
 		private bool cancelled;
-		UIView parentView; 
 
 		public Modal (IntPtr handle) : base (handle)	
         {
+            base.LoadView();
 		}
 
 		//
@@ -40,8 +40,9 @@ namespace LoginBestPractice.iOS
 
 			if (comment == "" && action == "" && person == "")
 			{
-				UIAlertView alert = new UIAlertView("fout", "Niet alle velden zijn ingevoerd!", null, "Ok"); 
-				alert.Show();
+				UIAlertController alert = UIAlertController.Create("FOUT", "Niet alle velden zijn ingevoerd!", UIAlertControllerStyle.Alert);
+				alert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, a => Console.WriteLine("Okay was clicked"))); 
+                this.PresentViewController(alert, true, null);
 			}
 			else 
 			{
@@ -60,21 +61,11 @@ namespace LoginBestPractice.iOS
 			//throw new NotImplementedException();
 		}
 
-		// 
-		// sets view 
-		//
-		public void setView(UIView questBlock)
-		{
-			parentView = questBlock;
-		}
+        public void setTxtF_comment(string input) { txtF_comment.Text = input; }
 
-		public string getComment() { return comment; }
+        public void setTxtF_action(string input) { txtF_action.Text = input;  } 
 
-		public string getAction() { return action;  } 
-
-		public string getPerson() { return person; }
-
-		public string getDate() { return datum; }
+        public void setTxtF_person(string input) { txtF_person.Text = input; }
 
 		//
 		// returns modal-state to determine if user is willing to add modal 
