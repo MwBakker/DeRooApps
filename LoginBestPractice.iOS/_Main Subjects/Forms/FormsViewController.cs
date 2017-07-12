@@ -71,7 +71,6 @@ namespace LoginBestPractice.iOS
                 FormContentViewController formContentVC = Storyboard.InstantiateViewController("formContentViewController") as FormContentViewController;
 	                // refresh, because we want a new form with new fields instead of possible filled rootobject from OpenToolbox
 	                dataStorage.getData();
-	                formContentVC.datastrg = dataStorage;
 	                formContentVC.rootFromText = false;
 	                formContentVC.formData = DataStorage.data;
 					formContentVC.Title = formulierNaam;

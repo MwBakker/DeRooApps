@@ -66,9 +66,7 @@ namespace LoginBestPractice.iOS
             SignatureViewController signatureVC = Storyboard.InstantiateViewController("signatureViewController") as SignatureViewController;
             if (employeeTableSource.selectedEmployees.Count < 1)
             {
-				UIAlertController alert = UIAlertController.Create("FOUT", "Er zijn geen werknemers geselecteerd!", UIAlertControllerStyle.Alert);
-				alert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, a => Console.WriteLine("Okay was clicked")));
-                PresentViewController(alert,true,null);
+                PresentViewController(User.createAlert("Er zijn geen werknemers geselecteerd!", "FOUT"), true, null);
             } else {
 				signatureVC.selectedEmployees = employeeTableSource.selectedEmployees;
                 signatureVC.toolboxName = this.toolboxName;

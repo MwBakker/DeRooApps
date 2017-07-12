@@ -14,18 +14,11 @@ namespace DeRoo_iOS
 	{
 		public static RootObject data;
 
-		public List<Formulieren> formList;
-		public List<Categorien> catList;
-		public List<Vragen> questList;
-
 		//
 		// types of lists
 		//
 		public DataStorage()
 		{
-			formList = new List<Formulieren>();
-			catList = new List<Categorien>();
-			questList = new List<Vragen>();
 		}
 
         //
@@ -76,14 +69,14 @@ namespace DeRoo_iOS
 		// IF no data traffic is present, form shall be send when data available
 		// user notified at every event
 		//
-		public bool sendDataWeb(RootObject rootForWeb)
+        public static bool sendDataWeb(RootObject rootForWeb)
 		{
 			var window = UIApplication.SharedApplication.KeyWindow;
 			var vc = window.RootViewController;
 			bool succes;
 			WebClient client = new WebClient();
 			string jsonData = JsonConvert.SerializeObject(rootForWeb);
-			var values = new System.Collections.Specialized.NameValueCollection();
+			var values = new NameValueCollection();
             values.Add("gebruiker_id", User.instance.id);
             values.Add("formulier", jsonData);
             try
@@ -97,10 +90,10 @@ namespace DeRoo_iOS
 			{
 				if (!Reachability.IsHostReachable("https://amkapp.nl"))
 				{
-					vc.PresentViewController(createAlert("Er is op dit moment geen data-verbinding aanwezig. Indien aanwezigheid dataverbinding wordt de opgegeven data automatisch verzonden", "INFO"), true, null);
+					vc.PresentViewController(User.createAlert("Er is op dit moment geen data-verbinding aanwezig. Indien aanwezigheid dataverbinding wordt de opgegeven data automatisch verzonden", "INFO"), true, null);
 					User.addUnsendForm(data);
 				} else {
-					vc.PresentViewController(createAlert("Verzending ongedaan door interne fout", "FOUT"), true, null);
+					vc.PresentViewController(User.createAlert("Verzending ongedaan door interne fout", "FOUT"), true, null);
 				}
 				succes = false;
 			}
@@ -119,7 +112,7 @@ namespace DeRoo_iOS
                 response = client.UploadValues("https://amkapp.nl/calls/app/sendToolbox.php", "POST", toolboxvals);
                 response = client.UploadValues("https://amkapp.nl/calls/app/sendToolbox.php", "POST", participantsVals);
             string responseString = Encoding.UTF8.GetString(response);
-            vc.PresentViewController(createAlert("Toolbox afgerond", "INFO"), true, null);
+            vc.PresentViewController(User.createAlert("Toolbox afgerond", "INFO"), true, null);
         }
 
 		//
@@ -141,16 +134,6 @@ namespace DeRoo_iOS
 			sw.Write(JSON); sw.Flush();
             // re-empty the .data Rootobject
 			return succes;
-		}
-
-		//
-		// creates alert at baseline from empty fields
-		//
-		private static UIAlertController createAlert(string text, string type)
-		{
-			UIAlertController alert = UIAlertController.Create(type, text, UIAlertControllerStyle.Alert);
-			alert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, a => Console.WriteLine("Okay was clicked")));
-			return alert;
 		}
 	}
 }

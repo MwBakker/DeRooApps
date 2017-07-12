@@ -13,7 +13,6 @@ namespace LoginBestPractice.iOS
     {
 		List<UIView> views;
 
-        public DataStorage datastrg { get; set; }
         public bool rootFromText  { get; set; }
         // this is the Root, so it determines the questionType etc in a static way
         // changes in the database are not relevant to this root IF coming from non-web source
@@ -41,9 +40,6 @@ namespace LoginBestPractice.iOS
 		//
 		public override void ViewWillDisappear(bool animated)
 		{
-            if (datastrg == null) {
-                datastrg = new DataStorage();
-            }
 			// collect so far given data to custom Rootobject meant for .txt 
 			if (succesSend == false)
             {
@@ -51,7 +47,7 @@ namespace LoginBestPractice.iOS
 				{
 					rootFromText = true;
 					RootObject fileForm = collectData();
-                    datastrg.sendDataFile(fileForm, date_dateProject.Date.ToString().Replace("+0000", ""));
+                    DataStorage.sendDataWeb(fileForm);
                     UIViewController openFormVC = Storyboard.InstantiateViewController("OpenFormsViewController");
                     openFormVC.ReloadInputViews();
                     //UINavigationController openFVC = Storyboard.InstantiateViewController("OpenFormNavigationController") as UINavigationController;
@@ -125,12 +121,12 @@ namespace LoginBestPractice.iOS
 	                            containerElementPos += questBlock.options.Frame.Bottom;
 								// POSSIBLE date (type 3) 
 								// POSSIBLE freeForm (type 4)
-							questBlock.Frame = new CGRect(0, containerPos, viewWidth, setStackHeight(questBlock));
+							questBlock.Frame = new CGRect(0, containerPos, viewWidth, determineHeight(questBlock));
 							containerPos += questBlock.Frame.Height;
 							catBlock.AddSubview(questBlock);
 						}
 					}
-					catBlock.Frame = new CGRect(0, 10, viewWidth, (setStackHeight(catBlock) + 25));
+					catBlock.Frame = new CGRect(0, 10, viewWidth, (determineHeight(catBlock) + 25));
                     // set the view's dimenstion by selected state
                     if (rootFromText == true)
                     {
@@ -197,10 +193,10 @@ namespace LoginBestPractice.iOS
 		public void updateView (CatBlockView catBlock, QuestBlockView questBlock, UIButton btn, string stat)
 		{
 			if (stat == "added") {
-				questBlock.Frame = new CGRect(0, questBlock.Frame.Y, viewWidth, setStackHeight(questBlock));
+				questBlock.Frame = new CGRect(0, questBlock.Frame.Y, viewWidth, determineHeight(questBlock));
 			}
 			else if (stat == "removed") {
-				questBlock.Frame = new CGRect(0, questBlock.Frame.Y, viewWidth, setStackHeight(questBlock));
+				questBlock.Frame = new CGRect(0, questBlock.Frame.Y, viewWidth, determineHeight(questBlock));
 			}
 
 			// re-position views
@@ -220,7 +216,7 @@ namespace LoginBestPractice.iOS
 					}
 				}
 			}
-			catBlock.Frame = new CGRect(0, 10, viewWidth, (setStackHeight(catBlock) + 25));
+			catBlock.Frame = new CGRect(0, 10, viewWidth, (determineHeight(catBlock) + 25));
 			formTableView.ReloadData();
 		}
 
@@ -229,17 +225,14 @@ namespace LoginBestPractice.iOS
 		// sets height, depending on which views are visible in parent
         // returns total height based on bottom values of views
 		//
-		private nfloat setStackHeight(UIView viewIn)
+		private nfloat determineHeight(UIView viewIn)
 		{
 			nfloat viewBottomLineAnchor = 0.0f;
-			nfloat prevBottom = 0;
 			foreach (UIView subView in viewIn.Subviews)
 			{
 				if (subView.Hidden == false)
 				{
-                    // viewheight + Y.frame  (Y-axe minus bottomvalue prev view
-					viewBottomLineAnchor += (subView.Frame.Height + (subView.Frame.Y - prevBottom));
-					prevBottom = subView.Frame.Bottom;
+                    viewBottomLineAnchor = subView.Frame.Bottom;
 				}
 			}
 			return viewBottomLineAnchor;
@@ -251,15 +244,13 @@ namespace LoginBestPractice.iOS
 		partial void btn_sendForm_TouchUpInside(UIButton sender)
 		{
             RootObject webForm = collectData();
-			if (datastrg == null) {
-				datastrg = new DataStorage();
-			}
-            if (datastrg.sendDataWeb(webForm) == true)
+			
+            if (DataStorage.sendDataWeb(webForm) == true)
 			{
 				succesSend = true;
 				FormsViewController formViewControl = Storyboard.InstantiateViewController("Forms") as FormsViewController;
                 NavigationController.PushViewController(formViewControl, true);
-				this.PresentViewController(createAlert("Formulier Verzonden", ""), true, null);
+				this.PresentViewController(User.createAlert("Formulier Verzonden", ""), true, null);
 			}
 		}
 
@@ -313,7 +304,7 @@ namespace LoginBestPractice.iOS
                             quest.persoon = qModal.person; quest.datum_gereed = qModal.date;
                             if (quest.extra_commentaar == "" || quest.actie_ondernomen == "" || quest.persoon == "" || quest.datum_gereed == "")
                             {
-                                PresentViewController(createAlert("Extra gegevens bij niet akkoord ontbreken!", "FOUT"), true, null);
+                                PresentViewController(User.createAlert("Extra gegevens bij niet akkoord ontbreken!", "FOUT"), true, null);
                                 formTableView.ContentOffset = new CGPoint(0, catSubView.Frame.Y);
                                 if (rootFromText == false) {
 								    return null;
@@ -335,7 +326,7 @@ namespace LoginBestPractice.iOS
 	                                if (index < 0)
 	                                {
 	                                    // when questType selection does not have selection, jump to this certain optio
-                                        PresentViewController(createAlert("Formulier niet volledig ingevuld", "FOUT"), true, null);
+                                        PresentViewController(User.createAlert("Formulier niet volledig ingevuld", "FOUT"), true, null);
                                         formTableView.ContentOffset = new CGPoint(0, questSubview.Frame.Y);
                                         // check if null is allowed (in case of textSource, it is)
                                         if (rootFromText == true) { 
@@ -361,15 +352,5 @@ namespace LoginBestPractice.iOS
             };
             return formRoot;
         }
-
-		//
-		// creates alert at baseline from empty fields
-		//
-		private UIAlertController createAlert(string text, string type)
-		{
-			UIAlertController alert = UIAlertController.Create(type, text, UIAlertControllerStyle.Alert);
-			alert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, a => Console.WriteLine("Okay was clicked")));
-			return alert;
-		}
 	}
 }
