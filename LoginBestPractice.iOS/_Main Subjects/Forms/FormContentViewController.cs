@@ -231,18 +231,18 @@ namespace LoginBestPractice.iOS
 		//
 		private nfloat setStackHeight(UIView viewIn)
 		{
-			nfloat hoogte = 0.0f;
+			nfloat viewBottomLineAnchor = 0.0f;
 			nfloat prevBottom = 0;
 			foreach (UIView subView in viewIn.Subviews)
 			{
 				if (subView.Hidden == false)
 				{
                     // viewheight + Y.frame  (Y-axe minus bottomvalue prev view
-					hoogte += (subView.Frame.Height + (subView.Frame.Y - prevBottom));
+					viewBottomLineAnchor += (subView.Frame.Height + (subView.Frame.Y - prevBottom));
 					prevBottom = subView.Frame.Bottom;
 				}
 			}
-			return hoogte;
+			return viewBottomLineAnchor;
 		}
 
 		// 
@@ -251,8 +251,7 @@ namespace LoginBestPractice.iOS
 		partial void btn_sendForm_TouchUpInside(UIButton sender)
 		{
             RootObject webForm = collectData();
-			if (datastrg == null)
-			{
+			if (datastrg == null) {
 				datastrg = new DataStorage();
 			}
             if (datastrg.sendDataWeb(webForm) == true)
@@ -355,8 +354,7 @@ namespace LoginBestPractice.iOS
                     }
                 }
 			}
-            RootObject formRoot = new RootObject
-            {
+            RootObject formRoot = new RootObject() {
                 formulieren = relevantForm,
                 categorien = relevantCats,
                 vragen = relevantQuests

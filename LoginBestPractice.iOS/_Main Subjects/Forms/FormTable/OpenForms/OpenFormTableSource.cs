@@ -43,12 +43,12 @@ namespace LoginBestPractice.iOS
 		public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
 		{
 			var storyboard = UIStoryboard.FromName("MainStoryboard", null);
-            FormContentViewController formContentViewController = storyboard.InstantiateViewController("formContentViewController") as FormContentViewController;
-                formContentViewController.rootFromText = true;
-	            formContentViewController.formData = unFilledForms[indexPath.Row];
-			    formContentViewController.Title = unFilledForms[indexPath.Row].formulieren[0].formulier_naam;
-			    formContentViewController.setCatAndQuest(unFilledForms[indexPath.Row].formulieren[0].formulier_id);
-            parentVC.NavigationController.PushViewController(formContentViewController, true);
+            FormContentViewController formContentVC = storyboard.InstantiateViewController("formContentViewController") as FormContentViewController;
+                formContentVC.rootFromText = true;
+	            formContentVC.formData = unFilledForms[indexPath.Row];
+			    formContentVC.Title = unFilledForms[indexPath.Row].formulieren[0].formulier_naam;
+			    formContentVC.setCatAndQuest(unFilledForms[indexPath.Row].formulieren[0].formulier_id);
+            parentVC.NavigationController.PushViewController(formContentVC, true);
 		}
 
         //

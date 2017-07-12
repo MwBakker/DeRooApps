@@ -398,7 +398,7 @@
                         <color key="backgroundColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                     </scrollView>
                     <connections>
-                        <outlet property="toolboxesScrollView" destination="4165" id="name-outlet-4165"/>
+                        <outlet property="scrlV_toolbox" destination="4165" id="name-outlet-4165"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2840" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -415,6 +415,7 @@
                     <connections>
                         <outlet property="btn_continueToAdding" destination="4265" id="name-outlet-4265"/>
                         <outlet property="toolboxContentSubjectsTable" destination="4266" id="name-outlet-4266"/>
+                        <outlet property="date_toolBoxDate" destination="4264" id="name-outlet-4264"/>
                     </connections>
                     <view contentMode="scaleToFill" id="4194" key="view">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
@@ -422,7 +423,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <subviews>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" id="4264" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                <rect key="frame" x="0.0" y="68" width="320" height="80"/>
+                                <rect key="frame" x="0.0" y="70" width="320" height="88"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <date key="date" timeIntervalSinceReferenceDate="332704801.65417802">
                                     <!--2011-07-18 18:00:01 +0000-->
@@ -442,7 +443,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="4266" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                <rect key="frame" x="0.0" y="156" width="320" height="285"/>
+                                <rect key="frame" x="0.0" y="166" width="320" height="275"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -599,24 +600,6 @@
             </objects>
             <point key="canvasLocation" x="1372" y="-378"/>
         </scene>
-        <scene sceneID="3363">
-            <objects>
-                <viewController id="3364" sceneMemberID="viewController" storyboardIdentifier="PDFController" customClass="PDFController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="3361"/>
-                        <viewControllerLayoutGuide type="bottom" id="3362"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="3365">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <subviews/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3366" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1833" y="1343"/>
-        </scene>
         <scene sceneID="3442">
             <objects>
                 <viewController id="3443" sceneMemberID="viewController" customClass="SignatureViewController" storyboardIdentifier="signatureViewController">
@@ -624,12 +607,26 @@
                         <viewControllerLayoutGuide type="top" id="3440"/>
                         <viewControllerLayoutGuide type="bottom" id="3441"/>
                     </layoutGuides>
-                    <connections/>
-                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="4336" key="view">
+                    <connections>
+                        <outlet property="scrlV_signatures" destination="4430" id="name-outlet-4430"/>
+                        <outlet property="btn_finishToolbox" destination="4473" id="name-outlet-4473"/>
+                    </connections>
+                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="4430" key="view">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews/>
                         <color key="backgroundColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4473" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                <rect key="frame" x="0.0" y="434" width="320" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Rond toolbox af">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="btn_finishToolbox_TouchUpInside:" destination="3443" id="4474" eventType="touchDown"/>
+                                </connections>
+                            </button>
+                        </subviews>
                     </scrollView>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3445" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -762,6 +759,23 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4218" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1795" y="790"/>
+        </scene>
+        <scene sceneID="4385">
+            <objects>
+                <viewController id="4386" sceneMemberID="viewController" customClass="PDFViewController" storyboardIdentifier="pdfViewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4383"/>
+                        <viewControllerLayoutGuide type="bottom" id="4384"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4387">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4388" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1595" y="1355"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

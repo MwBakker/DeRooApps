@@ -10,7 +10,9 @@ namespace LoginBestPractice.iOS
     {
         private EmployeesTableSource employeeTableSource;
         public List<Medewerker> employeeList;
-        public string toolboxID { get; set; }
+        public string toolboxName { get; set; }
+		public string toolboxID { get; set; }
+        public string toolboxDate { get; set; }
 
         public ParticipantsViewController (IntPtr handle) : base (handle)
         {
@@ -69,6 +71,9 @@ namespace LoginBestPractice.iOS
                 PresentViewController(alert,true,null);
             } else {
 				signatureVC.selectedEmployees = employeeTableSource.selectedEmployees;
+                signatureVC.toolboxName = this.toolboxName;
+                signatureVC.toolboxID = this.toolboxID;
+                signatureVC.toolboxDate = this.toolboxDate;
                 NavigationController.PushViewController(signatureVC, true);
             }
         }

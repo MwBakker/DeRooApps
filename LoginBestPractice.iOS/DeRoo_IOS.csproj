@@ -216,6 +216,11 @@
     <Compile Include="_Main Subjects\Toolbox\UIToolboxSubjectCell.designer.cs">
       <DependentUpon>UIToolboxSubjectCell.cs</DependentUpon>
     </Compile>
+    <Compile Include="PDFViewController.cs" />
+    <Compile Include="PDFViewController.designer.cs">
+      <DependentUpon>PDFViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Main Subjects\Toolbox\EmployeeSignature.cs" />
     <Compile Include="_Main Subjects\Toolbox\EmployeesTableSource.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -14,7 +14,6 @@ namespace LoginBestPractice.iOS
     public partial class ToolboxesViewController : UIViewController
     {
 		//Local variables
-		UIScrollView scrollViewToolbox;
 		ArrayList namen = new ArrayList();
 		string[] files = null;
 		public nfloat totalLength;
@@ -31,7 +30,6 @@ namespace LoginBestPractice.iOS
 
 			DataStorage dataStorage = new DataStorage();
 			dataStorage.getData();
-			Thread.Sleep(1000);
 			nfloat Hoogte = setHeight();
 
             rootObject = DataStorage.data;
@@ -90,10 +88,10 @@ namespace LoginBestPractice.iOS
 		//
 		// creates toolboxbuttons and sets their lay-out specifications
 		//
-		public UIButton createElements(string toolboxID, string toolboxNaam, int hoogteVanButtons)
+		public UIButton createElements(string toolboxID, string toolboxName, int hoogteVanButtons)
 		{
 			UIButton toolboxButton = new UIButton(UIButtonType.RoundedRect);
-			toolboxButton.SetTitle(toolboxNaam, UIControlState.Normal);
+			toolboxButton.SetTitle(toolboxName, UIControlState.Normal);
 			toolboxButton.SetTitleColor(UIColor.White, UIControlState.Normal);
 			toolboxButton.Frame = new CGRect((this.View.Frame.Size.Width * (1 - 0.875)), hoogteVanButtons, (this.View.Frame.Size.Width * 0.75), 35);
 			toolboxButton.Layer.BorderWidth = 1.5f;
@@ -103,9 +101,9 @@ namespace LoginBestPractice.iOS
 			{
 				//Assign storyboard ID to viewcontroller and give it a title of the toolboxsubject.
                 ToolboxContentViewController toolboxContentVC = Storyboard.InstantiateViewController("ToolboxContentViewController") as ToolboxContentViewController;
-				toolboxContentVC.Title = toolboxNaam;
+				toolboxContentVC.Title = toolboxName;
                 toolboxContentVC.toolboxID = toolboxID;
-                toolboxContentVC.createPDFbuttons(toolboxNaam);
+                toolboxContentVC.createPDFbuttons(toolboxName);
                 NavigationController.PushViewController(toolboxContentVC, true);
 			};
 			return toolboxButton;

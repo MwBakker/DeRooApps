@@ -16,13 +16,13 @@ namespace LoginBestPractice.iOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIScrollView toolboxesScrollView { get; set; }
+        UIKit.UIScrollView scrlV_toolbox { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
-            if (toolboxesScrollView != null) {
-                toolboxesScrollView.Dispose ();
-                toolboxesScrollView = null;
+            if (scrlV_toolbox != null) {
+                scrlV_toolbox.Dispose ();
+                scrlV_toolbox = null;
             }
         }
     }

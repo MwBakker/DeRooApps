@@ -6,6 +6,7 @@ using System.IO;
 using Newtonsoft.Json;
 using UIKit;
 using LoginBestPractice.iOS;
+using System.Collections.Specialized;
 
 namespace DeRoo_iOS
 {
@@ -79,23 +80,16 @@ namespace DeRoo_iOS
 		{
 			var window = UIApplication.SharedApplication.KeyWindow;
 			var vc = window.RootViewController;
-			Boolean succes;
+			bool succes;
 			WebClient client = new WebClient();
 			string jsonData = JsonConvert.SerializeObject(rootForWeb);
 			var values = new System.Collections.Specialized.NameValueCollection();
-			values.Add("gebruiker_id", "1");
-			values.Add("formulier", jsonData);
+            values.Add("gebruiker_id", User.instance.id);
+            values.Add("formulier", jsonData);
             try
             {
                 byte[] response = null;
-                if (rootForWeb.toolbox == null)
-                {
-                    response = client.UploadValues("https://amkapp.nl/calls/app/stuurFormulier.php", "POST", values);
-                }
-                else if (rootForWeb.toolbox != null) 
-                {
-                    response = client.UploadValues("https://amkapp.nl/calls/app/sendToolbox.php", "POST", values);
-                }
+                response = client.UploadValues("https://amkapp.nl/calls/app/stuurFormulier.php", "POST", values);
 				string responseString = Encoding.UTF8.GetString(response);
 				succes = true;
 			}
@@ -112,6 +106,21 @@ namespace DeRoo_iOS
 			}
 			return succes;
 		}
+
+        //
+        // sends values of toolbox to server
+        //
+        public static void sendToolbox(NameValueCollection toolboxvals, NameValueCollection participantsVals) 
+        {
+			var window = UIApplication.SharedApplication.KeyWindow;
+			var vc = window.RootViewController;
+            WebClient client = new WebClient();
+			byte[] response = null;
+                response = client.UploadValues("https://amkapp.nl/calls/app/sendToolbox.php", "POST", toolboxvals);
+                response = client.UploadValues("https://amkapp.nl/calls/app/sendToolbox.php", "POST", participantsVals);
+            string responseString = Encoding.UTF8.GetString(response);
+            vc.PresentViewController(createAlert("Toolbox afgerond", "INFO"), true, null);
+        }
 
 		//
 		// writes rootObject to file
@@ -137,7 +146,7 @@ namespace DeRoo_iOS
 		//
 		// creates alert at baseline from empty fields
 		//
-		private UIAlertController createAlert(string text, string type)
+		private static UIAlertController createAlert(string text, string type)
 		{
 			UIAlertController alert = UIAlertController.Create(type, text, UIAlertControllerStyle.Alert);
 			alert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, a => Console.WriteLine("Okay was clicked")));

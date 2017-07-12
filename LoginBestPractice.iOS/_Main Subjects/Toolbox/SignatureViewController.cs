@@ -11,44 +11,78 @@ namespace LoginBestPractice.iOS
     public partial class SignatureViewController : UIViewController
     {
         public List<Medewerker> selectedEmployees { get; set; }
+        public List<ToolboxDeelnemer> toolboxParticipants;
         RootObject webData = new RootObject();
+		public string toolboxName { get; set; }
+        public string toolboxID { get; set; }
+        public string toolboxDate { get; set; }
         nfloat viewWidth;
 
         public SignatureViewController (IntPtr handle) : base (handle)
         {
             viewWidth = this.View.Frame.Width;
+            toolboxParticipants = new List<ToolboxDeelnemer>();
         }
 
         public override void ViewWillAppear(bool animated)
         {
-			nfloat deltaY = 0;
+			nfloat deltaBottomAnchor = 0;
 			foreach (Medewerker employee in selectedEmployees)
 			{
                 // set label and push it's X-axe position for icon
-                UILabel lbl_employee = new UILabel(new CGRect(((viewWidth * 0.5) - 35), deltaY, (viewWidth * 0.65), 35));
+                UILabel lbl_employee = new UILabel(new CGRect(((viewWidth * 0.5) - 35), deltaBottomAnchor, (viewWidth * 0.65), 35));
 				lbl_employee.Text = employee.medewerker_achternaam + ", " + employee.medewerker_voornaam;
 				UIImageView img_contact = new UIImageView(new UIImage("personIcon"));
-                img_contact.Frame = new CGRect((lbl_employee.Frame.X -35), deltaY, 35, 35);
-				deltaY += lbl_employee.Frame.Height;
-                SignaturePadView sgnt_employee = new SignaturePadView(new CGRect(0, deltaY, viewWidth, 125)) { };
-				sgnt_employee.Tag = int.Parse(employee.id);
-				deltaY += sgnt_employee.Frame.Bottom;
-				View.AddSubview(lbl_employee); View.AddSubview(img_contact);
-
-				View.AddSubview(sgnt_employee);
+                img_contact.Frame = new CGRect((lbl_employee.Frame.X -35), deltaBottomAnchor, 35, 35);
+                deltaBottomAnchor = lbl_employee.Frame.Bottom;
+                EmployeeSignature sgnt_employee = new EmployeeSignature();
+                sgnt_employee.Frame = new CGRect(0, deltaBottomAnchor, viewWidth, 125);
+                if (employee.id == null) {
+                    sgnt_employee.nameTag = employee.medewerker_achternaam + ", " + employee.medewerker_voornaam; 
+                } else {
+                    sgnt_employee.idTag = employee.id;
+                }
+                deltaBottomAnchor = sgnt_employee.Frame.Bottom;
+                scrlV_signatures.AddSubview(lbl_employee); scrlV_signatures.AddSubview(img_contact);
+                scrlV_signatures.AddSubview(sgnt_employee);
 			}
-            UIButton btn_sign = new UIButton(new CGRect(0, deltaY, viewWidth, 35));
-            btn_sign.SetTitle("Rond toolbox af", UIControlState.Normal);
-			btn_sign.TouchDown += delegate
-			{
-				// collect signatures
-				// assign signature to employee
-				DataStorage dtstrg = new DataStorage();
-				//RootObject toolboxRoot = new RootObject();
-			};
-            View.AddSubview(btn_sign);
+            btn_finishToolbox.Frame = new CGRect(0,(deltaBottomAnchor + 20),viewWidth,35);
+            deltaBottomAnchor = btn_finishToolbox.Frame.Bottom;
+            scrlV_signatures.ContentSize = new CGSize(viewWidth, deltaBottomAnchor);
         }
 
-       
+        partial void btn_finishToolbox_TouchUpInside(UIButton sender)
+        {
+            var toolboxVals = new System.Collections.Specialized.NameValueCollection();
+            toolboxVals.Add("toolbox_id", toolboxID);
+			toolboxVals.Add("gebruiker_id", User.instance.id);
+            toolboxVals.Add("datum", toolboxDate);
+
+            var participantVals = new System.Collections.Specialized.NameValueCollection();
+            // collect signature views containing all required data
+            // fill available employeeList
+            foreach (UIView subview in scrlV_signatures.Subviews) 
+            {
+                if (subview is SignaturePadView) {
+                    UIImage signatureImg = ((EmployeeSignature)subview).GetImage();
+                    NSData imageData = signatureImg.AsJPEG(0.5f);
+                    if (imageData != null) {
+                        participantVals.Add("handtekening", imageData.GetBase64EncodedData(NSDataBase64EncodingOptions.None).ToString());
+                    }
+                    string employeeID = ((EmployeeSignature)subview).idTag;
+                    string employeeName = ((EmployeeSignature)subview).nameTag;
+                    if (employeeID != null) {
+                        participantVals.Add("medewerker_id", employeeID);
+                        participantVals.Add("naam", "geen");
+                    }
+                    else if (employeeName != null) {
+                        participantVals.Add("medewerker_id", "geen");
+                        participantVals.Add("naam", employeeName);
+                    }
+                    participantVals.Add("toolbox_onderwerp", toolboxName);
+                }
+            } 
+           DataStorage.sendToolbox(toolboxVals, participantVals);
+        }
     }
 }

@@ -1,19 +1,17 @@
 ﻿<Properties StartupConfiguration="{84563AF5-67F4-46D6-B49C-BF8D718F3C64}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="_Main Subjects/Toolbox/SignatureViewController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="_Main Subjects/Toolbox/ParticipantsViewController.cs">
     <Files>
-      <File FileName="_Main Subjects/Toolbox/SignatureViewController.cs" Line="45" Column="36" />
+      <File FileName="_Main Subjects/Toolbox/SignatureViewController.cs" Line="72" Column="41" />
+      <File FileName="_Main Subjects/Toolbox/ToolboxesViewController.cs" Line="106" Column="1" />
+      <File FileName="_Main Subjects/Toolbox/ToolboxContentViewController.cs" Line="87" Column="48" />
+      <File FileName="_Main Subjects/Toolbox/ParticipantsViewController.cs" Line="77" Column="65" />
     </Files>
-    <Pads>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State>
-          <Value>questBlock.modal</Value>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/_Main Subjects/Toolbox/ParticipantsViewController.cs" relfile="_Main Subjects/Toolbox/ParticipantsViewController.cs" line="75" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />

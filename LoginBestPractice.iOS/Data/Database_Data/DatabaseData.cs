@@ -64,6 +64,14 @@ public class Toolbox
 	public string toolbox_onderwerp { get; set; }
 }
 
+public class ToolboxDeelnemer 
+{
+    public string medewerker_id { get; set; }
+    public string naam { get; set; }
+    public string toolbox_onderwerp { get; set; }
+    public string handtekening { get; set; }
+}
+
 public class RootObject
 {
 	public List<Vragen> vragen { get; set; }
@@ -72,4 +80,5 @@ public class RootObject
 	public List<Gebruiker> gebruiker { get; set; }
 	public List<Medewerker> medewerkers { get; set; }
 	public List<Toolbox> toolbox { get; set; }
+    public List<ToolboxDeelnemer> toolboxdeelnemers { get; set; }
 }

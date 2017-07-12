@@ -47,15 +47,9 @@
       <Optimize>false</Optimize>
       <OriginalItemSpec>obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/ibtool/MainStoryboard.storyboardc</OriginalItemSpec>
     </_BundleResourceWithLogicalName>
-    <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/ibtool/MainStoryboard.storyboardc/3364-view-3365.nib">
+    <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/ibtool/MainStoryboard.storyboardc/3443-view-4430.nib">
       <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
-      <LogicalName>MainStoryboard.storyboardc/3364-view-3365.nib</LogicalName>
-      <Optimize>false</Optimize>
-      <OriginalItemSpec>obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/ibtool/MainStoryboard.storyboardc</OriginalItemSpec>
-    </_BundleResourceWithLogicalName>
-    <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/ibtool/MainStoryboard.storyboardc/3443-view-4336.nib">
-      <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
-      <LogicalName>MainStoryboard.storyboardc/3443-view-4336.nib</LogicalName>
+      <LogicalName>MainStoryboard.storyboardc/3443-view-4430.nib</LogicalName>
       <Optimize>false</Optimize>
       <OriginalItemSpec>obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/ibtool/MainStoryboard.storyboardc</OriginalItemSpec>
     </_BundleResourceWithLogicalName>
@@ -68,6 +62,12 @@
     <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/ibtool/MainStoryboard.storyboardc/4216-view-4217.nib">
       <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
       <LogicalName>MainStoryboard.storyboardc/4216-view-4217.nib</LogicalName>
+      <Optimize>false</Optimize>
+      <OriginalItemSpec>obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/ibtool/MainStoryboard.storyboardc</OriginalItemSpec>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/ibtool/MainStoryboard.storyboardc/4386-view-4387.nib">
+      <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
+      <LogicalName>MainStoryboard.storyboardc/4386-view-4387.nib</LogicalName>
       <Optimize>false</Optimize>
       <OriginalItemSpec>obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/ibtool/MainStoryboard.storyboardc</OriginalItemSpec>
     </_BundleResourceWithLogicalName>
@@ -107,12 +107,6 @@
       <Optimize>false</Optimize>
       <OriginalItemSpec>obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/ibtool/MainStoryboard.storyboardc</OriginalItemSpec>
     </_BundleResourceWithLogicalName>
-    <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/ibtool/MainStoryboard.storyboardc/PDFController.nib">
-      <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
-      <LogicalName>MainStoryboard.storyboardc/PDFController.nib</LogicalName>
-      <Optimize>false</Optimize>
-      <OriginalItemSpec>obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/ibtool/MainStoryboard.storyboardc</OriginalItemSpec>
-    </_BundleResourceWithLogicalName>
     <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/ibtool/MainStoryboard.storyboardc/ToolboxContentViewController.nib">
       <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
       <LogicalName>MainStoryboard.storyboardc/ToolboxContentViewController.nib</LogicalName>
@@ -140,6 +134,12 @@
     <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/ibtool/MainStoryboard.storyboardc/participantsViewController.nib">
       <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
       <LogicalName>MainStoryboard.storyboardc/participantsViewController.nib</LogicalName>
+      <Optimize>false</Optimize>
+      <OriginalItemSpec>obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/ibtool/MainStoryboard.storyboardc</OriginalItemSpec>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/ibtool/MainStoryboard.storyboardc/pdfViewController.nib">
+      <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
+      <LogicalName>MainStoryboard.storyboardc/pdfViewController.nib</LogicalName>
       <Optimize>false</Optimize>
       <OriginalItemSpec>obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/ibtool/MainStoryboard.storyboardc</OriginalItemSpec>
     </_BundleResourceWithLogicalName>

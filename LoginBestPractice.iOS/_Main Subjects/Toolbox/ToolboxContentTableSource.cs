@@ -10,18 +10,18 @@ namespace LoginBestPractice.iOS
     {
         List<String> toolboxContentSubjects;
 
-        UIView subjectView;
+        UIViewController parentVC;
 
-        public ToolboxContentTableSource(List<String> toolboxContentSubject, UIView subjectView)
+        public ToolboxContentTableSource(List<String> toolboxContentSubject, UIViewController parentVC)
         {
             this.toolboxContentSubjects = toolboxContentSubject;
-            this.subjectView = subjectView;
+            this.parentVC = parentVC;
         }
 
         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
         {
             var cell = tableView.DequeueReusableCell("toolboxContentSubjectCell") as UIToolboxSubjectCell;
-            cell.TextLabel.Text = toolboxContentSubjects[indexPath.Row];
+            cell.TextLabel.Text = toolboxContentSubjects[indexPath.Row].Replace(".pdf", "");
 			return cell;
         }
 
@@ -32,13 +32,18 @@ namespace LoginBestPractice.iOS
 
 		public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
 		{
-            int index = indexPath.Row;
-            var webView = new UIWebView(subjectView.Bounds);
-			//PDFView.Add(webView);
-            var url = "https://amkapp.nl/toolbox/" + DataStorage.data.toolbox[index] + "/" + toolboxContentSubjects[index];
-			webView.LoadRequest(new NSUrlRequest(new NSUrl(url)));
-			webView.ScalesPageToFit = true;
-			//NavigationController.PushViewController(PDFView, true);
+			UITableViewCell cell = tableView.CellAt(indexPath);
+
+			int index = indexPath.Row;
+            string url = "https://amkapp.nl/toolbox/" + cell.TextLabel.Text + "/" + toolboxContentSubjects[index];
+            if (cell.Accessory == UITableViewCellAccessory.DisclosureIndicator) {
+				cell.Accessory = UITableViewCellAccessory.Checkmark;
+			}
+			var storyboard = UIStoryboard.FromName("MainStoryboard", null);
+            //FormContentViewController formContentVC = storyboard.InstantiateViewController("formContentViewController") as FormContentViewController;
+            PDFViewController PDFVC = storyboard.InstantiateViewController("pdfViewController") as PDFViewController;
+            //PDFVC.setWebView(url);
+           // parentVC.NavigationController.PushViewController(PDFVC, true);
 		}
     }
 }

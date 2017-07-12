@@ -20,6 +20,10 @@ namespace LoginBestPractice.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIDatePicker date_toolBoxDate { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITableView toolboxContentSubjectsTable { get; set; }
 
         [Action ("btn_continueToAdding_TouchUpInside:")]
@@ -35,6 +39,11 @@ namespace LoginBestPractice.iOS
             if (btn_continueToAdding != null) {
                 btn_continueToAdding.Dispose ();
                 btn_continueToAdding = null;
+            }
+
+            if (date_toolBoxDate != null) {
+                date_toolBoxDate.Dispose ();
+                date_toolBoxDate = null;
             }
 
             if (toolboxContentSubjectsTable != null) {

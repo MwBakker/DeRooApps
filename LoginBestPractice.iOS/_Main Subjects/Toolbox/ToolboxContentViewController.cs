@@ -75,14 +75,16 @@ namespace LoginBestPractice.iOS
 	                };*/
                 }
             }
-            toolboxContentSubjectsTable.Source = new ToolboxContentTableSource(toolboxContentSubjects, this.View);
+            toolboxContentSubjectsTable.Source = new ToolboxContentTableSource(toolboxContentSubjects, this);
 		}
 
 
         partial void btn_continueToAdding_TouchUpInside(UIButton sender)
         {
 			ParticipantsViewController participantsVC = Storyboard.InstantiateViewController("participantsViewController") as ParticipantsViewController;
-			participantsVC.toolboxID = toolboxID;
+            participantsVC.toolboxName = this.Title;
+            participantsVC.toolboxDate = date_toolBoxDate.Date.ToString().Replace("+0000", "");
+            participantsVC.toolboxID = this.toolboxID;
 			participantsVC.setEmployees();
 
 			//Push to tableview
