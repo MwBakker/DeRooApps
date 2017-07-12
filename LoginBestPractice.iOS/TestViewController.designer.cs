@@ -11,8 +11,8 @@ using UIKit;
 
 namespace LoginBestPractice.iOS
 {
-    [Register ("PDFViewController")]
-    partial class PDFViewController
+    [Register ("TestViewController")]
+    partial class TestViewController
     {
     }
 }

@@ -56,7 +56,7 @@ namespace LoginBestPractice.iOS
             var toolboxVals = new System.Collections.Specialized.NameValueCollection();
             toolboxVals.Add("toolbox_id", toolboxID);
 			toolboxVals.Add("gebruiker_id", User.instance.id);
-            toolboxVals.Add("datum", toolboxDate);
+            toolboxVals.Add("datum", "27-11-2017");
 
             var participantVals = new System.Collections.Specialized.NameValueCollection();
             // collect signature views containing all required data

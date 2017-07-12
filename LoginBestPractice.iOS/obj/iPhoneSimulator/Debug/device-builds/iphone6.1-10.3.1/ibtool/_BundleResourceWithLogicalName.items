@@ -65,9 +65,9 @@
       <Optimize>false</Optimize>
       <OriginalItemSpec>obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/ibtool/MainStoryboard.storyboardc</OriginalItemSpec>
     </_BundleResourceWithLogicalName>
-    <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/ibtool/MainStoryboard.storyboardc/4386-view-4387.nib">
+    <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/ibtool/MainStoryboard.storyboardc/4498-view-4499.nib">
       <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
-      <LogicalName>MainStoryboard.storyboardc/4386-view-4387.nib</LogicalName>
+      <LogicalName>MainStoryboard.storyboardc/4498-view-4499.nib</LogicalName>
       <Optimize>false</Optimize>
       <OriginalItemSpec>obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/ibtool/MainStoryboard.storyboardc</OriginalItemSpec>
     </_BundleResourceWithLogicalName>
@@ -137,15 +137,15 @@
       <Optimize>false</Optimize>
       <OriginalItemSpec>obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/ibtool/MainStoryboard.storyboardc</OriginalItemSpec>
     </_BundleResourceWithLogicalName>
-    <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/ibtool/MainStoryboard.storyboardc/pdfViewController.nib">
-      <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
-      <LogicalName>MainStoryboard.storyboardc/pdfViewController.nib</LogicalName>
-      <Optimize>false</Optimize>
-      <OriginalItemSpec>obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/ibtool/MainStoryboard.storyboardc</OriginalItemSpec>
-    </_BundleResourceWithLogicalName>
     <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/ibtool/MainStoryboard.storyboardc/signatureViewController.nib">
       <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
       <LogicalName>MainStoryboard.storyboardc/signatureViewController.nib</LogicalName>
+      <Optimize>false</Optimize>
+      <OriginalItemSpec>obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/ibtool/MainStoryboard.storyboardc</OriginalItemSpec>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/ibtool/MainStoryboard.storyboardc/testViewController.nib">
+      <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
+      <LogicalName>MainStoryboard.storyboardc/testViewController.nib</LogicalName>
       <Optimize>false</Optimize>
       <OriginalItemSpec>obj/iPhoneSimulator/Debug/device-builds/iphone6.1-10.3.1/ibtool/MainStoryboard.storyboardc</OriginalItemSpec>
     </_BundleResourceWithLogicalName>

@@ -1,8 +1,6 @@
-﻿﻿﻿﻿using Foundation;
-using System;
+﻿using System;
 using UIKit;
 using DeRoo_iOS;
-using System.Threading;
 using System.IO;
 using CoreGraphics;
 using System.Collections;

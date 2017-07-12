@@ -216,12 +216,12 @@
     <Compile Include="_Main Subjects\Toolbox\UIToolboxSubjectCell.designer.cs">
       <DependentUpon>UIToolboxSubjectCell.cs</DependentUpon>
     </Compile>
-    <Compile Include="PDFViewController.cs" />
-    <Compile Include="PDFViewController.designer.cs">
-      <DependentUpon>PDFViewController.cs</DependentUpon>
-    </Compile>
     <Compile Include="_Main Subjects\Toolbox\EmployeeSignature.cs" />
     <Compile Include="_Main Subjects\Toolbox\EmployeesTableSource.cs" />
+    <Compile Include="TestViewController.cs" />
+    <Compile Include="TestViewController.designer.cs">
+      <DependentUpon>TestViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\deroo.png" />

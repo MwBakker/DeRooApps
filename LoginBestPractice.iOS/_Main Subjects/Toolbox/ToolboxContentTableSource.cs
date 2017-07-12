@@ -40,8 +40,7 @@ namespace LoginBestPractice.iOS
 				cell.Accessory = UITableViewCellAccessory.Checkmark;
 			}
 			var storyboard = UIStoryboard.FromName("MainStoryboard", null);
-            //FormContentViewController formContentVC = storyboard.InstantiateViewController("formContentViewController") as FormContentViewController;
-            PDFViewController PDFVC = storyboard.InstantiateViewController("pdfViewController") as PDFViewController;
+            //PDFViewController PDFVC = storyboard.InstantiateViewController("pdfViewController") as PDFViewController;
             //PDFVC.setWebView(url);
            // parentVC.NavigationController.PushViewController(PDFVC, true);
 		}
