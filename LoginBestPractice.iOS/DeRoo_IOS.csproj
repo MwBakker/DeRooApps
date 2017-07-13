@@ -154,7 +154,6 @@
     <Compile Include="_Main Subjects\Handbook\HandboekViewController.designer.cs">
       <DependentUpon>..\..\Handbook\HandboekViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Features\UIDeRooButton.cs" />
     <Compile Include="Login\Login.cs" />
     <Compile Include="Login\LoginPageViewController.cs" />
     <Compile Include="Login\LoginPageViewController.designer.cs">
@@ -222,6 +221,7 @@
     <Compile Include="TestController.designer.cs">
       <DependentUpon>TestController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Resources\UIDeRooButton.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\deroo.png" />

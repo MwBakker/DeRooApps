@@ -16,7 +16,6 @@ namespace LoginBestPractice.iOS
 			DataStorage dataStorage = new DataStorage();
             rootObject = DataStorage.data;
 			dataStorage.getData();
-			nfloat Hoogte = setHeight();
 			base.LoadView();
 			// code for the logout button(image)
 			User.setLogOut(this.NavigationItem);
@@ -24,30 +23,24 @@ namespace LoginBestPractice.iOS
 
 		public override void ViewDidLoad()
 		{
-			// create all buttons of all the toolboxsubjects and add them to the scrollview.
-			int hoogteVanButtons = -30;
-
+            nfloat buttonPos = 10;
 			for (int i = 0; i < rootObject.toolbox.Count; i++)
 			{
-				hoogteVanButtons += 50;
-				this.View.AddSubview(createElements(rootObject.toolbox[i].toolbox_id, rootObject.toolbox[i].toolbox_onderwerp, hoogteVanButtons));
+                UIDeRooButton btn = toolboxButton(rootObject.toolbox[i].toolbox_id, rootObject.toolbox[i].toolbox_onderwerp, buttonPos);
+                buttonPos = btn.Frame.Bottom;
+                View.AddSubview(btn);
 			}
-
 		}
 
-		//
-		// creates toolboxbuttons and sets their lay-out specifications
-		//
-		public UIButton createElements(string toolboxID, string toolboxName, int hoogteVanButtons)
+        //
+        // method returning button without overwriteing its TouchDown
+        //
+        public UIDeRooButton toolboxButton (string toolboxID, string toolboxName, nfloat buttonPos)
 		{
-			UIButton toolboxButton = new UIButton(UIButtonType.RoundedRect);
-			toolboxButton.SetTitle(toolboxName, UIControlState.Normal);
-			toolboxButton.SetTitleColor(UIColor.White, UIControlState.Normal);
-			toolboxButton.Frame = new CGRect((this.View.Frame.Size.Width * (1 - 0.875)), hoogteVanButtons, (this.View.Frame.Size.Width * 0.75), 35);
-			toolboxButton.Layer.BorderWidth = 1.5f;
-			toolboxButton.Layer.CornerRadius = 5;
-			toolboxButton.BackgroundColor = new UIColor(0.10f, 0.26f, 0.03f, 1.0f);
-			toolboxButton.TouchDown += delegate
+            UIDeRooButton btn_toolbox = new UIDeRooButton(); 
+			btn_toolbox.SetTitle(toolboxName, UIControlState.Normal);
+            btn_toolbox.Frame = new CGRect((this.View.Frame.Size.Width * 0.125), (buttonPos + 15), (this.View.Frame.Size.Width * 0.75), 45);
+			btn_toolbox.TouchDown += delegate
 			{
 				//Assign storyboard ID to viewcontroller and give it a title of the toolboxsubject.
 				ToolboxContentViewController toolboxContentVC = Storyboard.InstantiateViewController("ToolboxContentViewController") as ToolboxContentViewController;
@@ -56,7 +49,7 @@ namespace LoginBestPractice.iOS
 				toolboxContentVC.createPDFbuttons(toolboxName);
 				NavigationController.PushViewController(toolboxContentVC, true);
 			};
-			return toolboxButton;
+			return btn_toolbox;
 		}
 
 		//
