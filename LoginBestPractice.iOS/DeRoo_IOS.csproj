@@ -218,9 +218,9 @@
     </Compile>
     <Compile Include="_Main Subjects\Toolbox\EmployeeSignature.cs" />
     <Compile Include="_Main Subjects\Toolbox\EmployeesTableSource.cs" />
-    <Compile Include="TestViewController.cs" />
-    <Compile Include="TestViewController.designer.cs">
-      <DependentUpon>TestViewController.cs</DependentUpon>
+    <Compile Include="TestController.cs" />
+    <Compile Include="TestController.designer.cs">
+      <DependentUpon>TestController.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

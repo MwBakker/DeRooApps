@@ -63,6 +63,33 @@ namespace DeRoo_iOS
 			}
 		}
 
+        //
+        // retrieve data from map-structure
+        //
+        public static List<string> getToolBoxes(string toolboxName) 
+        {
+            string[] rawFiles;
+            List<string> files = new List<string>();
+            using (WebClient client = new WebClient())
+            {
+                var values = new System.Collections.Specialized.NameValueCollection();
+                values.Add("toolbox_subject", toolboxName);
+                byte[] response = client.UploadValues("https://www.amkapp.nl/calls/app/getFiles.php", "POST", values);
+                string responseString = Encoding.UTF8.GetString(response);
+                char[] delimiterChars = { '\t' };
+                rawFiles = responseString.Split(delimiterChars);
+                for (int i = 0; i < rawFiles.Length; i++)
+                {
+                    if (rawFiles[i] != "")
+                    {
+                        files.Add(rawFiles[i]);
+                    }
+                }
+            }
+            return files;
+        }
+
+
 		// 
 		// serializes all given strings into JSON string
 		// calls on stuurFormulier.php API in order to send the created JSON
@@ -90,7 +117,7 @@ namespace DeRoo_iOS
 			{
 				if (!Reachability.IsHostReachable("https://amkapp.nl"))
 				{
-					vc.PresentViewController(User.createAlert("Er is op dit moment geen data-verbinding aanwezig. Indien aanwezigheid dataverbinding wordt de opgegeven data automatisch verzonden", "INFO"), true, null);
+					vc.PresentViewController(User.createAlert("Er is op dit moment geen data-verbinding aanwezig. Indien aanwezigheid dataverbinding wordt het onverzonden formulier automatisch verzonden", "INFO"), true, null);
 					User.addUnsendForm(data);
 				} else {
 					vc.PresentViewController(User.createAlert("Verzending ongedaan door interne fout", "FOUT"), true, null);
@@ -101,18 +128,35 @@ namespace DeRoo_iOS
 		}
 
         //
-        // sends values of toolbox to server
+        // sends values of toolbox-subject to server
+        // sends values of toolbox-participants to server
         //
-        public static void sendToolbox(NameValueCollection toolboxvals, NameValueCollection participantsVals) 
+        public static void sendToolboxWeb(NameValueCollection toolboxvals, List<NameValueCollection> participantsVals) 
         {
 			var window = UIApplication.SharedApplication.KeyWindow;
 			var vc = window.RootViewController;
             WebClient client = new WebClient();
 			byte[] response = null;
+            try
+            {
                 response = client.UploadValues("https://amkapp.nl/calls/app/sendToolbox.php", "POST", toolboxvals);
-                response = client.UploadValues("https://amkapp.nl/calls/app/sendToolbox.php", "POST", participantsVals);
-            string responseString = Encoding.UTF8.GetString(response);
-            vc.PresentViewController(User.createAlert("Toolbox afgerond", "INFO"), true, null);
+                foreach (NameValueCollection participantsVal in participantsVals)
+                {
+                    response = client.UploadValues("https://amkapp.nl/calls/app/sendToolbox.php", "POST", participantsVal);
+                }
+                string responseString = Encoding.UTF8.GetString(response);
+                vc.PresentViewController(User.createAlert("Toolbox afgerond", "INFO"), true, null);
+            } 
+            catch (Exception) 
+            {
+				if (!Reachability.IsHostReachable("https://amkapp.nl"))
+				{
+					vc.PresentViewController(User.createAlert("Er is op dit moment geen data-verbinding aanwezig. Indien aanwezigheid dataverbinding wordt de opgegeven toolbox automatisch verzonden", "INFO"), true, null);
+					//User.addUnsendForm(data);
+				} else {
+					vc.PresentViewController(User.createAlert("Verzending ongedaan door interne fout", "FOUT"), true, null);
+				}
+            }
         }
 
 		//

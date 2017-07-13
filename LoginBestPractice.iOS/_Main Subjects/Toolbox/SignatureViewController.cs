@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Xamarin.Controls;
 using DeRoo_iOS;
 using CoreGraphics;
+using System.Collections.Specialized;
 
 namespace LoginBestPractice.iOS
 {
@@ -53,16 +54,17 @@ namespace LoginBestPractice.iOS
 
         partial void btn_finishToolbox_TouchUpInside(UIButton sender)
         {
-            var toolboxVals = new System.Collections.Specialized.NameValueCollection();
+            var toolboxVals = new NameValueCollection();
             toolboxVals.Add("toolbox_id", toolboxID);
+            toolboxVals.Add("toolbox_onderwerp", toolboxName);
 			toolboxVals.Add("gebruiker_id", User.instance.id);
-            toolboxVals.Add("datum", "27-11-2017");
-
-            var participantVals = new System.Collections.Specialized.NameValueCollection();
+            toolboxVals.Add("datum", toolboxDate);
+            List<NameValueCollection> participValList = new List<NameValueCollection>();
             // collect signature views containing all required data
             // fill available employeeList
             foreach (UIView subview in scrlV_signatures.Subviews) 
             {
+				var participantVals = new NameValueCollection();
                 if (subview is SignaturePadView) {
                     UIImage signatureImg = ((EmployeeSignature)subview).GetImage();
                     NSData imageData = signatureImg.AsJPEG(0.5f);
@@ -73,16 +75,17 @@ namespace LoginBestPractice.iOS
                     string employeeName = ((EmployeeSignature)subview).nameTag;
                     if (employeeID != null) {
                         participantVals.Add("medewerker_id", employeeID);
-                        participantVals.Add("naam", "geen");
+                        participantVals.Add("naam", "");
                     }
                     else if (employeeName != null) {
-                        participantVals.Add("medewerker_id", "geen");
+                        participantVals.Add("medewerker_id", "-1");
                         participantVals.Add("naam", employeeName);
                     }
                     participantVals.Add("toolbox_onderwerp", toolboxName);
+                    participValList.Add(participantVals);
                 }
             } 
-           DataStorage.sendToolbox(toolboxVals, participantVals);
+            DataStorage.sendToolboxWeb(toolboxVals, participValList);
         }
     }
 }

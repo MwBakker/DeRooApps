@@ -6,6 +6,7 @@ using CoreGraphics;
 using System.Collections;
 using System.Net;
 using System.Text;
+using System.Collections.Generic;
 
 namespace LoginBestPractice.iOS
 {
@@ -13,7 +14,6 @@ namespace LoginBestPractice.iOS
     {
 		//Local variables
 		ArrayList namen = new ArrayList();
-		string[] files = null;
 		public nfloat totalLength;
 		ArrayList tableItems = new ArrayList();
         RootObject rootObject;
@@ -107,7 +107,9 @@ namespace LoginBestPractice.iOS
 			return toolboxButton;
 		}
 
-		//method to get dynamically a nfloat number for the height of the contentsize of the scrollview.
+        //
+		//method to get dynamically a nfloat number for the height of the contentsize of the scrollview
+        //
 		private nfloat setHeight()
 		{
 			RootObject toolboxOnderwerpen = DataStorage.data;
@@ -126,27 +128,21 @@ namespace LoginBestPractice.iOS
             return hoogteScrollview;
 		}
 
-		//method to get dynamically a nfloat number for the height of the contentsize of the scrollview.
-		private nfloat setHeight1(String toolboxNaam)
+        //
+		//method to get dynamically a nfloat number for the height of the contentsize of the scrollview
+        //
+		private nfloat setHeight1(String toolboxName)
 		{
-			nfloat hoogteScrollview = 0;
+			nfloat viewHeight = 0;
+            List<string> files = DataStorage.getToolBoxes(toolboxName);
 
-			using (WebClient client = new WebClient())
+			for (int i = 0; i < files.Count - 1; i++)
 			{
-				var values = new System.Collections.Specialized.NameValueCollection();
-				values.Add("toolbox_subject", toolboxNaam);
-				byte[] response = client.UploadValues("https://www.amkapp.nl/calls/app/getFiles.php", "POST", values);
-				string responseString = Encoding.UTF8.GetString(response);
-				char[] delimiterChars = { ' ', '\t' };
-				files = responseString.Split(delimiterChars);
+				viewHeight += 62;
 			}
-			for (int i = 0; i < files.Length - 1; i++)
-			{
-				hoogteScrollview += 62;
-			}
-			hoogteScrollview += 50;
+			viewHeight += 50;
 
-			return hoogteScrollview;
+			return viewHeight;
 		}
     }
 }

@@ -8,41 +8,43 @@ namespace LoginBestPractice.iOS
 {
     public class ToolboxContentTableSource : UITableViewSource
     {
-        List<String> toolboxContentSubjects;
+        List<string> toolboxPDFs;
+        string toolboxSubject;
 
         UIViewController parentVC;
 
-        public ToolboxContentTableSource(List<String> toolboxContentSubject, UIViewController parentVC)
+        public ToolboxContentTableSource(string toolboxSubject, List<string> toolboxPDFs, UIViewController parentVC)
         {
-            this.toolboxContentSubjects = toolboxContentSubject;
+            this.toolboxSubject = toolboxSubject;
+            this.toolboxPDFs = toolboxPDFs;
             this.parentVC = parentVC;
         }
 
         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
         {
             var cell = tableView.DequeueReusableCell("toolboxContentSubjectCell") as UIToolboxSubjectCell;
-            cell.TextLabel.Text = toolboxContentSubjects[indexPath.Row].Replace(".pdf", "");
+            cell.TextLabel.Text = toolboxPDFs[indexPath.Row].Replace(".pdf", "");
 			return cell;
         }
 
         public override nint RowsInSection(UITableView tableview, nint section)
         {
-            return toolboxContentSubjects.Count;
+            return toolboxPDFs.Count;
         }
 
 		public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
 		{
+            var storyboard = UIStoryboard.FromName("MainStoryboard", null);
+            TestController PDFVC = storyboard.InstantiateViewController("testControl") as TestController;
 			UITableViewCell cell = tableView.CellAt(indexPath);
 
 			int index = indexPath.Row;
-            string url = "https://amkapp.nl/toolbox/" + cell.TextLabel.Text + "/" + toolboxContentSubjects[index];
+            string url = "https://amkapp.nl/toolbox/" + toolboxSubject + "/" + toolboxPDFs[index];
             if (cell.Accessory == UITableViewCellAccessory.DisclosureIndicator) {
 				cell.Accessory = UITableViewCellAccessory.Checkmark;
 			}
-			var storyboard = UIStoryboard.FromName("MainStoryboard", null);
-            //PDFViewController PDFVC = storyboard.InstantiateViewController("pdfViewController") as PDFViewController;
-            //PDFVC.setWebView(url);
-           // parentVC.NavigationController.PushViewController(PDFVC, true);
+            PDFVC.setWebview(url);
+            parentVC.NavigationController.PushViewController(PDFVC, true);
 		}
     }
 }
