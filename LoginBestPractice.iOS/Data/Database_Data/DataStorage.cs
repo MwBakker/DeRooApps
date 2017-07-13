@@ -96,7 +96,7 @@ namespace DeRoo_iOS
 		// IF no data traffic is present, form shall be send when data available
 		// user notified at every event
 		//
-        public static bool sendDataWeb(RootObject rootForWeb)
+        public static bool sendFormWeb(RootObject rootForWeb)
 		{
 			var window = UIApplication.SharedApplication.KeyWindow;
 			var vc = window.RootViewController;
@@ -163,7 +163,7 @@ namespace DeRoo_iOS
 		// writes rootObject to file
         // empties current rootObject so new forms do not have answers
 		//
-		public bool sendDataFile(RootObject textForm, string date)
+		public static bool sendDataFile(RootObject textForm, string date)
 		{
 			date = date.Replace(":","");
 			Boolean succes = true;

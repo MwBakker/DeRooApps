@@ -269,7 +269,7 @@
                                         <color key="tintColor" colorSpace="calibratedRGB" red="0.0392156862745098" green="0.10980392156862745" blue="0.011764705882352941" alpha="1"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" minimumFontSize="17" id="2562" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" clearButtonMode="whileEditing">
-                                        <rect key="frame" x="15" y="30" width="233" height="80"/>
+                                        <rect key="frame" x="15" y="30" width="235" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -284,7 +284,7 @@
                                         <color key="tintColor" colorSpace="calibratedRGB" red="0.0392156862745098" green="0.10980392156862745" blue="0.011764705882352941" alpha="1"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" minimumFontSize="17" id="2563" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" clearButtonMode="whileEditing">
-                                        <rect key="frame" x="15" y="139" width="233" height="105"/>
+                                        <rect key="frame" x="15" y="139" width="235" height="105"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -299,7 +299,7 @@
                                         <color key="tintColor" colorSpace="calibratedRGB" red="0.0392156862745098" green="0.10980392156862745" blue="0.011764705882352941" alpha="1"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="2564" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" clearButtonMode="whileEditing">
-                                        <rect key="frame" x="15" y="285" width="233" height="45"/>
+                                        <rect key="frame" x="15" y="285" width="235" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -518,13 +518,13 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <subviews>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="3484" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" borderStyle="roundedRect">
-                                            <rect key="frame" x="29" y="97" width="206" height="30"/>
+                                            <rect key="frame" x="30" y="95" width="200" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="3485" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" borderStyle="roundedRect">
-                                            <rect key="frame" x="29" y="172" width="206" height="30"/>
+                                            <rect key="frame" x="30" y="170" width="200" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
@@ -546,7 +546,7 @@
                                             <color key="tintColor" colorSpace="calibratedRGB" red="0.0392156862745098" green="0.10980392156862745" blue="0.011764705882352941" alpha="1"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Algemene Gegevens" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3495" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                            <rect key="frame" x="0.0" y="18" width="320" height="47"/>
+                                            <rect key="frame" x="0.0" y="18" width="320" height="50"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
@@ -556,7 +556,7 @@
                                             <size key="shadowOffset" width="0" height="0"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3496" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                            <rect key="frame" x="264" y="170" width="36" height="32"/>
+                                            <rect key="frame" x="265" y="167" width="36" height="36"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Button" image="simplecompassblue.png">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -594,6 +594,9 @@
                         <outlet property="txtf_location" destination="3485" id="name-outlet-3485"/>
                         <outlet property="date_dateProject" destination="3515" id="name-outlet-3515"/>
                         <outlet property="btn_geoLoc" destination="3496" id="name-outlet-3496"/>
+                        <outlet property="lbl_generalInfo" destination="3495" id="name-outlet-3495"/>
+                        <outlet property="lbl_projectName" destination="3493" id="name-outlet-3493"/>
+                        <outlet property="lbl_loc" destination="3494" id="name-outlet-3494"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3042" userLabel="First Responder" sceneMemberID="firstResponder"/>

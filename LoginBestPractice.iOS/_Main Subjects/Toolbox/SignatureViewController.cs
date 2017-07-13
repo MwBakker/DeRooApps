@@ -67,9 +67,13 @@ namespace LoginBestPractice.iOS
 				var participantVals = new NameValueCollection();
                 if (subview is SignaturePadView) {
                     UIImage signatureImg = ((EmployeeSignature)subview).GetImage();
-                    NSData imageData = signatureImg.AsJPEG(0.5f);
-                    if (imageData != null) {
+                    if (signatureImg != null) {
+                        signatureImg.Draw(new CGRect(0, 0, 300, signatureImg.Size.Height));
+						NSData imageData = signatureImg.AsJPEG(0.5f);
                         participantVals.Add("handtekening", imageData.GetBase64EncodedData(NSDataBase64EncodingOptions.None).ToString());
+                    } else {
+                        this.PresentViewController(User.createAlert("Niet alle handtekeningen zijn ingevuld!", "FOUT"), true, null);
+                        return;
                     }
                     string employeeID = ((EmployeeSignature)subview).idTag;
                     string employeeName = ((EmployeeSignature)subview).nameTag;

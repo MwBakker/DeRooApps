@@ -14,7 +14,19 @@ namespace LoginBestPractice.iOS
 
 		public Modal (IntPtr handle) : base (handle)	
         {
+            nfloat viewWidth = UIScreen.MainScreen.Bounds.Width;
+            nfloat viewHeight = UIScreen.MainScreen.Bounds.Height;
             base.LoadView();
+
+            modalView.Frame = new CoreGraphics.CGRect((viewWidth*0.125), (viewHeight*0.125), (viewWidth*0.75), modalView.Frame.Height);
+            nfloat modalViewWidth = modalView.Frame.Width;
+            nfloat modalViewHeight = modalView.Frame.Height;
+            double txtFWidth = (modalViewWidth * 0.8867);
+            txtF_comment.Frame = new CoreGraphics.CGRect(txtF_comment.Frame.X, txtF_comment.Frame.Y, (txtFWidth), (txtF_comment.Frame.Height));
+            txtF_action.Frame = new CoreGraphics.CGRect(txtF_action.Frame.X, txtF_action.Frame.Y, (txtFWidth), (txtF_action.Frame.Height));
+            txtF_person.Frame = new CoreGraphics.CGRect(txtF_person.Frame.X, txtF_person.Frame.Y, (txtFWidth), (txtF_person.Frame.Height));
+            btn_ok.Frame = new CoreGraphics.CGRect(btn_ok.Frame.X, btn_ok.Frame.Y, (modalViewWidth*0.5), (btn_ok.Frame.Height));
+            btn_annuleer.Frame = new CoreGraphics.CGRect(btn_annuleer.Frame.X, btn_annuleer.Frame.Y, (modalViewWidth*0.5), (btn_annuleer.Frame.Height));
 		}
 
 		//
@@ -50,9 +62,7 @@ namespace LoginBestPractice.iOS
             {
                 if (comment == "" || action == "" || person == "")
                 {
-                    UIAlertController alert = UIAlertController.Create("FOUT", "Niet alle velden zijn ingevoerd!", UIAlertControllerStyle.Alert);
-                    alert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, a => Console.WriteLine("Okay was clicked")));
-                    this.PresentViewController(alert, true, null);
+                    this.PresentViewController(DeRoo_iOS.User.createAlert("Niet alle velden zijn ingevoerd!", "FOUT"), true, null);
                 } 
                 else
                 {
@@ -66,10 +76,8 @@ namespace LoginBestPractice.iOS
 		//
 		partial void btn_annuleer_TouchUpInside(UIButton sender)
 		{
-			// Laat controller verdwijnen //t
 			this.DismissViewController(true, null);
 			cancelled = true;
-			//throw new NotImplementedException();
 		}
 
         public void setTxtF_comment(string input) { txtF_comment.Text = input; }

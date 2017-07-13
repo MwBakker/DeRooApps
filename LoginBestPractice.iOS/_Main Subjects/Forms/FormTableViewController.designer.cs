@@ -32,6 +32,18 @@ namespace LoginBestPractice.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lbl_generalInfo { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lbl_loc { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lbl_projectName { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField txtf_location { get; set; }
 
         [Outlet]
@@ -66,6 +78,21 @@ namespace LoginBestPractice.iOS
             if (formTableView != null) {
                 formTableView.Dispose ();
                 formTableView = null;
+            }
+
+            if (lbl_generalInfo != null) {
+                lbl_generalInfo.Dispose ();
+                lbl_generalInfo = null;
+            }
+
+            if (lbl_loc != null) {
+                lbl_loc.Dispose ();
+                lbl_loc = null;
+            }
+
+            if (lbl_projectName != null) {
+                lbl_projectName.Dispose ();
+                lbl_projectName = null;
             }
 
             if (txtf_location != null) {

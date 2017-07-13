@@ -27,15 +27,23 @@ namespace LoginBestPractice.iOS
 		//
 		public FormContentViewController (IntPtr handle) : base (handle)
         {
+            base.LoadView();
             succesSend = false;
-			viewWidth = this.View.Frame.Width;
-			formTableView.Frame = new CGRect(0, 0, viewWidth, this.View.Frame.Height);
-			views = new List<UIView>();
+
+			viewWidth =  UIScreen.MainScreen.Bounds.Width;
+            lbl_generalInfo.Frame = new CGRect(0, lbl_generalInfo.Frame.Y, viewWidth, lbl_generalInfo.Frame.Height);
+            lbl_projectName.Frame = new CGRect(lbl_projectName.Frame.X, lbl_projectName.Frame.Y, (viewWidth*0.359), lbl_projectName.Frame.Height);
+            lbl_loc.Frame = new CGRect(lbl_loc.Frame.X, lbl_loc.Frame.Y, (viewWidth *0.359), lbl_loc.Frame.Height);
+            txtf_location.Frame = new CGRect(txtf_location.Frame.X, txtf_location.Frame.Y, (viewWidth*0.625), txtf_projectName.Frame.Height);
+            btn_geoLoc.Frame = new CGRect((viewWidth*0.828), btn_geoLoc.Frame.Y, (viewWidth*0.1125), btn_geoLoc.Frame.Height);
+            formTableView.Frame = new CGRect(0, 0, viewWidth, this.View.Frame.Height);
+			
+            views = new List<UIView>();
 			deRooGreen = new UIColor(0.04f, 0.17f, 0.01f, 1.0f);
 		}
 
 		//
-		// before we go back... collect Data
+		// before going back... collect Data
         // check and possibly store unfilled form
 		//
 		public override void ViewWillDisappear(bool animated)
@@ -46,8 +54,8 @@ namespace LoginBestPractice.iOS
 				if (txtf_projectName.Text != "" && txtf_location.Text != "")
 				{
 					rootFromText = true;
-					RootObject fileForm = collectData();
-                    DataStorage.sendDataWeb(fileForm);
+                    collectData();
+                    DataStorage.sendDataFile(formData, date_dateProject.Date.ToString().Replace("+0000", ""));
                     UIViewController openFormVC = Storyboard.InstantiateViewController("OpenFormsViewController");
                     openFormVC.ReloadInputViews();
                     //UINavigationController openFVC = Storyboard.InstantiateViewController("OpenFormNavigationController") as UINavigationController;
@@ -93,11 +101,11 @@ namespace LoginBestPractice.iOS
 							nfloat containerElementPos = 0;
 							// quest // 
 							questBlock.lbl_quest.Text = formData.vragen[j].vraag_text;
-							questBlock.lbl_quest.Frame = new CGRect((viewWidth * (1 - 0.98)), 0, (viewWidth * 0.96), 35);
+							questBlock.lbl_quest.Frame = new CGRect((viewWidth*0.02), 0, (viewWidth*0.96), 35);
 							containerElementPos += questBlock.lbl_quest.Frame.Bottom;
 	                            // POSSIBLE options (type 1 & 2 out of 4) //
 	                            UISegmentedControl options = questBlock.optionsControl(catBlock);
-							    questBlock.options.Frame = new CGRect((viewWidth * (1 - 0.925)), containerElementPos, (viewWidth * 0.85), 30);
+							    questBlock.options.Frame = new CGRect((viewWidth*0.0795), containerElementPos, (viewWidth*0.85), 30);
 	                            questBlock.setOptions(formData.vragen[j].vraag_type);
 	                            questBlock.AddSubview(options);
 								// POSSIBLE data from file, reload possible modal info
@@ -126,7 +134,7 @@ namespace LoginBestPractice.iOS
 							catBlock.AddSubview(questBlock);
 						}
 					}
-					catBlock.Frame = new CGRect(0, 10, viewWidth, (determineHeight(catBlock) + 25));
+					catBlock.Frame = new CGRect(0, 10, viewWidth, (determineHeight(catBlock)+25));
                     // set the view's dimenstion by selected state
                     if (rootFromText == true)
                     {
@@ -245,7 +253,7 @@ namespace LoginBestPractice.iOS
 		{
             RootObject webForm = collectData();
 			
-            if (DataStorage.sendDataWeb(webForm) == true)
+            if (DataStorage.sendFormWeb(webForm) == true)
 			{
 				succesSend = true;
 				FormsViewController formViewControl = Storyboard.InstantiateViewController("Forms") as FormsViewController;
