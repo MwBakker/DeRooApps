@@ -1,24 +1,19 @@
 ﻿<Properties StartupConfiguration="{84563AF5-67F4-46D6-B49C-BF8D718F3C64}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="_Main Subjects/Forms/FormTable/FormContent/Modal.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="_Main Subjects/Toolbox/ToolboxesViewController.cs">
     <Files>
       <File FileName="MainStoryboard.storyboard" />
-      <File FileName="_Main Subjects/Forms/FormContentViewController.cs" Line="112" Column="6" />
-      <File FileName="Main.cs" Line="12" Column="1" />
-      <File FileName="_Main Subjects/Forms/FormTable/FormContent/Modal.cs" Line="29" Column="25" />
-      <File FileName="_Main Subjects/Forms/FormTable/FormContent/QuestBlockView.cs" Line="17" Column="27" />
+      <File FileName="_Main Subjects/Toolbox/ToolboxesViewController.cs" Line="54" Column="29" />
+      <File FileName="_Main Subjects/Toolbox/ToolboxContentViewController.cs" Line="15" Column="1" />
+      <File FileName="_Main Subjects/Forms/FormContentViewController.cs" Line="33" Column="17" />
+      <File FileName="_Main Subjects/Toolbox/ToolboxContentTableSource.cs" Line="1" Column="1" />
+      <File FileName="Data/User.cs" Line="54" Column="11" />
     </Files>
-    <Pads>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State>
-          <Value>participantVals._entriesArray[0].Value</Value>
-          <Value>participantVals._entriesArray[2].Value</Value>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/_Main Subjects/Toolbox/ToolboxesViewController.cs" relfile="_Main Subjects/Toolbox/ToolboxesViewController.cs" line="31" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />

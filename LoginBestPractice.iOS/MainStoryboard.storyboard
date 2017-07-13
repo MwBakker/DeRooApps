@@ -256,7 +256,7 @@
                         <autoresizingMask key="autoresizingMask" heightSizable="YES" widthSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleAspectFit" id="3008" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                <rect key="frame" x="27" y="25" width="265" height="451"/>
+                                <rect key="frame" x="27" y="25" width="265" height="450"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" colorSpace="calibratedRGB" red="0.92549019607843142" green="0.92549019607843142" blue="0.92549019607843142" alpha="1"/>
                                 <subviews>
@@ -284,14 +284,14 @@
                                         <color key="tintColor" colorSpace="calibratedRGB" red="0.0392156862745098" green="0.10980392156862745" blue="0.011764705882352941" alpha="1"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" minimumFontSize="17" id="2563" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" clearButtonMode="whileEditing">
-                                        <rect key="frame" x="15" y="139" width="235" height="105"/>
+                                        <rect key="frame" x="15" y="140" width="235" height="105"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <color key="backgroundColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Door wie?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2567" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                        <rect key="frame" x="17" y="263" width="105" height="21"/>
+                                        <rect key="frame" x="17" y="259" width="105" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" colorSpace="calibratedRGB" red="0.058823529411764705" green="0.10588235294117647" blue="0.0392156862745098" alpha="1"/>
@@ -299,14 +299,14 @@
                                         <color key="tintColor" colorSpace="calibratedRGB" red="0.0392156862745098" green="0.10980392156862745" blue="0.011764705882352941" alpha="1"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="2564" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" clearButtonMode="whileEditing">
-                                        <rect key="frame" x="15" y="285" width="235" height="45"/>
+                                        <rect key="frame" x="15" y="281" width="235" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <color key="backgroundColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Datum gereed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2568" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                        <rect key="frame" x="17" y="344" width="93" height="21"/>
+                                        <rect key="frame" x="17" y="342" width="93" height="20"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" colorSpace="calibratedRGB" red="0.050980392156862744" green="0.082352941176470587" blue="0.0392156862745098" alpha="1"/>
@@ -348,7 +348,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" id="3201" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                        <rect key="frame" x="12" y="360" width="242" height="50"/>
+                                        <rect key="frame" x="0.0" y="356" width="265" height="54"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <date key="date" timeIntervalSinceReferenceDate="332704801.65417802">
                                             <!--2011-07-18 18:00:01 +0000-->
@@ -376,6 +376,9 @@
                         <outlet property="txtF_person" destination="2564" id="name-outlet-2564"/>
                         <outlet property="dt_date" destination="3201" id="name-outlet-3201"/>
                         <outlet property="modalView" destination="3008" id="name-outlet-3008"/>
+                        <outlet property="lbl_action" destination="2566" id="name-outlet-2566"/>
+                        <outlet property="lbl_person" destination="2567" id="name-outlet-2567"/>
+                        <outlet property="lbl_dateReady" destination="2568" id="name-outlet-2568"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2547" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -398,7 +401,7 @@
                         <color key="backgroundColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                     </scrollView>
                     <connections>
-                        <outlet property="scrlV_toolbox" destination="4165" id="name-outlet-4165"/>
+                        <outlet property="scrlv_toolbox" destination="4165" id="name-outlet-4165"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2840" userLabel="First Responder" sceneMemberID="firstResponder"/>

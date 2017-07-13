@@ -12,12 +12,9 @@ namespace LoginBestPractice.iOS
 		public ToolboxContentViewController(IntPtr handle) : base(handle)
         {
 			base.LoadView();
-		}
-
-		public override void ViewDidLoad()
-		{
-			base.ViewDidLoad();
-		}
+            toolboxContentSubjectsTable.Frame = new CoreGraphics.CGRect(toolboxContentSubjectsTable.Frame.X, toolboxContentSubjectsTable.Frame.Y, UIScreen.MainScreen.Bounds.Width, toolboxContentSubjectsTable.Frame.Height);
+            btn_continueToAdding.Frame = new CoreGraphics.CGRect((UIScreen.MainScreen.Bounds.Width * 0.25), (UIScreen.MainScreen.Bounds.Bottom - 35), (UIScreen.MainScreen.Bounds.Width * 0.5), btn_continueToAdding.Frame.Height);
+        }
 
 		// 
 		// retrieves PDF's and add title + referrence in button 

@@ -31,7 +31,7 @@ namespace LoginBestPractice.iOS
             succesSend = false;
 
 			viewWidth =  UIScreen.MainScreen.Bounds.Width;
-            lbl_generalInfo.Frame = new CGRect(0, lbl_generalInfo.Frame.Y, viewWidth, lbl_generalInfo.Frame.Height);
+            lbl_generalInfo.Frame = new CGRect(0, 0, viewWidth, lbl_generalInfo.Frame.Height);
             lbl_projectName.Frame = new CGRect(lbl_projectName.Frame.X, lbl_projectName.Frame.Y, (viewWidth*0.359), lbl_projectName.Frame.Height);
             lbl_loc.Frame = new CGRect(lbl_loc.Frame.X, lbl_loc.Frame.Y, (viewWidth *0.359), lbl_loc.Frame.Height);
             txtf_location.Frame = new CGRect(txtf_location.Frame.X, txtf_location.Frame.Y, (viewWidth*0.625), txtf_projectName.Frame.Height);

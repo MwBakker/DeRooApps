@@ -28,6 +28,18 @@ namespace LoginBestPractice.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lbl_action { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lbl_dateReady { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lbl_person { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIView modalView { get; set; }
 
         [Outlet]
@@ -69,6 +81,21 @@ namespace LoginBestPractice.iOS
             if (dt_date != null) {
                 dt_date.Dispose ();
                 dt_date = null;
+            }
+
+            if (lbl_action != null) {
+                lbl_action.Dispose ();
+                lbl_action = null;
+            }
+
+            if (lbl_dateReady != null) {
+                lbl_dateReady.Dispose ();
+                lbl_dateReady = null;
+            }
+
+            if (lbl_person != null) {
+                lbl_person.Dispose ();
+                lbl_person = null;
             }
 
             if (modalView != null) {

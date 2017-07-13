@@ -1,5 +1,5 @@
-using Foundation;
 using System;
+using CoreGraphics;
 using UIKit;
 
 namespace LoginBestPractice.iOS
@@ -18,15 +18,15 @@ namespace LoginBestPractice.iOS
             nfloat viewHeight = UIScreen.MainScreen.Bounds.Height;
             base.LoadView();
 
-            modalView.Frame = new CoreGraphics.CGRect((viewWidth*0.125), (viewHeight*0.125), (viewWidth*0.75), modalView.Frame.Height);
+            modalView.Frame = new CGRect((viewWidth*0.075), (viewHeight*0.0675), (viewWidth*0.85), modalView.Frame.Height);
             nfloat modalViewWidth = modalView.Frame.Width;
             nfloat modalViewHeight = modalView.Frame.Height;
             double txtFWidth = (modalViewWidth * 0.8867);
-            txtF_comment.Frame = new CoreGraphics.CGRect(txtF_comment.Frame.X, txtF_comment.Frame.Y, (txtFWidth), (txtF_comment.Frame.Height));
-            txtF_action.Frame = new CoreGraphics.CGRect(txtF_action.Frame.X, txtF_action.Frame.Y, (txtFWidth), (txtF_action.Frame.Height));
-            txtF_person.Frame = new CoreGraphics.CGRect(txtF_person.Frame.X, txtF_person.Frame.Y, (txtFWidth), (txtF_person.Frame.Height));
-            btn_ok.Frame = new CoreGraphics.CGRect(btn_ok.Frame.X, btn_ok.Frame.Y, (modalViewWidth*0.5), (btn_ok.Frame.Height));
-            btn_annuleer.Frame = new CoreGraphics.CGRect(btn_annuleer.Frame.X, btn_annuleer.Frame.Y, (modalViewWidth*0.5), (btn_annuleer.Frame.Height));
+            txtF_comment.Frame = new CGRect(txtF_comment.Frame.X, txtF_comment.Frame.Y, (txtFWidth), (txtF_comment.Frame.Height));
+            txtF_action.Frame = new CGRect(txtF_action.Frame.X, txtF_action.Frame.Y, (txtFWidth), (txtF_action.Frame.Height));
+            txtF_person.Frame = new CGRect(txtF_person.Frame.X, txtF_person.Frame.Y, (txtFWidth), (txtF_person.Frame.Height));
+            btn_annuleer.Frame = new CGRect(btn_annuleer.Frame.X, btn_ok.Frame.Y, (modalViewWidth * 0.5), (btn_annuleer.Frame.Height));
+            btn_ok.Frame = new CGRect((btn_annuleer.Frame.X + btn_annuleer.Frame.Width), btn_ok.Frame.Y, (modalViewWidth*0.5), (btn_ok.Frame.Height));
 		}
 
 		//
