@@ -194,7 +194,7 @@
                     <connections>
                         <segue id="2921" destination="2838" kind="relationship" relationship="rootViewController"/>
                     </connections>
-                    <tabBarItem key="tabBarItem" title="Toolbox" id="597" image="toolbox.png"/>
+                    <tabBarItem key="tabBarItem" title="Toolbox" id="597" image="toolboxBarIcon.png"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="534" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -353,7 +353,7 @@
                                         <date key="date" timeIntervalSinceReferenceDate="332704801.65417802">
                                             <!--2011-07-18 18:00:01 +0000-->
                                         </date>
-                                        <locale key="locale" localeIdentifier="nl"/>
+                                        <locale key="locale" localeIdentifier="nl_NL"/>
                                         <color key="tintColor" colorSpace="calibratedRGB" red="0.0392156862745098" green="0.10980392156862745" blue="0.011764705882352941" alpha="1"/>
                                     </datePicker>
                                 </subviews>
@@ -458,14 +458,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Toolbox-onderwerp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4269">
-                                                    <rect key="frame" x="54" y="0.0" width="231" height="43"/>
+                                                    <rect key="frame" x="65" y="0.0" width="220" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="toolbox.png" id="4270">
-                                                    <rect key="frame" x="15" y="9" width="24" height="24"/>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="toolboxIcon.png" id="4270">
+                                                    <rect key="frame" x="15" y="4" width="35" height="35"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
@@ -571,10 +571,10 @@
                                         <datePicker contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" id="3515" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
                                             <rect key="frame" x="0.0" y="240" width="320" height="55"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                            <date key="date" timeIntervalSinceReferenceDate="520544584.754599">
-                                                <!--Fri, 30 Jun 2017 19:43:04 GMT-->
+                                            <date key="date" timeIntervalSinceReferenceDate="521716759.784921">
+                                                <!--Fri, 14 Jul 2017 09:19:19 GMT-->
                                             </date>
-                                            <locale key="locale" localeIdentifier="nl"/>
+                                            <locale key="locale" localeIdentifier="nl_NL"/>
                                             <color key="tintColor" colorSpace="calibratedRGB" red="0.0392156862745098" green="0.10980392156862745" blue="0.011764705882352941" alpha="1"/>
                                         </datePicker>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Datum invulling" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3516" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
@@ -800,7 +800,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <resources>
-        <image name="toolbox.png" width="24" height="24"/>
         <image name="formulieren.png" width="24" height="24"/>
         <image name="handboek.png" width="24" height="24"/>
         <image name="back.png" width="24" height="24"/>
@@ -823,5 +822,7 @@
         <image name="122196-200.png" width="30" height="30"/>
         <image name="deroo.png" width="308" height="166"/>
         <image name="personIcon.png" width="512" height="512"/>
+        <image name="toolboxIcon.png" width="35" height="35"/>
+        <image name="toolboxBarIcon.png" width="24" height="24"/>
     </resources>
 </document>

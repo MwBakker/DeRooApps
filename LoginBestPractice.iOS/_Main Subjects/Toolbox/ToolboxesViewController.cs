@@ -21,7 +21,7 @@ namespace LoginBestPractice.iOS
 			User.setLogOut(this.NavigationItem);
 		}
 
-		public override void ViewDidLoad()
+		public override void ViewWillAppear(bool animated)
 		{
             nfloat buttonPos = 10;
 			for (int i = 0; i < rootObject.toolbox.Count; i++)
@@ -30,6 +30,7 @@ namespace LoginBestPractice.iOS
                 buttonPos = btn.Frame.Bottom;
                 View.AddSubview(btn);
 			}
+            scrlv_toolbox.ContentSize = new CGSize(UIScreen.MainScreen.Bounds.Width, buttonPos);
 		}
 
         //
@@ -50,46 +51,6 @@ namespace LoginBestPractice.iOS
 				NavigationController.PushViewController(toolboxContentVC, true);
 			};
 			return btn_toolbox;
-		}
-
-		//
-		//method to get dynamically a nfloat number for the height of the contentsize of the scrollview
-		//
-		private nfloat setHeight()
-		{
-			RootObject toolboxOnderwerpen = DataStorage.data;
-
-			nfloat hoogteScrollview = 0;
-			try
-			{
-				for (int i = 0; i < toolboxOnderwerpen.toolbox.Count; i++)
-				{
-					hoogteScrollview += 41;
-				}
-			}
-			catch (Exception)
-			{
-				UIAlertController alert = UIAlertController.Create("Info", "Er zijn geen toolboxen te weergeven", UIAlertControllerStyle.Alert);
-				alert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, a => Console.WriteLine("Okay was clicked")));
-			}
-			return hoogteScrollview;
-		}
-
-		//
-		//method to get dynamically a nfloat number for the height of the contentsize of the scrollview
-		//
-		private nfloat setHeight1(String toolboxName)
-		{
-			nfloat viewHeight = 0;
-			List<string> files = DataStorage.getToolBoxes(toolboxName);
-
-			for (int i = 0; i < files.Count - 1; i++)
-			{
-				viewHeight += 62;
-			}
-			viewHeight += 50;
-
-			return viewHeight;
 		}
 	}
 }

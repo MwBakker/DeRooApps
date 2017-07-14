@@ -12,12 +12,13 @@ namespace LoginBestPractice.iOS
 
         public OpenFormsViewController (IntPtr handle) : base (handle)
         {
-           // this.TabBarItem.Image.T
+            
         }
 
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+            openFormTableView.Frame = new CoreGraphics.CGRect(openFormTableView.Frame.X, openFormTableView.Frame.Y, UIScreen.MainScreen.Bounds.Width, UIScreen.MainScreen.Bounds.Height);
 			string partialName = "openFormData";
             DirectoryInfo hdDirectoryInWhichToSearch = new DirectoryInfo(documents);
 			FileInfo[] filesInDir = hdDirectoryInWhichToSearch.GetFiles("*" + partialName + "*.*");

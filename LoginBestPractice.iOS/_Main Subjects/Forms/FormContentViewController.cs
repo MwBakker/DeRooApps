@@ -54,8 +54,8 @@ namespace LoginBestPractice.iOS
 				if (txtf_projectName.Text != "" && txtf_location.Text != "")
 				{
 					rootFromText = true;
-                    collectData();
-                    DataStorage.sendDataFile(formData, date_dateProject.Date.ToString().Replace("+0000", ""));
+                    RootObject fileForm = collectData();
+                    DataStorage.sendDataFile(formData, fileForm.formulieren[0].datum);
                     UIViewController openFormVC = Storyboard.InstantiateViewController("OpenFormsViewController");
                     openFormVC.ReloadInputViews();
                     //UINavigationController openFVC = Storyboard.InstantiateViewController("OpenFormNavigationController") as UINavigationController;
@@ -116,6 +116,7 @@ namespace LoginBestPractice.iOS
 									{
                                         int givenIndex = checkGivenAnswer(possibleQAnswer);
 										questBlock.selectState(givenIndex, catBlock, true, true);
+                                        // IF answer is disagreed
                                         if (givenIndex == 1) {
 											// WHEN 'not ok' fill modal if data is present (rootFromText) 
 											string comment = formData.vragen[j].extra_commentaar; string action = formData.vragen[j].actie_ondernomen;
@@ -169,10 +170,9 @@ namespace LoginBestPractice.iOS
         //
         public static NSDate DateTimeToNSDate(DateTime date)
 		{
-		    DateTime reference = TimeZone.CurrentTimeZone.ToLocalTime(
-			new DateTime(2001, 1, 1, 0, 0, 0));
-		    return NSDate.FromTimeIntervalSinceReferenceDate(
-			(date - reference).TotalSeconds);
+		    DateTime reference = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(2001, 1, 1, 0, 0, 0));
+            reference = DateTime.SpecifyKind(DateTime.Parse(reference.Date.ToString()), DateTimeKind.Local).ToLocalTime();
+		    return NSDate.FromTimeIntervalSinceReferenceDate((date - reference).TotalSeconds);
 		}
 
         //
@@ -246,22 +246,6 @@ namespace LoginBestPractice.iOS
 			return viewBottomLineAnchor;
 		}
 
-		// 
-		// collects data per view and possible modal belonging to view	
-		//
-		partial void btn_sendForm_TouchUpInside(UIButton sender)
-		{
-            RootObject webForm = collectData();
-			
-            if (DataStorage.sendFormWeb(webForm) == true)
-			{
-				succesSend = true;
-				FormsViewController formViewControl = Storyboard.InstantiateViewController("Forms") as FormsViewController;
-                NavigationController.PushViewController(formViewControl, true);
-				this.PresentViewController(User.createAlert("Formulier Verzonden", ""), true, null);
-			}
-		}
-
         //
         // collects all the given data by user
         // replaces specific DataStorage object with values containing filled Data
@@ -278,7 +262,8 @@ namespace LoginBestPractice.iOS
             Formulieren form = DataStorage.data.formulieren[dataIndex];
 			form.formulier_id = formID; form.formulier_naam = Title;
 			form.locatie = txtf_location.Text; form.project_naam = txtf_projectName.Text;
-            form.datum = date_dateProject.Date.ToString().Replace("+0000", ""); 
+            DateTime dt = DateTime.SpecifyKind(DateTime.Parse(date_dateProject.Date.ToString()), DateTimeKind.Local).ToLocalTime();
+            form.datum = dt.ToString().Replace("+0000", "");
             form.user = User.instance.name;
             relevantForm.Add(form);
 
@@ -360,5 +345,21 @@ namespace LoginBestPractice.iOS
             };
             return formRoot;
         }
+
+		// 
+		// collects data per view and possible modal belonging to view  
+		//
+		partial void btn_sendForm_TouchUpInside(UIButton sender)
+		{
+			RootObject webForm = collectData();
+
+			if (DataStorage.sendFormWeb(webForm, rootFromText) == true)
+			{
+				succesSend = true;
+				FormsViewController formViewControl = Storyboard.InstantiateViewController("Forms") as FormsViewController;
+				NavigationController.PushViewController(formViewControl, true);
+				this.PresentViewController(User.createAlert("Formulier Verzonden", ""), true, null);
+			}
+		}
 	}
 }

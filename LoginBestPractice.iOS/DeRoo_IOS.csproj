@@ -202,30 +202,29 @@
       <DependentUpon>SignatureViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Features\reachability.cs" />
-    <Compile Include="_Main Subjects\Toolbox\ToolboxContentTableSource.cs" />
-    <Compile Include="_Main Subjects\Toolbox\UIEmployeeCell.cs" />
-    <Compile Include="_Main Subjects\Toolbox\UIEmployeeCell.designer.cs">
-      <DependentUpon>UIEmployeeCell.cs</DependentUpon>
-    </Compile>
     <Compile Include="_Main Subjects\Toolbox\ParticipantsViewController.cs" />
     <Compile Include="_Main Subjects\Toolbox\ParticipantsViewController.designer.cs">
       <DependentUpon>ParticipantsViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="_Main Subjects\Toolbox\UIToolboxSubjectCell.cs" />
-    <Compile Include="_Main Subjects\Toolbox\UIToolboxSubjectCell.designer.cs">
-      <DependentUpon>UIToolboxSubjectCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="_Main Subjects\Toolbox\EmployeeSignature.cs" />
-    <Compile Include="_Main Subjects\Toolbox\EmployeesTableSource.cs" />
-    <Compile Include="TestController.cs" />
-    <Compile Include="TestController.designer.cs">
+    <Compile Include="Resources\UIDeRooButton.cs" />
+    <Compile Include="_Main Subjects\Toolbox\TestController.cs" />
+    <Compile Include="_Main Subjects\Toolbox\TestController.designer.cs">
       <DependentUpon>TestController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Resources\UIDeRooButton.cs" />
+    <Compile Include="_Main Subjects\Toolbox\ToolboxTables\EmployeesTableSource.cs" />
+    <Compile Include="_Main Subjects\Toolbox\ToolboxTables\ToolboxContentTableSource.cs" />
+    <Compile Include="_Main Subjects\Toolbox\ToolboxTables\UIEmployeeCell.cs" />
+    <Compile Include="_Main Subjects\Toolbox\ToolboxTables\UIEmployeeCell.designer.cs">
+      <DependentUpon>UIEmployeeCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_Main Subjects\Toolbox\ToolboxTables\UIToolboxSubjectCell.cs" />
+    <Compile Include="_Main Subjects\Toolbox\ToolboxTables\UIToolboxSubjectCell.designer.cs">
+      <DependentUpon>UIToolboxSubjectCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Features\EmployeeSignature.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\deroo.png" />
-    <BundleResource Include="Resources\toolbox.png" />
     <BundleResource Include="Resources\formulieren.png" />
     <BundleResource Include="Resources\handboek.png" />
     <BundleResource Include="Resources\back.png" />
@@ -255,6 +254,8 @@
     <BundleResource Include="Resources\openFormIcon.png" />
     <BundleResource Include="Resources\122196-200.png" />
     <BundleResource Include="Resources\personIcon.png" />
+    <BundleResource Include="Resources\toolboxIcon.png" />
+    <BundleResource Include="Resources\toolboxBarIcon.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Features\" />
@@ -267,6 +268,7 @@
     <Folder Include="Login\" />
     <Folder Include="_Main Subjects\Forms\FormTable\FormContent\" />
     <Folder Include="_Main Subjects\Forms\FormTable\OpenForms\" />
+    <Folder Include="_Main Subjects\Toolbox\ToolboxTables\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="packages\Xamarin.Swift3.3.0.1\build\Xamarin.Swift3.targets" Condition="Exists('packages\Xamarin.Swift3.3.0.1\build\Xamarin.Swift3.targets')" />

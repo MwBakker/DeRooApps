@@ -13,6 +13,7 @@ namespace DeRoo_iOS
         public string name { get; set; }
         public string email { get; set; }
         static List<RootObject> unsendForms { get; set; }
+        static List<RootObject> unsendToolbox { get; set; }
 
         public static User instance = null;
 
@@ -35,6 +36,11 @@ namespace DeRoo_iOS
 		{
             unsendForms.Add(form);
 		}
+
+        public static void addUnsendToolbox(RootObject toolbox) 
+        {
+            unsendForms.Add(toolbox);
+        }
 
 		//
 		// creates alert at baseline from empty fields

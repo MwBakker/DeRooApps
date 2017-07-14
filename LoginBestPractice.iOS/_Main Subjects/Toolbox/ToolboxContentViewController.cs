@@ -13,7 +13,7 @@ namespace LoginBestPractice.iOS
         {
 			base.LoadView();
             toolboxContentSubjectsTable.Frame = new CoreGraphics.CGRect(toolboxContentSubjectsTable.Frame.X, toolboxContentSubjectsTable.Frame.Y, UIScreen.MainScreen.Bounds.Width, toolboxContentSubjectsTable.Frame.Height);
-            btn_continueToAdding.Frame = new CoreGraphics.CGRect((UIScreen.MainScreen.Bounds.Width * 0.25), (UIScreen.MainScreen.Bounds.Bottom - 35), (UIScreen.MainScreen.Bounds.Width * 0.5), btn_continueToAdding.Frame.Height);
+            btn_continueToAdding.Frame = new CoreGraphics.CGRect((UIScreen.MainScreen.Bounds.Width * 0.25), (UIScreen.MainScreen.Bounds.Bottom * 0.75), (UIScreen.MainScreen.Bounds.Width * 0.5), btn_continueToAdding.Frame.Height);
         }
 
 		// 

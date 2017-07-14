@@ -96,7 +96,7 @@ namespace DeRoo_iOS
 		// IF no data traffic is present, form shall be send when data available
 		// user notified at every event
 		//
-        public static bool sendFormWeb(RootObject rootForWeb)
+        public static bool sendFormWeb(RootObject rootForWeb, bool rootFromText)
 		{
 			var window = UIApplication.SharedApplication.KeyWindow;
 			var vc = window.RootViewController;
@@ -124,6 +124,13 @@ namespace DeRoo_iOS
 				}
 				succes = false;
 			}
+            if (succes == true && rootFromText == true) 
+            {
+				var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                var filename = Path.Combine(documents, "openFormData" + rootForWeb.formulieren[0].datum + ".txt");
+                File.Delete(filename);
+            }
+
 			return succes;
 		}
 
@@ -165,7 +172,9 @@ namespace DeRoo_iOS
 		//
 		public static bool sendDataFile(RootObject textForm, string date)
 		{
-			date = date.Replace(":","");
+			date = date.Replace("/",""); date = date.Replace(" ", "");
+            date = date.Replace(" AM", ""); date = date.Replace(" PM", "");
+            date = date.Replace(" ", "");
 			Boolean succes = true;
 			var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 			var filename = Path.Combine(documents, "openFormData" + date + ".txt");
