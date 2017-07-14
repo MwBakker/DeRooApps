@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using UIKit;
 using LoginBestPractice.iOS;
 using System.Collections.Specialized;
+using Plugin.Connectivity;
 
 namespace DeRoo_iOS
 {
@@ -96,7 +97,7 @@ namespace DeRoo_iOS
 		// IF no data traffic is present, form shall be send when data available
 		// user notified at every event
 		//
-        public static bool sendFormWeb(RootObject rootForWeb, bool rootFromText)
+        public static bool sendFormWeb(RootObject rootForWeb, bool fromFile, string type)
 		{
 			var window = UIApplication.SharedApplication.KeyWindow;
 			var vc = window.RootViewController;
@@ -115,22 +116,21 @@ namespace DeRoo_iOS
 			}
 			catch (Exception)
 			{
-				if (!Reachability.IsHostReachable("https://amkapp.nl"))
+                if (!CrossConnectivity.Current.IsConnected)
 				{
 					vc.PresentViewController(User.createAlert("Er is op dit moment geen data-verbinding aanwezig. Indien aanwezigheid dataverbinding wordt het onverzonden formulier automatisch verzonden", "INFO"), true, null);
-					User.addUnsendForm(data);
+                    sendDataToFile(rootForWeb, "unsentFormData", rootForWeb.formulieren[1].datum);
 				} else {
 					vc.PresentViewController(User.createAlert("Verzending ongedaan door interne fout", "FOUT"), true, null);
 				}
 				succes = false;
 			}
-            if (succes == true && rootFromText == true) 
+            if (succes == true && fromFile == true) 
             {
 				var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                var filename = Path.Combine(documents, "openFormData" + rootForWeb.formulieren[0].datum + ".txt");
+                var filename = Path.Combine(documents, type + rootForWeb.formulieren[0].datum + ".txt");
                 File.Delete(filename);
             }
-
 			return succes;
 		}
 
@@ -156,10 +156,10 @@ namespace DeRoo_iOS
             } 
             catch (Exception) 
             {
-				if (!Reachability.IsHostReachable("https://amkapp.nl"))
+                if (!CrossConnectivity.Current.IsConnected)
 				{
 					vc.PresentViewController(User.createAlert("Er is op dit moment geen data-verbinding aanwezig. Indien aanwezigheid dataverbinding wordt de opgegeven toolbox automatisch verzonden", "INFO"), true, null);
-					//User.addUnsendForm(data);
+                   // sendDataToFile();
 				} else {
 					vc.PresentViewController(User.createAlert("Verzending ongedaan door interne fout", "FOUT"), true, null);
 				}
@@ -170,20 +170,20 @@ namespace DeRoo_iOS
 		// writes rootObject to file
         // empties current rootObject so new forms do not have answers
 		//
-		public static bool sendDataFile(RootObject textForm, string date)
+		public static bool sendDataToFile(RootObject data, string type, string date)
 		{
-			date = date.Replace("/",""); date = date.Replace(" ", "");
+			date = date.Replace("/",""); date = date.Replace(":", "");
             date = date.Replace(" AM", ""); date = date.Replace(" PM", "");
             date = date.Replace(" ", "");
 			Boolean succes = true;
 			var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-			var filename = Path.Combine(documents, "openFormData" + date + ".txt");
+			var filename = Path.Combine(documents, type + date + ".txt");
             if (File.Exists(filename)) { 
                 File.Delete(filename);
             }
 			FileStream fs = new FileStream(filename, FileMode.Create, FileAccess.ReadWrite);
 			StreamWriter sw = new StreamWriter(fs);
-			string JSON = JsonConvert.SerializeObject(textForm);
+			string JSON = JsonConvert.SerializeObject(data);
 			sw.Write(JSON); sw.Flush();
             // re-empty the .data Rootobject
 			return succes;

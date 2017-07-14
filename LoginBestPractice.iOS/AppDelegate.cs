@@ -3,6 +3,7 @@ using System.IO;
 using Foundation;
 using UIKit;
 using DeRoo_iOS;
+using Plugin.Connectivity;
 
 namespace LoginBestPractice.iOS
 {
@@ -29,7 +30,6 @@ namespace LoginBestPractice.iOS
             if(animate)
             {
                 var transitionType = UIViewAnimationOptions.TransitionFlipFromRight;
-
                 Window.RootViewController = rootViewController;
                 UIView.Transition(Window, 0.5, transitionType, () => Window.RootViewController = rootViewController, null);
             }
@@ -49,14 +49,15 @@ namespace LoginBestPractice.iOS
 			var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 			var filename = Path.Combine(documents, "login.txt");
 
-			//isAuthenticated can be used for an auto-login feature, you'll have to implement this
-			//as you see fit or get rid of the if statement if you want.
-			if (File.Exists(filename) == true)
+            //isAuthenticated can be used for an auto-login feature, you'll have to implement this
+            //as you see fit or get rid of the if statement if you want.
+            if (File.Exists(filename) == true)
             {
 				// earlier credentials from file, set User
 				string[] text = File.ReadAllText(filename).Split('/');
 				Login login = new Login(text[0], text[1]);
-				login.isActive();
+                login.isActive();
+                User.createAlert("Geen data-verkeer beschikbaar, authorisatie app niet mogelijk!", "FOUT");
                 var tabBarController = GetViewController(MainStoryboard, "MainTabBarController");
                 SetRootViewController(tabBarController, false);
             }

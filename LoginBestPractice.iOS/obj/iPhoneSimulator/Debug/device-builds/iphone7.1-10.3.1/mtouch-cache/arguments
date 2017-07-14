@@ -27,6 +27,10 @@
 	-r \
 	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/packages/Newtonsoft.Json.8.0.3/lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.dll \
 	-r \
+	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/packages/Xam.Plugin.Connectivity.3.0.1/lib/Xamarin.iOS10/Plugin.Connectivity.Abstractions.dll \
+	-r \
+	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/packages/Xam.Plugin.Connectivity.3.0.1/lib/Xamarin.iOS10/Plugin.Connectivity.dll \
+	-r \
 	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/packages/Xam.Plugin.Geolocator.3.0.4/lib/Xamarin.iOS10/Plugin.Geolocator.Abstractions.dll \
 	-r \
 	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/packages/Xam.Plugin.Geolocator.3.0.4/lib/Xamarin.iOS10/Plugin.Geolocator.dll \
@@ -324,6 +328,10 @@
 	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/Facades/System.Xml.XPath.XDocument.dll \
 	-r \
 	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/Facades/System.Xml.Xsl.Primitives.dll \
+	-r \
+	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/packages/Xam.Plugin.Connectivity.3.0.1/lib/Xamarin.iOS10/Plugin.Connectivity.Abstractions.dll \
+	-r \
+	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/packages/Xam.Plugin.Connectivity.3.0.1/lib/Xamarin.iOS10/Plugin.Connectivity.dll \
 	-r \
 	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/packages/Xam.Plugin.Geolocator.3.0.4/lib/Xamarin.iOS10/Plugin.Geolocator.Abstractions.dll \
 	-r \

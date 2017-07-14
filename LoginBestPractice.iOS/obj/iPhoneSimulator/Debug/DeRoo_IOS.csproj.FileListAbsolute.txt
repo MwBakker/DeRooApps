@@ -89,3 +89,9 @@
 /Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone7.1-10.3.1/optimized/toolboxIcon.png
 /Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone7.1-10.3.1/optimized/toolboxBarIcon.png
 /Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/iphone7.1-10.3.1/optimized/
+/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/bin/iPhoneSimulator/Debug/Plugin.Connectivity.Abstractions.dll
+/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/bin/iPhoneSimulator/Debug/Plugin.Connectivity.dll
+/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/bin/iPhoneSimulator/Debug/Plugin.Connectivity.Abstractions.pdb
+/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/bin/iPhoneSimulator/Debug/Plugin.Connectivity.Abstractions.xml
+/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/bin/iPhoneSimulator/Debug/Plugin.Connectivity.pdb
+/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/bin/iPhoneSimulator/Debug/Plugin.Connectivity.xml

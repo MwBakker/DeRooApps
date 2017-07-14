@@ -27,6 +27,7 @@ namespace LoginBestPractice.iOS
 		//
 		public FormContentViewController (IntPtr handle) : base (handle)
         {
+            views = new List<UIView>();
             base.LoadView();
             succesSend = false;
 
@@ -38,7 +39,6 @@ namespace LoginBestPractice.iOS
             btn_geoLoc.Frame = new CGRect((viewWidth*0.828), btn_geoLoc.Frame.Y, (viewWidth*0.1125), btn_geoLoc.Frame.Height);
             formTableView.Frame = new CGRect(0, 0, viewWidth, this.View.Frame.Height);
 			
-            views = new List<UIView>();
 			deRooGreen = new UIColor(0.04f, 0.17f, 0.01f, 1.0f);
 		}
 
@@ -55,7 +55,7 @@ namespace LoginBestPractice.iOS
 				{
 					rootFromText = true;
                     RootObject fileForm = collectData();
-                    DataStorage.sendDataFile(formData, fileForm.formulieren[0].datum);
+                    DataStorage.sendDataToFile(formData, "openFormData", fileForm.formulieren[0].datum);
                     UIViewController openFormVC = Storyboard.InstantiateViewController("OpenFormsViewController");
                     openFormVC.ReloadInputViews();
                     //UINavigationController openFVC = Storyboard.InstantiateViewController("OpenFormNavigationController") as UINavigationController;
@@ -75,7 +75,7 @@ namespace LoginBestPractice.iOS
             if (rootFromText == true) {
                 txtf_projectName.Text = formData.formulieren[0].project_naam;
                 txtf_location.Text = formData.formulieren[0].locatie;
-                date_dateProject.SetDate(DateTimeToNSDate(DateTime.Parse(formData.formulieren[0].datum)), true);
+                date_dateProject.SetDate(User.DateTimeToNSDate(DateTime.Parse(formData.formulieren[0].datum)), true);
             }
 			formID = formIDIn;
 			for (int i = 0; i < formData.categorien.Count; i++)
@@ -165,16 +165,6 @@ namespace LoginBestPractice.iOS
 			var pos = CrossGeolocator.Current.GetPositionAsync();
 		}
 
-		//
-        // determines date for UIDatePicker
-        //
-        public static NSDate DateTimeToNSDate(DateTime date)
-		{
-		    DateTime reference = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(2001, 1, 1, 0, 0, 0));
-            reference = DateTime.SpecifyKind(DateTime.Parse(reference.Date.ToString()), DateTimeKind.Local).ToLocalTime();
-		    return NSDate.FromTimeIntervalSinceReferenceDate((date - reference).TotalSeconds);
-		}
-
         //
         // checks given answer based on previous input
         // sends required action to method in questBlock, handling the IF- selected actions
@@ -262,8 +252,12 @@ namespace LoginBestPractice.iOS
             Formulieren form = DataStorage.data.formulieren[dataIndex];
 			form.formulier_id = formID; form.formulier_naam = Title;
 			form.locatie = txtf_location.Text; form.project_naam = txtf_projectName.Text;
-            DateTime dt = DateTime.SpecifyKind(DateTime.Parse(date_dateProject.Date.ToString()), DateTimeKind.Local).ToLocalTime();
-            form.datum = dt.ToString().Replace("+0000", "");
+            if (rootFromText == true) {
+				form.datum = date_dateProject.Date.ToString().Replace("+0000", "");
+			} else {
+				DateTime dt = DateTime.SpecifyKind(DateTime.Parse(date_dateProject.Date.ToString()), DateTimeKind.Local).ToLocalTime();
+				form.datum = dt.ToString().Replace("+0000", "");
+            }
             form.user = User.instance.name;
             relevantForm.Add(form);
 
@@ -298,7 +292,7 @@ namespace LoginBestPractice.iOS
                             if (quest.extra_commentaar == "" || quest.actie_ondernomen == "" || quest.persoon == "" || quest.datum_gereed == "")
                             {
                                 PresentViewController(User.createAlert("Extra gegevens bij niet akkoord ontbreken!", "FOUT"), true, null);
-                                formTableView.ContentOffset = new CGPoint(0, catSubView.Frame.Y);
+                                formTableView.ContentOffset = new CGPoint(0, catSubView.Frame.Top);
                                 if (rootFromText == false) {
 								    return null;
                                 }
@@ -351,15 +345,22 @@ namespace LoginBestPractice.iOS
 		//
 		partial void btn_sendForm_TouchUpInside(UIButton sender)
 		{
-			RootObject webForm = collectData();
-
-			if (DataStorage.sendFormWeb(webForm, rootFromText) == true)
-			{
-				succesSend = true;
-				FormsViewController formViewControl = Storyboard.InstantiateViewController("Forms") as FormsViewController;
-				NavigationController.PushViewController(formViewControl, true);
-				this.PresentViewController(User.createAlert("Formulier Verzonden", ""), true, null);
-			}
+            if (txtf_projectName.Text != "" && txtf_projectName.Text != "") 
+            {
+				RootObject webForm = collectData();
+				// from file or not can both be true/false in this method-call
+				if (DataStorage.sendFormWeb(webForm, rootFromText, "openFormData") == true)
+				{
+					succesSend = true;
+					FormsViewController formViewControl = Storyboard.InstantiateViewController("Forms") as FormsViewController;
+                    NavigationController.PushViewController(formViewControl, true);
+					this.PresentViewController(User.createAlert("Formulier Verzonden", ""), true, null);
+				}
+            }
+            else {
+                User.createAlert("Algemene informatie niet ingevuld!", "FOUT");
+                formTableView.ContentOffset = new CGPoint(0, txtf_location.Frame.Bottom);
+            }
 		}
 	}
 }

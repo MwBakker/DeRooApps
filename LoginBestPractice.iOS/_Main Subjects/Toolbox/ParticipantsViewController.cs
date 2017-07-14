@@ -3,6 +3,7 @@ using DeRoo_iOS;
 using System;
 using UIKit;
 using System.Collections.Generic;
+using CoreGraphics;
 
 namespace LoginBestPractice.iOS
 {
@@ -17,6 +18,12 @@ namespace LoginBestPractice.iOS
         public ParticipantsViewController (IntPtr handle) : base (handle)
         {
             base.LoadView();
+            nfloat screenWidth = UIScreen.MainScreen.Bounds.Width;
+            nfloat screenHeight = UIScreen.MainScreen.Bounds.Height;
+            employeesTableView.Frame = new CGRect(employeesTableView.Frame.X, employeesTableView.Frame.Y, screenWidth, (screenHeight*0.8125));
+            btn_addEmployee.Frame = new CGRect((screenWidth*0.125), (screenHeight*0.815), (screenWidth*0.75), btn_addEmployee.Frame.Height);
+            btn_approveParticipants.Frame = new CGRect((screenWidth*0.078), (screenHeight*0.875), (screenWidth*0.8484), btn_approveParticipants.Frame.Height);
+
             employeeList = DataStorage.data.medewerkers;
         }
 
@@ -38,22 +45,37 @@ namespace LoginBestPractice.iOS
         //
 		partial void btn_addEmployee_TouchUpInside(UIButton sender)
 		{
+
+            UIAlertController modal = UIAlertController.Create("Externe medewerker toevoegen", "Voer de naam van de medewerker in", UIAlertControllerStyle.Alert);
+			UITextField txtF_exEmployee = null;
+            modal.AddTextField((textField) => {
+				txtF_exEmployee = textField;
+				txtF_exEmployee.Placeholder = "medewerker";
+			});
+            modal.AddAction(UIAlertAction.Create("Medewerker toevoegen", UIAlertActionStyle.Default, action => addExternalEmployee(txtF_exEmployee.Text)));
+			modal.AddAction(UIAlertAction.Create("Annuleer", UIAlertActionStyle.Cancel, null));
+            PresentViewController(modal, true, null);
+            /*
+            alert.AddAction(UIAlertAction.Create("Toevoegen", UIAlertActionStyle.Default, a => System.Console.WriteLine("Okay was clicked")));
+
+
 			var ExterneDeelnemerToevoegen = new UIAlertView("Externe medewerker toevoegen", "Voer de naam van de medewerker in", null, "Annuleren", "Toevoegen");
 			ExterneDeelnemerToevoegen.AlertViewStyle = UIAlertViewStyle.PlainTextInput;
 			ExterneDeelnemerToevoegen.Show();
 			ExterneDeelnemerToevoegen.Clicked += (object senders, UIButtonEventArgs es) =>
 			{
 				if (es.ButtonIndex == 1)
-				{ /*
+				{ 
                     string externeDeelnemer = ExterneDeelnemerToevoegen.GetTextField(0).Text;
                     employeeList.Add(externeDeelnemer);
                     employeeList.ReloadData();
-                    */
+
 				}
 				else
 				{
 				}
 			};
+    */
 		}
 
 		//

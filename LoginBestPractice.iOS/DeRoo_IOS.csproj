@@ -126,6 +126,12 @@
     <Reference Include="SignaturePad">
       <HintPath>packages\Xamarin.Controls.SignaturePad.2.1.1\lib\Xamarin.iOS\SignaturePad.dll</HintPath>
     </Reference>
+    <Reference Include="Plugin.Connectivity.Abstractions">
+      <HintPath>packages\Xam.Plugin.Connectivity.3.0.1\lib\Xamarin.iOS10\Plugin.Connectivity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Connectivity">
+      <HintPath>packages\Xam.Plugin.Connectivity.3.0.1\lib\Xamarin.iOS10\Plugin.Connectivity.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json" />
@@ -201,7 +207,6 @@
     <Compile Include="_Main Subjects\Toolbox\SignatureViewController.designer.cs">
       <DependentUpon>SignatureViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Features\reachability.cs" />
     <Compile Include="_Main Subjects\Toolbox\ParticipantsViewController.cs" />
     <Compile Include="_Main Subjects\Toolbox\ParticipantsViewController.designer.cs">
       <DependentUpon>ParticipantsViewController.cs</DependentUpon>

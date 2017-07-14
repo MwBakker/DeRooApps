@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
+using Foundation;
 using LoginBestPractice.iOS;
+using Newtonsoft.Json;
 using UIKit;
 
 namespace DeRoo_iOS
@@ -12,8 +15,6 @@ namespace DeRoo_iOS
         public string token { get; set; }
         public string name { get; set; }
         public string email { get; set; }
-        static List<RootObject> unsendForms { get; set; }
-        static List<RootObject> unsendToolbox { get; set; }
 
         public static User instance = null;
 
@@ -22,7 +23,6 @@ namespace DeRoo_iOS
 		//
         public User(string id, string token, string name, string email)
         {
-            unsendForms = new List<RootObject>();
             this.id = id; this.token = token;
             this.name = name; this.email = email;
 
@@ -30,17 +30,46 @@ namespace DeRoo_iOS
             {
                 instance = this;
             }
+			//StartTimer();
         }
 
-        public static void addUnsendForm(RootObject form)
+        //
+        // check internet 
+        // IF data is available, send data from files to server
+        // delete certain file afterwards
+        //
+        /*
+		static async void StartTimer()
 		{
-            unsendForms.Add(form);
+			await Task.Delay(30);
+			// check internet 
+			if (Reachability.IsHostReachable("www.amkapp.nl"))
+			{
+				// read the files 
+                string documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+				DirectoryInfo hdDirectoryInWhichToSearch = new DirectoryInfo(documents);
+                string partialName = "unsentFormData";
+				FileInfo[] filesInDir = hdDirectoryInWhichToSearch.GetFiles("*" + partialName + "*.*");
+                if (filesInDir.Length > 0)
+                {
+                    List<RootObject> unsentForms = new List<RootObject>();
+                    foreach (FileInfo foundFile in filesInDir)
+                    {
+                        string filename = foundFile.FullName;
+                        string rawJSON = File.ReadAllText(filename);
+                        RootObject unsentForm = JsonConvert.DeserializeObject<RootObject>(rawJSON);
+                        DataStorage.sendFormWeb(unsentForm, true, "unsentFormData");
+                    }
+                    createAlert("Offline formulieren zojuist verzonden!", "INFO");
+                } 
+			}
 		}
+		*/
 
-        public static void addUnsendToolbox(RootObject toolbox) 
-        {
-            unsendForms.Add(toolbox);
-        }
+		void OnTimerElasped(object o, EventArgs e)
+		{
+			Console.WriteLine("tick");
+		}
 
 		//
 		// creates alert at baseline from empty fields
@@ -50,6 +79,16 @@ namespace DeRoo_iOS
 			UIAlertController alert = UIAlertController.Create(type, text, UIAlertControllerStyle.Alert);
             alert.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, a => System.Console.WriteLine("Okay was clicked")));
 			return alert;
+		}
+
+		//
+		// determines date for UIDatePicker
+		//
+		public static NSDate DateTimeToNSDate(DateTime date)
+		{
+			DateTime reference = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(2001, 1, 1, 0, 0, 0));
+			reference = DateTime.SpecifyKind(DateTime.Parse(reference.Date.ToString()), DateTimeKind.Local).ToLocalTime();
+			return NSDate.FromTimeIntervalSinceReferenceDate((date - reference).TotalSeconds);
 		}
 
         //

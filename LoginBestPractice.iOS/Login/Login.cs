@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Text;
 using System.Net;
-using LoginBestPractice.iOS;
 using UIKit;
 
 namespace DeRoo_iOS
@@ -31,7 +30,7 @@ namespace DeRoo_iOS
 					var values = new System.Collections.Specialized.NameValueCollection();
 					values.Add("gebruikersnaam", username);
 					values.Add("wachtwoord", password);
-                    if (!Reachability.IsHostReachable("https://amkapp.nl"))
+                    if (!Plugin.Connectivity.CrossConnectivity.Current.IsConnected)
                     {
                         var window = UIApplication.SharedApplication.KeyWindow;
                         var vc = window.RootViewController;

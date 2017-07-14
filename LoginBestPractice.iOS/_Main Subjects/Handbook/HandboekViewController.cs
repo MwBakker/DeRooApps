@@ -1,10 +1,7 @@
 ﻿using System;
 using UIKit;
-using System.Net;
 using System.IO;
-using System.Text;
 using Foundation;
-using CoreGraphics;
 
 namespace LoginBestPractice.iOS
 {
@@ -15,7 +12,7 @@ namespace LoginBestPractice.iOS
 			//
 			// checks if google is available, if not, load local file in webview
 			//
-			if(!Reachability.IsHostReachable("http://google.com")) 
+            if(!Plugin.Connectivity.CrossConnectivity.Current.IsConnected) 
 			{
 				var webView = new UIWebView(View.Bounds);
 				View.AddSubview(webView);
