@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using DeRoo_iOS;
 using Plugin.Geolocator;
 using System.Linq;
-using Foundation;
 using CoreGraphics;
 
 namespace LoginBestPractice.iOS
@@ -38,12 +37,12 @@ namespace LoginBestPractice.iOS
             txtf_location.Frame = new CGRect(txtf_location.Frame.X, txtf_location.Frame.Y, (viewWidth*0.625), txtf_projectName.Frame.Height);
             btn_geoLoc.Frame = new CGRect((viewWidth*0.828), btn_geoLoc.Frame.Y, (viewWidth*0.1125), btn_geoLoc.Frame.Height);
             formTableView.Frame = new CGRect(0, 0, viewWidth, this.View.Frame.Height);
-			
 			deRooGreen = new UIColor(0.04f, 0.17f, 0.01f, 1.0f);
 		}
 
 		//
 		// before going back... collect Data
+        // view goes back either way, so check if send was true or not
         // check and possibly store unfilled form
 		//
 		public override void ViewWillDisappear(bool animated)
@@ -56,10 +55,6 @@ namespace LoginBestPractice.iOS
 					rootFromText = true;
                     RootObject fileForm = collectData();
                     DataStorage.sendDataToFile(formData, "openFormData", fileForm.formulieren[0].datum);
-                    UIViewController openFormVC = Storyboard.InstantiateViewController("OpenFormsViewController");
-                    openFormVC.ReloadInputViews();
-                    //UINavigationController openFVC = Storyboard.InstantiateViewController("OpenFormNavigationController") as UINavigationController;
-                    //openFVC.TabBarItem.Image = UIImage.FromFile("openstaandeformulieren.png");
 				}
 			}
 		}
@@ -84,11 +79,8 @@ namespace LoginBestPractice.iOS
 				{
 					nfloat currentLabelYPosition = 0;
 					// catcontainer // 
-					CatBlockView catBlock = new CatBlockView();
+                    CatBlockView catBlock = new CatBlockView(formData.categorien[i].categorie_text);
 					catBlock.Tag = int.Parse((formData.categorien[i].categorie_id));
-					// category // 
-					catBlock.lbl_cat.Text = formData.categorien[i].categorie_text;
-					catBlock.lbl_cat.Frame = new CGRect(0, 0, viewWidth, 35);
 					nfloat containerPos = catBlock.lbl_cat.Frame.Bottom;
 
 					for (int j = 0; j < formData.vragen.Count; j++)
@@ -96,18 +88,14 @@ namespace LoginBestPractice.iOS
 						if (formData.vragen[j].categorie_id == formData.categorien[i].categorie_id)
 						{
 							// questcontainer // 
-							QuestBlockView questBlock = new QuestBlockView(this, formData.vragen[j].vraag_id);
+                            QuestBlockView questBlock = new QuestBlockView(this, formData.vragen[j].vraag_id, formData.vragen[j].vraag_text);
 							questBlock.Tag = int.Parse(formData.vragen[j].vraag_volgNr); 
 							nfloat containerElementPos = 0;
 							// quest // 
-							questBlock.lbl_quest.Text = formData.vragen[j].vraag_text;
-							questBlock.lbl_quest.Frame = new CGRect((viewWidth*0.02), 0, (viewWidth*0.96), 35);
 							containerElementPos += questBlock.lbl_quest.Frame.Bottom;
 	                            // POSSIBLE options (type 1 & 2 out of 4) //
-	                            UISegmentedControl options = questBlock.optionsControl(catBlock);
-							    questBlock.options.Frame = new CGRect((viewWidth*0.0795), containerElementPos, (viewWidth*0.85), 30);
+	                            UISegmentedControl options = questBlock.optionsControl(catBlock, containerElementPos);
 	                            questBlock.setOptions(formData.vragen[j].vraag_type);
-	                            questBlock.AddSubview(options);
 								// POSSIBLE data from file, reload possible modal info
 								if (rootFromText == true)
 								{
@@ -284,7 +272,7 @@ namespace LoginBestPractice.iOS
                         dataIndex = DataStorage.data.vragen.FindIndex(q => q.vraag_id == questID);
                         Vragen quest = DataStorage.data.vragen[dataIndex];
                         // modalData
-                        Modal qModal = ((QuestBlockView)catSubView).getModal();
+                        Modal qModal = ((QuestBlockView)catSubView).modal;
                         if (qModal != null)
                         {
                             quest.extra_commentaar = qModal.comment; quest.actie_ondernomen = qModal.action;
@@ -352,10 +340,16 @@ namespace LoginBestPractice.iOS
 				if (DataStorage.sendFormWeb(webForm, rootFromText, "openFormData") == true)
 				{
 					succesSend = true;
-					FormsViewController formViewControl = Storyboard.InstantiateViewController("Forms") as FormsViewController;
-                    NavigationController.PushViewController(formViewControl, true);
-					this.PresentViewController(User.createAlert("Formulier Verzonden", ""), true, null);
-				}
+                    if (rootFromText == true) {
+                        OpenFormsViewController openFormVC = Storyboard.InstantiateViewController("OpenFormsViewController") as OpenFormsViewController;
+                        NavigationController.PushViewController(openFormVC, true);
+                    } else {
+                        FormsViewController formViewControl = Storyboard.InstantiateViewController("Forms") as FormsViewController;
+                        NavigationController.PushViewController(formViewControl, true);
+                    }
+                } else {
+                    succesSend = false;
+                }
             }
             else {
                 User.createAlert("Algemene informatie niet ingevuld!", "FOUT");

@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using Foundation;
 using UIKit;
 
 namespace LoginBestPractice.iOS
@@ -8,6 +6,7 @@ namespace LoginBestPractice.iOS
     public partial class UIOpenFormCell : UITableViewCell
     {
         public RootObject entireForm { get; set; }
+        public string formfilePath { get; set; }
 
         public UIOpenFormCell (IntPtr handle) : base (handle)
         {

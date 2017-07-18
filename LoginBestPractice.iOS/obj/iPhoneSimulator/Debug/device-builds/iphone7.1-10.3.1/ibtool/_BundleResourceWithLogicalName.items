@@ -95,18 +95,6 @@
       <Optimize>false</Optimize>
       <OriginalItemSpec>obj/iPhoneSimulator/Debug/device-builds/iphone7.1-10.3.1/ibtool/MainStoryboard.storyboardc</OriginalItemSpec>
     </_BundleResourceWithLogicalName>
-    <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/iphone7.1-10.3.1/ibtool/MainStoryboard.storyboardc/OpenFormNavigationController .nib">
-      <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
-      <LogicalName>MainStoryboard.storyboardc/OpenFormNavigationController .nib</LogicalName>
-      <Optimize>false</Optimize>
-      <OriginalItemSpec>obj/iPhoneSimulator/Debug/device-builds/iphone7.1-10.3.1/ibtool/MainStoryboard.storyboardc</OriginalItemSpec>
-    </_BundleResourceWithLogicalName>
-    <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/iphone7.1-10.3.1/ibtool/MainStoryboard.storyboardc/OpenFormsViewController.nib">
-      <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
-      <LogicalName>MainStoryboard.storyboardc/OpenFormsViewController.nib</LogicalName>
-      <Optimize>false</Optimize>
-      <OriginalItemSpec>obj/iPhoneSimulator/Debug/device-builds/iphone7.1-10.3.1/ibtool/MainStoryboard.storyboardc</OriginalItemSpec>
-    </_BundleResourceWithLogicalName>
     <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/iphone7.1-10.3.1/ibtool/MainStoryboard.storyboardc/ToolboxContentViewController.nib">
       <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
       <LogicalName>MainStoryboard.storyboardc/ToolboxContentViewController.nib</LogicalName>
@@ -128,6 +116,18 @@
     <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/iphone7.1-10.3.1/ibtool/MainStoryboard.storyboardc/modalVraag.nib">
       <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
       <LogicalName>MainStoryboard.storyboardc/modalVraag.nib</LogicalName>
+      <Optimize>false</Optimize>
+      <OriginalItemSpec>obj/iPhoneSimulator/Debug/device-builds/iphone7.1-10.3.1/ibtool/MainStoryboard.storyboardc</OriginalItemSpec>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/iphone7.1-10.3.1/ibtool/MainStoryboard.storyboardc/openFormsNavigationController .nib">
+      <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
+      <LogicalName>MainStoryboard.storyboardc/openFormsNavigationController .nib</LogicalName>
+      <Optimize>false</Optimize>
+      <OriginalItemSpec>obj/iPhoneSimulator/Debug/device-builds/iphone7.1-10.3.1/ibtool/MainStoryboard.storyboardc</OriginalItemSpec>
+    </_BundleResourceWithLogicalName>
+    <_BundleResourceWithLogicalName Include="obj/iPhoneSimulator/Debug/device-builds/iphone7.1-10.3.1/ibtool/MainStoryboard.storyboardc/openFormsViewController.nib">
+      <InterfaceDefinition>MainStoryboard.storyboard</InterfaceDefinition>
+      <LogicalName>MainStoryboard.storyboardc/openFormsViewController.nib</LogicalName>
       <Optimize>false</Optimize>
       <OriginalItemSpec>obj/iPhoneSimulator/Debug/device-builds/iphone7.1-10.3.1/ibtool/MainStoryboard.storyboardc</OriginalItemSpec>
     </_BundleResourceWithLogicalName>

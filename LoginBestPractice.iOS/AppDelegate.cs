@@ -56,8 +56,12 @@ namespace LoginBestPractice.iOS
 				// earlier credentials from file, set User
 				string[] text = File.ReadAllText(filename).Split('/');
 				Login login = new Login(text[0], text[1]);
+                try { 
+                    CrossConnectivity.Current.IsReachable("www.amkapp.nl", 3000);
+                } catch(Exception) {
+					User.createAlert("Geen data-verkeer beschikbaar, authorisatie app niet mogelijk!", "FOUT"); 
+                }
                 login.isActive();
-                User.createAlert("Geen data-verkeer beschikbaar, authorisatie app niet mogelijk!", "FOUT");
                 var tabBarController = GetViewController(MainStoryboard, "MainTabBarController");
                 SetRootViewController(tabBarController, false);
             }

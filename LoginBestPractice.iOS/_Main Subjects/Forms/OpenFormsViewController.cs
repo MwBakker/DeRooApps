@@ -3,6 +3,7 @@ using UIKit;
 using Newtonsoft.Json;
 using System.IO;
 using System.Collections.Generic;
+using DeRoo_iOS;
 
 namespace LoginBestPractice.iOS
 {
@@ -12,25 +13,37 @@ namespace LoginBestPractice.iOS
 
         public OpenFormsViewController (IntPtr handle) : base (handle)
         {
-            
         }
 
-        public override void ViewDidLoad()
+        public void delFile(string path)
         {
-            base.ViewDidLoad();
-            openFormTableView.Frame = new CoreGraphics.CGRect(openFormTableView.Frame.X, openFormTableView.Frame.Y, UIScreen.MainScreen.Bounds.Width, UIScreen.MainScreen.Bounds.Height);
+            try {
+                File.Delete(path);
+            } catch {
+                User.createAlert("Openstaand formulier niet verwijderd", "INFO");
+            }
+            PresentViewController(User.createAlert("Openstaand formulier verwijderd", "INFO"),true, null);
+            openFormTableView.ReloadData();
+        }
+
+        public override void ViewWillAppear(bool animated)
+        {
+			openFormTableView.Frame = new CoreGraphics.CGRect(openFormTableView.Frame.X, openFormTableView.Frame.Y, UIScreen.MainScreen.Bounds.Width, UIScreen.MainScreen.Bounds.Height);
 			string partialName = "openFormData";
-            DirectoryInfo hdDirectoryInWhichToSearch = new DirectoryInfo(documents);
+			DirectoryInfo hdDirectoryInWhichToSearch = new DirectoryInfo(documents);
 			FileInfo[] filesInDir = hdDirectoryInWhichToSearch.GetFiles("*" + partialName + "*.*");
-            List<RootObject> forms = new List<RootObject>();
+			List<RootObject> forms = new List<RootObject>();
+			List<string> filepaths = new List<string>();
 			foreach (FileInfo foundFile in filesInDir)
 			{
 				string filename = foundFile.FullName;
-                string rawJSON = File.ReadAllText(filename);
-                RootObject unfilledForm = JsonConvert.DeserializeObject<RootObject>(rawJSON);
-                forms.Add(unfilledForm);
+                filepaths.Add(filename);
+               // StreamReader sR = new StreamReader();   === IMPORRRRRTANTEE ====
+				string rawJSON = File.ReadAllText(filename);
+				RootObject unfilledForm = JsonConvert.DeserializeObject<RootObject>(rawJSON);
+				forms.Add(unfilledForm);
 			}
-			this.openFormTableView.Source = new OpenFormTableSource(this, forms);
+            this.openFormTableView.Source = new OpenFormTableSource(this, forms, filepaths);
         }
     }
 }

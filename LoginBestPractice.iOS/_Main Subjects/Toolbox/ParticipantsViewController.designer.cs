@@ -30,10 +30,6 @@ namespace LoginBestPractice.iOS
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void btn_addEmployee_TouchUpInside (UIKit.UIButton sender);
 
-        [Action ("Btn_addEmployee_TouchUpInside:")]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        partial void Btn_addEmployee_TouchUpInside (UIKit.UIButton sender);
-
         [Action ("btn_approveParticipants_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void btn_approveParticipants_TouchUpInside (UIKit.UIButton sender);

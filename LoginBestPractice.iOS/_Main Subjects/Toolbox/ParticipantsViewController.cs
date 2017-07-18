@@ -43,40 +43,37 @@ namespace LoginBestPractice.iOS
         //
         // add an external employee to the toolbox session
         //
-		partial void btn_addEmployee_TouchUpInside(UIButton sender)
-		{
+        partial void btn_addEmployee_TouchUpInside(UIButton sender)
+        {
 
             UIAlertController modal = UIAlertController.Create("Externe medewerker toevoegen", "Voer de naam van de medewerker in", UIAlertControllerStyle.Alert);
-			UITextField txtF_exEmployee = null;
-            modal.AddTextField((textField) => {
-				txtF_exEmployee = textField;
-				txtF_exEmployee.Placeholder = "medewerker";
-			});
-            modal.AddAction(UIAlertAction.Create("Medewerker toevoegen", UIAlertActionStyle.Default, action => addExternalEmployee(txtF_exEmployee.Text)));
-			modal.AddAction(UIAlertAction.Create("Annuleer", UIAlertActionStyle.Cancel, null));
-            PresentViewController(modal, true, null);
-            /*
-            alert.AddAction(UIAlertAction.Create("Toevoegen", UIAlertActionStyle.Default, a => System.Console.WriteLine("Okay was clicked")));
-
-
-			var ExterneDeelnemerToevoegen = new UIAlertView("Externe medewerker toevoegen", "Voer de naam van de medewerker in", null, "Annuleren", "Toevoegen");
-			ExterneDeelnemerToevoegen.AlertViewStyle = UIAlertViewStyle.PlainTextInput;
-			ExterneDeelnemerToevoegen.Show();
-			ExterneDeelnemerToevoegen.Clicked += (object senders, UIButtonEventArgs es) =>
+            UITextField txtF_extrEmployeeSurname = null;
+            modal.AddTextField((textField) =>
+            {
+                txtF_extrEmployeeSurname = textField;
+                txtF_extrEmployeeSurname.Placeholder = "Achternaam medewerker";
+            });
+			UITextField txtF_extrEmployee = null;
+			modal.AddTextField((textField) =>
 			{
-				if (es.ButtonIndex == 1)
-				{ 
-                    string externeDeelnemer = ExterneDeelnemerToevoegen.GetTextField(0).Text;
-                    employeeList.Add(externeDeelnemer);
-                    employeeList.ReloadData();
+				txtF_extrEmployee = textField;
+				txtF_extrEmployee.Placeholder = "Voornaam medewerker";
+			});
+            modal.AddAction(UIAlertAction.Create("Medewerker toevoegen", UIAlertActionStyle.Default, action => addExternalEmployee(txtF_extrEmployeeSurname.Text, txtF_extrEmployee.Text)));
+            modal.AddAction(UIAlertAction.Create("Annuleer", UIAlertActionStyle.Cancel, null));
+            PresentViewController(modal, true, null);
 
-				}
-				else
-				{
-				}
-			};
-    */
-		}
+        }
+
+        private void addExternalEmployee(string extrEmployeeSurIn, string extrEmployeeIn) 
+        {
+            Medewerker extrEmployee = new Medewerker();
+            extrEmployee.id = "-1";
+            extrEmployee.medewerker_achternaam = extrEmployeeSurIn;
+            extrEmployee.medewerker_voornaam = extrEmployeeIn;
+            employeeList.Insert(0, extrEmployee);
+            employeesTableView.ReloadData();
+        }
 
 		//
         // get selected list from tableviewsource

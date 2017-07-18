@@ -1,5 +1,6 @@
 ﻿﻿using System;
 using AssetsLibrary;
+using CoreGraphics;
 using Foundation;
 using UIKit;
 
@@ -15,25 +16,25 @@ namespace LoginBestPractice.iOS
         public UIDeRooButton btn_modal { get; set; }
         public FormContentViewController subjectVC;
         public Modal modal { get; set; }
+        nfloat viewWidth;
         bool modalSet;
 
 		// 
 		// sets main elements in questBlockView
 		//
-		public QuestBlockView(FormContentViewController subjectVC, string quest_id)
+		public QuestBlockView(FormContentViewController subjectVC, string questID, string questText)
 		{
             modalSet = false;
             this.subjectVC = subjectVC;
+            viewWidth = UIScreen.MainScreen.Bounds.Width;
 			deRooGreen = new UIColor(0.04f, 0.17f, 0.01f, 1.0f);
-            this.quest_id = quest_id;
-			setElements();
-		}
+            quest_id = questID;
 
-		private void setElements()
-		{
 			lbl_quest = new UILabel();
+            lbl_quest.Frame = new CGRect((viewWidth * 0.02), 0, (viewWidth * 0.96), 35);
 			lbl_quest.Font = UIFont.FromName("Helvetica-Bold", 12f);
-			lbl_quest.TextColor = deRooGreen; 
+			lbl_quest.TextColor = deRooGreen;
+			lbl_quest.Text = questText;
 			lbl_quest.AdjustsFontSizeToFitWidth = true;
 			AddSubview(lbl_quest);
 		}
@@ -42,9 +43,10 @@ namespace LoginBestPractice.iOS
         // returns an options-object
         // fields are depending rather data is filled in
         //
-        public UISegmentedControl optionsControl(CatBlockView catBlock) 
+        public UISegmentedControl optionsControl(CatBlockView catBlock, nfloat containerElPos) 
         {
             options = new UISegmentedControl();
+            options.Frame = new CGRect((viewWidth*0.0795), containerElPos, (viewWidth*0.85), 30);
             options.TintColor = UIColor.DarkGray;
 			options.ValueChanged += (sender, e) =>
 			{
@@ -58,8 +60,22 @@ namespace LoginBestPractice.iOS
                     selectState(2, catBlock, false, false);
 				}
 			};
+            AddSubview(options);
             return options;
         }
+
+		// 
+		// returns options, amount of option is given by type of question
+		//
+		public void setOptions(string questTypeIn)
+		{
+			string[] questType = questTypeIn.Split('/');
+
+			for (int i = 0; i < questType.Length; i++)
+			{
+				options.InsertSegment(questType[i], i, false);
+			}
+		}
 
         // 
         // determines the selected option
@@ -71,7 +87,7 @@ namespace LoginBestPractice.iOS
             if (rootFromText == true)  {
                 options.SelectedSegment = selected;
             }
-            nfloat viewWidth = subjectVC.View.Frame.Width;
+            viewWidth = subjectVC.View.Frame.Width;
 
             if (selected == 0)
             {
@@ -139,7 +155,7 @@ namespace LoginBestPractice.iOS
 				};
 
 				btn_modal = new UIDeRooButton();
-				btn_modal.Frame = new CoreGraphics.CGRect(viewWidth * (1 - 0.875), (btn_photo.Frame.Bottom + 15), (viewWidth * 0.75), 30);
+				btn_modal.Frame = new CGRect(viewWidth * (1 - 0.875), (btn_photo.Frame.Bottom + 15), (viewWidth * 0.75), 30);
 				btn_modal.BackgroundColor = UIColor.Gray;
 				btn_modal.SetTitle("Zie ingevoerd commentaar", UIControlState.Normal);
 				btn_modal.TouchDown += delegate
@@ -173,25 +189,5 @@ namespace LoginBestPractice.iOS
 			lbl_quest.Text = text; 
 			return lbl_quest; 
 		}
-
-		// 
-		// returns options, amount of option is given by type of question
-		//
-		public void setOptions(string questTypeIn) 
-		{
-			string[] questType = questTypeIn.Split('/');
-
-			for (int i = 0; i < questType.Length; i++)
-			{
-				options.InsertSegment(questType[i],i,false);
-			}
-		}
-
-		public string getID() { return quest_id; }
-
-		// 
-		// modal belonging to view returned
-		//
-		public Modal getModal() { return modal; }
 	}
 }

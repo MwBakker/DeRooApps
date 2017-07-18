@@ -8,6 +8,7 @@ using UIKit;
 using LoginBestPractice.iOS;
 using System.Collections.Specialized;
 using Plugin.Connectivity;
+using System.Threading.Tasks;
 
 namespace DeRoo_iOS
 {
@@ -125,11 +126,15 @@ namespace DeRoo_iOS
 				}
 				succes = false;
 			}
-            if (succes == true && fromFile == true) 
+            if (succes == true) 
             {
-				var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                var filename = Path.Combine(documents, type + rootForWeb.formulieren[0].datum + ".txt");
-                File.Delete(filename);
+                if (fromFile == true) {
+                    var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                    var filename = Path.Combine(documents, type + rootForWeb.formulieren[0].datum + ".txt");
+                    File.Delete(filename);
+                    vc.PresentViewController(User.createAlert("Openstaand formulier verzonden en verwijderd uit lijst openstaande formulieren", ""), true, null);
+                }
+                vc.PresentViewController(User.createAlert("Formulier Verzonden", ""), true, null);
             }
 			return succes;
 		}
@@ -186,6 +191,12 @@ namespace DeRoo_iOS
 			string JSON = JsonConvert.SerializeObject(data);
 			sw.Write(JSON); sw.Flush();
             // re-empty the .data Rootobject
+            var window = UIApplication.SharedApplication.KeyWindow;
+            var vc = window.RootViewController;
+            vc.PresentViewController(User.createAlert("Dit formulier is opgeslagen onder 'openstaande formulieren'", "INFO"), true, null);
+            UIStoryboard board = UIStoryboard.FromName("MainStoryboard", null);
+			//UINavigationController openFVC = board.InstantiateViewController("openFormsNavigationController") as UINavigationController;
+			//openFVC.TabBarItem.Image = UIImage.FromFile("openstaandeformulieren.png");
 			return succes;
 		}
 	}

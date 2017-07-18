@@ -12,7 +12,6 @@ namespace LoginBestPractice.iOS
     public partial class SignatureViewController : UIViewController
     {
         public List<Medewerker> selectedEmployees { get; set; }
-        public List<ToolboxDeelnemer> toolboxParticipants;
         RootObject webData = new RootObject();
 		public string toolboxName { get; set; }
         public string toolboxID { get; set; }
@@ -22,7 +21,6 @@ namespace LoginBestPractice.iOS
         public SignatureViewController (IntPtr handle) : base (handle)
         {
             viewWidth = this.View.Frame.Width;
-            toolboxParticipants = new List<ToolboxDeelnemer>();
         }
 
         public override void ViewWillAppear(bool animated)
@@ -38,8 +36,8 @@ namespace LoginBestPractice.iOS
                 deltaBottomAnchor = lbl_employee.Frame.Bottom;
                 EmployeeSignature sgnt_employee = new EmployeeSignature();
                 sgnt_employee.Frame = new CGRect(0, deltaBottomAnchor, viewWidth, 125);
-                if (employee.id == null) {
-                    sgnt_employee.nameTag = employee.medewerker_achternaam + ", " + employee.medewerker_voornaam; 
+                if (employee.id == "-1") {
+                    sgnt_employee.nameTag = employee.medewerker_voornaam + " " + employee.medewerker_achternaam; 
                 } else {
                     sgnt_employee.idTag = employee.id;
                 }
@@ -54,6 +52,7 @@ namespace LoginBestPractice.iOS
 
         partial void btn_finishToolbox_TouchUpInside(UIButton sender)
         {
+            btn_finishToolbox.Highlighted = true;
             var toolboxVals = new NameValueCollection();
             toolboxVals.Add("toolbox_id", toolboxID);
             toolboxVals.Add("toolbox_onderwerp", toolboxName);
@@ -89,6 +88,8 @@ namespace LoginBestPractice.iOS
                     participValList.Add(participantVals);
                 }
             } 
+            ToolboxesViewController toolboxesVC = Storyboard.InstantiateViewController("ToolboxController") as ToolboxesViewController;
+			NavigationController.PushViewController(toolboxesVC, true);
             DataStorage.sendToolboxWeb(toolboxVals, participValList);
         }
     }

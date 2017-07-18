@@ -30,10 +30,6 @@ namespace LoginBestPractice.iOS
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void btn_continueToAdding_TouchUpInside (UIKit.UIButton sender);
 
-        [Action ("Btn_continueToAdding_TouchUpInside:")]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        partial void Btn_continueToAdding_TouchUpInside (UIKit.UIButton sender);
-
         void ReleaseDesignerOutlets ()
         {
             if (btn_continueToAdding != null) {
