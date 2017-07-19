@@ -13,18 +13,19 @@ namespace LoginBestPractice.iOS
 
         public OpenFormsViewController (IntPtr handle) : base (handle)
         {
+            
         }
 
         public void delFile(string path)
         {
             try {
                 File.Delete(path);
+                openFormTableView.ReloadData();
             } catch {
                 User.createAlert("Openstaand formulier niet verwijderd", "INFO");
             }
             PresentViewController(User.createAlert("Openstaand formulier verwijderd", "INFO"),true, null);
-            openFormTableView.ReloadData();
-        }
+          }
 
         public override void ViewWillAppear(bool animated)
         {
