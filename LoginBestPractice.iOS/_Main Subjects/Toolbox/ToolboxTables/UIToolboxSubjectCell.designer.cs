@@ -14,5 +14,8 @@ namespace LoginBestPractice.iOS
     [Register ("UIToolboxSubjectCell")]
     partial class UIToolboxSubjectCell
     {
+        void ReleaseDesignerOutlets ()
+        {
+        }
     }
 }

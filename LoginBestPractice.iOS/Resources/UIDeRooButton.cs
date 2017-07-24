@@ -9,10 +9,10 @@ namespace LoginBestPractice.iOS
 		public UIDeRooButton()
 		{
             deRooGreen = new UIColor(0.04f, 0.17f, 0.01f, 1.0f);
-			this.Layer.BorderWidth = 1.5f;
-			this.Layer.CornerRadius = 9;
-            this.BackgroundColor = deRooGreen;
-            this.SetTitleColor(UIColor.White, UIControlState.Normal);
+			Layer.BorderWidth = 1.5f;
+			Layer.CornerRadius = 9;
+            BackgroundColor = deRooGreen;
+            SetTitleColor(UIColor.White, UIControlState.Normal);
 		}
 
 		protected void SetBackgroundColorForState(UIControlState state)

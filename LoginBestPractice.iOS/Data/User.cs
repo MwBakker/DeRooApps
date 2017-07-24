@@ -15,6 +15,9 @@ namespace DeRoo_iOS
         public string token { get; set; }
         public string name { get; set; }
         public string email { get; set; }
+        public static string documentsPath { get; set; }
+        public static List<RootObject> unfilledForms { get; set; }
+		public static List<string> filepaths { get; set; }
 
         public static User instance = null;
 
@@ -23,6 +26,9 @@ namespace DeRoo_iOS
 		//
         public User(string id, string token, string name, string email)
         {
+            documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            unfilledForms = new List<RootObject>();
+            filepaths = new List<string>();
             this.id = id; this.token = token;
             this.name = name; this.email = email;
 
@@ -30,6 +36,7 @@ namespace DeRoo_iOS
             {
                 instance = this;
             }
+            checkUnfilled();
 			//StartTimer();
         }
 
@@ -46,7 +53,6 @@ namespace DeRoo_iOS
 			if (Reachability.IsHostReachable("www.amkapp.nl"))
 			{
 				// read the files 
-                string documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 				DirectoryInfo hdDirectoryInWhichToSearch = new DirectoryInfo(documents);
                 string partialName = "unsentFormData";
 				FileInfo[] filesInDir = hdDirectoryInWhichToSearch.GetFiles("*" + partialName + "*.*");
@@ -70,6 +76,30 @@ namespace DeRoo_iOS
 		{
 			Console.WriteLine("tick");
 		}
+
+        //
+        // checks for possible unfilled data at startup
+        //
+        void checkUnfilled() 
+        {
+			string partialName = "openFormData";
+            DirectoryInfo hdDirectoryInWhichToSearch = new DirectoryInfo(documentsPath);
+			FileInfo[] filesInDir = hdDirectoryInWhichToSearch.GetFiles("*" + partialName + "*.*");
+			List<RootObject> forms = unfilledForms;
+			foreach (FileInfo foundFile in filesInDir)
+			{
+				string filename = foundFile.FullName;
+				filepaths.Add(filename);
+				string rawJSON = "";
+				using (var streamReader = new StreamReader(filename))
+				{
+					rawJSON = streamReader.ReadToEnd();
+					streamReader.Close();
+				}
+				RootObject unfilledForm = JsonConvert.DeserializeObject<RootObject>(rawJSON);
+				forms.Add(unfilledForm);
+			}
+        }
 
 		//
 		// creates alert at baseline from empty fields
@@ -106,8 +136,7 @@ namespace DeRoo_iOS
 					if (es.ButtonIndex == 1)
 					{
 							//Delete login-file
-							var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-						    var filename = Path.Combine(documents, "login.txt");
+                        var filename = Path.Combine(User.documentsPath, "login.txt");
 						    File.Delete(filename);
 
 							//Create an instance of our AppDelegate

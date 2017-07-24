@@ -1,0 +1,13 @@
+/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/bin/iPhone/Debug/LoginBestPractice.iOS.app:/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/mtouch-cache/32/Link/LoginBestPractice.iOS.exe
+/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/bin/iPhone/Debug/LoginBestPractice.iOS.app:/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/mtouch-cache/32/Link/mscorlib.dll
+/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/bin/iPhone/Debug/LoginBestPractice.iOS.app:/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/mtouch-cache/32/Link/System.dll
+/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/bin/iPhone/Debug/LoginBestPractice.iOS.app:/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/mtouch-cache/32/Link/Mono.Security.dll
+/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/bin/iPhone/Debug/LoginBestPractice.iOS.app:/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/mtouch-cache/32/Link/Xamarin.iOS.dll
+/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/bin/iPhone/Debug/LoginBestPractice.iOS.app:/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/mtouch-cache/32/Link/System.Core.dll
+/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/bin/iPhone/Debug/LoginBestPractice.iOS.app:/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/mtouch-cache/32/Link/Plugin.Geolocator.Abstractions.dll
+/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/bin/iPhone/Debug/LoginBestPractice.iOS.app:/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/mtouch-cache/32/Link/SignaturePad.dll
+/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/bin/iPhone/Debug/LoginBestPractice.iOS.app:/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/mtouch-cache/32/Link/Newtonsoft.Json.dll
+/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/bin/iPhone/Debug/LoginBestPractice.iOS.app:/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/mtouch-cache/32/Link/System.Runtime.Serialization.dll
+/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/bin/iPhone/Debug/LoginBestPractice.iOS.app:/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/mtouch-cache/32/Link/Plugin.Connectivity.dll
+/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/bin/iPhone/Debug/LoginBestPractice.iOS.app:/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/mtouch-cache/32/Link/Plugin.Connectivity.Abstractions.dll
+/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/bin/iPhone/Debug/LoginBestPractice.iOS.app:/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/mtouch-cache/32/Link/Plugin.Geolocator.dll

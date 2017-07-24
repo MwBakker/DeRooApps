@@ -256,7 +256,7 @@
                         <autoresizingMask key="autoresizingMask" heightSizable="YES" widthSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleAspectFit" id="3008" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                <rect key="frame" x="27" y="25" width="265" height="450"/>
+                                <rect key="frame" x="27" y="23" width="265" height="445"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" colorSpace="calibratedRGB" red="0.92549019607843142" green="0.92549019607843142" blue="0.92549019607843142" alpha="1"/>
                                 <subviews>
@@ -314,7 +314,7 @@
                                         <color key="tintColor" colorSpace="calibratedRGB" red="0.0392156862745098" green="0.10980392156862745" blue="0.011764705882352941" alpha="1"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2759" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                        <rect key="frame" x="10" y="416" width="110" height="30"/>
+                                        <rect key="frame" x="10" y="410" width="110" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="Annuleer" backgroundImage="green">
@@ -331,7 +331,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2577" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                        <rect key="frame" x="145" y="416" width="110" height="30"/>
+                                        <rect key="frame" x="145" y="410" width="110" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="Ok" backgroundImage="green">
@@ -434,7 +434,7 @@
                                 <locale key="locale" localeIdentifier="nl_NL"/>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4265" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                <rect key="frame" x="0.0" y="442" width="320" height="38"/>
+                                <rect key="frame" x="0.0" y="442" width="320" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <size key="titleShadowOffset" width="0" height="1"/>
                                 <state key="normal" title="Voeg participanten toe">
@@ -445,7 +445,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="4266" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                <rect key="frame" x="0.0" y="166" width="320" height="275"/>
+                                <rect key="frame" x="0.0" y="165" width="320" height="275"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -816,11 +816,13 @@
         <image name="simplecompassblue.png" width="128" height="128"/>
         <image name="compose.png" width="23" height="23"/>
         <image name="formIcon.png" width="200" height="200"/>
-        <image name="openFormIcon.png" width="512" height="512"/>
         <image name="122196-200.png" width="30" height="30"/>
         <image name="deroo.png" width="308" height="166"/>
-        <image name="personIcon.png" width="512" height="512"/>
+        <image name="personIcon.png" width="384" height="384"/>
         <image name="toolboxIcon.png" width="35" height="35"/>
         <image name="toolboxBarIcon.png" width="24" height="24"/>
+        <image name="openformIcon.png" width="43.2" height="43.2"/>
+        <image name="_Main Subjects/Handbook/handboek.pdf" width="627" height="887"/>
+        <image name="_Main Subjects/Toolbox/handboek.pdf" width="595" height="842"/>
     </resources>
 </document>

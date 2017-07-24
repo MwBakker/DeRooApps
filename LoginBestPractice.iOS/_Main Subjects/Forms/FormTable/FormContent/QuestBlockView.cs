@@ -1,4 +1,5 @@
 ﻿﻿using System;
+using System.Collections.Generic;
 using AssetsLibrary;
 using CoreGraphics;
 using Foundation;
@@ -16,6 +17,8 @@ namespace LoginBestPractice.iOS
         public UIDeRooButton btn_modal { get; set; }
         public FormContentViewController subjectVC;
         public Modal modal { get; set; }
+        public List<UIImageView> imgViews;
+        public CatBlockView catBlock;
         nfloat viewWidth;
         bool modalSet;
 
@@ -24,6 +27,7 @@ namespace LoginBestPractice.iOS
 		//
 		public QuestBlockView(FormContentViewController subjectVC, string questID, string questText)
 		{
+            imgViews = new List<UIImageView>();
             modalSet = false;
             this.subjectVC = subjectVC;
             viewWidth = UIScreen.MainScreen.Bounds.Width;
@@ -45,19 +49,20 @@ namespace LoginBestPractice.iOS
         //
         public UISegmentedControl optionsControl(CatBlockView catBlock, nfloat containerElPos) 
         {
+            this.catBlock = catBlock;
             options = new UISegmentedControl();
             options.Frame = new CGRect((viewWidth*0.0795), containerElPos, (viewWidth*0.85), 30);
             options.TintColor = UIColor.DarkGray;
 			options.ValueChanged += (sender, e) =>
 			{
 				if (options.SelectedSegment == 0) {
-                    selectState(0, catBlock, false, false);
+                    selectState(0, false, false);
 				} 
                 else if (options.SelectedSegment == 1) {
-                    selectState(1, catBlock, false, false);
+                    selectState(1, false, false);
 				} 
                 else {
-                    selectState(2, catBlock, false, false);
+                    selectState(2, false, false);
 				}
 			};
             AddSubview(options);
@@ -82,7 +87,7 @@ namespace LoginBestPractice.iOS
         // sets questBlockView + change in subjectVC main View dimensions
         // checks wether options comes from file and is at firstSet
         //
-        public void selectState(int selected, CatBlockView catBlock, bool rootFromText, bool firstSet) 
+        public void selectState(int selected, bool rootFromText, bool firstSet) 
         {
             if (rootFromText == true)  {
                 options.SelectedSegment = selected;
@@ -95,7 +100,7 @@ namespace LoginBestPractice.iOS
                 removeButtons();
                 if (modalSet == true)
                 {
-                    subjectVC.updateView(catBlock, this, btn_modal, "removed");
+                    subjectVC.updateView(catBlock, this);
                     modalSet = false;
                 }
                 modal = null;
@@ -106,13 +111,16 @@ namespace LoginBestPractice.iOS
                 addButtons(viewWidth);
                 if (modalSet == false) {
                     modal = subjectVC.Storyboard.InstantiateViewController("modalVraag") as Modal;
+                    modal.hideBar(subjectVC);
                     modalSet = true;
                 }
+                // IF not selected by given from text
                 if (rootFromText == false) {
                     subjectVC.PresentViewController(modal, true, null);
                 } 
+                // else not
                 if (firstSet == false) {
-                    subjectVC.updateView(catBlock, this, btn_modal, "added");
+                    subjectVC.updateView(catBlock, this);
                 }
             }
             else if (selected == 2) 
@@ -121,7 +129,7 @@ namespace LoginBestPractice.iOS
                 removeButtons();
 				if (modalSet == true)
 				{
-					subjectVC.updateView(catBlock, this, btn_modal, "removed");
+					subjectVC.updateView(catBlock, this);
 					modalSet = false;
 				}
 				modal = null;
@@ -130,13 +138,15 @@ namespace LoginBestPractice.iOS
 
 		//
 		// adding the required buttons to a question 
+        // setting image when taken
 		//
-		public void addButtons(nfloat viewWidth)
+        public void addButtons(nfloat viewWidth)
 		{
 			if (btn_modal == null && btn_photo == null)
 			{
+                // photo button
 				btn_photo = new UIDeRooButton();
-				btn_photo.Frame = new CoreGraphics.CGRect(viewWidth * (1 - 0.875), (options.Frame.Bottom + 10), (viewWidth * 0.75), 30);
+                btn_photo.Frame = new CGRect((viewWidth*0.125), (options.Frame.Bottom+10), (viewWidth*0.75), 30);
 				btn_photo.BackgroundColor = UIColor.Gray;
 				btn_photo.SetTitle("Maak foto van situatie", UIControlState.Normal);
 				btn_photo.TouchDown += delegate
@@ -144,22 +154,33 @@ namespace LoginBestPractice.iOS
 					// btn_photo.photoAction photo object + meta data
 					Camera.TakePicture(subjectVC, (obj) =>
 					{
-						var photo = obj.ValueForKey(new NSString("UIImagePickerControllerOriginalImage")) as UIImage;
-						var meta = obj.ValueForKey(new NSString("UIImagePickerControllerMediaMetadata")) as NSDictionary;
-						ALAssetsLibrary library = new ALAssetsLibrary();
-						library.WriteImageToSavedPhotosAlbum(photo.CGImage, meta, (assetUrl, error) =>
-						{
-							Console.WriteLine("assetUrl:" + assetUrl);
-						});
-					}); ;
+                        UIImage takenImg = obj.ValueForKey(new NSString("UIImagePickerControllerOriginalImage")) as UIImage;
+                        UIImageView imgTumb = new UIImageView(takenImg);
+                        imgViews.Add(imgTumb);
+                        nfloat xShift = 0;
+                        foreach (UIImageView img in imgViews) { 
+                            img.Frame = new CGRect(((viewWidth*0.125) + xShift), btn_photo.Frame.Bottom, 80, 80);
+                            img.Layer.BorderWidth = 1.5f;
+                            xShift += img.Frame.GetMaxX();
+                            AddSubview(img);
+                            subjectVC.updateView(catBlock, this);
+                        }
+                        //var meta = obj.ValueForKey(new NSString("UIImagePickerControllerMediaMetadata")) as NSDictionary;
+						//ALAssetsLibrary library = new ALAssetsLibrary();
+						//library.WriteImageToSavedPhotosAlbum(photo.CGImage, meta, (assetUrl, error) =>
+						//{
+						//	Console.WriteLine("assetUrl:" + assetUrl);
+						//});
+					}); 
 				};
-
+                // modal-sight button
 				btn_modal = new UIDeRooButton();
-				btn_modal.Frame = new CGRect(viewWidth * (1 - 0.875), (btn_photo.Frame.Bottom + 15), (viewWidth * 0.75), 30);
+                btn_modal.Frame = new CGRect((viewWidth*0.125), (btn_photo.Frame.Bottom+15), (viewWidth*0.75), 30);
 				btn_modal.BackgroundColor = UIColor.Gray;
 				btn_modal.SetTitle("Zie ingevoerd commentaar", UIControlState.Normal);
 				btn_modal.TouchDown += delegate
 				{
+                    modal.hideBar(subjectVC);
 					subjectVC.PresentViewController(modal, true, null);
 				};
 

@@ -256,11 +256,11 @@
     <BundleResource Include="_Main Subjects\Toolbox\handboek.pdf" />
     <BundleResource Include="Resources\compose.png" />
     <BundleResource Include="Resources\formIcon.png" />
-    <BundleResource Include="Resources\openFormIcon.png" />
     <BundleResource Include="Resources\122196-200.png" />
     <BundleResource Include="Resources\personIcon.png" />
     <BundleResource Include="Resources\toolboxIcon.png" />
     <BundleResource Include="Resources\toolboxBarIcon.png" />
+    <BundleResource Include="Resources\openformIcon.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Features\" />

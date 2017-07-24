@@ -2,6 +2,7 @@
 using UIKit;
 using System.Collections.Generic;
 using DeRoo_iOS;
+using CoreGraphics;
 
 namespace LoginBestPractice.iOS
 {
@@ -12,8 +13,12 @@ namespace LoginBestPractice.iOS
 		public ToolboxContentViewController(IntPtr handle) : base(handle)
         {
 			base.LoadView();
-            toolboxContentSubjectsTable.Frame = new CoreGraphics.CGRect(toolboxContentSubjectsTable.Frame.X, toolboxContentSubjectsTable.Frame.Y, UIScreen.MainScreen.Bounds.Width, toolboxContentSubjectsTable.Frame.Height);
-            btn_continueToAdding.Frame = new CoreGraphics.CGRect((UIScreen.MainScreen.Bounds.Width * 0.25), (UIScreen.MainScreen.Bounds.Bottom * 0.75), (UIScreen.MainScreen.Bounds.Width * 0.5), btn_continueToAdding.Frame.Height);
+
+            nfloat screenWidth = UIScreen.MainScreen.Bounds.Width;
+            nfloat screenHeight = UIScreen.MainScreen.Bounds.Height;
+
+            toolboxContentSubjectsTable.Frame = new CGRect(0, (screenHeight*0.344), screenWidth, 100);
+            btn_continueToAdding.Frame = new CGRect((screenWidth*0.25), ((screenHeight*0.921)-60), (screenWidth*0.5), btn_continueToAdding.Frame.Height);
         }
 
 		// 
@@ -26,8 +31,7 @@ namespace LoginBestPractice.iOS
             if (files.Count < 1)
             {
                 this.PresentViewController(User.createAlert("Er bevinden zich geen PDF's voor deze toolbox", "INFO"), true, null);
-            }
-            else {
+            } else {
 				toolboxContentSubjectsTable.Source = new ToolboxContentTableSource(this.Title, files, this);
             }
 		}

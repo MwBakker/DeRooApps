@@ -45,19 +45,28 @@ namespace LoginBestPractice.iOS
         //
         partial void btn_addEmployee_TouchUpInside(UIButton sender)
         {
-
             UIAlertController modal = UIAlertController.Create("Externe medewerker toevoegen", "Voer de naam van de medewerker in", UIAlertControllerStyle.Alert);
             UITextField txtF_extrEmployeeSurname = null;
-            modal.AddTextField((textField) =>
+            modal.AddTextField((textFieldES) =>
             {
-                txtF_extrEmployeeSurname = textField;
+                txtF_extrEmployeeSurname = textFieldES;
                 txtF_extrEmployeeSurname.Placeholder = "Achternaam medewerker";
+                txtF_extrEmployeeSurname.ShouldReturn += (textField) =>
+                {
+                    textField.ResignFirstResponder();
+                    return true;
+                };
             });
 			UITextField txtF_extrEmployee = null;
-			modal.AddTextField((textField) =>
+			modal.AddTextField((textFieldEN) =>
 			{
-				txtF_extrEmployee = textField;
+				txtF_extrEmployee = textFieldEN;
 				txtF_extrEmployee.Placeholder = "Voornaam medewerker";
+                txtF_extrEmployee.ShouldReturn += (textField) =>
+				{
+					textField.ResignFirstResponder();
+					return true;
+				};
 			});
             modal.AddAction(UIAlertAction.Create("Medewerker toevoegen", UIAlertActionStyle.Default, action => addExternalEmployee(txtF_extrEmployeeSurname.Text, txtF_extrEmployee.Text)));
             modal.AddAction(UIAlertAction.Create("Annuleer", UIAlertActionStyle.Cancel, null));

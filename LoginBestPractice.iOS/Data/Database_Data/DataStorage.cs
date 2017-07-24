@@ -37,7 +37,7 @@ namespace DeRoo_iOS
 					string filename = Path.Combine(path, "data.txt");
 					if (File.Exists(filename))
 					{
-						File.Delete(filename);
+                        File.Delete(filename);
 					}
 					var values = new System.Collections.Specialized.NameValueCollection();
 					values.Add("gebruiker_id", User.instance.id);
@@ -129,8 +129,7 @@ namespace DeRoo_iOS
             if (succes == true) 
             {
                 if (fromFile == true) {
-                    var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                    var filename = Path.Combine(documents, type + rootForWeb.formulieren[0].datum + ".txt");
+                    var filename = Path.Combine(User.documentsPath, type + rootForWeb.formulieren[0].datum + ".txt");
                     File.Delete(filename);
                     vc.PresentViewController(User.createAlert("Openstaand formulier verzonden en verwijderd uit lijst openstaande formulieren", ""), true, null);
                 }
@@ -181,22 +180,21 @@ namespace DeRoo_iOS
             date = date.Replace(" AM", ""); date = date.Replace(" PM", "");
             date = date.Replace(" ", "");
 			Boolean succes = true;
-			var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-			var filename = Path.Combine(documents, type + date + ".txt");
+            var filename = Path.Combine(User.documentsPath, type + date + ".txt");
             if (File.Exists(filename)) { 
                 File.Delete(filename);
             }
 			FileStream fs = new FileStream(filename, FileMode.Create, FileAccess.ReadWrite);
 			StreamWriter sw = new StreamWriter(fs);
 			string JSON = JsonConvert.SerializeObject(data);
-			sw.Write(JSON); sw.Flush();
+            sw.Write(JSON); sw.Flush(); sw.Close();
             // re-empty the .data Rootobject
             var window = UIApplication.SharedApplication.KeyWindow;
             var vc = window.RootViewController;
             vc.PresentViewController(User.createAlert("Dit formulier is opgeslagen onder 'openstaande formulieren'", "INFO"), true, null);
             UIStoryboard board = UIStoryboard.FromName("MainStoryboard", null);
-			//UINavigationController openFVC = board.InstantiateViewController("openFormsNavigationController") as UINavigationController;
-			//openFVC.TabBarItem.Image = UIImage.FromFile("openstaandeformulieren.png");
+			// verkrijg parentView
+            // 
 			return succes;
 		}
 	}

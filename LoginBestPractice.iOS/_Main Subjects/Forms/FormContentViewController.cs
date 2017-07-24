@@ -13,7 +13,6 @@ namespace LoginBestPractice.iOS
 		List<UIView> views;
 
         public bool rootFromText  { get; set; }
-        // this is the Root, so it determines the questionType etc in a static way
         // changes in the database are not relevant to this root IF coming from non-web source
         public RootObject formData { get; set; }
         bool succesSend;
@@ -31,6 +30,12 @@ namespace LoginBestPractice.iOS
             succesSend = false;
 
 			viewWidth =  UIScreen.MainScreen.Bounds.Width;
+			txtf_projectName.ShouldReturn += (textField) => {
+			   textField.ResignFirstResponder();
+			   return true; };   
+            txtf_location.ShouldReturn += (textField) => {
+				textField.ResignFirstResponder();
+				return true; };
             lbl_generalInfo.Frame = new CGRect(0, 0, viewWidth, lbl_generalInfo.Frame.Height);
             lbl_projectName.Frame = new CGRect(lbl_projectName.Frame.X, lbl_projectName.Frame.Y, (viewWidth*0.359), lbl_projectName.Frame.Height);
             lbl_loc.Frame = new CGRect(lbl_loc.Frame.X, lbl_loc.Frame.Y, (viewWidth *0.359), lbl_loc.Frame.Height);
@@ -55,6 +60,7 @@ namespace LoginBestPractice.iOS
 					rootFromText = true;
                     RootObject fileForm = collectData();
                     DataStorage.sendDataToFile(formData, "openFormData", fileForm.formulieren[0].datum);
+                    TabBarController.TabBar.Items[1].Image = UIImage.FromFile("openformIcon");
 				}
 			}
 		}
@@ -91,7 +97,7 @@ namespace LoginBestPractice.iOS
                             QuestBlockView questBlock = new QuestBlockView(this, formData.vragen[j].vraag_id, formData.vragen[j].vraag_text);
 							questBlock.Tag = int.Parse(formData.vragen[j].vraag_volgNr); 
 							nfloat containerElementPos = 0;
-							// quest // 
+							// questText // 
 							containerElementPos += questBlock.lbl_quest.Frame.Bottom;
 	                            // POSSIBLE options (type 1 & 2 out of 4) //
 	                            UISegmentedControl options = questBlock.optionsControl(catBlock, containerElementPos);
@@ -103,7 +109,7 @@ namespace LoginBestPractice.iOS
 									if (possibleQAnswer != null)
 									{
                                         int givenIndex = checkGivenAnswer(possibleQAnswer);
-										questBlock.selectState(givenIndex, catBlock, true, true);
+										questBlock.selectState(givenIndex, true, true);
                                         // IF answer is disagreed
                                         if (givenIndex == 1) {
 											// WHEN 'not ok' fill modal if data is present (rootFromText) 
@@ -132,7 +138,7 @@ namespace LoginBestPractice.iOS
                                 foreach (UIView qblockSubview in qblock) {
                                     if (qblockSubview is UISegmentedControl) {
                                         if (((UISegmentedControl)qblockSubview).SelectedSegment == 1) {
-                                            ((QuestBlockView)qblock).selectState(1, catBlock, true, false);
+                                            ((QuestBlockView)qblock).selectState(1, true, false);
                                         } 
                                     }
                                 }
@@ -176,29 +182,18 @@ namespace LoginBestPractice.iOS
 		// updates parenView height according to subView heights
         // rather view is added or not is important
 		//
-		public void updateView (CatBlockView catBlock, QuestBlockView questBlock, UIButton btn, string stat)
+		public void updateView (CatBlockView catBlock, QuestBlockView questBlock)
 		{
-			if (stat == "added") {
-				questBlock.Frame = new CGRect(0, questBlock.Frame.Y, viewWidth, determineHeight(questBlock));
-			}
-			else if (stat == "removed") {
-				questBlock.Frame = new CGRect(0, questBlock.Frame.Y, viewWidth, determineHeight(questBlock));
-			}
-
-			// re-position views
-			nfloat vraagOptieBottom = questBlock.Frame.Bottom;
+			questBlock.Frame = new CGRect(0, questBlock.Frame.Y, viewWidth, determineHeight(questBlock));
+			nfloat questBlockBottom = questBlock.Frame.Bottom;
 			foreach (UIView view in catBlock) 
 			{
 				if (view is QuestBlockView)
 				{
 					if (view.Tag > questBlock.Tag)
 					{
-						if (stat == "added") {
-							view.Frame = new CGRect(view.Frame.X, vraagOptieBottom, view.Frame.Width, view.Frame.Height);
-						} else if (stat == "removed") {
-							view.Frame = new CGRect(view.Frame.X, vraagOptieBottom, view.Frame.Width, view.Frame.Height);
-						}
-						vraagOptieBottom = view.Frame.Bottom;
+						view.Frame = new CGRect(view.Frame.X, questBlockBottom, view.Frame.Width, view.Frame.Height);
+						questBlockBottom = view.Frame.Bottom;
 					}
 				}
 			}

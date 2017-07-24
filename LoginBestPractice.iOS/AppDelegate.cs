@@ -46,8 +46,8 @@ namespace LoginBestPractice.iOS
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
 			//check exists
-			var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-			var filename = Path.Combine(documents, "login.txt");
+            string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            var filename = Path.Combine(documentsPath, "login.txt");
 
             //isAuthenticated can be used for an auto-login feature, you'll have to implement this
             //as you see fit or get rid of the if statement if you want.

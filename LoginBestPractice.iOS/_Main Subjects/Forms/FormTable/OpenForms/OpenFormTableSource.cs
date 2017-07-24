@@ -36,6 +36,7 @@ namespace LoginBestPractice.iOS
                 cell.entireForm = unFilledForms[indexPath.Row];
                 cell.TextLabel.Text = unFilledForms[indexPath.Row].formulieren[0].formulier_naam + " - '" +  unFilledForms[indexPath.Row].formulieren[0].project_naam +"'";
                 cell.formfilePath = filepaths[indexPath.Row];
+                cell.form = unFilledForms[indexPath.Row];
                 var longPressGesture = new UILongPressGestureRecognizer(LongPressMethod);
                 cell.AddGestureRecognizer(longPressGesture);
 			}
@@ -68,7 +69,7 @@ namespace LoginBestPractice.iOS
 			if (gestureRecognizer.State == UIGestureRecognizerState.Began)
 			{
 				UIAlertController delAlert = UIAlertController.Create("Formulier verwijderen", "Wilt u dit formulier verwijderen?", UIAlertControllerStyle.Alert);
-                delAlert.AddAction(UIAlertAction.Create("Ja", UIAlertActionStyle.Default, action => ((OpenFormsViewController)parentVC).delFile(longpressedCell.formfilePath)));
+                delAlert.AddAction(UIAlertAction.Create("Ja", UIAlertActionStyle.Default, action => ((OpenFormsViewController)parentVC).delFile(longpressedCell.formfilePath, longpressedCell.form)));
 				delAlert.AddAction(UIAlertAction.Create("Nee", UIAlertActionStyle.Cancel, null));
                 parentVC.PresentViewController(delAlert, true, null);
 			}

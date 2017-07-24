@@ -9,7 +9,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>LoginBestPractice.iOS</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.your-company.LoginBestPractice.iOS</string>
+	<string>com.Martijn-Bakker.LoginBestPractice.iOS</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
@@ -17,7 +17,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MinimumOSVersion</key>
-	<string>8.0</string>
+	<string>9.3.5</string>
 	<key>UIDeviceFamily</key>
 	<array>
 		<integer>1</integer>
@@ -47,5 +47,7 @@
 			<string>CFBundleTypeName</string>
 		</dict>
 	</array>
+	<key>XSLaunchImageAssets</key>
+	<string>Resources/Images.xcassets/LaunchImage.launchimage</string>
 </dict>
 </plist>

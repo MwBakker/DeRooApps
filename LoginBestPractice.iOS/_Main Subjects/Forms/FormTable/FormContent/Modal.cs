@@ -10,12 +10,14 @@ namespace LoginBestPractice.iOS
         public string action { get; set; }
         public string person { get; set; }
         public string date { get; set; }
+        public UIViewController subjectVC { get; set; }
 		private bool cancelled;
 
 		public Modal (IntPtr handle) : base (handle)	
         {
             nfloat viewWidth = UIScreen.MainScreen.Bounds.Width;
             nfloat viewHeight = UIScreen.MainScreen.Bounds.Height;
+
             base.LoadView();
 
             modalView.Frame = new CGRect((viewWidth*0.075), (viewHeight*0.0675), (viewWidth*0.85), modalView.Frame.Height);
@@ -27,18 +29,35 @@ namespace LoginBestPractice.iOS
             txtF_person.Frame = new CGRect(txtF_person.Frame.X, txtF_person.Frame.Y, (txtFWidth), (txtF_person.Frame.Height));
             btn_annuleer.Frame = new CGRect(btn_annuleer.Frame.X, btn_ok.Frame.Y, (modalViewWidth * 0.5), (btn_annuleer.Frame.Height));
             btn_ok.Frame = new CGRect((btn_annuleer.Frame.X + btn_annuleer.Frame.Width), btn_ok.Frame.Y, (modalViewWidth*0.5), (btn_ok.Frame.Height));
+			modalView.Layer.BorderWidth = 0.1f;
+
+            txtF_comment.ShouldReturn += (textField) => {
+			   textField.ResignFirstResponder();
+			   return true; };
+            txtF_action.ShouldReturn += (textField) => {
+			   textField.ResignFirstResponder();
+			   return true; };
+            txtF_person.ShouldReturn += (textField) => {
+			   textField.ResignFirstResponder();
+			   return true; };
 		}
 
-		//
-		// sets modal after succesfull loading
-		//
-		public override void ViewDidLoad()
-		{
-			modalView.Layer.BorderWidth = 0.1f;
-			txtF_comment.Layer.BorderWidth = 0.5f;
-			txtF_action.Layer.BorderWidth = 0.5f;
-			txtF_person.Layer.BorderWidth = 0.5f;
-		}
+        //
+        // tabBar to re-visualise after close
+        //
+        public override void ViewWillDisappear(bool animated)
+        {
+            subjectVC.TabBarController.TabBar.Hidden = false;
+        }
+
+        //
+        // hides the statusbar when modal is presented
+        //
+        public void hideBar(UIViewController subjectVCIn) 
+        {
+            subjectVCIn.TabBarController.TabBar.Hidden = true;
+            subjectVC = subjectVCIn;
+        }
 
 		//
 		// collects filled data in modal from textfields

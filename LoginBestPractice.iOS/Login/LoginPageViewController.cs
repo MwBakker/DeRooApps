@@ -17,7 +17,13 @@ namespace LoginBestPractice.iOS
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-
+			txtF_userName.ShouldReturn += (textField) => {
+				textField.ResignFirstResponder();
+				return true; };
+			txtF_password.ShouldReturn += (textField) => {
+				textField.ResignFirstResponder();
+				return true; };
+            
 			//Method to show or hide password.
 			passwordHideShow.TouchUpInside += delegate
 			{
@@ -31,6 +37,13 @@ namespace LoginBestPractice.iOS
 					passwordHideShow.Tag = 0;
 					txtF_password.SecureTextEntry = true;
 				}
+			};
+
+
+            txtF_password.ShouldReturn += (textField) =>
+			{
+				textField.ResignFirstResponder();
+				return true;
 			};
 		}
 
@@ -48,8 +61,7 @@ namespace LoginBestPractice.iOS
 				if (login.isActive())
 				{
 					//Creeer een file met usertoken erin
-					var documents = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-					var filename = Path.Combine(documents, "login.txt");
+                    var filename = Path.Combine(User.documentsPath, "login.txt");
 					string vals = txtF_userName.Text + "/" + txtF_password.Text;
 					File.WriteAllText(filename, vals);
 
@@ -58,8 +70,7 @@ namespace LoginBestPractice.iOS
 				}
 				else
 				{
-					UIAlertView alert = new UIAlertView()
-					{
+					UIAlertView alert = new UIAlertView() {
 						Title = "Warning",
 						Message = "Foute gebruikersnaam of wachtwoord!"
 					};
@@ -69,7 +80,7 @@ namespace LoginBestPractice.iOS
 			}
 			else
 			{
-				new UIAlertView("Login Error", "Foute gebruikersnaam of wachtwoord!", null, "OK", null).Show();
+                PresentViewController(User.createAlert("Foute gebruikersnaam of wachtwoord!", "FOUT"), true, null);
 			}
         }
 
