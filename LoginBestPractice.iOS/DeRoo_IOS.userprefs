@@ -1,17 +1,14 @@
 ﻿<Properties StartupConfiguration="{84563AF5-67F4-46D6-B49C-BF8D718F3C64}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="_Main Subjects/Forms/FormContentViewController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="_Main Subjects/Forms/FormTable/FormContent/QuestBlockView.cs">
     <Files>
-      <File FileName="_Main Subjects/Forms/FormTable/OpenForms/OpenFormTableSource.cs" Line="41" Column="28" />
-      <File FileName="_Main Subjects/Forms/FormTable/OpenForms/UIOpenFormCell.cs" Line="9" Column="31" />
-      <File FileName="_Main Subjects/Forms/OpenFormsViewController.cs" Line="9" Column="2" />
-      <File FileName="Data/User.cs" Line="39" Column="29" />
-      <File FileName="AppDelegate.cs" Line="47" Column="10" />
-      <File FileName="_Main Subjects/Forms/FormTable/FormContent/QuestBlockView.cs" Line="158" Column="73" />
-      <File FileName="Resources/UIDeRooButton.cs" Line="12" Column="4" />
-      <File FileName="_Main Subjects/Forms/FormContentViewController.cs" Line="27" Column="10" />
+      <File FileName="_Main Subjects/Forms/FormTable/FormContent/QuestBlockView.cs" Line="211" Column="42" />
+      <File FileName="_Main Subjects/Forms/FormContentViewController.cs" Line="126" Column="56" />
+      <File FileName="Main.cs" Line="12" Column="1" />
+      <File FileName="Resources/UIDeRooButton.cs" Line="17" Column="44" />
+      <File FileName="MainStoryboard.storyboard" />
     </Files>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
@@ -20,5 +17,5 @@
   <DisabledProjects>
     <String>../../../Downloads/DeRoo/DeRoo/DeRoo.csproj</String>
   </DisabledProjects>
-  <MonoDevelop.Ide.ItemProperties.DeRoo__IOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.f14bc2f86c126ce1641c4e44a868a0c514e0401e" />
+  <MonoDevelop.Ide.ItemProperties.DeRoo__IOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.0BA13F0B-E705-44E7-8B29-0184BFE45F42" />
 </Properties>

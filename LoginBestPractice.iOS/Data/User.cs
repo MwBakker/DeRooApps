@@ -36,7 +36,6 @@ namespace DeRoo_iOS
             {
                 instance = this;
             }
-            checkUnfilled();
 			//StartTimer();
         }
 
@@ -80,7 +79,7 @@ namespace DeRoo_iOS
         //
         // checks for possible unfilled data at startup
         //
-        void checkUnfilled() 
+        public static void checkUnfilled(UITabBar tabBar) 
         {
 			string partialName = "openFormData";
             DirectoryInfo hdDirectoryInWhichToSearch = new DirectoryInfo(documentsPath);
@@ -99,6 +98,9 @@ namespace DeRoo_iOS
 				RootObject unfilledForm = JsonConvert.DeserializeObject<RootObject>(rawJSON);
 				forms.Add(unfilledForm);
 			}
+            if (filesInDir.Length >= 1) {
+                tabBar.Items[1].Image = UIImage.FromFile("openformIcon");
+            }
         }
 
 		//

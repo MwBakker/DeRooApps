@@ -6,12 +6,21 @@ namespace LoginBestPractice.iOS
 	{
         UIColor deRooGreen;
 
-		public UIDeRooButton()
+		public UIDeRooButton(string type)
 		{
-            deRooGreen = new UIColor(0.04f, 0.17f, 0.01f, 1.0f);
 			Layer.BorderWidth = 1.5f;
 			Layer.CornerRadius = 9;
-            BackgroundColor = deRooGreen;
+
+            if (type == "general") {
+				deRooGreen = new UIColor(0.04f, 0.17f, 0.01f, 1.0f);
+				BackgroundColor = deRooGreen;
+            } else if (type == "addPhoto") { 
+                BackgroundColor = UIColor.Gray;
+                SetTitle("Maak foto van situatie", UIControlState.Normal);
+            } else if (type == "addModal") {
+                SetTitle("Zie ingevoerd commentaar", UIControlState.Normal);
+            }
+
             SetTitleColor(UIColor.White, UIControlState.Normal);
 		}
 

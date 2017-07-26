@@ -60,7 +60,7 @@ namespace LoginBestPractice.iOS
 					rootFromText = true;
                     RootObject fileForm = collectData();
                     DataStorage.sendDataToFile(formData, "openFormData", fileForm.formulieren[0].datum);
-                    TabBarController.TabBar.Items[1].Image = UIImage.FromFile("openformIcon");
+					TabBarController.TabBar.Items[1].Image = UIImage.FromFile("openformIcon");
 				}
 			}
 		}
@@ -93,37 +93,41 @@ namespace LoginBestPractice.iOS
 					{
 						if (formData.vragen[j].categorie_id == formData.categorien[i].categorie_id)
 						{
-							// questcontainer // 
+                            // questcontainer // 
                             QuestBlockView questBlock = new QuestBlockView(this, formData.vragen[j].vraag_id, formData.vragen[j].vraag_text);
 							questBlock.Tag = int.Parse(formData.vragen[j].vraag_volgNr); 
 							nfloat containerElementPos = 0;
-							// questText // 
 							containerElementPos += questBlock.lbl_quest.Frame.Bottom;
-	                            // POSSIBLE options (type 1 & 2 out of 4) //
-	                            UISegmentedControl options = questBlock.optionsControl(catBlock, containerElementPos);
-	                            questBlock.setOptions(formData.vragen[j].vraag_type);
-								// POSSIBLE data from file, reload possible modal info
-								if (rootFromText == true)
-								{
-									string possibleQAnswer = formData.vragen.First(q => q.vraag_id == questBlock.quest_id).answer;
-									if (possibleQAnswer != null)
-									{
+                            if (formData.vragen[j].vraag_type == "Akkoord/Niet akkoord/N.v.t." || formData.vragen[j].vraag_type == "Ja/Nee/N.v.t.")
+                            {
+                                UISegmentedControl options = questBlock.optionsControl(catBlock, containerElementPos, formData.vragen[j].vraag_type);
+                                // POSSIBLE data from file, reload possible modal info
+                                if (rootFromText == true)
+                                {
+                                    string possibleQAnswer = formData.vragen.First(q => q.vraag_id == questBlock.quest_id).answer;
+                                    if (possibleQAnswer != null)
+                                    {
                                         int givenIndex = checkGivenAnswer(possibleQAnswer);
-										questBlock.selectState(givenIndex, true, true);
+                                        questBlock.selectState(givenIndex, true, true);
                                         // IF answer is disagreed
-                                        if (givenIndex == 1) {
-											// WHEN 'not ok' fill modal if data is present (rootFromText) 
-											string comment = formData.vragen[j].extra_commentaar; string action = formData.vragen[j].actie_ondernomen;
-											string person = formData.vragen[j].persoon; if (comment != null) { questBlock.modal.setTxtF_comment(comment); }
-											if (action != null) { questBlock.modal.setTxtF_action(action); }
-											if (person != null) { questBlock.modal.setTxtF_person(person); }
+                                        if (givenIndex == 1)
+                                        {
+                                            // WHEN 'not ok' fill modal if data is present (rootFromText) 
+                                            string comment = formData.vragen[j].extra_commentaar; string action = formData.vragen[j].actie_ondernomen;
+                                            string person = formData.vragen[j].persoon; if (comment != null) { questBlock.modal.setTxtF_comment(comment); }
+                                            if (action != null) { questBlock.modal.setTxtF_action(action); }
+                                            if (person != null) { questBlock.modal.setTxtF_person(person); }
                                             questBlock.modal.collectData(true);
                                         }
-									}
-								}
-	                            containerElementPos += questBlock.options.Frame.Bottom;
-								// POSSIBLE date (type 3) 
-								// POSSIBLE freeForm (type 4)
+                                    }
+                                }
+                            } else if (formData.vragen[j].vraag_type == "Datum") 
+                            {
+                                questBlock.setDateQuest();
+                            }
+                            containerElementPos += questBlock.options.Frame.Bottom;
+							// POSSIBLE date (type 3) 
+							// POSSIBLE freeForm (type 4)
 							questBlock.Frame = new CGRect(0, containerPos, viewWidth, determineHeight(questBlock));
 							containerPos += questBlock.Frame.Height;
 							catBlock.AddSubview(questBlock);
@@ -157,6 +161,9 @@ namespace LoginBestPractice.iOS
 		partial void btn_geoLocationTouchUpInside(UIButton sender)
 		{
 			var pos = CrossGeolocator.Current.GetPositionAsync();
+            var posRes = pos.Result;
+            double lat = posRes.Latitude;
+            double longt = posRes.Longitude;
 		}
 
         //
@@ -179,44 +186,23 @@ namespace LoginBestPractice.iOS
         }
 
 		// 
-		// updates parenView height according to subView heights
-        // rather view is added or not is important
-		//
-		public void updateView (CatBlockView catBlock, QuestBlockView questBlock)
-		{
-			questBlock.Frame = new CGRect(0, questBlock.Frame.Y, viewWidth, determineHeight(questBlock));
-			nfloat questBlockBottom = questBlock.Frame.Bottom;
-			foreach (UIView view in catBlock) 
-			{
-				if (view is QuestBlockView)
-				{
-					if (view.Tag > questBlock.Tag)
-					{
-						view.Frame = new CGRect(view.Frame.X, questBlockBottom, view.Frame.Width, view.Frame.Height);
-						questBlockBottom = view.Frame.Bottom;
-					}
-				}
-			}
-			catBlock.Frame = new CGRect(0, 10, viewWidth, (determineHeight(catBlock) + 25));
-			formTableView.ReloadData();
-		}
-
-
-		// 
 		// sets height, depending on which views are visible in parent
         // returns total height based on bottom values of views
 		//
-		private nfloat determineHeight(UIView viewIn)
+		public nfloat determineHeight(UIView viewIn)
 		{
-			nfloat viewBottomLineAnchor = 0.0f;
+			nfloat viewBottom = 0.0f;
 			foreach (UIView subView in viewIn.Subviews)
 			{
 				if (subView.Hidden == false)
 				{
-                    viewBottomLineAnchor = subView.Frame.Bottom;
+                    if (subView.Tag == 5) {
+                        subView.Frame = new CGRect(subView.Frame.X, subView.Frame.Y+5, subView.Frame.Width, subView.Frame.Height);
+                    }
+                    viewBottom = subView.Frame.Bottom;
 				}
 			}
-			return viewBottomLineAnchor;
+			return viewBottom;
 		}
 
         //
@@ -264,52 +250,71 @@ namespace LoginBestPractice.iOS
                     if (catSubView is QuestBlockView)
                     {
                         string questID = ((QuestBlockView)catSubView).quest_id;
-                        dataIndex = DataStorage.data.vragen.FindIndex(q => q.vraag_id == questID);
+                        string questType = ((QuestBlockView)catSubView).questType;
+						dataIndex = DataStorage.data.vragen.FindIndex(q => q.vraag_id == questID);
                         Vragen quest = DataStorage.data.vragen[dataIndex];
-                        // modalData
-                        Modal qModal = ((QuestBlockView)catSubView).modal;
-                        if (qModal != null)
-                        {
-                            quest.extra_commentaar = qModal.comment; quest.actie_ondernomen = qModal.action;
-                            quest.persoon = qModal.person; quest.datum_gereed = qModal.date;
-                            if (quest.extra_commentaar == "" || quest.actie_ondernomen == "" || quest.persoon == "" || quest.datum_gereed == "")
-                            {
-                                PresentViewController(User.createAlert("Extra gegevens bij niet akkoord ontbreken!", "FOUT"), true, null);
-                                formTableView.ContentOffset = new CGPoint(0, catSubView.Frame.Top);
-                                if (rootFromText == false) {
-								    return null;
-                                }
-                            }
-                        }
+                        // date 
+                        // open form
                         foreach (UIView questSubview in catSubView.Subviews)
                         {
-                            // questText
                             if (questSubview is UILabel)
                             {
-                                quest.vraag_text = ((UILabel)questSubview).Text; quest.vraag_type = "Akkoord/Niet akkoord/N.v.t.";
+                                quest.vraag_text = ((UILabel)questSubview).Text;
                                 quest.categorie_id = catID;
                             }
-	                            // selected option
-	                            if (questSubview is UISegmentedControl)
-	                            {
-	                                nfloat index = ((UISegmentedControl)questSubview).SelectedSegment;
-	                                if (index < 0)
-	                                {
-	                                    // when questType selection does not have selection, jump to this certain optio
+                            if (questType == "Ja/Nee/N.v.t." || questType == "Akkoord/Niet akkoord/N.v.t.")
+                            {
+                                // modalData
+                                Modal qModal = ((QuestBlockView)catSubView).modal;
+                                if (qModal != null)
+                                {
+                                    quest.extra_commentaar = qModal.comment; quest.actie_ondernomen = qModal.action;
+                                    quest.persoon = qModal.person; quest.datum_gereed = qModal.date;
+                                    if (quest.extra_commentaar == "" || quest.actie_ondernomen == "" || quest.persoon == "" || quest.datum_gereed == "")
+                                    {
+                                        PresentViewController(User.createAlert("Extra gegevens bij niet akkoord ontbreken!", "FOUT"), true, null);
+                                        formTableView.ContentOffset = new CGPoint(0, catSubView.Frame.Top);
+                                        if (rootFromText == false) {
+                                            return null;
+                                        }
+                                    }
+                                }
+                                if (questSubview is UISegmentedControl)
+                                {
+                                    nfloat index = ((UISegmentedControl)questSubview).SelectedSegment;
+                                    if (index < 0)
+                                    {
+                                        // when questType selection does not have selection, jump to this certain optio
                                         PresentViewController(User.createAlert("Formulier niet volledig ingevuld", "FOUT"), true, null);
                                         formTableView.ContentOffset = new CGPoint(0, questSubview.Frame.Y);
                                         // check if null is allowed (in case of textSource, it is)
-                                        if (rootFromText == true) { 
+                                        if (rootFromText == true) {
                                             relevantQuests.Add(quest);
-                                        } else {
+                                        }
+                                        else {
                                             return null;
                                         }
-	                                }
-	                                else
-	                                {
-	                                    quest.answer = ((UISegmentedControl)questSubview).TitleAt(((UISegmentedControl)questSubview).SelectedSegment);
-	                                    relevantQuests.Add(quest);
-	                                }
+                                    }
+                                    else 
+                                    {
+                                        quest.answer = ((UISegmentedControl)questSubview).TitleAt(((UISegmentedControl)questSubview).SelectedSegment);
+                                        relevantQuests.Add(quest);
+                                    }
+                                }
+                            }
+                            else if (questType == "Datum") 
+                            {
+                                if (questSubview is UIDatePicker)
+                                {
+                                    // datePicker toString(); 
+                                }
+                            }
+                            else if (questType == "Open Vraag") 
+                            {
+                                if (questSubview is UITextField)
+								{
+									// Text toString(); 
+								} 
                             }
                         }
                     }
@@ -321,6 +326,13 @@ namespace LoginBestPractice.iOS
                 vragen = relevantQuests
             };
             return formRoot;
+        }
+
+        //
+        // reloads the table
+        //
+        public void reloadTable() {
+            formTableView.ReloadData();
         }
 
 		// 
@@ -336,6 +348,7 @@ namespace LoginBestPractice.iOS
 				{
 					succesSend = true;
                     if (rootFromText == true) {
+                        User.checkUnfilled(TabBarController.TabBar);
                         OpenFormsViewController openFormVC = Storyboard.InstantiateViewController("OpenFormsViewController") as OpenFormsViewController;
                         NavigationController.PushViewController(openFormVC, true);
                     } else {
