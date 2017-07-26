@@ -18,6 +18,7 @@ namespace LoginBestPractice.iOS
                 BackgroundColor = UIColor.Gray;
                 SetTitle("Maak foto van situatie", UIControlState.Normal);
             } else if (type == "addModal") {
+                BackgroundColor = UIColor.Gray;
                 SetTitle("Zie ingevoerd commentaar", UIControlState.Normal);
             }
 

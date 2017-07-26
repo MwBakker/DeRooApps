@@ -30,7 +30,7 @@ namespace LoginBestPractice.iOS
 
 		public UIButton createElements(string formulierID, string formulierNaam, nfloat hoogteVanButtons)
 		{
-			UIDeRooButton btn_formulier = new UIDeRooButton();
+			UIDeRooButton btn_formulier = new UIDeRooButton("general");
 			btn_formulier.Frame = new CoreGraphics.CGRect((this.View.Frame.Size.Width * 0.125), (hoogteVanButtons + 20), (this.View.Frame.Size.Width * 0.75), 40);
 			btn_formulier.SetTitle(formulierNaam, UIControlState.Normal);
 			btn_formulier.TouchDown += delegate

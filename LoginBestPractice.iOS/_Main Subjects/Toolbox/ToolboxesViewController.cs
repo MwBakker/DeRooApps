@@ -38,7 +38,7 @@ namespace LoginBestPractice.iOS
         //
         public UIDeRooButton toolboxButton (string toolboxID, string toolboxName, nfloat buttonPos)
 		{
-            UIDeRooButton btn_toolbox = new UIDeRooButton(); 
+            UIDeRooButton btn_toolbox = new UIDeRooButton("general"); 
 			btn_toolbox.SetTitle(toolboxName, UIControlState.Normal);
             btn_toolbox.Frame = new CGRect((this.View.Frame.Size.Width * 0.125), (buttonPos + 15), (this.View.Frame.Size.Width * 0.75), 45);
 			btn_toolbox.TouchDown += delegate

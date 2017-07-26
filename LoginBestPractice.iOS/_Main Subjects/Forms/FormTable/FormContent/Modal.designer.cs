@@ -40,7 +40,7 @@ namespace LoginBestPractice.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIView modalView { get; set; }
+        UIKit.UIScrollView modalView { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]

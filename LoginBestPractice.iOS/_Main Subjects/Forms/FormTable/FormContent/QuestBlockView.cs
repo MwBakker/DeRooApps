@@ -81,7 +81,7 @@ namespace LoginBestPractice.iOS
 		{
 			string[] questTypeOption = questTypeIn.Split('/');
 
-			for (int i = 0; i < questType.Length; i++)
+			for (int i = 0; i < questTypeOption.Length; i++)
 			{
 				options.InsertSegment(questTypeOption[i], i, false);
 			}

@@ -264,21 +264,6 @@ namespace LoginBestPractice.iOS
                             }
                             if (questType == "Ja/Nee/N.v.t." || questType == "Akkoord/Niet akkoord/N.v.t.")
                             {
-                                // modalData
-                                Modal qModal = ((QuestBlockView)catSubView).modal;
-                                if (qModal != null)
-                                {
-                                    quest.extra_commentaar = qModal.comment; quest.actie_ondernomen = qModal.action;
-                                    quest.persoon = qModal.person; quest.datum_gereed = qModal.date;
-                                    if (quest.extra_commentaar == "" || quest.actie_ondernomen == "" || quest.persoon == "" || quest.datum_gereed == "")
-                                    {
-                                        PresentViewController(User.createAlert("Extra gegevens bij niet akkoord ontbreken!", "FOUT"), true, null);
-                                        formTableView.ContentOffset = new CGPoint(0, catSubView.Frame.Top);
-                                        if (rootFromText == false) {
-                                            return null;
-                                        }
-                                    }
-                                }
                                 if (questSubview is UISegmentedControl)
                                 {
                                     nfloat index = ((UISegmentedControl)questSubview).SelectedSegment;
@@ -299,6 +284,22 @@ namespace LoginBestPractice.iOS
                                     {
                                         quest.answer = ((UISegmentedControl)questSubview).TitleAt(((UISegmentedControl)questSubview).SelectedSegment);
                                         relevantQuests.Add(quest);
+                                    }
+									// modalData
+									Modal qModal = ((QuestBlockView)catSubView).modal;
+                                    if (qModal != null)
+                                    {
+                                        quest.extra_commentaar = qModal.comment; quest.actie_ondernomen = qModal.action;
+                                        quest.persoon = qModal.person; quest.datum_gereed = qModal.date;
+                                        if (quest.extra_commentaar == "" || quest.actie_ondernomen == "" || quest.persoon == "" || quest.datum_gereed == "")
+                                        {
+                                            PresentViewController(User.createAlert("Extra gegevens bij niet akkoord ontbreken!", "FOUT"), true, null);
+                                            formTableView.ContentOffset = new CGPoint(0, catSubView.Frame.Top);
+                                            if (rootFromText == false)
+                                            {
+                                                return null;
+                                            }
+                                        }
                                     }
                                 }
                             }

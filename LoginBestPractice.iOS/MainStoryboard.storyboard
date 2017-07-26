@@ -255,13 +255,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" heightSizable="YES" widthSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleAspectFit" id="3008" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                <rect key="frame" x="27" y="32" width="265" height="435"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0.92549019607843142" green="0.92549019607843142" blue="0.92549019607843142" alpha="1"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="4527" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO">
+                                <rect key="frame" x="27" y="30" width="265" height="435"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute keyPath="layer.cornerRadius" type="number">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2561" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" text="Opmerking">
-                                        <rect key="frame" x="16" y="7" width="76" height="21"/>
+                                        <rect key="frame" x="16" y="6" width="76" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" colorSpace="calibratedRGB" red="0.086274509803921567" green="0.18823529411764706" blue="0.050980392156862744" alpha="1"/>
@@ -269,14 +273,14 @@
                                         <color key="tintColor" colorSpace="calibratedRGB" red="0.0392156862745098" green="0.10980392156862745" blue="0.011764705882352941" alpha="1"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" minimumFontSize="17" id="2562" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" clearButtonMode="whileEditing" placeholder="Opmerking">
-                                        <rect key="frame" x="15" y="30" width="235" height="80"/>
+                                        <rect key="frame" x="15" y="29" width="235" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <color key="backgroundColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2566" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" text="Actie">
-                                        <rect key="frame" x="16" y="118" width="105" height="21"/>
+                                        <rect key="frame" x="16" y="117" width="105" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" colorSpace="calibratedRGB" red="0.070588235294117646" green="0.14117647058823529" blue="0.043137254901960784" alpha="1"/>
@@ -284,14 +288,14 @@
                                         <color key="tintColor" colorSpace="calibratedRGB" red="0.0392156862745098" green="0.10980392156862745" blue="0.011764705882352941" alpha="1"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" minimumFontSize="17" id="2563" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" clearButtonMode="whileEditing" placeholder="Uitgevoerde actie ">
-                                        <rect key="frame" x="15" y="140" width="235" height="105"/>
+                                        <rect key="frame" x="15" y="139" width="235" height="105"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <color key="backgroundColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Door wie?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2567" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                        <rect key="frame" x="17" y="255" width="105" height="21"/>
+                                        <rect key="frame" x="17" y="254" width="105" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" colorSpace="calibratedRGB" red="0.058823529411764705" green="0.10588235294117647" blue="0.0392156862745098" alpha="1"/>
@@ -299,22 +303,31 @@
                                         <color key="tintColor" colorSpace="calibratedRGB" red="0.0392156862745098" green="0.10980392156862745" blue="0.011764705882352941" alpha="1"/>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="2564" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" clearButtonMode="whileEditing" placeholder="Persoon uitvoering actie">
-                                        <rect key="frame" x="15" y="275" width="235" height="40"/>
+                                        <rect key="frame" x="15" y="274" width="235" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <color key="backgroundColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Datum gereed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2568" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                        <rect key="frame" x="17" y="330" width="93" height="20"/>
+                                        <rect key="frame" x="17" y="329" width="93" height="20"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" colorSpace="calibratedRGB" red="0.050980392156862744" green="0.082352941176470587" blue="0.0392156862745098" alpha="1"/>
                                         <nil key="highlightedColor"/>
                                         <color key="tintColor" colorSpace="calibratedRGB" red="0.0392156862745098" green="0.10980392156862745" blue="0.011764705882352941" alpha="1"/>
                                     </label>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" id="3201" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                        <rect key="frame" x="0.0" y="339" width="265" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="332704801.65417802">
+                                            <!--2011-07-18 18:00:01 +0000-->
+                                        </date>
+                                        <locale key="locale" localeIdentifier="nl_NL"/>
+                                        <color key="tintColor" colorSpace="calibratedRGB" red="0.0392156862745098" green="0.10980392156862745" blue="0.011764705882352941" alpha="1"/>
+                                    </datePicker>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2759" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                        <rect key="frame" x="10" y="400" width="110" height="30"/>
+                                        <rect key="frame" x="10" y="399" width="110" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="Annuleer" backgroundImage="green">
@@ -331,7 +344,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2577" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                        <rect key="frame" x="145" y="400" width="110" height="30"/>
+                                        <rect key="frame" x="145" y="399" width="110" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <state key="normal" title="Ok" backgroundImage="green">
@@ -347,38 +360,25 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </button>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" id="3201" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                        <rect key="frame" x="0.0" y="340" width="265" height="60"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                        <date key="date" timeIntervalSinceReferenceDate="332704801.65417802">
-                                            <!--2011-07-18 18:00:01 +0000-->
-                                        </date>
-                                        <locale key="locale" localeIdentifier="nl_NL"/>
-                                        <color key="tintColor" colorSpace="calibratedRGB" red="0.0392156862745098" green="0.10980392156862745" blue="0.011764705882352941" alpha="1"/>
-                                    </datePicker>
                                 </subviews>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute keyPath="layer.cornerRadius" type="number">
-                                        <real key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
+                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="480"/>
                     <connections>
+                        <outlet property="modalView" destination="4527" id="name-outlet-4527"/>
+                        <outlet property="txtF_comment" destination="2562" id="name-outlet-2562"/>
+                        <outlet property="lbl_action" destination="2566" id="name-outlet-2566"/>
+                        <outlet property="txtF_action" destination="2563" id="name-outlet-2563"/>
+                        <outlet property="lbl_person" destination="2567" id="name-outlet-2567"/>
+                        <outlet property="txtF_person" destination="2564" id="name-outlet-2564"/>
+                        <outlet property="lbl_dateReady" destination="2568" id="name-outlet-2568"/>
+                        <outlet property="dt_date" destination="3201" id="name-outlet-3201"/>
                         <outlet property="btn_annuleer" destination="2759" id="name-outlet-2759"/>
                         <outlet property="btn_ok" destination="2577" id="name-outlet-2577"/>
-                        <outlet property="txtF_comment" destination="2562" id="name-outlet-2562"/>
-                        <outlet property="txtF_action" destination="2563" id="name-outlet-2563"/>
-                        <outlet property="txtF_person" destination="2564" id="name-outlet-2564"/>
-                        <outlet property="dt_date" destination="3201" id="name-outlet-3201"/>
-                        <outlet property="modalView" destination="3008" id="name-outlet-3008"/>
-                        <outlet property="lbl_action" destination="2566" id="name-outlet-2566"/>
-                        <outlet property="lbl_person" destination="2567" id="name-outlet-2567"/>
-                        <outlet property="lbl_dateReady" destination="2568" id="name-outlet-2568"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2547" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -790,6 +790,39 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4497" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1806" y="1386"/>
+        </scene>
+        <scene sceneID="4522">
+            <objects>
+                <viewController id="4523" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4520"/>
+                        <viewControllerLayoutGuide type="bottom" id="4521"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4524">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <view contentMode="scaleAspectFit" id="3008" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                <rect key="frame" x="34" y="29" width="265" height="435"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0.92549019607843142" green="0.92549019607843142" blue="0.92549019607843142" alpha="1"/>
+                                <subviews/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute keyPath="layer.cornerRadius" type="number">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="modalView" destination="3008" id="name-outlet-3008"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4525" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2187" y="-365"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
