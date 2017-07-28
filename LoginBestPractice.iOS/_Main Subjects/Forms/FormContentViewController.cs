@@ -321,14 +321,14 @@ namespace LoginBestPractice.iOS
                                 if (questSubview is UIDatePicker)
                                 {
 									DateTime dt = DateTime.SpecifyKind(DateTime.Parse(((UIDatePicker)questSubview).Date.ToString()), DateTimeKind.Local).ToLocalTime();
-                                    quest.datum_gereed = dt.ToString().Replace("+0000", "");
+                                    quest.answer = dt.ToString().Replace("+0000", "");
                                 }
                             }
-                            else if (questType == "Open Vraag") 
+                            else if (questType == "Open vraag") 
                             {
                                 if (questSubview is UITextField)
 								{
-                                    quest.extra_commentaar = ((UITextField)questSubview).Text; 
+                                    quest.answer = ((UITextField)questSubview).Text; 
 								} 
                             }
                             // photo data, comes along because is part of subviews in specific Questblock
