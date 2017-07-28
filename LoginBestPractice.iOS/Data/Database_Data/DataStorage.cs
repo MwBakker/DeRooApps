@@ -180,7 +180,7 @@ namespace DeRoo_iOS
 			Boolean succes = true;
             var filename = Path.Combine(User.documentsPath, type + date + ".txt");
             if (File.Exists(filename)) {
-                User.unfilledForms.Remove(data);
+                User.deleteFileForm(data, filename);
                 File.Delete(filename);
             }
 			FileStream fs = new FileStream(filename, FileMode.Create, FileAccess.ReadWrite);
@@ -192,7 +192,7 @@ namespace DeRoo_iOS
             var vc = window.RootViewController;
             vc.PresentViewController(User.createAlert("Dit formulier is opgeslagen onder 'openstaande formulieren'", "INFO"), true, null);
             UIStoryboard board = UIStoryboard.FromName("MainStoryboard", null);
-            User.unfilledForms.Add(data);
+            User.addFileForm(data, filename);
 			return succes;
 		}
 	}
