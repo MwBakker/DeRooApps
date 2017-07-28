@@ -56,13 +56,10 @@ namespace LoginBestPractice.iOS
 			// collect so far given data to custom Rootobject meant for .txt 
 			if (succesSend == false)
             {
-				if (txtf_projectName.Text != "" && txtf_location.Text != "")
-				{
-					rootFromText = true;
-                    RootObject fileForm = collectData();
-                    DataStorage.sendDataToFile(formData, "openFormData", fileForm.formulieren[0].datum);
-					TabBarController.TabBar.Items[1].Image = UIImage.FromFile("openformIcon");
-				}
+				UIAlertController delAlert = UIAlertController.Create("Formulier bewaren", "Wilt u dit onvolledig ingevulde formulier bewaren?", UIAlertControllerStyle.Alert);
+                delAlert.AddAction(UIAlertAction.Create("Ja", UIAlertActionStyle.Default, action => toFile()));
+				delAlert.AddAction(UIAlertAction.Create("Nee", UIAlertActionStyle.Cancel, null));
+				PresentViewController(delAlert, true, null);
 			}
 		}
 
@@ -361,6 +358,20 @@ namespace LoginBestPractice.iOS
             formTableView.ReloadData();
         }
 
+        //
+        // send form to file
+        //
+        private void toFile() 
+        {
+			if (txtf_projectName.Text != "" && txtf_location.Text != "")
+			{
+				rootFromText = true;
+				RootObject fileForm = collectData();
+				DataStorage.sendDataToFile(formData, "openFormData", fileForm.formulieren[0].datum);
+				TabBarController.TabBar.Items[1].Image = UIImage.FromFile("openformIcon");
+			}
+        }
+
 		// 
 		// collects data per view and possible modal belonging to view  
 		//
@@ -384,9 +395,10 @@ namespace LoginBestPractice.iOS
                 } else {
                     succesSend = false;
                 }
-            }
-            else {
-                User.createAlert("Algemene informatie niet ingevuld!", "FOUT");
+            } 
+            else 
+            {
+                PresentViewController(User.createAlert("Algemene informatie niet ingevuld!", "FOUT"), true, null);
                 formTableView.ContentOffset = new CGPoint(0, txtf_location.Frame.Bottom);
             }
 		}
