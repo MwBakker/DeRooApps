@@ -95,12 +95,12 @@ namespace LoginBestPractice.iOS
                             Vragen quest = formData.vragen[j];
                             // questcontainer // 
                             QuestBlockView questBlock = new QuestBlockView(this, catBlock, quest.vraag_id, quest.vraag_text);
-							questBlock.Tag = int.Parse(quest.vraag_volgNr); 
+							questBlock.Tag = int.Parse(quest.vraag_volgNr);
+                            questBlock.questType = quest.vraag_type;
 							nfloat containerElementPos = 0;
 							containerElementPos += questBlock.lbl_quest.Frame.Bottom;
                             if (quest.vraag_type == "Akkoord/Niet akkoord/N.v.t." || quest.vraag_type == "Ja/Nee/N.v.t.")
                             {
-                                questBlock.questType = quest.vraag_type;
                                 UISegmentedControl options = questBlock.optionsControl(containerElementPos, quest.vraag_type);
                                 // POSSIBLE data from file, reload possible modal info
                                 if (rootFromText == true)
@@ -211,11 +211,19 @@ namespace LoginBestPractice.iOS
 			return viewBottom;
 		}
 
-        //
-        // collects all the given data by user
-        // replaces specific DataStorage object with values containing filled Data
-        //
-        private RootObject collectData() 
+		//
+		// reloads the table
+		//
+		public void reloadTable()
+		{
+			formTableView.ReloadData();
+		}
+
+		//
+		// collects all the given data by user
+		// replaces specific DataStorage object with values containing filled Data
+		//
+		private RootObject collectData() 
         {
             // Lists who are going to replace .data lists to maintain only related data
             List<Formulieren> relevantForm = new List<Formulieren>();
@@ -289,7 +297,6 @@ namespace LoginBestPractice.iOS
                                     else 
                                     {
                                         quest.answer = ((UISegmentedControl)questSubview).TitleAt(((UISegmentedControl)questSubview).SelectedSegment);
-                                        relevantQuests.Add(quest);
                                     }
 									// modalData
 									Modal qModal = ((QuestBlockView)catSubView).modal;
@@ -340,6 +347,7 @@ namespace LoginBestPractice.iOS
                                 }
                             }
                         }
+						relevantQuests.Add(quest);
                     }
                 }
 			}
@@ -349,13 +357,6 @@ namespace LoginBestPractice.iOS
                 vragen = relevantQuests
             };
             return formRoot;
-        }
-
-        //
-        // reloads the table
-        //
-        public void reloadTable() {
-            formTableView.ReloadData();
         }
 
         //
