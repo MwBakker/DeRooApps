@@ -95,14 +95,15 @@ namespace LoginBestPractice.iOS
 					{
 						if (formData.vragen[j].categorie_id == cat.categorie_id)
 						{
-                            // questcontainer // 
                             Vragen quest = formData.vragen[j];
+                            // questcontainer // 
                             QuestBlockView questBlock = new QuestBlockView(this, catBlock, quest.vraag_id, quest.vraag_text);
 							questBlock.Tag = int.Parse(quest.vraag_volgNr); 
 							nfloat containerElementPos = 0;
 							containerElementPos += questBlock.lbl_quest.Frame.Bottom;
                             if (quest.vraag_type == "Akkoord/Niet akkoord/N.v.t." || quest.vraag_type == "Ja/Nee/N.v.t.")
                             {
+                                questBlock.questType = quest.vraag_type;
                                 UISegmentedControl options = questBlock.optionsControl(containerElementPos, quest.vraag_type);
                                 // POSSIBLE data from file, reload possible modal info
                                 if (rootFromText == true)
@@ -377,8 +378,8 @@ namespace LoginBestPractice.iOS
                         OpenFormsViewController openFormVC = Storyboard.InstantiateViewController("OpenFormsViewController") as OpenFormsViewController;
                         NavigationController.PushViewController(openFormVC, true);
                     } else {
-                        FormsViewController formViewControl = Storyboard.InstantiateViewController("Forms") as FormsViewController;
-                        NavigationController.PushViewController(formViewControl, true);
+                       // FormsViewController formVC = Storyboard.InstantiateViewController("Forms") as FormsViewController;
+                       // NavigationController.PushViewController(formVC, true);
                     }
                 } else {
                     succesSend = false;

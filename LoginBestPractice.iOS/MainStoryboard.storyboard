@@ -351,8 +351,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="UIButton2577_TouchUpInside:" destination="2545" id="2758" eventType="touchUpInside"/>
-                                            <action selector="btn_ok_TouchUpInside:" destination="2545" id="3200" eventType="touchDown"/>
+                                            <action selector="btn_ok_TouchUpInside:" destination="2545" id="4546" eventType="touchDown"/>
                                         </connections>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute keyPath="layer.cornerRadius" type="number">
@@ -790,39 +789,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4497" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1806" y="1386"/>
-        </scene>
-        <scene sceneID="4522">
-            <objects>
-                <viewController id="4523" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="4520"/>
-                        <viewControllerLayoutGuide type="bottom" id="4521"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="4524">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <subviews>
-                            <view contentMode="scaleAspectFit" id="3008" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                <rect key="frame" x="34" y="29" width="265" height="435"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0.92549019607843142" green="0.92549019607843142" blue="0.92549019607843142" alpha="1"/>
-                                <subviews/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute keyPath="layer.cornerRadius" type="number">
-                                        <real key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                        </subviews>
-                    </view>
-                    <connections>
-                        <outlet property="modalView" destination="3008" id="name-outlet-3008"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4525" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2187" y="-365"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

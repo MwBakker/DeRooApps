@@ -82,12 +82,12 @@ namespace LoginBestPractice.iOS
             }
 		}
 
-        // 
-        // collect data after OK
+        //
+        // collects data after OK
         //
         partial void btn_ok_TouchUpInside(UIButton sender)
         {
-			collectData(false);
+            collectData(false);
         }
 
         //

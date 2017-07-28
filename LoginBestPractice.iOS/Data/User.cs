@@ -102,6 +102,11 @@ namespace DeRoo_iOS
                 tabBar.Items[1].Image = UIImage.FromFile("openformIcon");
             }
         }
+        public static void deleteFileForm(RootObject data, string filepath) 
+        {
+            unfilledForms.Remove(data);
+            filepaths.Remove(filepath);
+        }
 
 		//
 		// creates alert at baseline from empty fields
