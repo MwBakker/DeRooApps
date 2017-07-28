@@ -62,10 +62,6 @@ namespace LoginBestPractice.iOS
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void btn_ok_TouchUpInside (UIKit.UIButton sender);
 
-        [Action ("UIButton2577_TouchUpInside:")]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        partial void UIButton2577_TouchUpInside (UIKit.UIButton sender);
-
         void ReleaseDesignerOutlets ()
         {
             if (btn_annuleer != null) {

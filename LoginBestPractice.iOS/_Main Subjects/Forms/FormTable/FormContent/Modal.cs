@@ -59,14 +59,6 @@ namespace LoginBestPractice.iOS
             subjectVC = subjectVCIn;
         }
 
-		//
-		// collects filled data in modal from textfields
-		//
-		partial void btn_ok_TouchUpInside(UIButton sender)
-		{
-            collectData(false);
-		}
-
         // 
         // collects modal data
         // checks if data required depending if OK was clicked
@@ -90,10 +82,18 @@ namespace LoginBestPractice.iOS
             }
 		}
 
-		//
-		// handles cancelation of modal
-		//
-		partial void btn_annuleer_TouchUpInside(UIButton sender)
+        // 
+        // collect data after OK
+        //
+        partial void btn_ok_TouchUpInside(UIButton sender)
+        {
+			collectData(false);
+        }
+
+        //
+        // handles cancelation of modal
+        //
+        partial void btn_annuleer_TouchUpInside(UIButton sender)
 		{
 			this.DismissViewController(true, null);
 			cancelled = true;
