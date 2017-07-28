@@ -23,6 +23,7 @@
 @class LoginBestPractice_iOS_CatBlockView;
 @class FirstView;
 @class LoginBestPractice_iOS_FormContentTableSource;
+@class LoginBestPractice_iOS_QuestBlockView;
 @class OpenFormsViewController;
 @class UITableStyleButton;
 @class UIOpenFormCell;
@@ -40,7 +41,6 @@
 @class LoginPageViewController;
 @class FormContentViewController;
 @class Modal;
-@class LoginBestPractice_iOS_QuestBlockView;
 @class AppDelegate;
 @class LoginBestPractice_iOS_OpenFormTableSource;
 @class ToolboxesViewController;

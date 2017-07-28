@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using AssetsLibrary;
 using CoreGraphics;
+using DeRoo_iOS;
 using Foundation;
 using UIKit;
 
@@ -11,27 +12,32 @@ namespace LoginBestPractice.iOS
 	{
 		UIColor deRooGreen;
 		public UILabel lbl_quest { get; set; }
-        public UISegmentedControl options;
+        public UISegmentedControl options { get; set; }
+        public UIDatePicker datePicker { get; set; }
+        public UITextField txt_openComment { get; set; }
+		public Modal modal { get; set; }
+		public UIDeRooButton btn_photo { get; set; }
+		public UIDeRooButton btn_modal { get; set; }
+
+		public FormContentViewController subjectVC;
+		public CatBlockView catBlock;
 
 		public string quest_id { get; set; } 
         public string questType { get; set; }
-		public UIDeRooButton btn_photo { get; set; }
-        public UIDeRooButton btn_modal { get; set; }
-        public FormContentViewController subjectVC;
-        public Modal modal { get; set; }
-        public List<UIImageView> imgViews;
-        public CatBlockView catBlock;
+
+       public List<UIImageView> imgViews;
         nfloat viewWidth;
         bool modalSet;
 
 		// 
 		// sets main elements in questBlockView
 		//
-		public QuestBlockView(FormContentViewController subjectVC, string questID, string questText)
+        public QuestBlockView(FormContentViewController subjectVC, CatBlockView catBlock, string questID, string questText)
 		{
             imgViews = new List<UIImageView>();
             modalSet = false;
             this.subjectVC = subjectVC;
+            this.catBlock = catBlock;
             viewWidth = UIScreen.MainScreen.Bounds.Width;
 			deRooGreen = new UIColor(0.04f, 0.17f, 0.01f, 1.0f);
             quest_id = questID;
@@ -47,12 +53,11 @@ namespace LoginBestPractice.iOS
 		}
 			
         // 
-        // returns an options-object
+        // set possibility of selecting different options
         // fields are depending rather data is filled in
         //
-        public UISegmentedControl optionsControl(CatBlockView catBlock, nfloat containerElPos, string questTypeOption) 
+        public UISegmentedControl optionsControl(nfloat containerElPos, string questTypeOption) 
         {
-            this.catBlock = catBlock;
             options = new UISegmentedControl();
             options.Frame = new CGRect((viewWidth*0.0795), containerElPos, (viewWidth*0.85), 30);
 			setOptions(questTypeOption);
@@ -149,31 +154,7 @@ namespace LoginBestPractice.iOS
 			if (btn_modal == null && btn_photo == null)
 			{
                 // photo button
-				btn_photo = new UIDeRooButton("addPhoto");
-                btn_photo.Frame = new CGRect((viewWidth*0.125), (options.Frame.Bottom+10), (viewWidth*0.75), 30);
-                btn_photo.Tag = 3;
-				btn_photo.TouchDown += delegate
-				{
-					// btn_photo.photoAction photo object + meta data
-					Camera.TakePicture(subjectVC, (obj) =>
-					{
-                        UIImage takenImg = obj.ValueForKey(new NSString("UIImagePickerControllerOriginalImage")) as UIImage;
-                        UIImageView imgTumb = new UIImageView(takenImg);
-                        imgViews.Add(imgTumb);
-                        nfloat xShift = 0;
-                        foreach (UIImageView img in imgViews) 
-                        { 
-                            img.Frame = new CGRect(((viewWidth*0.0795)+xShift), (btn_photo.Frame.Bottom+10), 80, 80);
-                            img.Layer.BorderWidth = 1.5f;
-                            img.Tag = 4;
-                            xShift += (img.Frame.Width + 10);
-                            InsertSubview(img, 3);
-                            updateQuestBlock(img);
-                            updateCatBlock();
-                            subjectVC.reloadTable();
-                        }
-					}); 
-				};
+				btn_photo = photoButton(options.Frame.Bottom);
                 // modal-sight button
 				btn_modal = new UIDeRooButton("addModal");
                 btn_modal.Frame = new CGRect((viewWidth*0.125), (btn_photo.Frame.Bottom+15), (viewWidth*0.75), 30);
@@ -203,15 +184,81 @@ namespace LoginBestPractice.iOS
 		}
 
         //
-        // sets date 
+        // set date input possibility
         //
-        public UIDatePicker setDateQuest() 
+        public void setDateQuest(nfloat containerElPos) 
         {
-            UIDatePicker datePicker = new UIDatePicker();
-			btn_photo = new UIDeRooButton("addPhoto");
-			btn_photo.Frame = new CGRect((viewWidth * 0.125), (options.Frame.Bottom + 10), (viewWidth * 0.75), 30);
-            return datePicker;
+            datePicker = new UIDatePicker();
+            datePicker.Frame = new CGRect((viewWidth*0.0795), containerElPos, (viewWidth*0.85), 50);
+            datePicker.Locale = NSLocale.CurrentLocale;
+            datePicker.Mode = UIDatePickerMode.Date;
+            btn_photo = photoButton(datePicker.Frame.Bottom);
+            AddSubview(datePicker);
+            AddSubview(btn_photo);
         }
+
+        //
+        // set open info possibility
+        //
+        public void setOpenQuest(nfloat containerElPos) 
+        {
+            txt_openComment = new UITextField();
+            txt_openComment.Frame = new CGRect((viewWidth * 0.0795), containerElPos, (viewWidth * 0.85), 150);
+            txt_openComment.VerticalAlignment = UIControlContentVerticalAlignment.Top;
+            txt_openComment.BorderStyle = UITextBorderStyle.Bezel;
+            txt_openComment.Placeholder = "Open commentaar op situatie";
+            btn_photo = photoButton(txt_openComment.Frame.Bottom);
+            AddSubview(txt_openComment);
+            AddSubview(btn_photo);
+        }
+
+
+        private UIDeRooButton photoButton(nfloat prevFrameBottom)
+        {
+			btn_photo = new UIDeRooButton("addPhoto");
+			btn_photo.Frame = new CGRect((viewWidth * 0.125), (prevFrameBottom + 10), (viewWidth * 0.75), 30);
+			btn_photo.TouchDown += delegate
+			{
+				if (imgViews.Count == 3)
+				{
+					subjectVC.PresentViewController(User.createAlert("Niet meer dan 3 foto's", "INFO"), true, null);
+					return;
+				}
+				Camera.TakePicture(subjectVC, (obj) =>
+			    {
+					UIImage takenImg = obj.ValueForKey(new NSString("UIImagePickerControllerOriginalImage")) as UIImage;
+					UIImageView imgTumb = new UIImageView(takenImg);
+					imgViews.Add(imgTumb);
+					nfloat xShift = 0;
+					foreach (UIImageView img in imgViews)
+					{
+						img.Frame = new CGRect(((viewWidth * 0.0795) + xShift), (btn_photo.Frame.Bottom + 10), 80, 80);
+						img.Layer.BorderWidth = 1.5f; img.Tag = 4;
+						xShift += (img.Frame.Width + 10);
+						InsertSubview(img, 3);
+						if (imgViews.Count < 2)
+						{
+							updateQuestBlock(img);
+							updateCatBlock();
+						}
+						subjectVC.reloadTable();
+					}
+					var longPressGesture = new UILongPressGestureRecognizer(LongPressMethod);
+                    imgTumb.AddGestureRecognizer(longPressGesture);
+			    });
+			};
+            return btn_photo;
+        }
+
+		// 
+		// handles long press
+		// delete specific form on request
+		//
+		private void LongPressMethod(UILongPressGestureRecognizer gestureRecognizer)
+		{
+            UIImageView longpressedIMG = (UIImageView)gestureRecognizer.View;
+            this.Delete(longpressedIMG);
+		}
 
 
         //

@@ -22529,7 +22529,7 @@ _mono_aot_file_info:
 	.long 736,0,0,0,0,0,0,0
 	.long 0,0,0,0,0,0,0,0
 	.long 0
-	.byte 159,186,177,247,38,24,52,90,88,179,211,159,114,14,233,230
+	.byte 103,41,143,100,140,237,243,230,146,82,163,38,219,17,41,64
 	.globl _mono_aot_module_SignaturePad_info
 	.align 2
 _mono_aot_module_SignaturePad_info:

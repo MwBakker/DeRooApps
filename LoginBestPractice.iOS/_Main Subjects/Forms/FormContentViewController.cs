@@ -5,6 +5,7 @@ using DeRoo_iOS;
 using Plugin.Geolocator;
 using System.Linq;
 using CoreGraphics;
+using Foundation;
 
 namespace LoginBestPractice.iOS
 {
@@ -84,23 +85,25 @@ namespace LoginBestPractice.iOS
 				if (formData.categorien[i].formulier_id == formIDIn)
 				{
 					nfloat currentLabelYPosition = 0;
+                    Categorien cat = formData.categorien[i];
 					// catcontainer // 
-                    CatBlockView catBlock = new CatBlockView(formData.categorien[i].categorie_text);
-					catBlock.Tag = int.Parse((formData.categorien[i].categorie_id));
+                    CatBlockView catBlock = new CatBlockView(cat.categorie_text);
+					catBlock.Tag = int.Parse((cat.categorie_id));
 					nfloat containerPos = catBlock.lbl_cat.Frame.Bottom;
 
 					for (int j = 0; j < formData.vragen.Count; j++)
 					{
-						if (formData.vragen[j].categorie_id == formData.categorien[i].categorie_id)
+						if (formData.vragen[j].categorie_id == cat.categorie_id)
 						{
                             // questcontainer // 
-                            QuestBlockView questBlock = new QuestBlockView(this, formData.vragen[j].vraag_id, formData.vragen[j].vraag_text);
-							questBlock.Tag = int.Parse(formData.vragen[j].vraag_volgNr); 
+                            Vragen quest = formData.vragen[j];
+                            QuestBlockView questBlock = new QuestBlockView(this, catBlock, quest.vraag_id, quest.vraag_text);
+							questBlock.Tag = int.Parse(quest.vraag_volgNr); 
 							nfloat containerElementPos = 0;
 							containerElementPos += questBlock.lbl_quest.Frame.Bottom;
-                            if (formData.vragen[j].vraag_type == "Akkoord/Niet akkoord/N.v.t." || formData.vragen[j].vraag_type == "Ja/Nee/N.v.t.")
+                            if (quest.vraag_type == "Akkoord/Niet akkoord/N.v.t." || quest.vraag_type == "Ja/Nee/N.v.t.")
                             {
-                                UISegmentedControl options = questBlock.optionsControl(catBlock, containerElementPos, formData.vragen[j].vraag_type);
+                                UISegmentedControl options = questBlock.optionsControl(containerElementPos, quest.vraag_type);
                                 // POSSIBLE data from file, reload possible modal info
                                 if (rootFromText == true)
                                 {
@@ -113,21 +116,26 @@ namespace LoginBestPractice.iOS
                                         if (givenIndex == 1)
                                         {
                                             // WHEN 'not ok' fill modal if data is present (rootFromText) 
-                                            string comment = formData.vragen[j].extra_commentaar; string action = formData.vragen[j].actie_ondernomen;
-                                            string person = formData.vragen[j].persoon; if (comment != null) { questBlock.modal.setTxtF_comment(comment); }
+                                            string comment = quest.extra_commentaar; string action = quest.actie_ondernomen;
+                                            string person = quest.persoon; if (comment != null) { questBlock.modal.setTxtF_comment(comment); }
                                             if (action != null) { questBlock.modal.setTxtF_action(action); }
                                             if (person != null) { questBlock.modal.setTxtF_person(person); }
                                             questBlock.modal.collectData(true);
                                         }
                                     }
                                 }
-                            } else if (formData.vragen[j].vraag_type == "Datum") 
+                                containerElementPos += questBlock.options.Frame.Bottom;
+                            } 
+                            else if (quest.vraag_type == "Datum") 
                             {
-                                questBlock.setDateQuest();
+                                questBlock.setDateQuest(containerElementPos);
+                                containerElementPos += questBlock.datePicker.Frame.Bottom;
+                            } 
+                            else if (quest.vraag_type == "Open vraag") 
+                            {
+                                questBlock.setOpenQuest(containerElementPos); 
+                                containerElementPos += questBlock.txt_openComment.Frame.Bottom;
                             }
-                            containerElementPos += questBlock.options.Frame.Bottom;
-							// POSSIBLE date (type 3) 
-							// POSSIBLE freeForm (type 4)
 							questBlock.Frame = new CGRect(0, containerPos, viewWidth, determineHeight(questBlock));
 							containerPos += questBlock.Frame.Height;
 							catBlock.AddSubview(questBlock);
@@ -224,6 +232,7 @@ namespace LoginBestPractice.iOS
             if (rootFromText == true) {
 				form.datum = date_dateProject.Date.ToString().Replace("+0000", "");
 			} else {
+                // time is not being saved the right way at first set
 				DateTime dt = DateTime.SpecifyKind(DateTime.Parse(date_dateProject.Date.ToString()), DateTimeKind.Local).ToLocalTime();
 				form.datum = dt.ToString().Replace("+0000", "");
             }
@@ -249,12 +258,11 @@ namespace LoginBestPractice.iOS
                     // 3. questBlock (ex cat_label)
                     if (catSubView is QuestBlockView)
                     {
+                        int photoCounter = 0;
                         string questID = ((QuestBlockView)catSubView).quest_id;
                         string questType = ((QuestBlockView)catSubView).questType;
 						dataIndex = DataStorage.data.vragen.FindIndex(q => q.vraag_id == questID);
                         Vragen quest = DataStorage.data.vragen[dataIndex];
-                        // date 
-                        // open form
                         foreach (UIView questSubview in catSubView.Subviews)
                         {
                             if (questSubview is UILabel)
@@ -307,15 +315,31 @@ namespace LoginBestPractice.iOS
                             {
                                 if (questSubview is UIDatePicker)
                                 {
-                                    // datePicker toString(); 
+									DateTime dt = DateTime.SpecifyKind(DateTime.Parse(((UIDatePicker)questSubview).Date.ToString()), DateTimeKind.Local).ToLocalTime();
+                                    quest.datum_gereed = dt.ToString().Replace("+0000", "");
                                 }
                             }
                             else if (questType == "Open Vraag") 
                             {
                                 if (questSubview is UITextField)
 								{
-									// Text toString(); 
+                                    quest.extra_commentaar = ((UITextField)questSubview).Text; 
 								} 
+                            }
+                            // photo data, comes along because is part of subviews in specific Questblock
+                            if (questSubview is UIImageView) 
+                            {
+                                // for every questBlock one counter of photos
+                                photoCounter++;
+								NSData imageData = ((UIImageView)questSubview).Image.AsJPEG(0.5f);
+                                string imgData = imageData.GetBase64EncodedData(NSDataBase64EncodingOptions.None).ToString();
+                                if (photoCounter == 1) {
+                                   quest.foto1 = System.Text.Encoding.ASCII.GetBytes(imgData); 
+                                } else if (photoCounter == 2) {
+                                   quest.foto2 = System.Text.Encoding.ASCII.GetBytes(imgData); 
+                                } else if (photoCounter == 3) {
+                                    quest.foto3 = System.Text.Encoding.ASCII.GetBytes(imgData);
+                                }
                             }
                         }
                     }

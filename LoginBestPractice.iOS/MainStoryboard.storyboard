@@ -272,7 +272,7 @@
                                         <nil key="highlightedColor"/>
                                         <color key="tintColor" colorSpace="calibratedRGB" red="0.0392156862745098" green="0.10980392156862745" blue="0.011764705882352941" alpha="1"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" minimumFontSize="17" id="2562" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" clearButtonMode="whileEditing" placeholder="Opmerking">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" minimumFontSize="17" id="2562" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" clearButtonMode="whileEditing" placeholder="Opmerking" borderStyle="bezel">
                                         <rect key="frame" x="15" y="29" width="235" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -287,7 +287,7 @@
                                         <nil key="highlightedColor"/>
                                         <color key="tintColor" colorSpace="calibratedRGB" red="0.0392156862745098" green="0.10980392156862745" blue="0.011764705882352941" alpha="1"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" minimumFontSize="17" id="2563" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" clearButtonMode="whileEditing" placeholder="Uitgevoerde actie ">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" minimumFontSize="17" id="2563" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" clearButtonMode="whileEditing" placeholder="Uitgevoerde actie " borderStyle="bezel">
                                         <rect key="frame" x="15" y="139" width="235" height="105"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -302,7 +302,7 @@
                                         <nil key="highlightedColor"/>
                                         <color key="tintColor" colorSpace="calibratedRGB" red="0.0392156862745098" green="0.10980392156862745" blue="0.011764705882352941" alpha="1"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="2564" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" clearButtonMode="whileEditing" placeholder="Persoon uitvoering actie">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="2564" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" clearButtonMode="whileEditing" placeholder="Persoon uitvoering actie" borderStyle="bezel">
                                         <rect key="frame" x="15" y="274" width="235" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -855,6 +855,5 @@
         <image name="toolboxIcon.png" width="35" height="35"/>
         <image name="toolboxBarIcon.png" width="24" height="24"/>
         <image name="openformIcon.png" width="24" height="24"/>
-        <image name="_Main Subjects/Toolbox/handboek.pdf" width="595" height="842"/>
     </resources>
 </document>
