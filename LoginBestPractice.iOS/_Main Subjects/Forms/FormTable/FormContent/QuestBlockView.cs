@@ -25,7 +25,7 @@ namespace LoginBestPractice.iOS
 		public string quest_id { get; set; } 
         public string questType { get; set; }
 
-       public List<UIImageView> imgViews;
+        public int imgCounter;
         nfloat viewWidth;
         bool modalSet;
 
@@ -34,7 +34,6 @@ namespace LoginBestPractice.iOS
 		//
         public QuestBlockView(FormContentViewController subjectVC, CatBlockView catBlock, string questID, string questText)
 		{
-            imgViews = new List<UIImageView>();
             modalSet = false;
             this.subjectVC = subjectVC;
             this.catBlock = catBlock;
@@ -136,7 +135,7 @@ namespace LoginBestPractice.iOS
             {
                 options.TintColor = UIColor.DarkGray;
                 removeButtons();
-                if (imgViews.Count < 1) 
+                if (imgCounter < 1) 
                 {
                     //removePhotos();
                 }
@@ -212,8 +211,7 @@ namespace LoginBestPractice.iOS
             txt_openComment.BorderStyle = UITextBorderStyle.Bezel;
             txt_openComment.Placeholder = "Open commentaar op situatie";
             btn_photo = photoButton(txt_openComment.Frame.Bottom);
-            AddSubview(txt_openComment);
-            AddSubview(btn_photo);
+            AddSubview(txt_openComment); AddSubview(btn_photo);
         }
 
         //
@@ -225,7 +223,7 @@ namespace LoginBestPractice.iOS
 			btn_photo.Frame = new CGRect((viewWidth * 0.125), (prevFrameBottom + 10), (viewWidth * 0.75), 30);
 			btn_photo.TouchDown += delegate
 			{
-				if (imgViews.Count == 3)
+                if (imgCounter == 3)
 				{
 					subjectVC.PresentViewController(User.createAlert("Niet meer dan 3 foto's", "INFO"), true, null);
 					return;
@@ -234,21 +232,21 @@ namespace LoginBestPractice.iOS
 			    {
 					UIImage takenImg = obj.ValueForKey(new NSString("UIImagePickerControllerOriginalImage")) as UIImage;
 					UIImageView imgTumb = new UIImageView(takenImg);
-					imgViews.Add(imgTumb);
-					nfloat xShift = 0;
-					foreach (UIImageView img in imgViews)
-					{
-						img.Frame = new CGRect(((viewWidth * 0.0795) + xShift), (btn_photo.Frame.Bottom + 10), 80, 80);
-						img.Layer.BorderWidth = 1.5f; img.Tag = 4;
-						xShift += (img.Frame.Width + 10);
-						InsertSubview(img, 3);
-						if (imgViews.Count < 2)
-						{
-							updateQuestBlockAfterImg(img);
-							updateCatBlock();
-						}
-						subjectVC.reloadTable();
+                    imgCounter++;
+                    if (imgCounter == 0) {
+                       imgTumb.Frame = new CGRect((viewWidth*0.0795), (btn_photo.Frame.Bottom + 10), 80, 80); 
+                    } else { 
+                        imgTumb.Frame = new CGRect(((viewWidth*0.0795) + 90), (btn_photo.Frame.Bottom + 10), 80, 80);
 					}
+					imgTumb.Layer.BorderWidth = 1.5f; imgTumb.Tag = 4;
+					InsertSubview(imgTumb, 3);
+                    if (imgCounter < 2)
+					{
+						updateQuestBlockAfterImg(imgTumb);
+						updateCatBlock();
+					}
+					subjectVC.reloadTable();
+                    imgTumb.UserInteractionEnabled = true;
 					var longPressGesture = new UILongPressGestureRecognizer(LongPressMethod);
                     imgTumb.AddGestureRecognizer(longPressGesture);
 			    });
