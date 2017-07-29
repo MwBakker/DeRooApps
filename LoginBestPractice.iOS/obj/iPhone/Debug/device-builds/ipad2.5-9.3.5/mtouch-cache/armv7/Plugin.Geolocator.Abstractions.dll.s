@@ -1669,7 +1669,7 @@ _mono_aot_file_info:
 	.long 96,0,0,0,0,0,0,0
 	.long 0,0,0,0,0,0,0,0
 	.long 0
-	.byte 64,42,90,244,122,15,172,223,51,247,164,6,70,51,40,194
+	.byte 152,82,254,130,170,178,152,200,11,57,204,119,123,123,30,11
 	.globl _mono_aot_module_Plugin_Geolocator_Abstractions_info
 	.align 2
 _mono_aot_module_Plugin_Geolocator_Abstractions_info:

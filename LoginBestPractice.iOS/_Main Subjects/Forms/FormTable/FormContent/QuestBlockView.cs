@@ -136,6 +136,10 @@ namespace LoginBestPractice.iOS
             {
                 options.TintColor = UIColor.DarkGray;
                 removeButtons();
+                if (imgViews.Count < 1) 
+                {
+                    //removePhotos();
+                }
 				if (modalSet == true)
 				{
 					updateCatBlock();
@@ -212,7 +216,9 @@ namespace LoginBestPractice.iOS
             AddSubview(btn_photo);
         }
 
-
+        //
+        // sets btn_photo along with its required functionality
+        //
         private UIDeRooButton photoButton(nfloat prevFrameBottom)
         {
 			btn_photo = new UIDeRooButton("addPhoto");
@@ -238,7 +244,7 @@ namespace LoginBestPractice.iOS
 						InsertSubview(img, 3);
 						if (imgViews.Count < 2)
 						{
-							updateQuestBlock(img);
+							updateQuestBlockAfterImg(img);
 							updateCatBlock();
 						}
 						subjectVC.reloadTable();
@@ -249,6 +255,16 @@ namespace LoginBestPractice.iOS
 			};
             return btn_photo;
         }
+        private void removePhotos() 
+        {
+            foreach (UIView subview in this.Subviews) {
+                if (subview is UIImageView) { 
+                    this.Delete(subview);
+                }
+            }
+            this.Frame = new CGRect(this.Frame.X, this.Frame.Y, this.Frame.Width, subjectVC.determineHeight(this));
+            updateCatBlock();
+        }
 
 		// 
 		// handles long press
@@ -257,14 +273,17 @@ namespace LoginBestPractice.iOS
 		private void LongPressMethod(UILongPressGestureRecognizer gestureRecognizer)
 		{
             UIImageView longpressedIMG = (UIImageView)gestureRecognizer.View;
-            this.Delete(longpressedIMG);
+			UIAlertController delAlert = UIAlertController.Create("Foto verwijderen", "Wilt u deze foto verwijderen?", UIAlertControllerStyle.Alert);
+            delAlert.AddAction(UIAlertAction.Create("Ja", UIAlertActionStyle.Default, action => this.Delete(longpressedIMG)));
+			delAlert.AddAction(UIAlertAction.Create("Nee", UIAlertActionStyle.Cancel, null));
+			subjectVC.PresentViewController(delAlert, true, null);
 		}
 
 
         //
         // updates questblock by pushing down elements and re-setting the height
         //
-        private void updateQuestBlock(UIImageView img) 
+        private void updateQuestBlockAfterImg(UIImageView img) 
         {
             foreach (UIView view in this.Subviews) 
             {
