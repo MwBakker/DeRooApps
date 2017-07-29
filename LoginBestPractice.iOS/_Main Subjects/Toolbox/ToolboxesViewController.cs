@@ -18,7 +18,7 @@ namespace LoginBestPractice.iOS
 			dataStorage.getData();
 			base.LoadView();
 			// code for the logout button(image)
-			User.setLogOut(this.NavigationItem);
+			User.setLogOut(NavigationItem, this);
 		}
 
 		public override void ViewWillAppear(bool animated)

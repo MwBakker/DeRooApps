@@ -25,7 +25,7 @@ namespace LoginBestPractice.iOS
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-            User.setLogOut(this.NavigationItem);
+            User.setLogOut(NavigationItem, this);
 		}
 
 		public UIButton createElements(string formulierID, string formulierNaam, nfloat hoogteVanButtons)

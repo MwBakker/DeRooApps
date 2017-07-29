@@ -39,7 +39,7 @@ namespace LoginBestPractice.iOS
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-            DeRoo_iOS.User.setLogOut(this.NavigationItem);
+            DeRoo_iOS.User.setLogOut(NavigationItem, this);
 		    //Code for the logout button(image).
 		}
 	}

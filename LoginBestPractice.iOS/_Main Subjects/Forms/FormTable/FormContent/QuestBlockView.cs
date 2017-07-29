@@ -106,6 +106,10 @@ namespace LoginBestPractice.iOS
             {
 				options.TintColor = new UIColor(0.10f, 0.62f, 0.01f, 1.0f);
                 removeButtons();
+				if (imgCounter > 0)
+				{
+					removePhotos("all", null);
+				}
                 if (modalSet == true)
                 {
                     updateCatBlock();
@@ -135,9 +139,9 @@ namespace LoginBestPractice.iOS
             {
                 options.TintColor = UIColor.DarkGray;
                 removeButtons();
-                if (imgCounter < 1) 
+                if (imgCounter > 0) 
                 {
-                    //removePhotos();
+                    removePhotos("all", null);
                 }
 				if (modalSet == true)
 				{
@@ -206,7 +210,7 @@ namespace LoginBestPractice.iOS
         public void setOpenQuest(nfloat containerElPos) 
         {
             txt_openComment = new UITextField();
-            txt_openComment.Frame = new CGRect((viewWidth * 0.0795), containerElPos, (viewWidth * 0.85), 150);
+            txt_openComment.Frame = new CGRect((viewWidth*0.0795), containerElPos, (viewWidth*0.85), 150);
             txt_openComment.VerticalAlignment = UIControlContentVerticalAlignment.Top;
             txt_openComment.BorderStyle = UITextBorderStyle.Bezel;
             txt_openComment.Placeholder = "Open commentaar op situatie";
@@ -220,7 +224,7 @@ namespace LoginBestPractice.iOS
         private UIDeRooButton photoButton(nfloat prevFrameBottom)
         {
 			btn_photo = new UIDeRooButton("addPhoto");
-			btn_photo.Frame = new CGRect((viewWidth * 0.125), (prevFrameBottom + 10), (viewWidth * 0.75), 30);
+			btn_photo.Frame = new CGRect((viewWidth*0.125), (prevFrameBottom+10), (viewWidth*0.75), 30);
 			btn_photo.TouchDown += delegate
 			{
                 if (imgCounter == 3)
@@ -253,15 +257,25 @@ namespace LoginBestPractice.iOS
 			};
             return btn_photo;
         }
-        private void removePhotos() 
+        private void removePhotos(string amount, UIImageView img) 
         {
-            foreach (UIView subview in this.Subviews) {
-                if (subview is UIImageView) { 
-                    this.Delete(subview);
+            if (amount == "all")
+            {
+                foreach (UIView subview in this.Subviews)
+                {
+                    if (subview is UIImageView)
+                    {
+                        this.Delete(subview);
+                    }
                 }
+                imgCounter = 0;
+                this.Frame = new CGRect(this.Frame.X, this.Frame.Y, this.Frame.Width, subjectVC.determineHeight(this));
+                updateCatBlock();
+            } else if (amount == "one") 
+            {
+                this.Delete(img);
+                imgCounter--;
             }
-            this.Frame = new CGRect(this.Frame.X, this.Frame.Y, this.Frame.Width, subjectVC.determineHeight(this));
-            updateCatBlock();
         }
 
 		// 
@@ -272,7 +286,7 @@ namespace LoginBestPractice.iOS
 		{
             UIImageView longpressedIMG = (UIImageView)gestureRecognizer.View;
 			UIAlertController delAlert = UIAlertController.Create("Foto verwijderen", "Wilt u deze foto verwijderen?", UIAlertControllerStyle.Alert);
-            delAlert.AddAction(UIAlertAction.Create("Ja", UIAlertActionStyle.Default, action => this.Delete(longpressedIMG)));
+            delAlert.AddAction(UIAlertAction.Create("Ja", UIAlertActionStyle.Default, action => removePhotos("one", longpressedIMG)));
 			delAlert.AddAction(UIAlertAction.Create("Nee", UIAlertActionStyle.Cancel, null));
 			subjectVC.PresentViewController(delAlert, true, null);
 		}

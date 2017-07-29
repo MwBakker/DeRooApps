@@ -1,14 +1,5 @@
 ﻿<Properties StartupConfiguration="{84563AF5-67F4-46D6-B49C-BF8D718F3C64}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="MainStoryboard.storyboard">
-    <Files>
-      <File FileName="_Main Subjects/Forms/FormContentViewController.cs" Line="59" Column="5" />
-      <File FileName="_Main Subjects/Forms/FormTable/OpenForms/OpenFormTableSource.cs" Line="71" Column="5" />
-      <File FileName="Main.cs" Line="12" Column="1" />
-      <File FileName="_Main Subjects/Forms/FormTable/FormContent/QuestBlockView.cs" Line="220" Column="64" />
-      <File FileName="MainStoryboard.storyboard" />
-      <File FileName="_Main Subjects/Forms/FormTable/FormContent/Modal.cs" Line="66" Column="20" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
@@ -18,5 +9,5 @@
   <DisabledProjects>
     <String>../../../Downloads/DeRoo/DeRoo/DeRoo.csproj</String>
   </DisabledProjects>
-  <MonoDevelop.Ide.ItemProperties.DeRoo__IOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.21935A3D-F442-4E70-BDB0-2B7A59B79398" />
+  <MonoDevelop.Ide.ItemProperties.DeRoo__IOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.0BA13F0B-E705-44E7-8B29-0184BFE45F42" />
 </Properties>

@@ -136,46 +136,35 @@ namespace DeRoo_iOS
         //
         // setting the logout button for the required page
         //
-        public static void setLogOut(UINavigationItem navItem) 
+        public static void setLogOut(UINavigationItem navItem, UIViewController subjectVC) 
         {
 			navItem.SetRightBarButtonItem(
 			new UIBarButtonItem(UIImage.FromFile("logouttemp.png"), UIBarButtonItemStyle.Plain, (sender, args) =>
 			{
-				var Confirm = new UIAlertView("Uitloggen", "Weet u zeker dat u wilt uitloggen?", null, "Nee", "Ja");
-				Confirm.Show();
-				Confirm.Clicked += (object senders, UIButtonEventArgs es) =>
-				{
-					if (es.ButtonIndex == 1)
-					{
-							//Delete login-file
-                        var filename = Path.Combine(User.documentsPath, "login.txt");
-						    File.Delete(filename);
-
-							//Create an instance of our AppDelegate
-							var appDelegate = UIApplication.SharedApplication.Delegate as AppDelegate;
-
-							//Get an instance of our MainStoryboard.storyboard
-							var mainStoryboard = appDelegate.MainStoryboard;
-
-							//Get an instance of our Login Page View Controller
-							var loginPageViewController = appDelegate.GetViewController(mainStoryboard, "LoginPageViewController") as LoginPageViewController;
-
-							//Wire our event handler to show the MainTabBarController after we successfully logged in.
-							loginPageViewController.OnLoginSuccess += (s, e) =>
-						{
-							var tabBarController = appDelegate.GetViewController(mainStoryboard, "MainTabBarController");
-							appDelegate.SetRootViewController(tabBarController, true);
-						};
-
-							//Set the Login Page as our RootViewController
-							appDelegate.SetRootViewController(loginPageViewController, true);
-					}
-					else
-					{
-
-					}
-				};
+				UIAlertController logOutAlert = UIAlertController.Create("", "Wilt u uitloggen?", UIAlertControllerStyle.Alert);
+                logOutAlert.AddAction(UIAlertAction.Create("Ja", UIAlertActionStyle.Default, action => logOut()));
+				logOutAlert.AddAction(UIAlertAction.Create("Nee", UIAlertActionStyle.Cancel, null));
+                subjectVC.PresentViewController(logOutAlert, true, null);
 			}), true);
         }
+        private static void logOut()
+		{
+			var filename = Path.Combine(User.documentsPath, "login.txt");
+			File.Delete(filename);
+			//Create an instance of our AppDelegate
+			var appDelegate = UIApplication.SharedApplication.Delegate as AppDelegate;
+			//Get an instance of our MainStoryboard.storyboard
+			var mainStoryboard = appDelegate.MainStoryboard;
+			//Get an instance of our Login Page View Controller
+			var loginPageViewController = appDelegate.GetViewController(mainStoryboard, "LoginPageViewController") as LoginPageViewController;
+			//Wire our event handler to show the MainTabBarController after we successfully logged in.
+			loginPageViewController.OnLoginSuccess += (s, e) =>
+			{
+				var tabBarController = appDelegate.GetViewController(mainStoryboard, "MainTabBarController");
+				appDelegate.SetRootViewController(tabBarController, true);
+			};
+			//Set the Login Page as our RootViewController
+			appDelegate.SetRootViewController(loginPageViewController, true);
+		}
     }
 }
