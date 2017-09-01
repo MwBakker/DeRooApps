@@ -53,13 +53,17 @@ namespace LoginBestPractice.iOS
 		//
 		public override void ViewWillDisappear(bool animated)
 		{
+           // NavigationItem.BackBarButtonItem.Action = Action.CreateDelegate()
 			// collect so far given data to custom Rootobject meant for .txt 
 			if (succesSend == false)
             {
+                /*
 				UIAlertController delAlert = UIAlertController.Create("Formulier bewaren", "Wilt u dit onvolledig ingevulde formulier bewaren?", UIAlertControllerStyle.Alert);
                 delAlert.AddAction(UIAlertAction.Create("Ja", UIAlertActionStyle.Default, action => toFile()));
 				delAlert.AddAction(UIAlertAction.Create("Nee", UIAlertActionStyle.Cancel, null));
 				PresentViewController(delAlert, true, null);
+                */
+
 			}
 		}
 
