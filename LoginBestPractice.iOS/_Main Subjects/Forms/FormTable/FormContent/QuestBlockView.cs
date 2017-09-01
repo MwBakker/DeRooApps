@@ -27,6 +27,7 @@ namespace LoginBestPractice.iOS
 
         public int imgCounter;
         nfloat viewWidth;
+        nfloat imgDeltaX; 
         bool modalSet;
 
 		// 
@@ -109,6 +110,7 @@ namespace LoginBestPractice.iOS
 				if (imgCounter > 0)
 				{
 					removePhotos("all", null);
+                    imgDeltaX = 90;
 				}
                 if (modalSet == true)
                 {
@@ -142,6 +144,7 @@ namespace LoginBestPractice.iOS
                 if (imgCounter > 0) 
                 {
                     removePhotos("all", null);
+                    imgDeltaX = 90;
                 }
 				if (modalSet == true)
 				{
@@ -223,24 +226,32 @@ namespace LoginBestPractice.iOS
         //
         private UIDeRooButton photoButton(nfloat prevFrameBottom)
         {
+            imgDeltaX = 90;
 			btn_photo = new UIDeRooButton("addPhoto");
 			btn_photo.Frame = new CGRect((viewWidth*0.125), (prevFrameBottom+10), (viewWidth*0.75), 30);
 			btn_photo.TouchDown += delegate
 			{
-                if (imgCounter == 3)
+				if (imgCounter == 3)
 				{
 					subjectVC.PresentViewController(User.createAlert("Niet meer dan 3 foto's", "INFO"), true, null);
+                    imgDeltaX = 90;
 					return;
 				}
 				Camera.TakePicture(subjectVC, (obj) =>
 			    {
 					UIImage takenImg = obj.ValueForKey(new NSString("UIImagePickerControllerOriginalImage")) as UIImage;
 					UIImageView imgTumb = new UIImageView(takenImg);
-                    imgCounter++;
-                    if (imgCounter == 0) {
-                       imgTumb.Frame = new CGRect((viewWidth*0.0795), (btn_photo.Frame.Bottom + 10), 80, 80); 
-                    } else { 
-                        imgTumb.Frame = new CGRect(((viewWidth*0.0795) + 90), (btn_photo.Frame.Bottom + 10), 80, 80);
+
+                    if (imgCounter == 0) 
+                    {
+                        imgTumb.Frame = new CGRect((viewWidth*0.0795), (btn_photo.Frame.Bottom + 10), 80, 80); 
+                        imgCounter++;
+                    } 
+                    else 
+                    { 
+                        imgTumb.Frame = new CGRect(((viewWidth*0.0795) + imgDeltaX), (btn_photo.Frame.Bottom + 10), 80, 80);
+                        imgDeltaX += imgDeltaX;
+                        imgCounter++;
 					}
 					imgTumb.Layer.BorderWidth = 1.5f; imgTumb.Tag = 4;
 					InsertSubview(imgTumb, 3);
@@ -265,7 +276,7 @@ namespace LoginBestPractice.iOS
                 {
                     if (subview is UIImageView)
                     {
-                        this.Delete(subview);
+                        subview.RemoveFromSuperview();
                     }
                 }
                 imgCounter = 0;

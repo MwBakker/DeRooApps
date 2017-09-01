@@ -13,13 +13,13 @@
 #import <QuartzCore/CAEmitterBehavior.h>
 #import <CoreLocation/CoreLocation.h>
 #import <CloudKit/CloudKit.h>
-#import <AssetsLibrary/AssetsLibrary.h>
 #import <CoreGraphics/CoreGraphics.h>
 
 @protocol CALayerDelegate;
 @class __MonoMac_NSActionDispatcher;
 @class __MonoMac_NSAsyncActionDispatcher;
 @class UIKit_UIControlEventProxy;
+@class HandboekViewController;
 @class LoginBestPractice_iOS_CatBlockView;
 @class FirstView;
 @class LoginBestPractice_iOS_FormContentTableSource;
@@ -37,7 +37,6 @@
 @class LoginBestPractice_iOS_EmployeeSignature;
 @class LoginBestPractice_iOS_Camera_CameraDelegate;
 @class FormsViewController;
-@class HandboekViewController;
 @class LoginPageViewController;
 @class FormContentViewController;
 @class Modal;
@@ -54,7 +53,6 @@
 @class __UIGestureRecognizerParametrizedToken;
 @class __NSObject_Disposer;
 @class __UILongPressGestureRecognizer;
-@class UIKit_UIAlertView__UIAlertViewDelegate;
 @class UIKit_UIBarButtonItem_Callback;
 @class __UIRotationGestureRecognizer;
 @class __UITapGestureRecognizer;

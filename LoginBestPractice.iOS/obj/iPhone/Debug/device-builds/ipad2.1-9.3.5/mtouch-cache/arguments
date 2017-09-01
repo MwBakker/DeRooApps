@@ -1,9 +1,9 @@
 # Version: 10.10.0.36 (d15-2: d2270eec)
 # [first argument, ignore] # --cache
 /Library/Frameworks/Xamarin.iOS.framework/Versions/10.10.0.36/lib/mtouch/mtouch.exe \
-	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/device-builds/ipad2.1-9.3.5/mtouch-cache \
+	/Users/mwb/DeRooApps/LoginBestPractice.iOS/obj/iPhone/Debug/device-builds/ipad2.1-9.3.5/mtouch-cache \
 	--dev \
-	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/bin/iPhone/Debug/device-builds/ipad2.1-9.3.5/LoginBestPractice.iOS.app \
+	/Users/mwb/DeRooApps/LoginBestPractice.iOS/bin/iPhone/Debug/device-builds/ipad2.1-9.3.5/LoginBestPractice.iOS.app \
 	--executable \
 	LoginBestPractice.iOS \
 	--debug \
@@ -14,32 +14,32 @@
 	--sdk \
 	10.3 \
 	--targetver \
-	8.0 \
+	9.3.5 \
 	--http-message-handler=HttpClientHandler \
 	--abi=armv7 \
 	--symbollist \
-	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/obj/iPhone/Debug/device-builds/ipad2.1-9.3.5/mtouch-symbols.list \
+	/Users/mwb/DeRooApps/LoginBestPractice.iOS/obj/iPhone/Debug/device-builds/ipad2.1-9.3.5/mtouch-symbols.list \
 	--dsym=no \
 	-r \
 	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/Microsoft.CSharp.dll \
 	-r \
 	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/mscorlib.dll \
 	-r \
-	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/packages/Newtonsoft.Json.8.0.3/lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.dll \
+	/Users/mwb/DeRooApps/LoginBestPractice.iOS/packages/Newtonsoft.Json.8.0.3/lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.dll \
 	-r \
-	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/packages/Xam.Plugin.Connectivity.3.0.1/lib/Xamarin.iOS10/Plugin.Connectivity.Abstractions.dll \
+	/Users/mwb/DeRooApps/LoginBestPractice.iOS/packages/Xam.Plugin.Connectivity.3.0.1/lib/Xamarin.iOS10/Plugin.Connectivity.Abstractions.dll \
 	-r \
-	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/packages/Xam.Plugin.Connectivity.3.0.1/lib/Xamarin.iOS10/Plugin.Connectivity.dll \
+	/Users/mwb/DeRooApps/LoginBestPractice.iOS/packages/Xam.Plugin.Connectivity.3.0.1/lib/Xamarin.iOS10/Plugin.Connectivity.dll \
 	-r \
-	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/packages/Xam.Plugin.Geolocator.3.0.4/lib/Xamarin.iOS10/Plugin.Geolocator.Abstractions.dll \
+	/Users/mwb/DeRooApps/LoginBestPractice.iOS/packages/Xam.Plugin.Geolocator.3.0.4/lib/Xamarin.iOS10/Plugin.Geolocator.Abstractions.dll \
 	-r \
-	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/packages/Xam.Plugin.Geolocator.3.0.4/lib/Xamarin.iOS10/Plugin.Geolocator.dll \
+	/Users/mwb/DeRooApps/LoginBestPractice.iOS/packages/Xam.Plugin.Geolocator.3.0.4/lib/Xamarin.iOS10/Plugin.Geolocator.dll \
 	-r \
-	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/packages/Rox.Xamarin.Camera.1.1.0/lib/Xamarin.iOS10/Rox.Xamarin.Camera.Ios.dll \
+	/Users/mwb/DeRooApps/LoginBestPractice.iOS/packages/Rox.Xamarin.Camera.1.1.0/lib/Xamarin.iOS10/Rox.Xamarin.Camera.Ios.dll \
 	-r \
-	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/packages/Rox.Xamarin.Camera.1.1.0/lib/Xamarin.iOS10/Rox.Xamarin.Camera.Portable.dll \
+	/Users/mwb/DeRooApps/LoginBestPractice.iOS/packages/Rox.Xamarin.Camera.1.1.0/lib/Xamarin.iOS10/Rox.Xamarin.Camera.Portable.dll \
 	-r \
-	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/packages/Xamarin.Controls.SignaturePad.2.1.1/lib/Xamarin.iOS/SignaturePad.dll \
+	/Users/mwb/DeRooApps/LoginBestPractice.iOS/packages/Xamarin.Controls.SignaturePad.2.1.1/lib/Xamarin.iOS/SignaturePad.dll \
 	-r \
 	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/System.Core.dll \
 	-r \
@@ -53,15 +53,15 @@
 	-r \
 	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/System.Xml.dll \
 	-r \
-	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/packages/Xamarin.Forms.1.0.6188/lib/portable-win+net45+wp80+MonoAndroid10+MonoTouch10/Xamarin.Forms.Core.dll \
+	/Users/mwb/DeRooApps/LoginBestPractice.iOS/packages/Xamarin.Forms.1.0.6188/lib/portable-win+net45+wp80+MonoAndroid10+MonoTouch10/Xamarin.Forms.Core.dll \
 	-r \
-	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/packages/Xamarin.Forms.1.0.6188/lib/portable-win+net45+wp80+MonoAndroid10+MonoTouch10/Xamarin.Forms.Xaml.dll \
+	/Users/mwb/DeRooApps/LoginBestPractice.iOS/packages/Xamarin.Forms.1.0.6188/lib/portable-win+net45+wp80+MonoAndroid10+MonoTouch10/Xamarin.Forms.Xaml.dll \
 	-r \
 	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/Xamarin.iOS.dll \
 	-r \
-	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/packages/Xamarin.Swift3.3.0.1/lib/xamarinios10/Xamarin.Swift3.dll \
+	/Users/mwb/DeRooApps/LoginBestPractice.iOS/packages/Xamarin.Swift3.3.0.1/lib/xamarinios10/Xamarin.Swift3.dll \
 	-r \
-	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/packages/Xamarin.Swift3.QuartzCore.3.1.0.1/lib/xamarinios10/Xamarin.Swift3.QuartzCore.dll \
+	/Users/mwb/DeRooApps/LoginBestPractice.iOS/packages/Xamarin.Swift3.QuartzCore.3.1.0.1/lib/xamarinios10/Xamarin.Swift3.QuartzCore.dll \
 	-r \
 	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/Facades/Microsoft.Win32.Primitives.dll \
 	-r \
@@ -329,27 +329,27 @@
 	-r \
 	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/Facades/System.Xml.Xsl.Primitives.dll \
 	-r \
-	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/packages/Xam.Plugin.Connectivity.3.0.1/lib/Xamarin.iOS10/Plugin.Connectivity.Abstractions.dll \
+	/Users/mwb/DeRooApps/LoginBestPractice.iOS/packages/Xam.Plugin.Connectivity.3.0.1/lib/Xamarin.iOS10/Plugin.Connectivity.Abstractions.dll \
 	-r \
-	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/packages/Xam.Plugin.Connectivity.3.0.1/lib/Xamarin.iOS10/Plugin.Connectivity.dll \
+	/Users/mwb/DeRooApps/LoginBestPractice.iOS/packages/Xam.Plugin.Connectivity.3.0.1/lib/Xamarin.iOS10/Plugin.Connectivity.dll \
 	-r \
-	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/packages/Xam.Plugin.Geolocator.3.0.4/lib/Xamarin.iOS10/Plugin.Geolocator.Abstractions.dll \
+	/Users/mwb/DeRooApps/LoginBestPractice.iOS/packages/Xam.Plugin.Geolocator.3.0.4/lib/Xamarin.iOS10/Plugin.Geolocator.Abstractions.dll \
 	-r \
-	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/packages/Xam.Plugin.Geolocator.3.0.4/lib/Xamarin.iOS10/Plugin.Geolocator.dll \
+	/Users/mwb/DeRooApps/LoginBestPractice.iOS/packages/Xam.Plugin.Geolocator.3.0.4/lib/Xamarin.iOS10/Plugin.Geolocator.dll \
 	-r \
-	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/packages/Rox.Xamarin.Camera.1.1.0/lib/Xamarin.iOS10/Rox.Xamarin.Camera.Ios.dll \
+	/Users/mwb/DeRooApps/LoginBestPractice.iOS/packages/Rox.Xamarin.Camera.1.1.0/lib/Xamarin.iOS10/Rox.Xamarin.Camera.Ios.dll \
 	-r \
-	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/packages/Rox.Xamarin.Camera.1.1.0/lib/Xamarin.iOS10/Rox.Xamarin.Camera.Portable.dll \
+	/Users/mwb/DeRooApps/LoginBestPractice.iOS/packages/Rox.Xamarin.Camera.1.1.0/lib/Xamarin.iOS10/Rox.Xamarin.Camera.Portable.dll \
 	-r \
-	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/packages/Xamarin.Controls.SignaturePad.2.1.1/lib/Xamarin.iOS/SignaturePad.dll \
+	/Users/mwb/DeRooApps/LoginBestPractice.iOS/packages/Xamarin.Controls.SignaturePad.2.1.1/lib/Xamarin.iOS/SignaturePad.dll \
 	-r \
-	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/packages/Xamarin.Forms.1.0.6188/lib/portable-win+net45+wp80+MonoAndroid10+MonoTouch10/Xamarin.Forms.Core.dll \
+	/Users/mwb/DeRooApps/LoginBestPractice.iOS/packages/Xamarin.Forms.1.0.6188/lib/portable-win+net45+wp80+MonoAndroid10+MonoTouch10/Xamarin.Forms.Core.dll \
 	-r \
-	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/packages/Xamarin.Forms.1.0.6188/lib/portable-win+net45+wp80+MonoAndroid10+MonoTouch10/Xamarin.Forms.Xaml.dll \
+	/Users/mwb/DeRooApps/LoginBestPractice.iOS/packages/Xamarin.Forms.1.0.6188/lib/portable-win+net45+wp80+MonoAndroid10+MonoTouch10/Xamarin.Forms.Xaml.dll \
 	-r \
-	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/packages/Xamarin.Swift3.3.0.1/lib/xamarinios10/Xamarin.Swift3.dll \
+	/Users/mwb/DeRooApps/LoginBestPractice.iOS/packages/Xamarin.Swift3.3.0.1/lib/xamarinios10/Xamarin.Swift3.dll \
 	-r \
-	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/packages/Xamarin.Swift3.QuartzCore.3.1.0.1/lib/xamarinios10/Xamarin.Swift3.QuartzCore.dll \
+	/Users/mwb/DeRooApps/LoginBestPractice.iOS/packages/Xamarin.Swift3.QuartzCore.3.1.0.1/lib/xamarinios10/Xamarin.Swift3.QuartzCore.dll \
 	--target-framework \
 	"Xamarin.iOS,v1.0" \
-	/Users/mwb/DeRooIOS-master/LoginBestPractice.iOS/bin/iPhone/Debug/LoginBestPractice.iOS.exe \
+	/Users/mwb/DeRooApps/LoginBestPractice.iOS/bin/iPhone/Debug/LoginBestPractice.iOS.exe \
