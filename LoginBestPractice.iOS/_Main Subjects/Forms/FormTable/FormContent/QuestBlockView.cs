@@ -1,6 +1,4 @@
 ﻿﻿using System;
-using System.Collections.Generic;
-using AssetsLibrary;
 using CoreGraphics;
 using DeRoo_iOS;
 using Foundation;
@@ -240,34 +238,74 @@ namespace LoginBestPractice.iOS
 				Camera.TakePicture(subjectVC, (obj) =>
 			    {
 					UIImage takenImg = obj.ValueForKey(new NSString("UIImagePickerControllerOriginalImage")) as UIImage;
-					UIImageView imgTumb = new UIImageView(takenImg);
-
-                    if (imgCounter == 0) 
-                    {
-                        imgTumb.Frame = new CGRect((viewWidth*0.0795), (btn_photo.Frame.Bottom + 10), 80, 80); 
-                        imgCounter++;
-                    } 
-                    else 
-                    { 
-                        imgTumb.Frame = new CGRect(((viewWidth*0.0795) + imgDeltaX), (btn_photo.Frame.Bottom + 10), 80, 80);
-                        imgDeltaX += imgDeltaX;
-                        imgCounter++;
-					}
-					imgTumb.Layer.BorderWidth = 1.5f; imgTumb.Tag = 4;
-					InsertSubview(imgTumb, 3);
-                    if (imgCounter < 2)
-					{
-						updateQuestBlockAfterImg(imgTumb);
-						updateCatBlock();
-					}
-					subjectVC.reloadTable();
-                    imgTumb.UserInteractionEnabled = true;
-					var longPressGesture = new UILongPressGestureRecognizer(LongPressMethod);
-                    imgTumb.AddGestureRecognizer(longPressGesture);
+                    setPhoto(takenImg, imgCounter); 	
 			    });
 			};
             return btn_photo;
         }
+
+        //
+        // turns image into imgTumb with required frame and view-update 
+        // reloads table 
+        //
+        public void setPhoto (UIImage takenImg, int photoIndex) 
+        { 
+            UIImageView imgTumb = new UIImageView(takenImg);
+            if (photoIndex == 0)
+			{
+				imgTumb.Frame = new CGRect((viewWidth * 0.0795), (btn_photo.Frame.Bottom + 10), 80, 80);
+				imgCounter++;
+			}
+			else
+			{
+				imgTumb.Frame = new CGRect(((viewWidth * 0.0795) + imgDeltaX), (btn_photo.Frame.Bottom + 10), 80, 80);
+				imgDeltaX += imgDeltaX;
+				imgCounter++;
+			}
+			imgTumb.Layer.BorderWidth = 1.5f; imgTumb.Tag = 4;
+			InsertSubview(imgTumb, 3);
+			if (imgCounter < 2)
+			{
+				updateQuestBlockAfterImg(imgTumb);
+				updateCatBlock();
+			}
+			subjectVC.reloadTable();
+			imgTumb.UserInteractionEnabled = true;
+			var longPressGesture = new UILongPressGestureRecognizer(LongPressMethod);
+			imgTumb.AddGestureRecognizer(longPressGesture);
+        }
+
+		// 
+		// handles long press
+		// delete specific form on request
+		//
+		private void LongPressMethod(UILongPressGestureRecognizer gestureRecognizer)
+		{
+			UIImageView longpressedIMG = (UIImageView)gestureRecognizer.View;
+			UIAlertController delAlert = UIAlertController.Create("Foto verwijderen", "Wilt u deze foto verwijderen?", UIAlertControllerStyle.Alert);
+			delAlert.AddAction(UIAlertAction.Create("Ja", UIAlertActionStyle.Default, action => removePhotos("one", longpressedIMG)));
+			delAlert.AddAction(UIAlertAction.Create("Nee", UIAlertActionStyle.Cancel, null));
+			subjectVC.PresentViewController(delAlert, true, null);
+		}
+
+		//
+		// updates questblock by pushing down elements and re-setting the height
+		//
+		private void updateQuestBlockAfterImg(UIImageView img)
+		{
+			foreach (UIView view in this.Subviews)
+			{
+				if (view.Tag > img.Tag)
+				{
+					view.Frame = view.Frame = new CGRect(view.Frame.X, img.Frame.Bottom, view.Frame.Width, view.Frame.Height);
+				}
+			}
+			this.Frame = new CGRect(this.Frame.X, this.Frame.Y, this.Frame.Width, subjectVC.determineHeight(this));
+		}
+
+        // 
+        // all required to re-set view 
+        // 
         private void removePhotos(string amount, UIImageView img) 
         {
             if (amount == "all")
@@ -287,35 +325,6 @@ namespace LoginBestPractice.iOS
                 this.Delete(img);
                 imgCounter--;
             }
-        }
-
-		// 
-		// handles long press
-		// delete specific form on request
-		//
-		private void LongPressMethod(UILongPressGestureRecognizer gestureRecognizer)
-		{
-            UIImageView longpressedIMG = (UIImageView)gestureRecognizer.View;
-			UIAlertController delAlert = UIAlertController.Create("Foto verwijderen", "Wilt u deze foto verwijderen?", UIAlertControllerStyle.Alert);
-            delAlert.AddAction(UIAlertAction.Create("Ja", UIAlertActionStyle.Default, action => removePhotos("one", longpressedIMG)));
-			delAlert.AddAction(UIAlertAction.Create("Nee", UIAlertActionStyle.Cancel, null));
-			subjectVC.PresentViewController(delAlert, true, null);
-		}
-
-
-        //
-        // updates questblock by pushing down elements and re-setting the height
-        //
-        private void updateQuestBlockAfterImg(UIImageView img) 
-        {
-            foreach (UIView view in this.Subviews) 
-            {
-                if (view.Tag > img.Tag) 
-                {
-                    view.Frame = view.Frame = new CGRect(view.Frame.X, img.Frame.Bottom, view.Frame.Width, view.Frame.Height);
-                }
-            }
-            this.Frame = new CGRect(this.Frame.X, this.Frame.Y, this.Frame.Width, subjectVC.determineHeight(this));
         }
 
 		// 

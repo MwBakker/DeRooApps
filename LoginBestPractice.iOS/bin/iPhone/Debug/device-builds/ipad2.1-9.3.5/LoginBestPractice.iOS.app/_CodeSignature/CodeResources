@@ -26,7 +26,7 @@
 		</data>
 		<key>Frameworks/libswiftQuartzCore.dylib</key>
 		<data>
-		Ru+4r+0YBYli4OMckcbKl54d3uc=
+		bpjnIGSxdoopvO2ynz2IFtS8qcQ=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -38,11 +38,11 @@
 		</data>
 		<key>LoginBestPractice.iOS.aotdata.armv7</key>
 		<data>
-		Va7S2BuGnpP3OocFdP/viRAPUeg=
+		n3re/NvckZTS8xGGk3sMiTQgs94=
 		</data>
 		<key>LoginBestPractice.iOS.exe</key>
 		<data>
-		xj9g1AQm2ZI8qBjl1GufkwyoB3k=
+		prdz67LdnGgKoIeSlDfNE1unyLo=
 		</data>
 		<key>LoginBestPractice.iOS.exe.mdb</key>
 		<data>
@@ -50,7 +50,7 @@
 		</data>
 		<key>LoginBestPractice.iOS.pdb</key>
 		<data>
-		BZd6oOnhiBWhZtiWExxBiska/kY=
+		QYrjEoC+qF24zYlrrhe5I3z76EI=
 		</data>
 		<key>Logo.png</key>
 		<data>
@@ -470,11 +470,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Ru+4r+0YBYli4OMckcbKl54d3uc=
+			bpjnIGSxdoopvO2ynz2IFtS8qcQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			L7aTByqRTSgFqAl1A9VZhflBNrbTTj8jw+FhPpj5Ecc=
+			jj2hjsxKeP/eSXhYPXtZEUwz4Ss/t6azWN0QeikUTvY=
 			</data>
 		</dict>
 		<key>LaunchScreen.nib</key>
@@ -492,22 +492,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Va7S2BuGnpP3OocFdP/viRAPUeg=
+			n3re/NvckZTS8xGGk3sMiTQgs94=
 			</data>
 			<key>hash2</key>
 			<data>
-			PrQVW8ceql6Aq6+3EMwu3W+xnS+oHG+3PGpWiw6uup8=
+			c/LjV7XJ6uHXNt1SZb17INUpcP+Bw8XyJlx/n4ozo2g=
 			</data>
 		</dict>
 		<key>LoginBestPractice.iOS.exe</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			xj9g1AQm2ZI8qBjl1GufkwyoB3k=
+			prdz67LdnGgKoIeSlDfNE1unyLo=
 			</data>
 			<key>hash2</key>
 			<data>
-			+8p0OiTwQPxHLsZedLi7J/feMsgBQyWITnWQPY1HuOw=
+			ezaM8M3hIfTlo0I+oDt/m66J9Q4u9MMy6+NnvtqPy4k=
 			</data>
 		</dict>
 		<key>LoginBestPractice.iOS.exe.mdb</key>
@@ -525,11 +525,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			BZd6oOnhiBWhZtiWExxBiska/kY=
+			QYrjEoC+qF24zYlrrhe5I3z76EI=
 			</data>
 			<key>hash2</key>
 			<data>
-			HR23dZmv+tOOhABC119re39pV21H8Hd85zLwQPWbKwc=
+			cAtETki0cnDO0IQXA8NUgelIpM5vtIDVexKPUNj5DhU=
 			</data>
 		</dict>
 		<key>Logo.png</key>

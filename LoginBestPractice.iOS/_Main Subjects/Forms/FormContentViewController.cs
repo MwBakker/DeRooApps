@@ -6,6 +6,7 @@ using Plugin.Geolocator;
 using System.Linq;
 using CoreGraphics;
 using Foundation;
+using Google.Maps; 
 
 namespace LoginBestPractice.iOS
 {
@@ -117,11 +118,16 @@ namespace LoginBestPractice.iOS
                                         // IF answer is disagreed
                                         if (givenIndex == 1)
                                         {
-                                            // WHEN 'not ok' fill modal if data is present (rootFromText) 
+                                            // WHEN 'not ok' fill modal IF data present (rootFromText) 
                                             string comment = quest.extra_commentaar; string action = quest.actie_ondernomen;
+                                            byte[] photo1 = quest.foto1; byte[] photo2 = quest.foto2; byte[] photo3 = quest.foto3;
                                             string person = quest.persoon; if (comment != null) { questBlock.modal.setTxtF_comment(comment); }
                                             if (action != null) { questBlock.modal.setTxtF_action(action); }
                                             if (person != null) { questBlock.modal.setTxtF_person(person); }
+                                            if (photo1 != null) { questBlock.setPhoto(User.bytesToImg(photo1), 1); 
+                                            if (photo2 != null) { questBlock.setPhoto(User.bytesToImg(photo1), 2);
+                                            if (photo3 != null) { questBlock.setPhoto(User.bytesToImg(photo1), 3);
+
                                             questBlock.modal.collectData(true);
                                         }
                                     }
@@ -170,7 +176,10 @@ namespace LoginBestPractice.iOS
 		//
 		partial void btn_geoLocationTouchUpInside(UIButton sender)
 		{
+            
 			var pos = CrossGeolocator.Current.GetPositionAsync();
+            pos.GetAwaiter();
+            //Google.Maps.
             var posRes = pos.Result;
             double lat = posRes.Latitude;
             double longt = posRes.Longitude;

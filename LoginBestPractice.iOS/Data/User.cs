@@ -133,6 +133,13 @@ namespace DeRoo_iOS
 			return NSDate.FromTimeIntervalSinceReferenceDate((date - reference).TotalSeconds);
 		}
 
+        public static UIImage bytesToImg(byte[] base64bytes) 
+        {
+			var data = NSData.FromArray(base64bytes);
+            UIImage img = UIImage.LoadFromData(data);
+            return img;
+        }
+
         //
         // setting the logout button for the required page
         //
