@@ -34,7 +34,11 @@ namespace LoginBestPractice.iOS
             if (areForms == true) 
             {
                 cell.entireForm = unFilledForms[indexPath.Row];
-                cell.TextLabel.Text = unFilledForms[indexPath.Row].formulieren[0].formulier_naam + " - '" +  unFilledForms[indexPath.Row].formulieren[0].project_naam +"'";
+                string projectName = unFilledForms[indexPath.Row].formulieren[0].project_naam;
+                if (projectName == "") {
+                    projectName = "Naamloos";
+                } 
+                cell.TextLabel.Text = unFilledForms[indexPath.Row].formulieren[0].formulier_naam + " - '" + projectName +"'";
                 cell.formfilePath = filepaths[indexPath.Row];
                 cell.form = unFilledForms[indexPath.Row];
                 var longPressGesture = new UILongPressGestureRecognizer(LongPressMethod);

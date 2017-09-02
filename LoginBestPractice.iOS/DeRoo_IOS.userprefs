@@ -1,28 +1,15 @@
-﻿<Properties StartupConfiguration="{84563AF5-67F4-46D6-B49C-BF8D718F3C64}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Data/User.cs">
+﻿<Properties>
+  <MonoDevelop.Ide.Workbench ActiveDocument="packages.config">
     <Files>
-      <File FileName="_Main Subjects/Forms/FormContentViewController.cs" Line="127" Column="45" />
-      <File FileName="_Main Subjects/Forms/FormTable/FormContent/QuestBlockView.cs" Line="304" Column="4" />
+      <File FileName="Data/User.cs" Line="111" Column="10" />
       <File FileName="Main.cs" Line="12" Column="1" />
-      <File FileName="Data/User.cs" Line="135" Column="9" />
+      <File FileName="_Main Subjects/Forms/FormContentViewController.cs" Line="370" Column="145" />
+      <File FileName="packages.config" Line="1" Column="1" />
     </Files>
     <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="DeRoo_IOS" expanded="True">
-            <Node name="DeRoo_IOS" expanded="True">
-              <Node name="_Main Subjects" expanded="True">
-                <Node name="Forms" expanded="True">
-                  <Node name="FormTable" expanded="True">
-                    <Node name="FormContent" expanded="True" />
-                  </Node>
-                </Node>
-              </Node>
-              <Node name="Data" expanded="True">
-                <Node name="User.cs" selected="True" />
-              </Node>
-            </Node>
-          </Node>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State>
+          <Value>data</Value>
         </State>
       </Pad>
     </Pads>
@@ -36,5 +23,4 @@
   <DisabledProjects>
     <String>../../../Downloads/DeRoo/DeRoo/DeRoo.csproj</String>
   </DisabledProjects>
-  <MonoDevelop.Ide.ItemProperties.DeRoo__IOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.21935A3D-F442-4E70-BDB0-2B7A59B79398" />
 </Properties>
