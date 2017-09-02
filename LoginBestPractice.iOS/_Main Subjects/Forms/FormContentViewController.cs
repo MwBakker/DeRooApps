@@ -5,8 +5,7 @@ using DeRoo_iOS;
 using Plugin.Geolocator;
 using System.Linq;
 using CoreGraphics;
-using Foundation;
-using Google.Maps; 
+using Foundation; 
 
 namespace LoginBestPractice.iOS
 {
@@ -17,9 +16,11 @@ namespace LoginBestPractice.iOS
         public bool rootFromText  { get; set; }
         // changes in the database are not relevant to this root IF coming from non-web source
         public RootObject formData { get; set; }
+        public bool isCameraAct { get; set; } 
         bool succesSend;
 		UIColor deRooGreen;
 		nfloat viewWidth;
+        string test;
 		string formID;
 
 		//
@@ -47,6 +48,11 @@ namespace LoginBestPractice.iOS
 			deRooGreen = new UIColor(0.04f, 0.17f, 0.01f, 1.0f);
 		}
 
+        public override void ViewWillAppear(bool animated)
+        {
+            ParentViewController.TabBarController.TabBar.Hidden = true;
+        }
+
 		//
 		// before going back... collect Data
         // view goes back either way, so check if send was true or not
@@ -54,10 +60,16 @@ namespace LoginBestPractice.iOS
 		//
 		public override void ViewWillDisappear(bool animated)
 		{
-           // NavigationItem.BackBarButtonItem.Action = Action.CreateDelegate()
-			// collect so far given data to custom Rootobject meant for .txt 
-			if (succesSend == false)
+            // NavigationItem.BackBarButtonItem.Action = Action.CreateDelegate()
+            // collect so far given data to custom Rootobject meant for .txt 
+            if (succesSend == false || isCameraAct == false)
             {
+                ParentViewController.TabBarController.TabBar.Hidden = false;
+                toFile();
+                PresentViewController(User.createAlert("Dit formulier is opgeslagen onder 'openstaande formulieren'", "INFO"), true, null); 
+
+                // intercept fails, no possible way to get back-button event in time.... Wema help me out
+
                 /*
 				UIAlertController delAlert = UIAlertController.Create("Formulier bewaren", "Wilt u dit onvolledig ingevulde formulier bewaren?", UIAlertControllerStyle.Alert);
                 delAlert.AddAction(UIAlertAction.Create("Ja", UIAlertActionStyle.Default, action => toFile()));
@@ -124,10 +136,9 @@ namespace LoginBestPractice.iOS
                                             string person = quest.persoon; if (comment != null) { questBlock.modal.setTxtF_comment(comment); }
                                             if (action != null) { questBlock.modal.setTxtF_action(action); }
                                             if (person != null) { questBlock.modal.setTxtF_person(person); }
-                                            if (photo1 != null) { questBlock.setPhoto(User.bytesToImg(photo1), 1); 
-                                            if (photo2 != null) { questBlock.setPhoto(User.bytesToImg(photo1), 2);
-                                            if (photo3 != null) { questBlock.setPhoto(User.bytesToImg(photo1), 3);
-
+                                            if (photo1 != null) { questBlock.setPhoto(User.bytesToImg(photo1), 1); }
+                                            if (photo2 != null) { questBlock.setPhoto(User.bytesToImg(photo2), 2); }
+                                            if (photo3 != null) { questBlock.setPhoto(User.bytesToImg(photo3), 3); }
                                             questBlock.modal.collectData(true);
                                         }
                                     }
@@ -377,13 +388,13 @@ namespace LoginBestPractice.iOS
         //
         private void toFile() 
         {
-			if (txtf_projectName.Text != "" && txtf_location.Text != "")
-			{
+			//if (txtf_projectName.Text != "" && txtf_location.Text != "")
+			//{
 				rootFromText = true;
 				RootObject fileForm = collectData();
 				DataStorage.sendDataToFile(formData, "openFormData", fileForm.formulieren[0].datum);
 				TabBarController.TabBar.Items[1].Image = UIImage.FromFile("openformIcon");
-			}
+			//}
         }
 
 		// 

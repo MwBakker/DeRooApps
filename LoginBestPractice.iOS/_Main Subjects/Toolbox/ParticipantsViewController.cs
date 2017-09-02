@@ -26,6 +26,11 @@ namespace LoginBestPractice.iOS
             employeeList = DataStorage.data.medewerkers;
         }
 
+		public override void ViewWillAppear(bool animated)
+		{
+			ParentViewController.TabBarController.TabBar.Hidden = true;
+		}
+
         public void setEmployees()
 		{
             if (employeeList.Count < 0)
@@ -37,6 +42,11 @@ namespace LoginBestPractice.iOS
                 employeeTableSource = new EmployeesTableSource(employeeList);
                 this.employeesTableView.Source = employeeTableSource;
             }
+		}
+
+		public override void ViewWillDisappear(bool animated)
+		{
+			ParentViewController.TabBarController.TabBar.Hidden = false;
 		}
 
         //

@@ -26,7 +26,7 @@ namespace LoginBestPractice.iOS
 				//loads online-pdf file.
 				var webView = new UIWebView(View.Bounds);
 				View.AddSubview(webView);
-				var url = "https://amkapp.nl/pages/DeRoo/Kwaliteitshandboek%205.1%20cert.pdf";
+				var url = "https://amkapp.nl/handboek.pdf";
 				webView.LoadRequest(new NSUrlRequest(new NSUrl(url)));
 				webView.ScalesPageToFit = true;
 			}

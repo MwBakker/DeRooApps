@@ -28,6 +28,7 @@ namespace LoginBestPractice.iOS
 			nfloat deltaBottomAnchor = 0;
 			foreach (Medewerker employee in selectedEmployees)
 			{
+			    ParentViewController.TabBarController.TabBar.Hidden = true;
                 // set label and push it's X-axe position for icon
                 UILabel lbl_employee = new UILabel(new CGRect(((viewWidth * 0.5) - 35), deltaBottomAnchor, (viewWidth * 0.65), 35));
 				lbl_employee.Text = employee.medewerker_achternaam + ", " + employee.medewerker_voornaam;
@@ -48,6 +49,11 @@ namespace LoginBestPractice.iOS
             btn_finishToolbox.Frame = new CGRect(0,(deltaBottomAnchor + 20),viewWidth,35);
             deltaBottomAnchor = btn_finishToolbox.Frame.Bottom;
             scrlV_signatures.ContentSize = new CGSize(viewWidth, deltaBottomAnchor);
+        }
+
+        public override void ViewWillDisappear(bool animated)
+        {
+            ParentViewController.TabBarController.TabBar.Hidden = false;
         }
 
         partial void btn_finishToolbox_TouchUpInside(UIButton sender)

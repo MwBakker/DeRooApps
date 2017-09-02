@@ -41,23 +41,6 @@ namespace LoginBestPractice.iOS
 			   return true; };
 		}
 
-        //
-        // tabBar to re-visualise after close
-        //
-        public override void ViewWillDisappear(bool animated)
-        {
-            subjectVC.TabBarController.TabBar.Hidden = false;
-        }
-
-        //
-        // hides the statusbar when modal is presented
-        //
-        public void hideBar(UIViewController subjectVCIn) 
-        {
-            subjectVCIn.TabBarController.TabBar.Hidden = true;
-            subjectVC = subjectVCIn;
-        }
-
         // 
         // collects modal data
         // checks if data required depending if OK was clicked

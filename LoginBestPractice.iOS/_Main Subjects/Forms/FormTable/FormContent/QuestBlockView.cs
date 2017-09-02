@@ -123,7 +123,6 @@ namespace LoginBestPractice.iOS
                 addButtons(viewWidth);
                 if (modalSet == false) {
                     modal = subjectVC.Storyboard.InstantiateViewController("modalVraag") as Modal;
-                    modal.hideBar(subjectVC);
                     modalSet = true;
                 }
                 // IF not selected by given from text
@@ -169,7 +168,6 @@ namespace LoginBestPractice.iOS
                 btn_modal.Tag = 5;
 				btn_modal.TouchDown += delegate
 				{
-                    modal.hideBar(subjectVC);
 					subjectVC.PresentViewController(modal, true, null);
 				};
 
@@ -229,6 +227,7 @@ namespace LoginBestPractice.iOS
 			btn_photo.Frame = new CGRect((viewWidth*0.125), (prevFrameBottom+10), (viewWidth*0.75), 30);
 			btn_photo.TouchDown += delegate
 			{
+				subjectVC.isCameraAct = true;
 				if (imgCounter == 3)
 				{
 					subjectVC.PresentViewController(User.createAlert("Niet meer dan 3 foto's", "INFO"), true, null);
@@ -237,8 +236,10 @@ namespace LoginBestPractice.iOS
 				}
 				Camera.TakePicture(subjectVC, (obj) =>
 			    {
+                    // viewWillDissapear must not act like writing to file, therefor bool isCameraAct
 					UIImage takenImg = obj.ValueForKey(new NSString("UIImagePickerControllerOriginalImage")) as UIImage;
-                    setPhoto(takenImg, imgCounter); 	
+                    setPhoto(takenImg, imgCounter);
+                    subjectVC.isCameraAct = false;
 			    });
 			};
             return btn_photo;
@@ -253,12 +254,12 @@ namespace LoginBestPractice.iOS
             UIImageView imgTumb = new UIImageView(takenImg);
             if (photoIndex == 0)
 			{
-				imgTumb.Frame = new CGRect((viewWidth * 0.0795), (btn_photo.Frame.Bottom + 10), 80, 80);
+				imgTumb.Frame = new CGRect((viewWidth * 0.0925), (btn_photo.Frame.Bottom + 10), 80, 80);
 				imgCounter++;
 			}
 			else
 			{
-				imgTumb.Frame = new CGRect(((viewWidth * 0.0795) + imgDeltaX), (btn_photo.Frame.Bottom + 10), 80, 80);
+				imgTumb.Frame = new CGRect(((viewWidth * 0.0925) + imgDeltaX), (btn_photo.Frame.Bottom + 10), 80, 80);
 				imgDeltaX += imgDeltaX;
 				imgCounter++;
 			}
