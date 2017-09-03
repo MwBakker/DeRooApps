@@ -11,7 +11,6 @@ namespace LoginBestPractice.iOS
 		public FormsViewController(IntPtr handle) : base(handle)
 		{
 			dataStorage = new DataStorage();
-            User.checkUnfilled(TabBarController.TabBar);
 			RootObject formData = DataStorage.data;
 			nfloat hoogteVanButtons = 20;
 			for (int i = 0; i < formData.formulieren.Count; i++)
@@ -21,6 +20,14 @@ namespace LoginBestPractice.iOS
 			}
 			dataStorage.getData();
 		}
+
+        //
+        // this is the page where you get referred to after sending form, check if form from file has been deleted 
+        //
+		public override void ViewWillAppear(bool animated)
+        { 
+            User.checkUnfilled(TabBarController.TabBar);
+        }
 
 		public override void ViewDidLoad()
 		{

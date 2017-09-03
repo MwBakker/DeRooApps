@@ -38,6 +38,7 @@ namespace LoginBestPractice.iOS
 				User.createAlert("Openstaand formulier niet verwijderd", "INFO");
 			}
 			PresentViewController(User.createAlert("Openstaand formulier verwijderd", "INFO"), true, null);
+			User.checkUnfilled(TabBarController.TabBar);
 		}
     }
 }

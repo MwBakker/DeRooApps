@@ -240,7 +240,6 @@
     <BundleResource Include="Resources\Logout.png" />
     <BundleResource Include="Resources\logouttemp.png" />
     <BundleResource Include="Resources\Deroo_Bord_Medium.png" />
-    <BundleResource Include="Resources\openstaandeformulieren.png" />
     <BundleResource Include="Resources\BottomXamagons.png" />
     <BundleResource Include="Resources\BottomXamagons%402x.png" />
     <BundleResource Include="Resources\BottomXamagons%403x.png" />
@@ -264,7 +263,8 @@
     <BundleResource Include="Resources\personIcon.png" />
     <BundleResource Include="Resources\toolboxIcon.png" />
     <BundleResource Include="Resources\toolboxBarIcon.png" />
-    <BundleResource Include="Resources\openformIcon.png" />
+    <BundleResource Include="Resources\noOpenFormIcon.png" />
+    <BundleResource Include="Resources\openForm.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Features\" />

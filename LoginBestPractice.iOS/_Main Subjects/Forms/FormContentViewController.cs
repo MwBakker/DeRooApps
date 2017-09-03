@@ -20,7 +20,6 @@ namespace LoginBestPractice.iOS
         bool succesSend;
 		UIColor deRooGreen;
 		nfloat viewWidth;
-        string test;
 		string formID;
 
 		//
@@ -361,13 +360,15 @@ namespace LoginBestPractice.iOS
                                 // for every questBlock one counter of photos
                                 photoCounter++;
 								NSData imageData = ((UIImageView)questSubview).Image.AsJPEG(0.5f);
-                                string imgData = imageData.GetBase64EncodedData(NSDataBase64EncodingOptions.None).ToString();
+                                var dataBytes = new byte[imageData.Length];
+
+                               // string imgData = imageData.GetBase64EncodedData(NSDataBase64EncodingOptions.None).ToString();
                                 if (photoCounter == 1) {
-                                   quest.foto1 = System.Text.Encoding.ASCII.GetBytes(imgData); 
+                                    quest.foto1 = dataBytes; 
                                 } else if (photoCounter == 2) {
-                                   quest.foto2 = System.Text.Encoding.ASCII.GetBytes(imgData); 
+                                   quest.foto2 = dataBytes; 
                                 } else if (photoCounter == 3) {
-                                    quest.foto3 = System.Text.Encoding.ASCII.GetBytes(imgData);
+                                    quest.foto3 = dataBytes;                                                 
                                 }
                             }
                         }

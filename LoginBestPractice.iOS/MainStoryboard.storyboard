@@ -237,7 +237,7 @@
                     <connections>
                         <segue id="4141" destination="3558" kind="relationship" relationship="rootViewController"/>
                     </connections>
-                    <tabBarItem key="tabBarItem" id="2263" title="Open formulieren" image="122196-200.png"/>
+                    <tabBarItem key="tabBarItem" id="2263" title="Open formulieren" image="noOpenFormIcon.png"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2088" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -803,7 +803,6 @@
         <image name="Logout.png" width="50" height="50"/>
         <image name="logouttemp.png" width="24" height="24"/>
         <image name="Deroo_Bord_Medium.png" width="944" height="237"/>
-        <image name="openstaandeformulieren.png" width="24" height="24"/>
         <image name="BottomXamagons.png" width="151" height="178"/>
         <image name="Logo.png" width="512" height="512"/>
         <image name="TopXamagons.png" width="151" height="178"/>
@@ -820,6 +819,7 @@
         <image name="personIcon.png" width="512" height="512"/>
         <image name="toolboxIcon.png" width="35" height="35"/>
         <image name="toolboxBarIcon.png" width="24" height="24"/>
-        <image name="openformIcon.png" width="24" height="24"/>
+        <image name="noOpenFormIcon.png" width="24" height="24"/>
+        <image name="openForm.png" width="24" height="24"/>
     </resources>
 </document>

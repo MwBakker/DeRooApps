@@ -99,7 +99,9 @@ namespace DeRoo_iOS
 				forms.Add(unfilledForm);
 			}
             if (filesInDir.Length >= 1) {
-                tabBar.Items[1].Image = UIImage.FromFile("openformIcon");
+                tabBar.Items[1].Image = UIImage.FromFile("openForm");
+            } else {
+				tabBar.Items[1].Image = UIImage.FromFile("noOpenFormIcon");
             }
         }
 		public static void addFileForm(RootObject data, string filepath)
