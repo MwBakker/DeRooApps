@@ -11,15 +11,18 @@ namespace LoginBestPractice.iOS
     {
         public OpenFormsViewController(IntPtr handle) : base(handle)
         {
+            
         }
 
         //
         // check files before startup
         //
-        public override void ViewWillAppear(bool animated)
+        public override void ViewDidLoad()
         {
+            User.checkUnfilled(TabBarController.TabBar);
 			openFormTableView.Frame = new CoreGraphics.CGRect(openFormTableView.Frame.X, openFormTableView.Frame.Y, UIScreen.MainScreen.Bounds.Width, UIScreen.MainScreen.Bounds.Height);
             this.openFormTableView.Source = new OpenFormTableSource(this, User.unfilledForms, User.filepaths);
+            openFormTableView.ReloadData();
         }
 
 		//

@@ -1,14 +1,27 @@
-xamarin_timezone_get_data
-xamarin_GetFolderPath
-xamarin_log
-xamarin_start_wwan
-CreateZStream
-CloseZStream
-Flush
-ReadZStream
-WriteZStream
-xamarin_IntPtr_objc_msgSend_IntPtr
-xamarin_IntPtr_objc_msgSendSuper_IntPtr
-UIApplicationMain
-xamarin_get_block_descriptor
-mono_pmip
+Function=xamarin_timezone_get_data
+	/Users/mwb/DeRooApps/LoginBestPractice.iOS/obj/iPhone/Debug/device-builds/ipad2.1-9.3.5/mtouch-cache/Link/mscorlib.dll
+Function=xamarin_GetFolderPath
+	/Users/mwb/DeRooApps/LoginBestPractice.iOS/obj/iPhone/Debug/device-builds/ipad2.1-9.3.5/mtouch-cache/Link/mscorlib.dll
+Function=xamarin_log
+	/Users/mwb/DeRooApps/LoginBestPractice.iOS/obj/iPhone/Debug/device-builds/ipad2.1-9.3.5/mtouch-cache/Link/mscorlib.dll
+Function=CreateZStream
+	/Users/mwb/DeRooApps/LoginBestPractice.iOS/obj/iPhone/Debug/device-builds/ipad2.1-9.3.5/mtouch-cache/Link/System.dll
+Function=CloseZStream
+	/Users/mwb/DeRooApps/LoginBestPractice.iOS/obj/iPhone/Debug/device-builds/ipad2.1-9.3.5/mtouch-cache/Link/System.dll
+Function=Flush
+	/Users/mwb/DeRooApps/LoginBestPractice.iOS/obj/iPhone/Debug/device-builds/ipad2.1-9.3.5/mtouch-cache/Link/System.dll
+Function=ReadZStream
+	/Users/mwb/DeRooApps/LoginBestPractice.iOS/obj/iPhone/Debug/device-builds/ipad2.1-9.3.5/mtouch-cache/Link/System.dll
+Function=WriteZStream
+	/Users/mwb/DeRooApps/LoginBestPractice.iOS/obj/iPhone/Debug/device-builds/ipad2.1-9.3.5/mtouch-cache/Link/System.dll
+Function=xamarin_start_wwan
+	/Users/mwb/DeRooApps/LoginBestPractice.iOS/obj/iPhone/Debug/device-builds/ipad2.1-9.3.5/mtouch-cache/Link/System.dll
+Function=xamarin_IntPtr_objc_msgSend_IntPtr
+	/Users/mwb/DeRooApps/LoginBestPractice.iOS/obj/iPhone/Debug/device-builds/ipad2.1-9.3.5/mtouch-cache/Link/Xamarin.iOS.dll
+Function=xamarin_IntPtr_objc_msgSendSuper_IntPtr
+	/Users/mwb/DeRooApps/LoginBestPractice.iOS/obj/iPhone/Debug/device-builds/ipad2.1-9.3.5/mtouch-cache/Link/Xamarin.iOS.dll
+Function=UIApplicationMain
+	/Users/mwb/DeRooApps/LoginBestPractice.iOS/obj/iPhone/Debug/device-builds/ipad2.1-9.3.5/mtouch-cache/Link/Xamarin.iOS.dll
+Function=xamarin_get_block_descriptor
+	/Users/mwb/DeRooApps/LoginBestPractice.iOS/obj/iPhone/Debug/device-builds/ipad2.1-9.3.5/mtouch-cache/Link/Xamarin.iOS.dll
+Function=mono_pmip

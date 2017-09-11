@@ -12,11 +12,11 @@ namespace LoginBestPractice.iOS
 		{
 			dataStorage = new DataStorage();
 			RootObject formData = DataStorage.data;
-			nfloat hoogteVanButtons = 20;
+			nfloat buttonHeight = 20;
 			for (int i = 0; i < formData.formulieren.Count; i++)
 			{
-				hoogteVanButtons += 70;
-				this.View.AddSubview(createElements(formData.formulieren[i].formulier_id, formData.formulieren[i].formulier_naam, hoogteVanButtons));
+				buttonHeight += 70;
+				this.View.AddSubview(createElements(formData.formulieren[i].formulier_id, formData.formulieren[i].formulier_naam, buttonHeight));
 			}
 			dataStorage.getData();
 		}

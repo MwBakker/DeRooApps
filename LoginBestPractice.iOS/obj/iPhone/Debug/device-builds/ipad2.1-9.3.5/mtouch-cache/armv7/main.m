@@ -42,7 +42,7 @@ void xamarin_register_assemblies_impl ()
 
 }
 
-void xamarin_create_classes();
+extern "C" void xamarin_create_classes();
 extern "C" { void mono_profiler_startup_log (); }
 typedef void (*xamarin_profiler_symbol_def)();
 extern xamarin_profiler_symbol_def xamarin_profiler_symbol;
@@ -65,7 +65,7 @@ void xamarin_setup_impl ()
 int main (int argc, char **argv)
 {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	int rv = xamarin_main (argc, argv, false);
+	int rv = xamarin_main (argc, argv, XamarinLaunchModeApp);
 	[pool drain];
 	return rv;
 }

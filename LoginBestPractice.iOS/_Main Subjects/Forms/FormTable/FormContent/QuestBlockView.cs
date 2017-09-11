@@ -227,7 +227,6 @@ namespace LoginBestPractice.iOS
 			btn_photo.Frame = new CGRect((viewWidth*0.125), (prevFrameBottom+10), (viewWidth*0.75), 30);
 			btn_photo.TouchDown += delegate
 			{
-				subjectVC.isCameraAct = true;
 				if (imgCounter == 3)
 				{
 					subjectVC.PresentViewController(User.createAlert("Niet meer dan 3 foto's", "INFO"), true, null);

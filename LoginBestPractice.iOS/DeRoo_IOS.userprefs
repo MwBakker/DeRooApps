@@ -1,10 +1,9 @@
 ﻿<Properties StartupConfiguration="{84563AF5-67F4-46D6-B49C-BF8D718F3C64}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="_Main Subjects/Forms/OpenFormsViewController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="_Main Subjects/Forms/FormContentViewController.cs">
     <Files>
       <File FileName="Data/User.cs" Line="101" Column="1" />
       <File FileName="Main.cs" Line="12" Column="1" />
-      <File FileName="_Main Subjects/Forms/FormContentViewController.cs" Line="348" Column="34" />
-      <File FileName="MainStoryboard.storyboard" />
+      <File FileName="_Main Subjects/Forms/FormContentViewController.cs" Line="1" Column="1" />
       <File FileName="_Main Subjects/Forms/OpenFormsViewController.cs" Line="22" Column="111" />
       <File FileName="_Main Subjects/Forms/FormsViewController.cs" Line="28" Column="1" />
       <File FileName="_Main Subjects/Toolbox/SignatureViewController.cs" Line="26" Column="4" />
@@ -15,6 +14,7 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/mwb/DeRooApps/LoginBestPractice.iOS/_Main Subjects/Forms/FormTable/FormContent/QuestBlockView.cs" relfile="_Main Subjects/Forms/FormTable/FormContent/QuestBlockView.cs" line="229" column="1" />
+      <Breakpoint file="/Users/mwb/DeRooApps/LoginBestPractice.iOS/_Main Subjects/Forms/FormContentViewController.cs" relfile="_Main Subjects/Forms/FormContentViewController.cs" line="366" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
@@ -22,5 +22,5 @@
   <DisabledProjects>
     <String>../../../Downloads/DeRoo/DeRoo/DeRoo.csproj</String>
   </DisabledProjects>
-  <MonoDevelop.Ide.ItemProperties.DeRoo__IOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.5d895ac5b0ab96026e0cc6c9ec199e394faacf1a" />
+  <MonoDevelop.Ide.ItemProperties.DeRoo__IOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.dd4cfa973d9490772f80bbb3335130c37278d7b5" />
 </Properties>
