@@ -14,10 +14,8 @@ namespace LoginBestPractice.iOS
         List<UIView> views;
 
         public bool rootFromText  { get; set; }
-        // changes in the database are not relevant to this root IF coming from non-web source
         public RootObject formData { get; set; }
         public bool isCameraAct { get; set; } 
-        bool succesSend;
         UIColor deRooGreen;
         nfloat viewWidth;
         string formID;
@@ -29,7 +27,6 @@ namespace LoginBestPractice.iOS
         {
             views = new List<UIView>();
             base.LoadView();
-            succesSend = false;
             viewWidth =  UIScreen.MainScreen.Bounds.Width;
             txtf_projectName.ShouldReturn += (textField) => {
                textField.ResignFirstResponder();
@@ -44,25 +41,31 @@ namespace LoginBestPractice.iOS
             btn_geoLoc.Frame = new CGRect((viewWidth*0.828), btn_geoLoc.Frame.Y, (viewWidth*0.1125), btn_geoLoc.Frame.Height);
             formTableView.Frame = new CGRect(0, 0, viewWidth, this.View.Frame.Height);
             deRooGreen = new UIColor(0.04f, 0.17f, 0.01f, 1.0f);
-        }
+
+			NavigationItem.SetLeftBarButtonItem(new UIBarButtonItem(
+                UIBarButtonSystemItem.Rewind, (sender, args) => {
+					UIAlertController delAlert = UIAlertController.Create("Formulier bewaren", "Wilt u dit onvolledig ingevulde formulier bewaren?", UIAlertControllerStyle.Alert);
+                    delAlert.AddAction(UIAlertAction.Create("Nee", UIAlertActionStyle.Cancel,  action => NavigationController.PopViewController(true)));
+                    delAlert.AddAction(UIAlertAction.Create("Ja", UIAlertActionStyle.Default, action => toFile()));
+					PresentViewController(delAlert, true, null);
+				}
+            ), true);
+		}
 
         public override void ViewWillAppear(bool animated)
         {
             ParentViewController.TabBarController.TabBar.Hidden = true;
-            // adding custom event to back-button, to be able to ask user wether or not to save file
+			// adding custom event to back-button, to be able to ask user wether or not to save file
+			
         }
 
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            NavigationItem.LeftBarButtonItem.Clicked += (sender, args) =>
-            {
-                UIAlertController delAlert = UIAlertController.Create("Formulier bewaren", "Wilt u dit onvolledig ingevulde formulier bewaren?", UIAlertControllerStyle.Alert);
-                delAlert.AddAction(UIAlertAction.Create("Ja", UIAlertActionStyle.Default, action => toFile()));
-                succesSend = false;
-                delAlert.AddAction(UIAlertAction.Create("Nee", UIAlertActionStyle.Cancel, null));
-                PresentViewController(delAlert, true, null);
-            };
+			NavigationItem.BackBarButtonItem.Clicked += (sender, args) =>
+			{
+				
+			};
         }
 
         //
@@ -389,12 +392,14 @@ namespace LoginBestPractice.iOS
                 RootObject fileForm = collectData();
                 DataStorage.sendDataToFile(formData, "openFormData", fileForm.formulieren[0].datum);
                 TabBarController.TabBar.Items[1].Image = UIImage.FromFile("openformIcon");
+                NavigationController.PopViewController(true);
                 PresentViewController(User.createAlert("Dit formulier is opgeslagen onder 'openstaande formulieren'", "INFO"), true, null);
             }
         }
 
         // 
-        // collects data per view and possible modal belonging to view  
+        // collects data per view and possible modal belonging to view 
+        // puts form as 'unsend'  when sending failed 
         //
         partial void btn_sendForm_TouchUpInside(UIButton sender)
         {
@@ -404,7 +409,6 @@ namespace LoginBestPractice.iOS
                 // from file or not can both be true/false in this method-call
                 if (DataStorage.sendFormWeb(webForm, rootFromText, "openFormData") == true)
                 {
-                    succesSend = true;
                     if (rootFromText == true) {
                         User.checkUnfilled(TabBarController.TabBar);
                         OpenFormsViewController openFormVC = Storyboard.InstantiateViewController("OpenFormsViewController") as OpenFormsViewController;
@@ -413,8 +417,6 @@ namespace LoginBestPractice.iOS
                        // FormsViewController formVC = Storyboard.InstantiateViewController("Forms") as FormsViewController;
                        // NavigationController.PushViewController(formVC, true);
                     }
-                } else {
-                    succesSend = false;
                 }
             } 
             else 

@@ -1,8 +1,6 @@
 ﻿using System;
 using UIKit;
-using Newtonsoft.Json;
 using System.IO;
-using System.Collections.Generic;
 using DeRoo_iOS;
 
 namespace LoginBestPractice.iOS

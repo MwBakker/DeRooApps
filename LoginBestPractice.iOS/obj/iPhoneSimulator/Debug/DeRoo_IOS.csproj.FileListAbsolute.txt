@@ -130,7 +130,6 @@
 /Users/mwb/DeRooApps/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/ipad4.2-10.3.1/optimized/logout.png
 /Users/mwb/DeRooApps/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/ipad4.2-10.3.1/optimized/logouttemp.png
 /Users/mwb/DeRooApps/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/ipad4.2-10.3.1/optimized/Deroo_Bord_Medium.png
-/Users/mwb/DeRooApps/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/ipad4.2-10.3.1/optimized/openstaandeformulieren.png
 /Users/mwb/DeRooApps/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/ipad4.2-10.3.1/optimized/BottomXamagons.png
 /Users/mwb/DeRooApps/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/ipad4.2-10.3.1/optimized/BottomXamagons@2x.png
 /Users/mwb/DeRooApps/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/ipad4.2-10.3.1/optimized/BottomXamagons@3x.png
@@ -152,5 +151,6 @@
 /Users/mwb/DeRooApps/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/ipad4.2-10.3.1/optimized/personIcon.png
 /Users/mwb/DeRooApps/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/ipad4.2-10.3.1/optimized/toolboxIcon.png
 /Users/mwb/DeRooApps/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/ipad4.2-10.3.1/optimized/toolboxBarIcon.png
-/Users/mwb/DeRooApps/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/ipad4.2-10.3.1/optimized/openformIcon.png
 /Users/mwb/DeRooApps/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/ipad4.2-10.3.1/optimized/
+/Users/mwb/DeRooApps/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/ipad4.2-10.3.1/optimized/noOpenFormIcon.png
+/Users/mwb/DeRooApps/LoginBestPractice.iOS/obj/iPhoneSimulator/Debug/device-builds/ipad4.2-10.3.1/optimized/openForm.png
